@@ -78,7 +78,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnAttack
+        m_MethodName: OnLightAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,6 +146,54 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6086632988783990073}
+        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+        m_MethodName: OnHeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c545418-57bf-4d5a-b581-72b5888dcabe
+    m_ActionName: 'Player/HeavyAttack[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6086632988783990073}
+        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+        m_MethodName: OnSpecialAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8d96a733-f9f4-4b6b-931a-ce69df96ff80
+    m_ActionName: 'Player/SpecialAttack[/Keyboard/o]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6086632988783990073}
+        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 67bee1f4-659b-42a2-8e4c-3738be1488c1
+    m_ActionName: 'Player/Dash[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

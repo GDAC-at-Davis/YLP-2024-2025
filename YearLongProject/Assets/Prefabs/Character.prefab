@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfda0a3d933bf194d973a10f6076d2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  _playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
   _moveInput: {x: 0, y: 0}
   _jump: 0
-  _attack: 0
+  _dash: 0
+  _lightAttack: 0
+  _heavyAttack: 0
+  _specialAttack: 0
