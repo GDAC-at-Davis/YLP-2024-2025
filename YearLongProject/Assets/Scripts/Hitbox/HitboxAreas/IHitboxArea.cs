@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Hitbox.HitboxAreas
 {
     /// <summary>
-    ///     Interface representing an area that can be checked for collisions
+    ///     Interface representing a hitbox's area
     /// </summary>
     public interface IHitboxArea
     {
@@ -49,6 +49,9 @@ namespace Hitbox.HitboxAreas
         public int FacingDirection;
     }
 
+    /// <summary>
+    ///     Configuration for drawing debug lines
+    /// </summary>
     public struct DrawDebugConfig
     {
         public Color Color;
