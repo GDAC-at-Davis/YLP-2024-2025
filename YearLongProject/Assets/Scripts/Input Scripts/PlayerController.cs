@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] PlayerInputSO _playerInputSO;
+    [SerializeField] CharacterMovementController _playerMovementController;
     int _id = -1;
 
     [SerializeField] Vector2 _moveInput;
@@ -59,11 +60,13 @@ public class PlayerController : MonoBehaviour
     private void OnMove(Vector2 moveInput)
     {
         _moveInput = moveInput;
+        _playerMovementController.CharacterMove(_moveInput);
     }
 
     private void OnJump(bool jump)
     {
         _jump = jump;
+        _playerMovementController.CharacterJump(_jump);
     }
     private void OnDash(bool dash)
     {
