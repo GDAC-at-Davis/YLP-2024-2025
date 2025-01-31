@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterMovementController : MonoBehaviour
 {
     private PlayerController _PlayerController;
-    private Rigidbody _CharacterRigidbody;
+    private Rigidbody2D _CharacterRigidbody;
     [SerializeField] private float speed = 5;
     [SerializeField] private float jumpPower = 10;
     [SerializeField] private float slowFallingRate = 0.25f; // Affects the jump boost from holding vs tapping jump
@@ -15,7 +15,7 @@ public class CharacterMovementController : MonoBehaviour
 
     void Start ()
     {
-        _CharacterRigidbody = GetComponent<Rigidbody>();
+        _CharacterRigidbody = GetComponent<Rigidbody2D>();
         _PlayerController = GetComponent<PlayerController>();
     }
 
@@ -26,11 +26,12 @@ public class CharacterMovementController : MonoBehaviour
         Vector2 newVelocity = Vector2.Lerp(_CharacterRigidbody.linearVelocity, moveInput * speed, 0.2f);
         SetHorizontalVelocity(newVelocity);
 
+
         if (Input.GetKey(KeyCode.Space))
         {
             if (_CharacterRigidbody.linearVelocity.y > 0)
             {
-                Vector2 newVerticalVelocity = _CharacterRigidbody.linearVelocity + new Vector3(0, slowFallingRate, 0);
+                Vector2 newVerticalVelocity = _CharacterRigidbody.linearVelocity + new Vector2(0, slowFallingRate);
                 SetVerticalVelocity(newVerticalVelocity);
             }
             
@@ -59,7 +60,7 @@ public class CharacterMovementController : MonoBehaviour
 
     public void CharacterJump(bool jump)
     {
-        bool isGrounded = Physics.Raycast(transform.position, -Vector3.up, 0.55f);
+        bool isGrounded = Physics2D.Raycast(transform.position, -Vector2.up, 0.55f, 3);
         if (jump && isGrounded)
         {
             SetVerticalVelocity(new Vector2(0, jumpPower));
@@ -73,18 +74,18 @@ public class CharacterMovementController : MonoBehaviour
     public void SetHorizontalVelocity(Vector2 velocity)
     {
         Vector3 curVel = _CharacterRigidbody.linearVelocity;
-        _CharacterRigidbody.linearVelocity = new Vector3 (velocity.x, curVel.y, curVel.z);
+        _CharacterRigidbody.linearVelocity = new Vector2 (velocity.x, curVel.y);
     }
 
     public void SetVerticalVelocity(Vector2 velocity)
     {
         Vector3 curVel = _CharacterRigidbody.linearVelocity;
-        _CharacterRigidbody.linearVelocity = new Vector3 (curVel.x, velocity.y, curVel.z);
+        _CharacterRigidbody.linearVelocity = new Vector2 (curVel.x, velocity.y);
     }
 
     public void ApplyImpulseForce(Vector2 force)
     {
-        _CharacterRigidbody.AddForce(force, ForceMode.Impulse);
+        _CharacterRigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 
     public bool isGrounded()
