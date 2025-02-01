@@ -66,7 +66,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03403023, y: 0.90733886}
+  m_Offset: {x: 0.03403023, y: 0.56882054}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -76,7 +76,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5041309, y: 1.8241129}
+  m_Size: {x: 0.5041309, y: 1.1470762}
   m_EdgeRadius: 0
 --- !u!1 &559988325042132921
 GameObject:
@@ -183,7 +183,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4754531011271054993}
+  - {fileID: 4942577145167919600}
   m_Father: {fileID: 3525838291768555810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2784295652820237144
@@ -268,9 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1014467180549265856}
   character: {fileID: 5002924662183864281}
-  moveState: {fileID: 0}
+  moveState: {fileID: 6302185708548398835}
   jumpState: {fileID: 0}
   lightAttackState: {fileID: 0}
   heavyAttackState: {fileID: 0}
@@ -286,6 +288,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4783867218396614651}
   - component: {fileID: 8937021948173160725}
+  - component: {fileID: 1014467180549265856}
+  - component: {fileID: 9022335918410440386}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -352,7 +356,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c495ea78f4895bb4c9b36defb23ff489, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f88046e38c2d0e40a902b79adbde9db, type: 3}
   m_Color: {r: 0.25943398, g: 1, b: 0.44705692, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -363,3 +367,162 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1014467180549265856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193871950307689153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 9022335918410440386}
+  _Transitions: {fileID: 0}
+  _ActionOnDisable: 0
+--- !u!95 &9022335918410440386
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193871950307689153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99f44d9cb0d4b0c40bb7fbde560db17d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6315281327505918810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4942577145167919600}
+  - component: {fileID: 8103427823872688867}
+  m_Layer: 3
+  m_Name: JumpState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4942577145167919600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315281327505918810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8710895339890870979}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8103427823872688867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315281327505918810}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 5002924662183864281}
+  actionManager: {fileID: 3312590026433819190}
+  movementController: {fileID: 6041716481974125026}
+  stateAnimation:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 39cfe815673720b46b81743c5aefcf26, type: 2}
+    _NormalizedStartTime: NaN
+  _playerController: {fileID: 6647200224311980230}
+  _playerMovementController: {fileID: 6041716481974125026}
+  references:
+    version: 2
+    RefIds: []
+--- !u!1 &7153973418112692192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4754531011271054993}
+  - component: {fileID: 6302185708548398835}
+  m_Layer: 3
+  m_Name: MoveState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4754531011271054993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153973418112692192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8710895339890870979}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6302185708548398835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153973418112692192}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 5002924662183864281}
+  actionManager: {fileID: 3312590026433819190}
+  movementController: {fileID: 6041716481974125026}
+  stateAnimation:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 39cfe815673720b46b81743c5aefcf26, type: 2}
+    _NormalizedStartTime: NaN
+  _playerController: {fileID: 6647200224311980230}
+  _playerMovementController: {fileID: 6041716481974125026}
+  references:
+    version: 2
+    RefIds: []
