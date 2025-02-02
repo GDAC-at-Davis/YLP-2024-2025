@@ -1,3 +1,4 @@
+using Hitbox.DataStructures;
 using UnityEngine;
 
 namespace Hitbox.HitboxAreas
@@ -29,7 +30,7 @@ namespace Hitbox.HitboxAreas
             _size = size;
         }
 
-        public Collider2D[] GetCollidersInArea(HitboxCheckContext context)
+        public Collider2D[] GetCollidersInArea(HitboxContext context)
         {
             TransformToOrigin(context, out Vector2 center, out float rotation);
 
@@ -38,7 +39,7 @@ namespace Hitbox.HitboxAreas
             return hits;
         }
 
-        public void DrawAreaDebug(HitboxCheckContext context, DrawDebugConfig debug)
+        public void DrawAreaDebug(HitboxContext context, DrawDebugConfig debug)
         {
             GetCornerPositions(context, out Vector2 topLeft, out Vector2 topRight, out Vector2 bottomLeft,
                 out Vector2 bottomRight);
@@ -49,16 +50,22 @@ namespace Hitbox.HitboxAreas
             Debug.DrawLine(bottomLeft, topLeft, debug.Color, debug.Duration);
         }
 
-        private void TransformToOrigin(HitboxCheckContext context, out Vector2 pos, out float rotation)
+        private void TransformToOrigin(HitboxContext context, out Vector2 pos, out float rotation)
         {
             // Transform the center of the box to world space
             pos = context.SourcePosition + (Vector2)(Quaternion.Euler(0, 0, context.SourceAngle) * _center);
 
             // Transform rotation to world space
             rotation = context.SourceAngle + _rotation;
+
+            if (context.FlipX)
+            {
+                pos.x = context.SourcePosition.x - (pos.x - context.SourcePosition.x);
+                rotation = 180 - rotation;
+            }
         }
 
-        public void GetCornerPositions(HitboxCheckContext context, out Vector2 topLeft, out Vector2 topRight,
+        public void GetCornerPositions(HitboxContext context, out Vector2 topLeft, out Vector2 topRight,
             out Vector2 bottomLeft, out Vector2 bottomRight)
         {
             TransformToOrigin(context, out Vector2 center, out float rotation);

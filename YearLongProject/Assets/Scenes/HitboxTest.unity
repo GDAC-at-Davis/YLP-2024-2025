@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969764546}
   - component: {fileID: 969764545}
+  - component: {fileID: 969764547}
   m_Layer: 0
   m_Name: Hitbox Test
   m_TagString: Untagged
@@ -270,9 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _areaType: 0
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  _hitboxEmitter: {fileID: 969764547}
   _boxCenter: {x: 0, y: 0}
   _boxRotation: 0
   _boxSize: {x: 1, y: 1}
@@ -291,6 +290,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969764547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969764544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9bae9f3f0baf74188e889b1702dd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitboxSystemSo: {fileID: 11400000, guid: b8bd2922bb9d7614d802536c1009f261, type: 2}
+  _character: {fileID: 0}
+  _hitboxSourceTransform: {fileID: 969764546}
+  _flipX: 0
+  _hitboxLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!43 &1400403549
 Mesh:
   m_ObjectHideFlags: 0
@@ -955,6 +973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986495945}
   - component: {fileID: 1986495944}
+  - component: {fileID: 1986495946}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -1023,6 +1042,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1986495946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986495943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5259ed1367edf824fa403765a3a2edad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attachedCharacter: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1030,5 +1062,5 @@ SceneRoots:
   - {fileID: 1786978537}
   - {fileID: 397703229}
   - {fileID: 969764546}
-  - {fileID: 1879366433}
   - {fileID: 1986495945}
+  - {fileID: 1879366433}
