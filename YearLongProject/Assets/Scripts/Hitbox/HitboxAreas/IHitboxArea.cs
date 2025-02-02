@@ -12,9 +12,9 @@ namespace Hitbox.HitboxAreas
         /// <summary>
         ///     Run physics check for colliders in the area
         /// </summary>
-        /// <param name="layerMask"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public Collider2D[] GetCollidersInArea(HitboxContext layerMask);
+        public Collider2D[] GetCollidersInArea(HitboxContext context);
 
         /// <summary>
         ///     Visualize the area for debugging purposes

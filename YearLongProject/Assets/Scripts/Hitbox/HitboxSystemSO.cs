@@ -45,7 +45,7 @@ namespace Hitbox
                     Debug.Log($"Hitbox overlapped collider {hit.gameObject}");
                 }
 
-                var hurtbox = hit.GetComponent<Hurtbox>();
+                var hurtbox = hit.GetComponent<CharacterHurtbox>();
 
                 if (hurtbox == null)
                 {

@@ -1,13 +1,14 @@
 using Base;
 using Hitbox.DataStructures;
+using Hitbox.Hurtboxes;
 using UnityEngine;
 
 namespace Hitbox
 {
     /// <summary>
-    ///     Represents a hurtbox. Needs to be on the same gameobject as the collider
+    ///     Represents a character hurtbox. Needs to be on the same gameobject as the collider
     /// </summary>
-    public class Hurtbox : DescriptionMono
+    public class CharacterHurtbox : DescriptionMono, IHurtbox
     {
         [SerializeField]
         private Character _attachedCharacter;

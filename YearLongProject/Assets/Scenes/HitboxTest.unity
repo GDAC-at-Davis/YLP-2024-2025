@@ -270,11 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d066beb7d95bba4a932b452a7b7f0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _areaType: 0
+  _areaType: 1
   _hitboxEmitter: {fileID: 969764547}
   _boxCenter: {x: 0, y: 0}
   _boxRotation: 0
   _boxSize: {x: 1, y: 1}
+  _raycastOrigin: {x: 1.15, y: 0.32}
+  _raycastAngle: 19.28
+  _raycastDistance: 5
 --- !u!4 &969764546
 Transform:
   m_ObjectHideFlags: 0

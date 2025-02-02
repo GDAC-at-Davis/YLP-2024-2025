@@ -13,7 +13,8 @@ namespace Hitbox.Testing
     {
         public enum AreaTypes
         {
-            Box
+            Box,
+            Raycast
         }
 
         [Header("Context")]
@@ -35,6 +36,17 @@ namespace Hitbox.Testing
         [SerializeField]
         private Vector2 _boxSize;
 
+        [Header("Raycast Area")]
+
+        [SerializeField]
+        private Vector2 _raycastOrigin;
+
+        [SerializeField]
+        private float _raycastAngle;
+
+        [SerializeField]
+        private float _raycastDistance;
+
         public void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -46,6 +58,9 @@ namespace Hitbox.Testing
                 {
                     case AreaTypes.Box:
                         area = new BoxArea(_boxCenter, _boxRotation, _boxSize);
+                        break;
+                    case AreaTypes.Raycast:
+                        area = new RaycastArea(_raycastOrigin, _raycastAngle, _raycastDistance);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -64,6 +79,9 @@ namespace Hitbox.Testing
             {
                 case AreaTypes.Box:
                     area = new BoxArea(_boxCenter, _boxRotation, _boxSize);
+                    break;
+                case AreaTypes.Raycast:
+                    area = new RaycastArea(_raycastOrigin, _raycastAngle, _raycastDistance);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

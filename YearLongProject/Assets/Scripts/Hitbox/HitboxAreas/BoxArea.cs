@@ -32,7 +32,7 @@ namespace Hitbox.HitboxAreas
 
         public Collider2D[] GetCollidersInArea(HitboxContext context)
         {
-            TransformToOrigin(context, out Vector2 center, out float rotation);
+            TransformToContext(context, out Vector2 center, out float rotation);
 
             Collider2D[] hits = Physics2D.OverlapBoxAll(center, _size, rotation, context.LayerMask);
 
@@ -50,7 +50,7 @@ namespace Hitbox.HitboxAreas
             Debug.DrawLine(bottomLeft, topLeft, debug.Color, debug.Duration);
         }
 
-        private void TransformToOrigin(HitboxContext context, out Vector2 pos, out float rotation)
+        private void TransformToContext(HitboxContext context, out Vector2 pos, out float rotation)
         {
             // Transform the center of the box to world space
             pos = context.SourcePosition + (Vector2)(Quaternion.Euler(0, 0, context.SourceAngle) * _center);
@@ -68,7 +68,7 @@ namespace Hitbox.HitboxAreas
         public void GetCornerPositions(HitboxContext context, out Vector2 topLeft, out Vector2 topRight,
             out Vector2 bottomLeft, out Vector2 bottomRight)
         {
-            TransformToOrigin(context, out Vector2 center, out float rotation);
+            TransformToContext(context, out Vector2 center, out float rotation);
 
             float halfWidth = _size.x / 2;
             float halfHeight = _size.y / 2;
