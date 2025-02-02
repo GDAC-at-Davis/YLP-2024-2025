@@ -1,3 +1,4 @@
+using System;
 using Hitbox.DataStructures;
 using UnityEngine;
 
@@ -6,22 +7,26 @@ namespace Hitbox.HitboxAreas
     /// <summary>
     ///     Simple box area. Can be rotated
     /// </summary>
+    [Serializable]
     public class BoxArea : IHitboxArea
     {
         /// <summary>
         ///     Position of the center of the box, in the origin's local space
         /// </summary>
-        private readonly Vector2 _center;
+        [SerializeField]
+        private Vector2 _center;
 
         /// <summary>
         ///     Rotation of the box, in degrees
         /// </summary>
-        private readonly float _rotation;
+        [SerializeField]
+        private float _rotation;
 
         /// <summary>
         ///     Size of the box
         /// </summary>
-        private readonly Vector2 _size;
+        [SerializeField]
+        private Vector2 _size;
 
         public BoxArea(Vector2 center, float rotation, Vector2 size)
         {
