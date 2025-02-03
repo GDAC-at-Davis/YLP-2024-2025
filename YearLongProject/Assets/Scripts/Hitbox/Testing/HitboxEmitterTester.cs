@@ -1,4 +1,5 @@
 using System;
+using Base;
 using Hitbox.DataStructures;
 using Hitbox.Emitters;
 using Hitbox.HitboxAreas;
@@ -9,7 +10,7 @@ namespace Hitbox.Testing
     /// <summary>
     ///     Scuffed debug script to test hitboxes
     /// </summary>
-    public class HitboxEmitterTester : MonoBehaviour
+    public class HitboxEmitterTester : DescriptionMono
     {
         public enum AreaTypes
         {

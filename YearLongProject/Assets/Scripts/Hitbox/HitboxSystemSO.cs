@@ -16,6 +16,9 @@ namespace Hitbox
         [SerializeField]
         private bool _detailedLogging;
 
+        [SerializeField]
+        private float _hitboxVisualizeDuration;
+
         /// <summary>
         ///     Instantiates a hitbox and applies its effects
         /// </summary>
@@ -28,7 +31,7 @@ namespace Hitbox
 
             if (_showHitboxAreas)
             {
-                area.DrawAreaDebug(context, new DrawDebugConfig(Color.red, 0.1f));
+                area.DrawAreaDebug(context, new DrawDebugConfig(Color.red, _hitboxVisualizeDuration));
             }
 
             Collider2D[] hits = area.GetCollidersInArea(context);
