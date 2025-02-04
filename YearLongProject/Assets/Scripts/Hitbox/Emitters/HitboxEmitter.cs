@@ -1,5 +1,6 @@
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hitbox.Emitters
@@ -16,6 +17,7 @@ namespace Hitbox.Emitters
 
         [SerializeField]
         private Entity _entity;
+        public Entity Entity { get => _entity; }
 
         [SerializeField]
         private Transform _hitboxSourceTransform;
@@ -25,6 +27,12 @@ namespace Hitbox.Emitters
 
         [SerializeField]
         private LayerMask _hitboxLayerMask;
+
+        [SerializeField]
+        private string _hitboxID;
+
+        // prevents hitbox from repeatedly hitting hurtboxes
+        public HashSet<Entity> HitEntities = new();
 
         public void EmitHitbox(IHitboxArea hitboxArea, HitboxEffect hitboxEffect)
         {
@@ -42,11 +50,12 @@ namespace Hitbox.Emitters
         {
             return new HitboxContext
             {
-                SourceEntity = _entity,
+                Source = this,
                 SourcePosition = _hitboxSourceTransform.position,
                 SourceAngle = _hitboxSourceTransform.eulerAngles.z,
                 LayerMask = _hitboxLayerMask,
-                FlipX = _flipX
+                FlipX = _flipX,
+                HitboxID = _hitboxID
             };
         }
     }

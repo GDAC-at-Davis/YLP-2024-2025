@@ -36,11 +36,6 @@ namespace Hitbox
 
             Collider2D[] hits = area.GetCollidersInArea(context);
 
-            // TODO: Are we moving to a more generic 'Entity' type?
-
-            // Prevent a character from being hit multiple times by the same hitbox
-            var hitEntities = new HashSet<Entity>();
-
             foreach (Collider2D hit in hits)
             {
                 if (_detailedLogging)
@@ -57,19 +52,19 @@ namespace Hitbox
 
                 Entity entity = hurtbox.AttachedEntity;
 
-                if (entity != null && entity == context.SourceEntity)
+                if (entity == null)
                 {
                     continue;
                 }
 
-                if (hitEntities.Contains(entity))
+                if (entity == context.Source.Entity)
                 {
                     continue;
                 }
 
-                if (entity != null)
+                if (context.Source.HitEntities.Contains(entity))
                 {
-                    hitEntities.Add(entity);
+                    continue;
                 }
 
                 if (_detailedLogging)
@@ -77,6 +72,7 @@ namespace Hitbox
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }
 
+                context.Source.HitEntities.Add(entity);
                 hurtbox.OnHit(hitboxInstance);
             }
         }

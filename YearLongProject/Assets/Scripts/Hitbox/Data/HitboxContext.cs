@@ -1,4 +1,5 @@
 using UnityEngine;
+using Hitbox.Emitters;
 
 namespace Hitbox.DataStructures
 {
@@ -31,6 +32,11 @@ namespace Hitbox.DataStructures
         /// <summary>
         ///     Character that created the hitbox
         /// </summary>
-        public Entity SourceEntity;
+        public HitboxEmitter Source;
+
+        /// <summary>
+        ///     ID of the attack that hitbox belongs to
+        /// </summary>
+        public string HitboxID;
     }
 }

@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d066beb7d95bba4a932b452a7b7f0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _devDescription: 
   _areaType: 1
   _hitboxEmitter: {fileID: 969764547}
   _boxCenter: {x: 0, y: 0}
@@ -306,12 +307,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitboxSystemSo: {fileID: 11400000, guid: b8bd2922bb9d7614d802536c1009f261, type: 2}
-  _character: {fileID: 0}
+  _entity: {fileID: 0}
   _hitboxSourceTransform: {fileID: 969764546}
   _flipX: 0
   _hitboxLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  _hitboxID: 
 --- !u!1 &999788671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986495945}
   - component: {fileID: 1986495944}
+  - component: {fileID: 1986495947}
   - component: {fileID: 1986495946}
   m_Layer: 0
   m_Name: Dummy
@@ -1162,7 +1165,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5259ed1367edf824fa403765a3a2edad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attachedCharacter: {fileID: 0}
+  _devDescription: 
+  _attachedEntity: {fileID: 1986495947}
+--- !u!114 &1986495947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986495943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _devDescription: 
+  _entityID: 0
+  actionManager: {fileID: 0}
+  movementController: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

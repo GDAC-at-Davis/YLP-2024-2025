@@ -2,6 +2,7 @@ using Base;
 using Hitbox.DataStructures;
 using Hitbox.Hurtboxes;
 using UnityEngine;
+using Animancer;
 
 namespace Hitbox
 {
@@ -12,13 +13,12 @@ namespace Hitbox
     {
         [SerializeField]
         private Entity _attachedEntity;
-
-        public Entity AttachedEntity => _attachedEntity;
+        public Entity AttachedEntity { get => _attachedEntity; }
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            _attachedEntity = GetComponentInParent<Entity>();
+            gameObject.GetComponentInParentOrChildren(ref _attachedEntity);
         }
 #endif
 

@@ -46,5 +46,16 @@ namespace Timeline.Hitboxes
 
             base.ProcessFrame(playable, info, playerData);
         }
+
+        public override void OnBehaviourPlay(Playable playable, FrameData info)
+        {
+            if (!Application.isPlaying) return;
+
+            HitboxEmitter hitboxEmitter = info.output.GetUserData() as HitboxEmitter;
+
+            hitboxEmitter.HitEntities.Clear();
+
+            base.OnBehaviourPlay(playable, info);
+        }
     }
 }

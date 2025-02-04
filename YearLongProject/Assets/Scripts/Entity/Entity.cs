@@ -4,6 +4,7 @@ using Base;
 
 public abstract class Entity : DescriptionMono
 {
+    [SerializeField]
     private int _entityID;
     public int EntityID { get => _entityID; set => _entityID = value; }
 
