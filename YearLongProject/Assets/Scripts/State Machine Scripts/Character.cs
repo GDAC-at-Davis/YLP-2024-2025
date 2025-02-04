@@ -14,6 +14,16 @@ public class Character : MonoBehaviour
 
     protected bool isInvincible;
 
+    public int playerId = -1;
+
+    public void Init(int id)
+    {
+        playerId = id;
+        transform.parent = null;
+
+        actionManager.Init();
+    }
+
     // Callback for this Character being hit by an attack
     // Will route calls to health/stats manager, action manager
     // Example of override: reflecting damage back at attacker

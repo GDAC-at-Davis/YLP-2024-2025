@@ -26,19 +26,14 @@ public class CharacterState : StateBehaviour
 
     private AnimancerState currentState;
 
-    public override void OnEnterState()
+    protected virtual void OnEnable()
     {
-        base.OnEnterState();
-
-        currentState = actionManager.anim.Play(stateAnimation);
-
-        // Makes this state automatically exit to default state when stateAnimation finishes
-        currentState.Events(this).OnEnd ??= actionManager.stateMachine.ForceSetDefaultState;
+        return;
     }
 
-    public override void OnExitState()
+    protected virtual void OnDisable()
     {
-        base.OnExitState();
+        return;
     }
 
 #if UNITY_EDITOR

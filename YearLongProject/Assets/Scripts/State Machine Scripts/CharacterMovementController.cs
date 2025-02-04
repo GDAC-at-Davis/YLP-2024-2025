@@ -7,11 +7,14 @@ public class CharacterMovementController : MonoBehaviour
 {
     private PlayerController _PlayerController;
     private Rigidbody2D _CharacterRigidbody;
-    [SerializeField] private float speed = 5;
-    [SerializeField] private float jumpPower = 10;
-    [SerializeField] private float slowFallingRate = 0.25f; // Affects the jump boost from holding vs tapping jump
-    bool movingLeft = false;
-    bool movingRight = false;
+    [SerializeField]
+    private float speed = 5;
+
+    bool inJump;
+    bool isGrounded;
+    private float playerMove;
+    private float jumpVelocity;
+
 
     void Start ()
     {
@@ -21,66 +24,58 @@ public class CharacterMovementController : MonoBehaviour
 
     void FixedUpdate ()
     {
-        // Make this code cleaner in the future, can't easily get playercontroller velocity on frames after the first.
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
-        Vector2 newVelocity = Vector2.Lerp(_CharacterRigidbody.linearVelocity, moveInput * speed, 0.2f);
+        isGrounded = Physics2D.Raycast(transform.position, -Vector2.up, 0.55f, 3);
+
+        float playerIntendedMove = playerMove * speed;
+        float newVelocity = Mathf.Lerp(_CharacterRigidbody.linearVelocityX, playerIntendedMove, 0.2f);
         SetHorizontalVelocity(newVelocity);
 
-
-        if (Input.GetKey(KeyCode.Space))
+        if(inJump)
         {
-            if (_CharacterRigidbody.linearVelocity.y > 0)
-            {
-                Vector2 newVerticalVelocity = _CharacterRigidbody.linearVelocity + new Vector2(0, slowFallingRate);
-                SetVerticalVelocity(newVerticalVelocity);
-            }
-            
-        }
-
-    }
-
-    public void CharacterMove(Vector2 moveInput)
-    {
-        // Round movement to max power if the player is holding up at the same time, otherwise enable slower movement on controller.
-        if (moveInput.x > 0.7f)
-        {
-            Debug.Log("STARTED MOVING RIGHT");
-
-        }
-        else if (moveInput.x < -0.7f)
-        {
-            
-            Debug.Log("STARTED MOVING LEFT");
-        }
-        else
-        {
-
+            SetVerticalVelocity(jumpVelocity);
         }
     }
 
-    public void CharacterJump(bool jump)
+    public void SetCharacterMove(float playerMove)
     {
-        bool isGrounded = Physics2D.Raycast(transform.position, -Vector2.up, 0.55f, 3);
-        if (jump && isGrounded)
-        {
-            SetVerticalVelocity(new Vector2(0, jumpPower));
-        }
+        this.playerMove = playerMove;
+    }
+
+    public void SetJumpVelocity(float jumpVelocity)
+    {
+        this.jumpVelocity = jumpVelocity;
+    }
+
+    public void StartJump()
+    {
+        inJump = true;
+    }
+
+    public void StopJump()
+    {
+        inJump = false;
     }
 
     public void AddVelocity(Vector2 velocity)
     {
+
     }
 
-    public void SetHorizontalVelocity(Vector2 velocity)
+    public void SetVelocity(Vector2 velocity)
     {
-        Vector3 curVel = _CharacterRigidbody.linearVelocity;
-        _CharacterRigidbody.linearVelocity = new Vector2 (velocity.x, curVel.y);
+
     }
 
-    public void SetVerticalVelocity(Vector2 velocity)
+    public void SetHorizontalVelocity(float velocity)
     {
         Vector3 curVel = _CharacterRigidbody.linearVelocity;
-        _CharacterRigidbody.linearVelocity = new Vector2 (curVel.x, velocity.y);
+        _CharacterRigidbody.linearVelocity = new Vector2 (velocity, curVel.y);
+    }
+
+    public void SetVerticalVelocity(float velocity)
+    {
+        Vector3 curVel = _CharacterRigidbody.linearVelocity;
+        _CharacterRigidbody.linearVelocity = new Vector2 (curVel.x, velocity);
     }
 
     public void ApplyImpulseForce(Vector2 force)
@@ -88,17 +83,12 @@ public class CharacterMovementController : MonoBehaviour
         _CharacterRigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 
-    public bool isGrounded()
+    public bool GetIsGrounded()
     {
-        return true;
+        return isGrounded;
     }
 
     public void SetAllowMovement(bool isAllowed)
-    {
-
-    }
-
-    public void SetAllowRotation(bool isAllowed)
     {
 
     }
