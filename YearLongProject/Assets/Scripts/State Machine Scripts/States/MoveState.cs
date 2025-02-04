@@ -2,31 +2,17 @@ using UnityEngine;
 
 public class MoveState : CharacterState
 {
-    [SerializeField]
-    private PlayerController _playerController;
-
-    private bool _inState;
-
     private void Update()
     {
-        if (!_inState)
-        {
-            return;
-        }
-
-        Vector2 moveInput = _playerController.MoveInput;
-        movementController.CharacterMove(moveInput);
+        Vector2 moveInput = actionManager.GetPlayerActionInput().moveDir;
+        movementController.SetCharacterMove(moveInput.x);
     }
 
-    public override void OnEnterState()
+    protected override void OnEnable()
     {
-        _inState = true;
-        base.OnEnterState();
     }
 
-    public override void OnExitState()
+    protected override void OnDisable()
     {
-        _inState = false;
-        base.OnExitState();
     }
 }

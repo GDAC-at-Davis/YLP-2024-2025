@@ -126,8 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpPower: 9
-  slowFallingRate: 0.25
 --- !u!50 &6857426949256817108
 Rigidbody2D:
   serializedVersion: 5
@@ -164,8 +162,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8710895339890870979}
+  - component: {fileID: 6564235481833952604}
   m_Layer: 3
-  m_Name: States
+  m_Name: ActionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,6 +187,35 @@ Transform:
   - {fileID: 4942577145167919600}
   m_Father: {fileID: 3525838291768555810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6564235481833952604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968648881426466404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  anim: {fileID: 1014467180549265856}
+  character: {fileID: 5002924662183864281}
+  moveState: {fileID: 6302185708548398835}
+  jumpState: {fileID: 5136783112465032864}
+  lightAttackState: {fileID: 0}
+  heavyAttackState: {fileID: 0}
+  specialAttackState: {fileID: 0}
+  dashState: {fileID: 0}
+  hitstunState: {fileID: 0}
+  playerActionInput:
+    moveDir: {x: 0, y: 0}
+    jumpHeld: 0
+    dashHeld: 0
+    lightAttackHeld: 0
+    heavyAttackHeld: 0
+    specialAttackHeld: 0
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,9 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3525838291768555810}
-  - component: {fileID: 6647200224311980230}
   - component: {fileID: 5002924662183864281}
-  - component: {fileID: 3312590026433819190}
   m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
@@ -224,26 +250,6 @@ Transform:
   - {fileID: 2324917260605002194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6647200224311980230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784295652820237144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfda0a3d933bf194d973a10f6076d2f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  _playerMovementController: {fileID: 6041716481974125026}
-  _moveInput: {x: 0, y: 0}
-  _jump: 0
-  _dash: 0
-  _lightAttack: 0
-  _heavyAttack: 0
-  _specialAttack: 0
 --- !u!114 &5002924662183864281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,28 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionManager: {fileID: 3312590026433819190}
+  actionManager: {fileID: 6564235481833952604}
   movementController: {fileID: 6041716481974125026}
---- !u!114 &3312590026433819190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784295652820237144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1014467180549265856}
-  character: {fileID: 5002924662183864281}
-  moveState: {fileID: 6302185708548398835}
-  jumpState: {fileID: 0}
-  lightAttackState: {fileID: 0}
-  heavyAttackState: {fileID: 0}
-  dodgeState: {fileID: 0}
-  hitstunState: {fileID: 0}
+  playerId: -1
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4942577145167919600}
-  - component: {fileID: 8103427823872688867}
+  - component: {fileID: 5136783112465032864}
   m_Layer: 3
   m_Name: JumpState
   m_TagString: Untagged
@@ -436,7 +423,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8710895339890870979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8103427823872688867
+--- !u!114 &5136783112465032864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,11 +432,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6315281327505918810}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 11f64de74083e37408fe650c6c916785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 5002924662183864281}
-  actionManager: {fileID: 3312590026433819190}
+  actionManager: {fileID: 6564235481833952604}
   movementController: {fileID: 6041716481974125026}
   stateAnimation:
     _FadeDuration: 0.25
@@ -460,8 +447,32 @@ MonoBehaviour:
       _Names: []
     _Clip: {fileID: 7400000, guid: 39cfe815673720b46b81743c5aefcf26, type: 2}
     _NormalizedStartTime: NaN
-  _playerController: {fileID: 6647200224311980230}
-  _playerMovementController: {fileID: 6041716481974125026}
+  jumpVelocity: 8
+  maxJumpDuration: 0.5
+  jumpMultCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0076231146
+      value: 0.89017403
+      inSlope: 0.8478304
+      outSlope: 0.8478304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.18955964
+    - serializedVersion: 3
+      time: 0.9903078
+      value: 0.2889839
+      inSlope: -1.8113301
+      outSlope: -1.8113301
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08745246
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   references:
     version: 2
     RefIds: []
@@ -510,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 5002924662183864281}
-  actionManager: {fileID: 3312590026433819190}
+  actionManager: {fileID: 6564235481833952604}
   movementController: {fileID: 6041716481974125026}
   stateAnimation:
     _FadeDuration: 0.25
@@ -521,8 +532,6 @@ MonoBehaviour:
       _Names: []
     _Clip: {fileID: 7400000, guid: 39cfe815673720b46b81743c5aefcf26, type: 2}
     _NormalizedStartTime: NaN
-  _playerController: {fileID: 6647200224311980230}
-  _playerMovementController: {fileID: 6041716481974125026}
   references:
     version: 2
     RefIds: []

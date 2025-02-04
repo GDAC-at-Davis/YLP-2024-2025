@@ -2,28 +2,43 @@ using UnityEngine;
 
 public class JumpState : CharacterState
 {
-    [SerializeField]
-    private PlayerController _playerController;
+    [SerializeField] 
+    private float jumpVelocity = 10;
 
-    private bool _inState;
+    [SerializeField]
+    private float maxJumpDuration = 2;
+
+    [SerializeField]
+    private AnimationCurve jumpMultCurve;
+
+    private float jumpTimer;
+
+    public override bool CanEnterState
+    => actionManager.allowedActionTypes[actionType] && movementController.GetIsGrounded();
 
     private void Update()
     {
-        if (!_inState)
+        Vector2 moveInput = actionManager.GetPlayerActionInput().moveDir;
+        movementController.SetCharacterMove(moveInput.x);
+
+        movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer/maxJumpDuration));
+
+        jumpTimer += Time.deltaTime;
+
+        if (!actionManager.GetPlayerActionInput().jumpHeld || jumpTimer > maxJumpDuration)
         {
+            movementController.StopJump();
+            actionManager.stateMachine.ForceSetDefaultState();
         }
     }
 
-    public override void OnEnterState()
+    protected override void OnEnable()
     {
-        _inState = true;
-        movementController.CharacterJump(true);
-        base.OnEnterState();
+        movementController.StartJump();
+        jumpTimer = 0;
     }
 
-    public override void OnExitState()
+    protected override void OnDisable()
     {
-        _inState = false;
-        base.OnExitState();
     }
 }

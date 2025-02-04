@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour
     private void OnJump(bool jump)
     {
         _jump = jump;
-        _playerMovementController.CharacterJump(_jump);
     }
 
     private void OnDash(bool dash)

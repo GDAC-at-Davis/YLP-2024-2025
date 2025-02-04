@@ -19,7 +19,7 @@ public class PlayerInputReader : MonoBehaviour
         _playerInputSO.AddInputReader(_id);
 
         // Run by character selection in the future
-        Instantiate(character, Vector3.zero, Quaternion.identity).GetComponent<PlayerController>().Init(_id);
+        Instantiate(character, Vector3.zero, Quaternion.identity).GetComponent<Character>().Init(_id);
     }
 
     private void OnDestroy()
