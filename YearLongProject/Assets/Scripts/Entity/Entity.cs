@@ -1,7 +1,8 @@
 using UnityEngine;
 using Hitbox.DataStructures;
+using Base;
 
-public abstract class Entity : MonoBehaviour
+public abstract class Entity : DescriptionMono
 {
     private int _entityID;
     public int EntityID { get => _entityID; set => _entityID = value; }

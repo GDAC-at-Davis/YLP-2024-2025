@@ -15,6 +15,13 @@ namespace Hitbox
 
         public Entity AttachedEntity => _attachedEntity;
 
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            _attachedEntity = GetComponentInParent<Entity>();
+        }
+#endif
+
         public void OnHit(HitboxInstance hitboxInstance)
         {
             if (_attachedEntity == null)
