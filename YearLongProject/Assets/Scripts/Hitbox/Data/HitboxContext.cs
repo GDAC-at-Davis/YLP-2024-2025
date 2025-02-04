@@ -31,6 +31,6 @@ namespace Hitbox.DataStructures
         /// <summary>
         ///     Character that created the hitbox
         /// </summary>
-        public Character SourceCharacter;
+        public Entity SourceEntity;
     }
 }

@@ -39,7 +39,7 @@ namespace Hitbox
             // TODO: Are we moving to a more generic 'Entity' type?
 
             // Prevent a character from being hit multiple times by the same hitbox
-            var hitCharacters = new HashSet<Character>();
+            var hitEntities = new HashSet<Entity>();
 
             foreach (Collider2D hit in hits)
             {
@@ -48,28 +48,28 @@ namespace Hitbox
                     Debug.Log($"Hitbox overlapped collider {hit.gameObject}");
                 }
 
-                var hurtbox = hit.GetComponent<CharacterHurtbox>();
+                var hurtbox = hit.GetComponent<EntityHurtbox>();
 
                 if (hurtbox == null)
                 {
                     continue;
                 }
 
-                Character character = hurtbox.AttachedCharacter;
+                Entity entity = hurtbox.AttachedEntity;
 
-                if (character != null && character == context.SourceCharacter)
+                if (entity != null && entity == context.SourceEntity)
                 {
                     continue;
                 }
 
-                if (hitCharacters.Contains(character))
+                if (hitEntities.Contains(entity))
                 {
                     continue;
                 }
 
-                if (character != null)
+                if (entity != null)
                 {
-                    hitCharacters.Add(character);
+                    hitEntities.Add(entity);
                 }
 
                 if (_detailedLogging)

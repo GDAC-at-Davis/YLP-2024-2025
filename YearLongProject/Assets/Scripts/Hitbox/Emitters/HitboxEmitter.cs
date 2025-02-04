@@ -15,7 +15,7 @@ namespace Hitbox.Emitters
         private HitboxSystemSO _hitboxSystemSo;
 
         [SerializeField]
-        private Character _character;
+        private Entity _entity;
 
         [SerializeField]
         private Transform _hitboxSourceTransform;
@@ -42,7 +42,7 @@ namespace Hitbox.Emitters
         {
             return new HitboxContext
             {
-                SourceCharacter = _character,
+                SourceEntity = _entity,
                 SourcePosition = _hitboxSourceTransform.position,
                 SourceAngle = _hitboxSourceTransform.eulerAngles.z,
                 LayerMask = _hitboxLayerMask,

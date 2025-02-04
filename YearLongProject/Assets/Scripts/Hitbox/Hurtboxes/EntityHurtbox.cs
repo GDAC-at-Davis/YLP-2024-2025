@@ -8,21 +8,21 @@ namespace Hitbox
     /// <summary>
     ///     Represents a character hurtbox. Needs to be on the same gameobject as the collider
     /// </summary>
-    public class CharacterHurtbox : DescriptionMono, IHurtbox
+    public class EntityHurtbox : DescriptionMono, IHurtbox
     {
         [SerializeField]
-        private Character _attachedCharacter;
+        private Entity _attachedEntity;
 
-        public Character AttachedCharacter => _attachedCharacter;
+        public Entity AttachedEntity => _attachedEntity;
 
         public void OnHit(HitboxInstance hitboxInstance)
         {
-            if (_attachedCharacter == null)
+            if (_attachedEntity == null)
             {
                 return;
             }
 
-            _attachedCharacter.OnHitByAttack(hitboxInstance);
+            _attachedEntity.OnHitByAttack(hitboxInstance);
         }
     }
 }

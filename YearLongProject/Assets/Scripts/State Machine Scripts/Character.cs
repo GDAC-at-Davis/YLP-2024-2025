@@ -2,7 +2,7 @@ using Animancer;
 using Hitbox.DataStructures;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : Entity
 {
     [SerializeField]
     public CharacterActionManager actionManager;
@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
     // Callback for this Character being hit by an attack
     // Will route calls to health/stats manager, action manager
     // Example of override: reflecting damage back at attacker
-    public virtual void OnHitByAttack(HitboxInstance hitboxInstance)
+    public override void OnHitByAttack(HitboxInstance hitboxInstance)
     {
         if (isInvincible)
         {
