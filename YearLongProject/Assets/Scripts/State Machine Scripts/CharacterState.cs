@@ -5,19 +5,15 @@ using UnityEngine.Serialization;
 
 public class CharacterState : StateBehaviour
 {
-    [FormerlySerializedAs("character")]
     [SerializeField]
     protected Character Character;
 
-    [FormerlySerializedAs("actionManager")]
     [SerializeField]
     protected CharacterActionManager ActionManager;
 
-    [FormerlySerializedAs("movementController")]
     [SerializeField]
     protected CharacterMovementController MovementController;
 
-    [FormerlySerializedAs("stateAnimation")]
     [SerializeField]
     protected ClipTransition StateAnimation;
 

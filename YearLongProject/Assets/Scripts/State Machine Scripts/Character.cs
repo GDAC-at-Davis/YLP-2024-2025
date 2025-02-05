@@ -5,11 +5,9 @@ using UnityEngine.Serialization;
 
 public class Character : Entity
 {
-    [FormerlySerializedAs("actionManager")]
     [SerializeField]
     public CharacterActionManager ActionManager;
 
-    [FormerlySerializedAs("movementController")]
     [SerializeField]
     public CharacterMovementController MovementController;
 
