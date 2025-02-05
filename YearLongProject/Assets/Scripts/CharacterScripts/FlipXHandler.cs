@@ -25,12 +25,12 @@ namespace CharacterScripts
 
         private void Start()
         {
-            playerInputSo.MoveEvent(character.EntityID) += HandleMoveInput;
+            playerInputSo.MoveEvent(character.PlayerId) += HandleMoveInput;
         }
 
         private void OnDestroy()
         {
-            playerInputSo.MoveEvent(character.EntityID) -= HandleMoveInput;
+            playerInputSo.MoveEvent(character.PlayerId) -= HandleMoveInput;
         }
 
         private void HandleMoveInput(Vector2 moveDir)

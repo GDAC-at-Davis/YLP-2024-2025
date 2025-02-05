@@ -13,10 +13,10 @@ namespace State_Machine_Scripts.States
 
         private void Update()
         {
-            movementController.SetCharacterMove(0);
+            MovementController.SetCharacterMove(0);
             if (playableDirector.state != PlayState.Playing)
             {
-                actionManager.stateMachine.TrySetDefaultState();
+                ActionManager.StateMachine.TrySetDefaultState();
             }
         }
 
@@ -25,14 +25,14 @@ namespace State_Machine_Scripts.States
             playableDirector.playableAsset = lightAttackPlayableAsset;
             playableDirector.Play();
             enabled = true;
-            actionManager.SetActionTypeAllowed(CharacterActionType.Jump, false);
+            ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, false);
         }
 
         public override void OnExitState()
         {
             playableDirector.Stop();
             enabled = false;
-            actionManager.SetActionTypeAllowed(CharacterActionType.Jump, true);
+            ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, true);
         }
     }
 }

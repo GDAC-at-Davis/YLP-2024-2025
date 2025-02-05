@@ -4,8 +4,8 @@ public class MoveState : CharacterState
 {
     private void Update()
     {
-        Vector2 moveInput = actionManager.GetPlayerActionInput().moveDir;
-        movementController.SetCharacterMove(moveInput.x);
+        Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
+        MovementController.SetCharacterMove(moveInput.x);
     }
 
     protected override void OnEnable()

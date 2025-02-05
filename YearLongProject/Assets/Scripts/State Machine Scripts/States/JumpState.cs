@@ -12,39 +12,39 @@ public class JumpState : CharacterState
     private AnimationCurve jumpMultCurve;
 
     public override bool CanEnterState
-        => actionManager.GetActionTypeAllowed(actionType) && movementController.GetIsGrounded();
+        => ActionManager.GetActionTypeAllowed(ActionType) && MovementController.GetIsGrounded();
 
     private float jumpTimer;
 
     private void Awake()
     {
-        actionType = CharacterActionType.Jump;
+        ActionType = CharacterActionType.Jump;
     }
 
     private void Update()
     {
-        Vector2 moveInput = actionManager.GetPlayerActionInput().moveDir;
-        movementController.SetCharacterMove(moveInput.x);
+        Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
+        MovementController.SetCharacterMove(moveInput.x);
 
-        movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
+        MovementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
 
         jumpTimer += Time.deltaTime;
 
-        if (!actionManager.GetPlayerActionInput().jumpHeld || jumpTimer > maxJumpDuration)
+        if (!ActionManager.GetPlayerActionInput().JumpHeld || jumpTimer > maxJumpDuration)
         {
-            movementController.StopJump();
-            actionManager.stateMachine.ForceSetDefaultState();
+            MovementController.StopJump();
+            ActionManager.StateMachine.ForceSetDefaultState();
         }
     }
 
     protected override void OnEnable()
     {
-        movementController.StartJump();
+        MovementController.StartJump();
         jumpTimer = 0;
     }
 
     protected override void OnDisable()
     {
-        movementController.StopJump();
+        MovementController.StopJump();
     }
 }

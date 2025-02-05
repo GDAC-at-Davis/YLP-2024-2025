@@ -1,24 +1,32 @@
 using Animancer;
 using Hitbox.DataStructures;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Character : Entity
 {
+    [FormerlySerializedAs("actionManager")]
     [SerializeField]
-    public CharacterActionManager actionManager;
+    public CharacterActionManager ActionManager;
 
+    [FormerlySerializedAs("movementController")]
     [SerializeField]
-    public CharacterMovementController movementController;
+    public CharacterMovementController MovementController;
 
-    public int playerId = -1;
+    /// <summary>
+    ///     Id of the actual player. Used for input and other player specific things.
+    /// </summary>
+    public int PlayerId => playerId;
 
-    protected bool isInvincible;
+    private int playerId = -1;
+
+    protected bool IsInvincible;
 
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        gameObject.GetComponentInParentOrChildren(ref actionManager);
-        gameObject.GetComponentInParentOrChildren(ref movementController);
+        gameObject.GetComponentInParentOrChildren(ref ActionManager);
+        gameObject.GetComponentInParentOrChildren(ref MovementController);
     }
 #endif
 
@@ -27,7 +35,7 @@ public class Character : Entity
         playerId = id;
         transform.parent = null;
 
-        actionManager.Init();
+        ActionManager.Init();
     }
 
     // Callback for this Character being hit by an attack
@@ -35,7 +43,7 @@ public class Character : Entity
     // Example of override: reflecting damage back at attacker
     public override void OnHitByAttack(HitboxInstance hitboxInstance)
     {
-        if (isInvincible)
+        if (IsInvincible)
         {
         }
     }
@@ -48,7 +56,7 @@ public class Character : Entity
 
     public virtual void SetIsInvincible(bool isInvincible)
     {
-        this.isInvincible = isInvincible;
+        IsInvincible = isInvincible;
     }
 
     public virtual void Die()

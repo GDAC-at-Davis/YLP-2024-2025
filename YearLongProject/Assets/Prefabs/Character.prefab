@@ -202,23 +202,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  anim: {fileID: 1014467180549265856}
-  character: {fileID: 5002924662183864281}
-  moveState: {fileID: 6302185708548398835}
-  jumpState: {fileID: 5136783112465032864}
-  lightAttackState: {fileID: 3878718543263626740}
-  heavyAttackState: {fileID: 0}
-  specialAttackState: {fileID: 0}
-  dashState: {fileID: 0}
-  hitstunState: {fileID: 0}
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  Anim: {fileID: 1014467180549265856}
+  Character: {fileID: 5002924662183864281}
+  MoveState: {fileID: 6302185708548398835}
+  JumpState: {fileID: 5136783112465032864}
+  LightAttackState: {fileID: 3878718543263626740}
+  HeavyAttackState: {fileID: 0}
+  SpecialAttackState: {fileID: 0}
+  DashState: {fileID: 0}
+  HitstunState: {fileID: 0}
   playerActionInput:
-    moveDir: {x: 0, y: 0}
-    jumpHeld: 0
-    dashHeld: 0
-    lightAttackHeld: 0
-    heavyAttackHeld: 0
-    specialAttackHeld: 0
+    MoveDir: {x: 0, y: 0}
+    JumpHeld: 0
+    DashHeld: 0
+    LightAttackHeld: 0
+    HeavyAttackHeld: 0
+    SpecialAttackHeld: 0
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,9 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devDescription: 
   entityID: 0
-  actionManager: {fileID: 6564235481833952604}
-  movementController: {fileID: 6041716481974125026}
-  playerId: -1
+  ActionManager: {fileID: 6564235481833952604}
+  MovementController: {fileID: 6041716481974125026}
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,10 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72620036c08932641825f9b811ccb079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5002924662183864281}
-  actionManager: {fileID: 6564235481833952604}
-  movementController: {fileID: 6041716481974125026}
-  stateAnimation:
+  Character: {fileID: 5002924662183864281}
+  ActionManager: {fileID: 6564235481833952604}
+  MovementController: {fileID: 6041716481974125026}
+  StateAnimation:
     _FadeDuration: 0.25
     _Speed: 1
     _Events:
@@ -503,10 +502,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f64de74083e37408fe650c6c916785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5002924662183864281}
-  actionManager: {fileID: 6564235481833952604}
-  movementController: {fileID: 6041716481974125026}
-  stateAnimation:
+  Character: {fileID: 5002924662183864281}
+  ActionManager: {fileID: 6564235481833952604}
+  MovementController: {fileID: 6041716481974125026}
+  StateAnimation:
     _FadeDuration: 0.25
     _Speed: 1
     _Events:
@@ -588,10 +587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5002924662183864281}
-  actionManager: {fileID: 6564235481833952604}
-  movementController: {fileID: 6041716481974125026}
-  stateAnimation:
+  Character: {fileID: 5002924662183864281}
+  ActionManager: {fileID: 6564235481833952604}
+  MovementController: {fileID: 6041716481974125026}
+  StateAnimation:
     _FadeDuration: 0.25
     _Speed: 1
     _Events:
@@ -720,10 +719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72620036c08932641825f9b811ccb079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5002924662183864281}
-  actionManager: {fileID: 6564235481833952604}
-  movementController: {fileID: 6041716481974125026}
-  stateAnimation:
+  Character: {fileID: 5002924662183864281}
+  ActionManager: {fileID: 6564235481833952604}
+  MovementController: {fileID: 6041716481974125026}
+  StateAnimation:
     _FadeDuration: 0.25
     _Speed: 1
     _Events:

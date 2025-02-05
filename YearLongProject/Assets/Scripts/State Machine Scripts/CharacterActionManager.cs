@@ -21,59 +21,78 @@ public enum CharacterActionType
 [Serializable]
 public class PlayerActionInput
 {
-    public Vector2 moveDir;
-    public bool jumpHeld;
-    public bool dashHeld;
-    public bool lightAttackHeld;
-    public bool heavyAttackHeld;
-    public bool specialAttackHeld;
+    public Vector2 MoveDir;
+
+    public bool JumpHeld;
+
+    public bool DashHeld;
+
+    public bool LightAttackHeld;
+
+    public bool HeavyAttackHeld;
+
+    public bool SpecialAttackHeld;
 }
 
 public class CharacterActionManager : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInputSo playerInputSO;
+    private PlayerInputSo playerInputSo;
 
     [SerializeField]
-    public AnimancerComponent anim;
+    public AnimancerComponent Anim;
 
     [SerializeField]
-    public Character character;
+    public Character Character;
 
+    /// <summary>
+    ///     State when the Character is not currently doing any action and can freely move
+    /// </summary>
     [SerializeField]
-    // State when the Character is not currently doing any action and can freely move
-    protected MoveState moveState;
+    protected MoveState MoveState;
 
+    /// <summary>
+    ///     State when the Character is jumping, exit when max height reached or when jump button is released
+    /// </summary>
     [SerializeField]
-    // State when the Character is jumping, exit when max height reached or when jump button is released
-    protected JumpState jumpState;
+    protected JumpState JumpState;
 
+    /// <summary>
+    ///     State when the Character is doing a light attack
+    /// </summary>
     [SerializeField]
-    // State when the Character is doing a light attack
-    protected CharacterState lightAttackState;
+    protected CharacterState LightAttackState;
 
+    /// <summary>
+    ///     State when the Character is doing a heavy attack
+    /// </summary>
     [SerializeField]
-    // State when the Character is doing a heavy attack
-    protected CharacterState heavyAttackState;
+    protected CharacterState HeavyAttackState;
 
+    /// <summary>
+    ///     State when the Character is doing a special attack
+    /// </summary>
     [SerializeField]
-    // State when the Character is doing a special attack
-    protected CharacterState specialAttackState;
+    protected CharacterState SpecialAttackState;
 
+    /// <summary>
+    ///     State when the Character is doing a dodge
+    /// </summary>
     [SerializeField]
-    // State when the Character is doing a dodge
-    protected CharacterState dashState;
+    protected CharacterState DashState;
 
+    /// <summary>
+    ///     State that the Character will enter upon being hit by an attack
+    /// </summary>
     [SerializeField]
-    // State that the Character will enter upon being hit by an attack
-    protected CharacterState hitstunState;
+    protected CharacterState HitstunState;
 
     [SerializeField]
     private PlayerActionInput playerActionInput = new();
 
-    protected int playerId => character.playerId;
+    protected int PlayerId => Character.PlayerId;
 
-    public readonly StateMachine<CharacterState>.WithDefault stateMachine = new();
+    public readonly StateMachine<CharacterState>.WithDefault StateMachine = new();
     private readonly float inputTimeOut = 0.5f;
 
     private readonly Dictionary<CharacterActionType, bool> allowedActionTypes = new();
@@ -82,8 +101,8 @@ public class CharacterActionManager : MonoBehaviour
 
     protected virtual void Awake()
     {
-        stateMachine.DefaultState = moveState;
-        inputBuffer = new StateMachine<CharacterState>.InputBuffer(stateMachine);
+        StateMachine.DefaultState = MoveState;
+        inputBuffer = new StateMachine<CharacterState>.InputBuffer(StateMachine);
         allowedActionTypes.Add(CharacterActionType.Move, true);
         allowedActionTypes.Add(CharacterActionType.Jump, true);
         allowedActionTypes.Add(CharacterActionType.LightAttack, true);
@@ -101,12 +120,12 @@ public class CharacterActionManager : MonoBehaviour
     private void OnEnable()
     {
         // When object is first instantiated OnEnable runs before Init sets the ID
-        if (playerId == -1)
+        if (PlayerId == -1)
         {
             return;
         }
 
-        PlayerInputSo.PlayerInputEvents events = playerInputSO.TryGetPlayerInputEvents(playerId);
+        PlayerInputSo.PlayerInputEvents events = playerInputSo.TryGetPlayerInputEvents(PlayerId);
         events.MoveEvent += OnMove;
         events.JumpEvent += OnJump;
         events.DashEvent += OnDash;
@@ -114,12 +133,12 @@ public class CharacterActionManager : MonoBehaviour
         events.HeavyAttackEvent += OnHeavyAttack;
         events.SpecialAttackEvent += OnSpecialAttack;
 
-        stateMachine.DefaultState = moveState;
+        StateMachine.DefaultState = MoveState;
     }
 
     private void OnDisable()
     {
-        PlayerInputSo.PlayerInputEvents events = playerInputSO.TryGetPlayerInputEvents(playerId);
+        PlayerInputSo.PlayerInputEvents events = playerInputSo.TryGetPlayerInputEvents(PlayerId);
         // Sometimes the PlayerInputReader removes the PlayerInputEvents before we can unsubscribe from them resulting in a NullRef 
         // Could probably be resolved by setting this to run before PlayerInputEvents in code execution order but I'd rather not mess with that 
         if (events == null)
@@ -140,7 +159,7 @@ public class CharacterActionManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Application.isPlaying)
         {
-            Handles.Label(transform.position + Vector3.up * 10, stateMachine.CurrentState.ToString());
+            Handles.Label(transform.position + Vector3.up * 10, StateMachine.CurrentState.ToString());
         }
 #endif
     }
@@ -148,17 +167,17 @@ public class CharacterActionManager : MonoBehaviour
 #if UNITY_EDITOR
     protected virtual void OnValidate()
     {
-        gameObject.GetComponentInParentOrChildren(ref anim);
-        gameObject.GetComponentInParentOrChildren(ref character);
-        gameObject.GetComponentInParentOrChildren(ref moveState);
-        gameObject.GetComponentInParentOrChildren(ref jumpState);
+        gameObject.GetComponentInParentOrChildren(ref Anim);
+        gameObject.GetComponentInParentOrChildren(ref Character);
+        gameObject.GetComponentInParentOrChildren(ref MoveState);
+        gameObject.GetComponentInParentOrChildren(ref JumpState);
     }
 #endif
 
     public void Init()
     {
         // We dont subscribe in first OnEnable and do it here instead so we can use the correct ID
-        PlayerInputSo.PlayerInputEvents events = playerInputSO.TryGetPlayerInputEvents(playerId);
+        PlayerInputSo.PlayerInputEvents events = playerInputSo.TryGetPlayerInputEvents(PlayerId);
         events.MoveEvent += OnMove;
         events.JumpEvent += OnJump;
         events.DashEvent += OnDash;
@@ -169,46 +188,46 @@ public class CharacterActionManager : MonoBehaviour
 
     private void OnMove(Vector2 moveInput)
     {
-        playerActionInput.moveDir = moveInput;
+        playerActionInput.MoveDir = moveInput;
     }
 
     private void OnJump(bool jump)
     {
-        if (!playerActionInput.jumpHeld && jump)
+        if (!playerActionInput.JumpHeld && jump)
         {
-            if (!stateMachine.TrySetState(jumpState))
+            if (!StateMachine.TrySetState(JumpState))
             {
-                inputBuffer.Buffer(jumpState, inputTimeOut);
+                inputBuffer.Buffer(JumpState, inputTimeOut);
             }
         }
 
-        playerActionInput.jumpHeld = jump;
+        playerActionInput.JumpHeld = jump;
     }
 
     private void OnDash(bool dash)
     {
-        playerActionInput.dashHeld = dash;
+        playerActionInput.DashHeld = dash;
         //if (!stateMachine.TrySetState(dashState)) inputBuffer.Buffer(dashState, inputTimeOut);
     }
 
     private void OnLightAttack(bool attack)
     {
-        playerActionInput.lightAttackHeld = attack;
-        if (!stateMachine.TrySetState(lightAttackState))
+        playerActionInput.LightAttackHeld = attack;
+        if (!StateMachine.TrySetState(LightAttackState))
         {
-            inputBuffer.Buffer(lightAttackState, inputTimeOut);
+            inputBuffer.Buffer(LightAttackState, inputTimeOut);
         }
     }
 
     private void OnHeavyAttack(bool attack)
     {
-        playerActionInput.heavyAttackHeld = attack;
+        playerActionInput.HeavyAttackHeld = attack;
         //if (!stateMachine.TrySetState(heavyAttackState)) inputBuffer.Buffer(heavyAttackState, inputTimeOut);
     }
 
     private void OnSpecialAttack(bool attack)
     {
-        playerActionInput.specialAttackHeld = attack;
+        playerActionInput.SpecialAttackHeld = attack;
         //if (!stateMachine.TrySetState(specialAttackState)) inputBuffer.Buffer(specialAttackState, inputTimeOut);
     }
 
@@ -237,6 +256,6 @@ public class CharacterActionManager : MonoBehaviour
 
     public virtual void Hitstun()
     {
-        stateMachine.ForceSetState(hitstunState);
+        StateMachine.ForceSetState(HitstunState);
     }
 }
