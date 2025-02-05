@@ -49,9 +49,12 @@ namespace Timeline.Hitboxes
 
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
-            if (!Application.isPlaying) return;
+            if (!Application.isPlaying)
+            {
+                return;
+            }
 
-            HitboxEmitter hitboxEmitter = info.output.GetUserData() as HitboxEmitter;
+            var hitboxEmitter = info.output.GetUserData() as HitboxEmitter;
 
             hitboxEmitter.HitEntities.Clear();
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class JumpState : CharacterState
 {
-    [SerializeField] 
+    [SerializeField]
     private float jumpVelocity = 10;
 
     [SerializeField]
@@ -11,17 +11,17 @@ public class JumpState : CharacterState
     [SerializeField]
     private AnimationCurve jumpMultCurve;
 
-    private float jumpTimer;
-
     public override bool CanEnterState
-    => actionManager.allowedActionTypes[actionType] && movementController.GetIsGrounded();
+        => actionManager.allowedActionTypes[actionType] && movementController.GetIsGrounded();
+
+    private float jumpTimer;
 
     private void Update()
     {
         Vector2 moveInput = actionManager.GetPlayerActionInput().moveDir;
         movementController.SetCharacterMove(moveInput.x);
 
-        movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer/maxJumpDuration));
+        movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
 
         jumpTimer += Time.deltaTime;
 
@@ -40,5 +40,6 @@ public class JumpState : CharacterState
 
     protected override void OnDisable()
     {
+        movementController.StopJump();
     }
 }

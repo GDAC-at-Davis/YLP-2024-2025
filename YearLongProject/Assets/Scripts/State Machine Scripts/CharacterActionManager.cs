@@ -1,13 +1,23 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Animancer;
 using Animancer.FSM;
+using UnityEditor;
+using UnityEngine;
 
-[System.Serializable]
-public enum CharacterActionType { Move, Jump, LightAttack, HeavyAttack, SpecialAttack, Dash, Hitstun}
+[Serializable]
+public enum CharacterActionType
+{
+    Move,
+    Jump,
+    LightAttack,
+    HeavyAttack,
+    SpecialAttack,
+    Dash,
+    Hitstun
+}
 
-[System.Serializable]
+[Serializable]
 public class PlayerActionInput
 {
     public Vector2 moveDir;
@@ -57,17 +67,17 @@ public class CharacterActionManager : MonoBehaviour
     // State that the Character will enter upon being hit by an attack
     protected CharacterState hitstunState;
 
-    public readonly StateMachine<CharacterState>.WithDefault stateMachine = new();
+    [SerializeField]
+    private PlayerActionInput playerActionInput = new();
 
-    private StateMachine<CharacterState>.InputBuffer inputBuffer;
-    private float inputTimeOut = 0.5f;
+    public Dictionary<CharacterActionType, bool> allowedActionTypes = new();
 
     protected int playerId => character.playerId;
 
-    [SerializeField]
-    private PlayerActionInput playerActionInput = new PlayerActionInput();
+    public readonly StateMachine<CharacterState>.WithDefault stateMachine = new();
+    private readonly float inputTimeOut = 0.5f;
 
-    public Dictionary<CharacterActionType, bool> allowedActionTypes = new();
+    private StateMachine<CharacterState>.InputBuffer inputBuffer;
 
     protected virtual void Awake()
     {
@@ -80,6 +90,11 @@ public class CharacterActionManager : MonoBehaviour
         allowedActionTypes.Add(CharacterActionType.SpecialAttack, true);
         allowedActionTypes.Add(CharacterActionType.Dash, true);
         allowedActionTypes.Add(CharacterActionType.Hitstun, true);
+    }
+
+    private void Update()
+    {
+        inputBuffer.Update();
     }
 
     private void OnEnable()
@@ -97,6 +112,8 @@ public class CharacterActionManager : MonoBehaviour
         events.LightAttackEvent += OnLightAttack;
         events.HeavyAttackEvent += OnHeavyAttack;
         events.SpecialAttackEvent += OnSpecialAttack;
+
+        stateMachine.DefaultState = moveState;
     }
 
     private void OnDisable()
@@ -117,6 +134,26 @@ public class CharacterActionManager : MonoBehaviour
         events.SpecialAttackEvent -= OnSpecialAttack;
     }
 
+    private void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        if (Application.isPlaying)
+        {
+            Handles.Label(transform.position + Vector3.up * 10, stateMachine.CurrentState.ToString());
+        }
+#endif
+    }
+
+#if UNITY_EDITOR
+    protected virtual void OnValidate()
+    {
+        gameObject.GetComponentInParentOrChildren(ref anim);
+        gameObject.GetComponentInParentOrChildren(ref character);
+        gameObject.GetComponentInParentOrChildren(ref moveState);
+        gameObject.GetComponentInParentOrChildren(ref jumpState);
+    }
+#endif
+
     public void Init()
     {
         // We dont subscribe in first OnEnable and do it here instead so we can use the correct ID
@@ -128,12 +165,6 @@ public class CharacterActionManager : MonoBehaviour
         events.HeavyAttackEvent += OnHeavyAttack;
         events.SpecialAttackEvent += OnSpecialAttack;
     }
-
-    private void Update()
-    {
-        inputBuffer.Update();
-    }
-
 
     private void OnMove(Vector2 moveInput)
     {
@@ -162,7 +193,10 @@ public class CharacterActionManager : MonoBehaviour
     private void OnLightAttack(bool attack)
     {
         playerActionInput.lightAttackHeld = attack;
-        //if (!stateMachine.TrySetState(lightAttackState)) inputBuffer.Buffer(lightAttackState, inputTimeOut);
+        if (!stateMachine.TrySetState(lightAttackState))
+        {
+            inputBuffer.Buffer(lightAttackState, inputTimeOut);
+        }
     }
 
     private void OnHeavyAttack(bool attack)
@@ -189,7 +223,7 @@ public class CharacterActionManager : MonoBehaviour
 
     public virtual void SetAllActionTypeAllowed(bool b)
     {
-        foreach (var key in new List<CharacterActionType>(allowedActionTypes.Keys))
+        foreach (CharacterActionType key in new List<CharacterActionType>(allowedActionTypes.Keys))
         {
             allowedActionTypes[key] = b;
         }
@@ -199,14 +233,4 @@ public class CharacterActionManager : MonoBehaviour
     {
         stateMachine.ForceSetState(hitstunState);
     }
-
-#if UNITY_EDITOR
-    protected virtual void OnValidate()
-    {
-        gameObject.GetComponentInParentOrChildren(ref anim);
-        gameObject.GetComponentInParentOrChildren(ref character);
-        gameObject.GetComponentInParentOrChildren(ref moveState);
-        gameObject.GetComponentInParentOrChildren(ref jumpState);
-    }
-#endif
 }
