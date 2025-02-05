@@ -1,8 +1,8 @@
+using Animancer;
 using Base;
 using Hitbox.DataStructures;
 using Hitbox.Hurtboxes;
 using UnityEngine;
-using Animancer;
 
 namespace Hitbox
 {
@@ -12,24 +12,25 @@ namespace Hitbox
     public class EntityHurtbox : DescriptionMono, IHurtbox
     {
         [SerializeField]
-        private Entity _attachedEntity;
-        public Entity AttachedEntity { get => _attachedEntity; }
+        private Entity attachedEntity;
+
+        public Entity AttachedEntity => attachedEntity;
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            gameObject.GetComponentInParentOrChildren(ref _attachedEntity);
+            gameObject.GetComponentInParentOrChildren(ref attachedEntity);
         }
 #endif
 
         public void OnHit(HitboxInstance hitboxInstance)
         {
-            if (_attachedEntity == null)
+            if (attachedEntity == null)
             {
                 return;
             }
 
-            _attachedEntity.OnHitByAttack(hitboxInstance);
+            attachedEntity.OnHitByAttack(hitboxInstance);
         }
     }
 }

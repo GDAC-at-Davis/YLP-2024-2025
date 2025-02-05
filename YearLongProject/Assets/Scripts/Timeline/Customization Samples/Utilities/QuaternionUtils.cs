@@ -4,9 +4,9 @@ namespace Timeline.Samples
 {
     public static class QuaternionUtils
     {
-        const float k_FloatMin = 1e-10f;
+        private const float k_FloatMin = 1e-10f;
 
-        public static readonly Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
+        public static readonly Quaternion zero = new(0f, 0f, 0f, 0f);
 
         public static Quaternion Scale(this Quaternion q, float scale)
         {
@@ -33,7 +33,8 @@ namespace Timeline.Samples
         public static Quaternion Add(this Quaternion rhs, Quaternion lhs)
         {
             float sign = Mathf.Sign(Quaternion.Dot(rhs, lhs));
-            return new Quaternion(rhs.x + sign * lhs.x, rhs.y + sign * lhs.y, rhs.z + sign * lhs.z, rhs.w + sign * lhs.w);
+            return new Quaternion(rhs.x + sign * lhs.x, rhs.y + sign * lhs.y, rhs.z + sign * lhs.z,
+                rhs.w + sign * lhs.w);
         }
     }
 }

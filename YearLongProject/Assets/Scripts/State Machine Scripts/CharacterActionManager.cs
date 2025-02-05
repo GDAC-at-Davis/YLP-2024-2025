@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Animancer;
 using Animancer.FSM;
+using Input_Scripts;
 using UnityEditor;
 using UnityEngine;
 
@@ -31,7 +32,7 @@ public class PlayerActionInput
 public class CharacterActionManager : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInputSO playerInputSO;
+    private PlayerInputSo playerInputSO;
 
     [SerializeField]
     public AnimancerComponent anim;
@@ -70,12 +71,12 @@ public class CharacterActionManager : MonoBehaviour
     [SerializeField]
     private PlayerActionInput playerActionInput = new();
 
-    public Dictionary<CharacterActionType, bool> allowedActionTypes = new();
-
     protected int playerId => character.playerId;
 
     public readonly StateMachine<CharacterState>.WithDefault stateMachine = new();
     private readonly float inputTimeOut = 0.5f;
+
+    private readonly Dictionary<CharacterActionType, bool> allowedActionTypes = new();
 
     private StateMachine<CharacterState>.InputBuffer inputBuffer;
 
@@ -105,7 +106,7 @@ public class CharacterActionManager : MonoBehaviour
             return;
         }
 
-        PlayerInputSO.PlayerInputEvents events = playerInputSO.GetPlayerInputEvents(playerId);
+        PlayerInputSo.PlayerInputEvents events = playerInputSO.TryGetPlayerInputEvents(playerId);
         events.MoveEvent += OnMove;
         events.JumpEvent += OnJump;
         events.DashEvent += OnDash;
@@ -118,7 +119,7 @@ public class CharacterActionManager : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerInputSO.PlayerInputEvents events = playerInputSO.GetPlayerInputEvents(playerId);
+        PlayerInputSo.PlayerInputEvents events = playerInputSO.TryGetPlayerInputEvents(playerId);
         // Sometimes the PlayerInputReader removes the PlayerInputEvents before we can unsubscribe from them resulting in a NullRef 
         // Could probably be resolved by setting this to run before PlayerInputEvents in code execution order but I'd rather not mess with that 
         if (events == null)
@@ -157,7 +158,7 @@ public class CharacterActionManager : MonoBehaviour
     public void Init()
     {
         // We dont subscribe in first OnEnable and do it here instead so we can use the correct ID
-        PlayerInputSO.PlayerInputEvents events = playerInputSO.GetPlayerInputEvents(playerId);
+        PlayerInputSo.PlayerInputEvents events = playerInputSO.TryGetPlayerInputEvents(playerId);
         events.MoveEvent += OnMove;
         events.JumpEvent += OnJump;
         events.DashEvent += OnDash;
@@ -219,6 +220,11 @@ public class CharacterActionManager : MonoBehaviour
     public virtual void SetActionTypeAllowed(CharacterActionType action, bool isAllowed)
     {
         allowedActionTypes[action] = isAllowed;
+    }
+
+    public virtual bool GetActionTypeAllowed(CharacterActionType action)
+    {
+        return allowedActionTypes[action];
     }
 
     public virtual void SetAllActionTypeAllowed(bool b)

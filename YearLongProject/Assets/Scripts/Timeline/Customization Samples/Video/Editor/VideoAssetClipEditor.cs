@@ -13,13 +13,15 @@ namespace Timeline.Samples
         // when the clip has a VideoPlayableAsset attached
         public override void DrawBackground(TimelineClip clip, ClipBackgroundRegion region)
         {
-            VideoPlayableAsset videoAsset = clip.asset as VideoPlayableAsset;
+            var videoAsset = clip.asset as VideoPlayableAsset;
             if (videoAsset != null && videoAsset.videoClip != null)
             {
                 // Load the preview or the thumbnail for the video
                 Texture texturePreview = AssetPreview.GetAssetPreview(videoAsset.videoClip);
                 if (texturePreview == null)
+                {
                     texturePreview = AssetPreview.GetMiniThumbnail(videoAsset.videoClip);
+                }
 
                 if (texturePreview != null)
                 {

@@ -1,28 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterMovementController : MonoBehaviour
 {
-    private PlayerController _PlayerController;
-    private Rigidbody2D _CharacterRigidbody;
     [SerializeField]
     private float speed = 5;
 
-    bool inJump;
-    bool isGrounded;
+    private PlayerController _PlayerController;
+    private Rigidbody2D _CharacterRigidbody;
+
+    private bool inJump;
+    private bool isGrounded;
     private float playerMove;
     private float jumpVelocity;
 
-
-    void Start ()
+    private void Start()
     {
         _CharacterRigidbody = GetComponent<Rigidbody2D>();
         _PlayerController = GetComponent<PlayerController>();
     }
 
-    void FixedUpdate ()
+    private void FixedUpdate()
     {
         isGrounded = Physics2D.Raycast(transform.position, -Vector2.up, 0.55f, 3);
 
@@ -30,7 +27,7 @@ public class CharacterMovementController : MonoBehaviour
         float newVelocity = Mathf.Lerp(_CharacterRigidbody.linearVelocityX, playerIntendedMove, 0.2f);
         SetHorizontalVelocity(newVelocity);
 
-        if(inJump)
+        if (inJump)
         {
             SetVerticalVelocity(jumpVelocity);
         }
@@ -58,24 +55,22 @@ public class CharacterMovementController : MonoBehaviour
 
     public void AddVelocity(Vector2 velocity)
     {
-
     }
 
     public void SetVelocity(Vector2 velocity)
     {
-
     }
 
     public void SetHorizontalVelocity(float velocity)
     {
         Vector3 curVel = _CharacterRigidbody.linearVelocity;
-        _CharacterRigidbody.linearVelocity = new Vector2 (velocity, curVel.y);
+        _CharacterRigidbody.linearVelocity = new Vector2(velocity, curVel.y);
     }
 
     public void SetVerticalVelocity(float velocity)
     {
         Vector3 curVel = _CharacterRigidbody.linearVelocity;
-        _CharacterRigidbody.linearVelocity = new Vector2 (curVel.x, velocity);
+        _CharacterRigidbody.linearVelocity = new Vector2(curVel.x, velocity);
     }
 
     public void ApplyImpulseForce(Vector2 force)
@@ -90,6 +85,5 @@ public class CharacterMovementController : MonoBehaviour
 
     public void SetAllowMovement(bool isAllowed)
     {
-
     }
 }

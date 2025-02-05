@@ -1,57 +1,59 @@
+using Input_Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInputSO _playerInputSO;
+    private PlayerInputSo playerInputSo;
 
     // Set by character select in the future
-    public GameObject character;
-    private int _id;
-    private UnityEngine.InputSystem.PlayerInput _playerInput;
+
+    public GameObject Character;
+    private int id;
+    private UnityEngine.InputSystem.PlayerInput playerInput;
 
     private void Start()
     {
-        _playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _id = _playerInput.playerIndex;
+        playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        id = playerInput.playerIndex;
 
         // Run by character selection in the future
-        Instantiate(character, Vector3.zero, Quaternion.identity).GetComponent<Character>().Init(_id);
+        Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<Character>().Init(id);
     }
 
     private void OnDestroy()
     {
-        _playerInputSO.RemoveInputReader(_id);
+        playerInputSo.RemoveInputReader(id);
     }
 
     public void OnLightAttack(InputAction.CallbackContext context)
     {
-        _playerInputSO.LightAttackEvent(_id)?.Invoke(context.action.triggered);
+        playerInputSo.LightAttackEvent(id)?.Invoke(context.action.triggered);
     }
 
     public void OnHeavyAttack(InputAction.CallbackContext context)
     {
-        _playerInputSO.HeavyAttackEvent(_id)?.Invoke(context.action.triggered);
+        playerInputSo.HeavyAttackEvent(id)?.Invoke(context.action.triggered);
     }
 
     public void OnSpecialAttack(InputAction.CallbackContext context)
     {
-        _playerInputSO.SpecialAttackEvent(_id)?.Invoke(context.action.triggered);
+        playerInputSo.SpecialAttackEvent(id)?.Invoke(context.action.triggered);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        _playerInputSO.MoveEvent(_id)?.Invoke(context.ReadValue<Vector2>());
+        playerInputSo.MoveEvent(id)?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        _playerInputSO.JumpEvent(_id)?.Invoke(context.action.triggered);
+        playerInputSo.JumpEvent(id)?.Invoke(context.action.triggered);
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        _playerInputSO.DashEvent(_id)?.Invoke(context.action.triggered);
+        playerInputSo.DashEvent(id)?.Invoke(context.action.triggered);
     }
 }

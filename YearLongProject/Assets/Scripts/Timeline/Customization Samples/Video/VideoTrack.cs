@@ -23,7 +23,7 @@ namespace Timeline.Samples
         {
             // This is called immediately before CreatePlayable on VideoPlayableAsset.
             // Each playable asset needs to be updated to the last clip values.
-            foreach (var clip in GetClips())
+            foreach (TimelineClip clip in GetClips())
             {
                 var asset = clip.asset as VideoPlayableAsset;
                 if (asset != null)

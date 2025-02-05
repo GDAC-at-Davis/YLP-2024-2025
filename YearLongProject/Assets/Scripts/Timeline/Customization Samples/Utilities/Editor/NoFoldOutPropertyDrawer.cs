@@ -10,20 +10,25 @@ namespace Timeline.Samples
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (!property.hasChildren)
+            {
                 return base.GetPropertyHeight(property, label);
+            }
+
             property.isExpanded = true;
             return EditorGUI.GetPropertyHeight(property, label, true) -
-                EditorGUI.GetPropertyHeight(property, label, false);
+                   EditorGUI.GetPropertyHeight(property, label, false);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (!property.hasChildren)
+            {
                 EditorGUI.PropertyField(position, property, label);
+            }
             else
             {
                 SerializedProperty iter = property.Copy();
-                var nextSibling = property.Copy();
+                SerializedProperty nextSibling = property.Copy();
                 nextSibling.Next(false);
                 property.Next(true);
                 do
@@ -32,13 +37,15 @@ namespace Timeline.Samples
                     // otherwise we will draw properties that are not child of this
                     // foldout.
                     if (SerializedProperty.EqualContents(property, nextSibling))
+                    {
                         break;
+                    }
+
                     float height = EditorGUI.GetPropertyHeight(property, property.hasVisibleChildren);
                     position.height = height;
                     EditorGUI.PropertyField(position, property, property.hasVisibleChildren);
                     position.y = position.y + height;
-                }
-                while (property.NextVisible(false));
+                } while (property.NextVisible(false));
             }
         }
     }

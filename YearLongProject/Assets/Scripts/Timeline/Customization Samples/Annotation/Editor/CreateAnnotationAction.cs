@@ -57,9 +57,11 @@ namespace Timeline.Samples
             foreach (TrackAsset track in selectedTracks)
             {
                 if (track is GroupTrack)
+                {
                     continue;
+                }
 
-                AnnotationMarker annotation = track.CreateMarker<AnnotationMarker>(time);
+                var annotation = track.CreateMarker<AnnotationMarker>(time);
                 annotation.description = clipboardTextContent;
                 annotation.title = "Annotation";
             }

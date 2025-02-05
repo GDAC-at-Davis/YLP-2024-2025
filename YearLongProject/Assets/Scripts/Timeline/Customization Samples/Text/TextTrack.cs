@@ -30,9 +30,11 @@ namespace Timeline.Samples
         // to temporarily change fields for the purpose of previewing in EditMode.
         public override void GatherProperties(PlayableDirector director, IPropertyCollector driver)
         {
-            TMP_Text trackBinding = director.GetGenericBinding(this) as TMP_Text;
+            var trackBinding = director.GetGenericBinding(this) as TMP_Text;
             if (trackBinding == null)
+            {
                 return;
+            }
 
             // The field names are the name of the backing serializable field. These can be found from the class source,
             // or from the unity scene file that contains an object of that type.

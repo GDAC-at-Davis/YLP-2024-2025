@@ -3,46 +3,46 @@ using UnityEngine;
 
 namespace Events
 {
-    public abstract class SOEvent : ScriptableObject
+    public abstract class SoEvent : ScriptableObject
     {
         [SerializeField]
         [TextArea]
-        private string _description;
+        private string description;
 
-        protected Action _internalVoidEvent;
+        protected Action InternalVoidEvent;
 
         public void AddListener(Action listener)
         {
-            _internalVoidEvent += listener;
+            InternalVoidEvent += listener;
         }
 
         public void RemoveListener(Action listener)
         {
-            _internalVoidEvent -= listener;
+            InternalVoidEvent -= listener;
         }
     }
 
-    public abstract class SOEvent<T> : SOEvent
+    public abstract class SoEvent<T> : SoEvent
     {
-        private event Action<T> _internalEvent;
+        private event Action<T> InternalEvent;
 
         public void Raise(T value)
         {
 #if UNITY_EDITOR
             Debug.Log($"Event {name} raised with value {value}");
 #endif
-            _internalEvent?.Invoke(value);
-            _internalVoidEvent?.Invoke();
+            InternalEvent?.Invoke(value);
+            InternalVoidEvent?.Invoke();
         }
 
         public void AddListener(Action<T> listener)
         {
-            _internalEvent += listener;
+            InternalEvent += listener;
         }
 
         public void RemoveListener(Action<T> listener)
         {
-            _internalEvent -= listener;
+            InternalEvent -= listener;
         }
     }
 }

@@ -21,32 +21,32 @@ namespace Hitbox.Testing
         [Header("Context")]
 
         [SerializeField]
-        private AreaTypes _areaType;
+        private AreaTypes areaType;
 
         [SerializeField]
-        private HitboxEmitter _hitboxEmitter;
+        private HitboxEmitter hitboxEmitter;
 
         [Header("Box Area")]
 
         [SerializeField]
-        private Vector2 _boxCenter;
+        private Vector2 boxCenter;
 
         [SerializeField]
-        private float _boxRotation;
+        private float boxRotation;
 
         [SerializeField]
-        private Vector2 _boxSize;
+        private Vector2 boxSize;
 
         [Header("Raycast Area")]
 
         [SerializeField]
-        private Vector2 _raycastOrigin;
+        private Vector2 raycastOrigin;
 
         [SerializeField]
-        private float _raycastAngle;
+        private float raycastAngle;
 
         [SerializeField]
-        private float _raycastDistance;
+        private float raycastDistance;
 
         public void Update()
         {
@@ -55,34 +55,34 @@ namespace Hitbox.Testing
                 Debug.Log("Space pressed");
 
                 IHitboxArea area = null;
-                switch (_areaType)
+                switch (areaType)
                 {
                     case AreaTypes.Box:
-                        area = new BoxArea(_boxCenter, _boxRotation, _boxSize);
+                        area = new BoxArea(boxCenter, boxRotation, boxSize);
                         break;
                     case AreaTypes.Raycast:
-                        area = new RaycastArea(_raycastOrigin, _raycastAngle, _raycastDistance);
+                        area = new RaycastArea(raycastOrigin, raycastAngle, raycastDistance);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
 
-                _hitboxEmitter.EmitHitbox(area, new HitboxEffect());
+                hitboxEmitter.EmitHitbox(area, new HitboxEffect());
             }
         }
 
         private void OnDrawGizmos()
         {
-            HitboxContext context = _hitboxEmitter.GetContext();
+            HitboxContext context = hitboxEmitter.GetContext();
             IHitboxArea area = null;
 
-            switch (_areaType)
+            switch (areaType)
             {
                 case AreaTypes.Box:
-                    area = new BoxArea(_boxCenter, _boxRotation, _boxSize);
+                    area = new BoxArea(boxCenter, boxRotation, boxSize);
                     break;
                 case AreaTypes.Raycast:
-                    area = new RaycastArea(_raycastOrigin, _raycastAngle, _raycastDistance);
+                    area = new RaycastArea(raycastOrigin, raycastAngle, raycastDistance);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

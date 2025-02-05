@@ -6,15 +6,15 @@ namespace State_Machine_Scripts.States
     public class LightAttackState : CharacterState
     {
         [SerializeField]
-        private PlayableDirector _playableDirector;
+        private PlayableDirector playableDirector;
 
         [SerializeField]
-        private PlayableAsset _lightAttackPlayableAsset;
+        private PlayableAsset lightAttackPlayableAsset;
 
         private void Update()
         {
             movementController.SetCharacterMove(0);
-            if (_playableDirector.state != PlayState.Playing)
+            if (playableDirector.state != PlayState.Playing)
             {
                 actionManager.stateMachine.TrySetDefaultState();
             }
@@ -22,15 +22,17 @@ namespace State_Machine_Scripts.States
 
         public override void OnEnterState()
         {
-            _playableDirector.playableAsset = _lightAttackPlayableAsset;
-            _playableDirector.Play();
+            playableDirector.playableAsset = lightAttackPlayableAsset;
+            playableDirector.Play();
             enabled = true;
+            actionManager.SetActionTypeAllowed(CharacterActionType.Jump, false);
         }
 
         public override void OnExitState()
         {
-            _playableDirector.Stop();
+            playableDirector.Stop();
             enabled = false;
+            actionManager.SetActionTypeAllowed(CharacterActionType.Jump, true);
         }
     }
 }

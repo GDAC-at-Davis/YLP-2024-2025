@@ -2,74 +2,71 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Scriptable Objects/PlayerInputSO")]
-public class PlayerInputSO : ScriptableObject
+namespace Input_Scripts
 {
-    public class PlayerInputEvents
+    [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Scriptable Objects/PlayerInputSO")]
+    public class PlayerInputSo : ScriptableObject
     {
-        public UnityAction<Vector2> MoveEvent;
-        public UnityAction<bool> LightAttackEvent;
-        public UnityAction<bool> HeavyAttackEvent;
-        public UnityAction<bool> SpecialAttackEvent;
-        public UnityAction<bool> DashEvent;
-        public UnityAction<bool> JumpEvent;
-    }
-
-    private readonly Dictionary<int, PlayerInputEvents> _playerInputEvents = new();
-
-    public ref UnityAction<Vector2> MoveEvent(int id)
-    {
-        return ref TryGetInputEvents(id).MoveEvent;
-    }
-
-    public ref UnityAction<bool> LightAttackEvent(int id)
-    {
-        return ref TryGetInputEvents(id).LightAttackEvent;
-    }
-
-    public UnityAction<bool> HeavyAttackEvent(int id)
-    {
-        return TryGetInputEvents(id).HeavyAttackEvent;
-    }
-
-    public UnityAction<bool> SpecialAttackEvent(int id)
-    {
-        return TryGetInputEvents(id).SpecialAttackEvent;
-    }
-
-    public UnityAction<bool> DashEvent(int id)
-    {
-        return TryGetInputEvents(id).DashEvent;
-    }
-
-    public UnityAction<bool> JumpEvent(int id)
-    {
-        return TryGetInputEvents(id).JumpEvent;
-    }
-
-    public PlayerInputEvents TryGetInputEvents(int id)
-    {
-        if (!_playerInputEvents.TryGetValue(id, out _))
+        public class PlayerInputEvents
         {
-            _playerInputEvents.Add(id, new PlayerInputEvents());
+            public UnityAction<Vector2> MoveEvent;
+            public UnityAction<bool> LightAttackEvent;
+            public UnityAction<bool> HeavyAttackEvent;
+            public UnityAction<bool> SpecialAttackEvent;
+            public UnityAction<bool> DashEvent;
+            public UnityAction<bool> JumpEvent;
         }
 
-        return _playerInputEvents[id];
-    }
+        private readonly Dictionary<int, PlayerInputEvents> playerInputEvents = new();
 
-    public void RemoveInputReader(int id)
-    {
-        if (!_playerInputEvents.ContainsKey(id))
+        public ref UnityAction<Vector2> MoveEvent(int id)
         {
-            return;
+            return ref TryGetPlayerInputEvents(id).MoveEvent;
         }
 
-        _playerInputEvents.Remove(id);
-    }
+        public ref UnityAction<bool> LightAttackEvent(int id)
+        {
+            return ref TryGetPlayerInputEvents(id).LightAttackEvent;
+        }
 
-    public PlayerInputEvents GetPlayerInputEvents(int id)
-    {
-        PlayerInputEvents inputEvents;
-        return !_playerInputEvents.TryGetValue(id, out inputEvents) ? null : inputEvents;
+        public UnityAction<bool> HeavyAttackEvent(int id)
+        {
+            return TryGetPlayerInputEvents(id).HeavyAttackEvent;
+        }
+
+        public UnityAction<bool> SpecialAttackEvent(int id)
+        {
+            return TryGetPlayerInputEvents(id).SpecialAttackEvent;
+        }
+
+        public UnityAction<bool> DashEvent(int id)
+        {
+            return TryGetPlayerInputEvents(id).DashEvent;
+        }
+
+        public UnityAction<bool> JumpEvent(int id)
+        {
+            return TryGetPlayerInputEvents(id).JumpEvent;
+        }
+
+        public PlayerInputEvents TryGetPlayerInputEvents(int id)
+        {
+            if (!playerInputEvents.TryGetValue(id, out _))
+            {
+                playerInputEvents.Add(id, new PlayerInputEvents());
+            }
+
+            return playerInputEvents[id];
+        }
+
+        public void RemoveInputReader(int id)
+        {
+            if (!playerInputEvents.ContainsKey(id))
+            {
+                return;
+            }
+
+            playerInputEvents.Remove(id);
+        }
     }
 }

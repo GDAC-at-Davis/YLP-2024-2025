@@ -11,8 +11,10 @@ namespace Timeline.Samples
     public class AnnotationMarker : Marker // Represents the serialized data for a marker.
     {
         public string title;
-        public Color color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        public Color color = new(1.0f, 1.0f, 1.0f, 0.5f);
         public bool showLineOverlay = true;
-        [TextArea(10, 15)] public string description;
+
+        [TextArea(10, 15)]
+        public string description;
     }
 }

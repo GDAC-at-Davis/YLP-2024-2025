@@ -14,32 +14,32 @@ namespace Hitbox.HitboxAreas
         ///     Position of the center of the box, in the origin's local space
         /// </summary>
         [SerializeField]
-        private Vector2 _center;
+        private Vector2 center;
 
         /// <summary>
         ///     Rotation of the box, in degrees
         /// </summary>
         [SerializeField]
-        private float _rotation;
+        private float rotation;
 
         /// <summary>
         ///     Size of the box
         /// </summary>
         [SerializeField]
-        private Vector2 _size;
+        private Vector2 size;
 
         public BoxArea(Vector2 center, float rotation, Vector2 size)
         {
-            _center = center;
-            _rotation = rotation;
-            _size = size;
+            this.center = center;
+            this.rotation = rotation;
+            this.size = size;
         }
 
         public Collider2D[] GetCollidersInArea(HitboxContext context)
         {
             TransformToContext(context, out Vector2 center, out float rotation);
 
-            Collider2D[] hits = Physics2D.OverlapBoxAll(center, _size, rotation, context.LayerMask);
+            Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, rotation, context.LayerMask);
 
             return hits;
         }
@@ -58,10 +58,10 @@ namespace Hitbox.HitboxAreas
         private void TransformToContext(HitboxContext context, out Vector2 pos, out float rotation)
         {
             // Transform the center of the box to world space
-            pos = context.SourcePosition + (Vector2)(Quaternion.Euler(0, 0, context.SourceAngle) * _center);
+            pos = context.SourcePosition + (Vector2)(Quaternion.Euler(0, 0, context.SourceAngle) * center);
 
             // Transform rotation to world space
-            rotation = context.SourceAngle + _rotation;
+            rotation = context.SourceAngle + this.rotation;
 
             if (context.FlipX)
             {
@@ -75,8 +75,8 @@ namespace Hitbox.HitboxAreas
         {
             TransformToContext(context, out Vector2 center, out float rotation);
 
-            float halfWidth = _size.x / 2;
-            float halfHeight = _size.y / 2;
+            float halfWidth = size.x / 2;
+            float halfHeight = size.y / 2;
 
             Quaternion rotationQuaternion = Quaternion.Euler(0, 0, rotation);
             topLeft = center + (Vector2)(rotationQuaternion * new Vector2(-halfWidth, halfHeight));

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Base;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
@@ -7,17 +6,17 @@ using UnityEngine;
 namespace Hitbox
 {
     [CreateAssetMenu(menuName = "Systems/HitboxSystem")]
-    public class HitboxSystemSO : DescriptionSO
+    public class HitboxSystemSo : DescriptionSO
     {
         [SerializeField]
         [Tooltip("Whether to draw hitbox areas for debugging purposes")]
-        private bool _showHitboxAreas;
+        private bool showHitboxAreas;
 
         [SerializeField]
-        private bool _detailedLogging;
+        private bool detailedLogging;
 
         [SerializeField]
-        private float _hitboxVisualizeDuration;
+        private float hitboxVisualizeDuration;
 
         /// <summary>
         ///     Instantiates a hitbox and applies its effects
@@ -29,16 +28,16 @@ namespace Hitbox
             HitboxEffect effect = hitboxInstance.HitboxEffect;
             IHitboxArea area = hitboxInstance.HitboxArea;
 
-            if (_showHitboxAreas)
+            if (showHitboxAreas)
             {
-                area.DrawAreaDebug(context, new DrawDebugConfig(Color.red, _hitboxVisualizeDuration));
+                area.DrawAreaDebug(context, new DrawDebugConfig(Color.red, hitboxVisualizeDuration));
             }
 
             Collider2D[] hits = area.GetCollidersInArea(context);
 
             foreach (Collider2D hit in hits)
             {
-                if (_detailedLogging)
+                if (detailedLogging)
                 {
                     Debug.Log($"Hitbox overlapped collider {hit.gameObject}");
                 }
@@ -67,7 +66,7 @@ namespace Hitbox
                     continue;
                 }
 
-                if (_detailedLogging)
+                if (detailedLogging)
                 {
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }

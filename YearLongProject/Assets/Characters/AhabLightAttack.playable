@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitboxArea:
-      _center: {x: 0.81, y: 0.26}
-      _rotation: 15
-      _size: {x: 1.66, y: 0.5}
+      center: {x: 0, y: 0}
+      rotation: 0
+      size: {x: 2, y: 1}
     HitEffect:
       <Damage>k__BackingField: 0
       <Knockback>k__BackingField: {x: 0, y: 0}
@@ -258,9 +258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitboxArea:
-      _center: {x: 0.42, y: 0.16}
-      _rotation: 0
-      _size: {x: 0.59, y: 0.54}
+      center: {x: 0, y: 0}
+      rotation: 0
+      size: {x: 5, y: 1}
     HitEffect:
       <Damage>k__BackingField: 0
       <Knockback>k__BackingField: {x: 0, y: 0}

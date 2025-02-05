@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devDescription: 
-  _entityID: 0
+  devDescription: 
+  entityID: 0
   actionManager: {fileID: 6564235481833952604}
   movementController: {fileID: 6041716481974125026}
   playerId: -1
@@ -454,8 +454,8 @@ MonoBehaviour:
       _Names: []
     _Clip: {fileID: 0}
     _NormalizedStartTime: NaN
-  _playableDirector: {fileID: 371868656475977253}
-  _lightAttackPlayableAsset: {fileID: 11400000, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+  playableDirector: {fileID: 0}
+  lightAttackPlayableAsset: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -647,8 +647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a3bc5cb93a0c4486b5b12b519748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 5002924662183864281}
-  _playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  character: {fileID: 5002924662183864281}
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
   OnFlipXChange:
     m_PersistentCalls:
       m_Calls:
@@ -732,8 +732,8 @@ MonoBehaviour:
       _Names: []
     _Clip: {fileID: 0}
     _NormalizedStartTime: NaN
-  _playableDirector: {fileID: 371868656475977253}
-  _lightAttackPlayableAsset: {fileID: 11400000, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+  playableDirector: {fileID: 371868656475977253}
+  lightAttackPlayableAsset: {fileID: 11400000, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
   references:
     version: 2
     RefIds: []
@@ -832,11 +832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bae9f3f0baf74188e889b1702dd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitboxSystemSo: {fileID: 11400000, guid: b8bd2922bb9d7614d802536c1009f261, type: 2}
-  _entity: {fileID: 5002924662183864281}
-  _hitboxSourceTransform: {fileID: 933080241356361645}
-  _flipX: 0
-  _hitboxLayerMask:
+  hitboxSystemSo: {fileID: 11400000, guid: b8bd2922bb9d7614d802536c1009f261, type: 2}
+  entity: {fileID: 5002924662183864281}
+  hitboxSourceTransform: {fileID: 933080241356361645}
+  flipX: 0
+  hitboxLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  _hitboxID: Basic
+  hitboxID: Test

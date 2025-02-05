@@ -9,6 +9,6 @@ namespace Base
     {
         [SerializeField]
         [TextArea]
-        private string _devDescription;
+        private string devDescription;
     }
 }

@@ -10,31 +10,33 @@ namespace Timeline.Samples
     // on the Text binding
     public class TextTrackMixerBehaviour : PlayableBehaviour
     {
-        Color m_DefaultColor;
-        float m_DefaultFontSize;
-        string m_DefaultText;
+        private Color m_DefaultColor;
+        private float m_DefaultFontSize;
+        private string m_DefaultText;
 
-        TMP_Text m_TrackBinding;
+        private TMP_Text m_TrackBinding;
 
         // Called every frame that the timeline is evaluated. ProcessFrame is invoked after its' inputs.
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             SetDefaults(playerData as TMP_Text);
             if (m_TrackBinding == null)
+            {
                 return;
+            }
 
             int inputCount = playable.GetInputCount();
 
             Color blendedColor = Color.clear;
-            float blendedFontSize = 0f;
-            float totalWeight = 0f;
-            float greatestWeight = 0f;
+            var blendedFontSize = 0f;
+            var totalWeight = 0f;
+            var greatestWeight = 0f;
             string text = m_DefaultText;
 
-            for (int i = 0; i < inputCount; i++)
+            for (var i = 0; i < inputCount; i++)
             {
                 float inputWeight = playable.GetInputWeight(i);
-                ScriptPlayable<TextPlayableBehaviour> inputPlayable = (ScriptPlayable<TextPlayableBehaviour>)playable.GetInput(i);
+                var inputPlayable = (ScriptPlayable<TextPlayableBehaviour>)playable.GetInput(i);
                 TextPlayableBehaviour input = inputPlayable.GetBehaviour();
 
                 blendedColor += input.color * inputWeight;
@@ -62,10 +64,12 @@ namespace Timeline.Samples
             RestoreDefaults();
         }
 
-        void SetDefaults(TMP_Text text)
+        private void SetDefaults(TMP_Text text)
         {
             if (text == m_TrackBinding)
+            {
                 return;
+            }
 
             RestoreDefaults();
 
@@ -78,10 +82,12 @@ namespace Timeline.Samples
             }
         }
 
-        void RestoreDefaults()
+        private void RestoreDefaults()
         {
             if (m_TrackBinding == null)
+            {
                 return;
+            }
 
             m_TrackBinding.color = m_DefaultColor;
             m_TrackBinding.fontSize = m_DefaultFontSize;

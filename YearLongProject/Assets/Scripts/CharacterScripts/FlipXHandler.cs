@@ -1,3 +1,4 @@
+using Input_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,53 +7,53 @@ namespace CharacterScripts
     public class FlipXHandler : MonoBehaviour
     {
         [SerializeField]
-        private Character _character;
+        private Character character;
 
         [SerializeField]
-        private PlayerInputSO _playerInputSO;
+        private PlayerInputSo playerInputSo;
 
         public UnityEvent<bool> OnFlipXChange;
 
         public bool CanFlipX
         {
-            get => _canFlipX;
-            set => _canFlipX = value;
+            get => canFlipX;
+            set => canFlipX = value;
         }
 
-        private bool _currentFlipX;
-        private bool _canFlipX = true;
+        private bool currentFlipX;
+        private bool canFlipX = true;
 
         private void Start()
         {
-            _playerInputSO.MoveEvent(_character.EntityID) += HandleMoveInput;
+            playerInputSo.MoveEvent(character.EntityID) += HandleMoveInput;
         }
 
         private void OnDestroy()
         {
-            _playerInputSO.MoveEvent(_character.EntityID) -= HandleMoveInput;
+            playerInputSo.MoveEvent(character.EntityID) -= HandleMoveInput;
         }
 
         private void HandleMoveInput(Vector2 moveDir)
         {
-            if (!_canFlipX)
+            if (!canFlipX)
             {
                 return;
             }
 
             if (moveDir.x > 0)
             {
-                if (_currentFlipX)
+                if (currentFlipX)
                 {
-                    _currentFlipX = false;
-                    OnFlipXChange?.Invoke(_currentFlipX);
+                    currentFlipX = false;
+                    OnFlipXChange?.Invoke(currentFlipX);
                 }
             }
             else if (moveDir.x < 0)
             {
-                if (!_currentFlipX)
+                if (!currentFlipX)
                 {
-                    _currentFlipX = true;
-                    OnFlipXChange?.Invoke(_currentFlipX);
+                    currentFlipX = true;
+                    OnFlipXChange?.Invoke(currentFlipX);
                 }
             }
         }

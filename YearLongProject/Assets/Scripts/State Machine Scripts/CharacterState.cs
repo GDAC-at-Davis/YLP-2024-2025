@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Animancer;
 using Animancer.FSM;
+using UnityEngine;
 
 public class CharacterState : StateBehaviour
 {
@@ -18,22 +16,20 @@ public class CharacterState : StateBehaviour
     [SerializeField]
     protected ClipTransition stateAnimation;
 
-    protected CharacterActionType actionType;
-
     // Uses allowedActionTypes to control if entering this state is allowed.
     public override bool CanEnterState
-        => actionManager.allowedActionTypes[actionType];
+        => actionManager.GetActionTypeAllowed(actionType);
+
+    protected CharacterActionType actionType;
 
     private AnimancerState currentState;
 
     protected virtual void OnEnable()
     {
-        return;
     }
 
     protected virtual void OnDisable()
     {
-        return;
     }
 
 #if UNITY_EDITOR

@@ -7,20 +7,22 @@ namespace Timeline.Samples
     // the final data on the transform binding.
     public class TweenMixerBehaviour : PlayableBehaviour
     {
-        static AnimationCurve s_DefaultCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
+        private static readonly AnimationCurve s_DefaultCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
 
-        bool m_ShouldInitializeTransform = true;
-        Vector3 m_InitialPosition;
-        Quaternion m_InitialRotation;
+        private bool m_ShouldInitializeTransform = true;
+        private Vector3 m_InitialPosition;
+        private Quaternion m_InitialRotation;
 
         // Performs blend of position and rotation of all clips connected to a track mixer
         // The result is applied to the track binding's (playerData) transform.
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            Transform trackBinding = playerData as Transform;
+            var trackBinding = playerData as Transform;
 
             if (trackBinding == null)
+            {
                 return;
+            }
 
             // Get the initial position and rotation of the track binding, only when ProcessFrame is first called
             InitializeIfNecessary(trackBinding);
@@ -28,19 +30,21 @@ namespace Timeline.Samples
             Vector3 accumPosition = Vector3.zero;
             Quaternion accumRotation = QuaternionUtils.zero;
 
-            float totalPositionWeight = 0.0f;
-            float totalRotationWeight = 0.0f;
+            var totalPositionWeight = 0.0f;
+            var totalRotationWeight = 0.0f;
 
             // Iterate on all mixer's inputs (ie each clip on the track)
             int inputCount = playable.GetInputCount();
-            for (int i = 0; i < inputCount; i++)
+            for (var i = 0; i < inputCount; i++)
             {
                 float inputWeight = playable.GetInputWeight(i);
                 if (inputWeight <= 0)
+                {
                     continue;
+                }
 
                 Playable input = playable.GetInput(i);
-                float normalizedInputTime = (float)(input.GetTime() / input.GetDuration());
+                var normalizedInputTime = (float)(input.GetTime() / input.GetDuration());
 
                 // get the clip's behaviour and evaluate the progression along the curve
                 TweenBehaviour tweenInput = GetTweenBehaviour(input);
@@ -67,7 +71,7 @@ namespace Timeline.Samples
             trackBinding.rotation.Normalize();
         }
 
-        void InitializeIfNecessary(Transform transform)
+        private void InitializeIfNecessary(Transform transform)
         {
             if (m_ShouldInitializeTransform)
             {
@@ -77,7 +81,7 @@ namespace Timeline.Samples
             }
         }
 
-        Vector3 TweenPosition(TweenBehaviour tweenInput, float progress, float weight)
+        private Vector3 TweenPosition(TweenBehaviour tweenInput, float progress, float weight)
         {
             Vector3 startPosition = m_InitialPosition;
             if (tweenInput.startLocation != null)
@@ -94,7 +98,8 @@ namespace Timeline.Samples
             return Vector3.Lerp(startPosition, endPosition, progress) * weight;
         }
 
-        Quaternion TweenRotation(TweenBehaviour tweenInput, Quaternion accumRotation, float progress, float weight)
+        private Quaternion TweenRotation(TweenBehaviour tweenInput, Quaternion accumRotation, float progress,
+            float weight)
         {
             Quaternion startRotation = m_InitialRotation;
             if (tweenInput.startLocation != null)
@@ -112,16 +117,19 @@ namespace Timeline.Samples
             return accumRotation.Blend(desiredRotation.NormalizeSafe(), weight);
         }
 
-        static TweenBehaviour GetTweenBehaviour(Playable playable)
+        private static TweenBehaviour GetTweenBehaviour(Playable playable)
         {
-            ScriptPlayable<TweenBehaviour> tweenInput = (ScriptPlayable<TweenBehaviour>)playable;
+            var tweenInput = (ScriptPlayable<TweenBehaviour>)playable;
             return tweenInput.GetBehaviour();
         }
 
-        static AnimationCurve GetCurve(TweenBehaviour tween)
+        private static AnimationCurve GetCurve(TweenBehaviour tween)
         {
             if (tween == null || tween.curve == null)
+            {
                 return s_DefaultCurve;
+            }
+
             return tween.curve;
         }
     }

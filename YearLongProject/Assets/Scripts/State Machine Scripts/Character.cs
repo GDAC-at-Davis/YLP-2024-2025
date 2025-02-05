@@ -10,6 +10,8 @@ public class Character : Entity
     [SerializeField]
     public CharacterMovementController movementController;
 
+    public int playerId = -1;
+
     protected bool isInvincible;
 
 #if UNITY_EDITOR
@@ -19,7 +21,6 @@ public class Character : Entity
         gameObject.GetComponentInParentOrChildren(ref movementController);
     }
 #endif
-    public int playerId = -1;
 
     public void Init(int id)
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Events
 {
     [CreateAssetMenu(menuName = "Events/Basic/IntEvent")]
-    public class IntEvent : SOEvent<int>
+    public class IntEvent : SoEvent<int>
     {
     }
 }

@@ -1,7 +1,6 @@
 #if TEXT_TRACK_REQUIRES_TEXTMESH_PRO
 
 using UnityEditor.Timeline;
-using UnityEngine;
 using UnityEngine.Timeline;
 
 namespace Timeline.Samples
@@ -16,7 +15,9 @@ namespace Timeline.Samples
         {
             var textPlayableasset = clip.asset as TextPlayableAsset;
             if (textPlayableasset != null && !string.IsNullOrEmpty(textPlayableasset.template.text))
+            {
                 clip.displayName = textPlayableasset.template.text;
+            }
         }
     }
 }

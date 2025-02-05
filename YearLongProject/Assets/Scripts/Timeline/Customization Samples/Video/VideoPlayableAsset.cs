@@ -14,7 +14,7 @@ namespace Timeline.Samples
         {
             CameraFarPlane,
             CameraNearPlane
-        };
+        }
 
         [Tooltip("The video clip to play.")]
         public VideoClip videoClip;
@@ -45,6 +45,36 @@ namespace Timeline.Samples
         public double clipInTime { get; set; }
         public double startTime { get; set; }
 
+        // The playable assets duration is used to specify the initial or default duration of the clip in Timeline.
+        public override double duration
+        {
+            get
+            {
+                if (videoClip == null)
+                {
+                    return base.duration;
+                }
+
+                return videoClip.length;
+            }
+        }
+
+        // Implementation of ITimelineClipAsset. This specifies the capabilities of this timeline clip inside the editor.
+        // For video clips, we are using built-in support for clip-in, speed, blending and looping.
+        public ClipCaps clipCaps
+        {
+            get
+            {
+                ClipCaps caps = ClipCaps.Blending | ClipCaps.ClipIn | ClipCaps.SpeedMultiplier;
+                if (loop)
+                {
+                    caps |= ClipCaps.Looping;
+                }
+
+                return caps;
+            }
+        }
+
         // Creates the playable that represents the instance that plays this clip.
         // Here a hidden VideoPlayer is being created for the PlayableBehaviour to use
         // to control playback. The PlayableBehaviour is responsible for deleting the player.
@@ -52,12 +82,16 @@ namespace Timeline.Samples
         {
             Camera camera = targetCamera.Resolve(graph.GetResolver());
             if (camera == null)
+            {
                 camera = Camera.main;
+            }
 
             // If we are unable to create a player, return a playable with no behaviour attached.
             VideoPlayer player = CreateVideoPlayer(camera, audioSource.Resolve(graph.GetResolver()));
             if (player == null)
+            {
                 return Playable.Create(graph);
+            }
 
             ScriptPlayable<VideoPlayableBehaviour> playable =
                 ScriptPlayable<VideoPlayableBehaviour>.Create(graph);
@@ -71,45 +105,24 @@ namespace Timeline.Samples
             return playable;
         }
 
-        // The playable assets duration is used to specify the initial or default duration of the clip in Timeline.
-        public override double duration
-        {
-            get
-            {
-                if (videoClip == null)
-                    return base.duration;
-                return videoClip.length;
-            }
-        }
-
-        // Implementation of ITimelineClipAsset. This specifies the capabilities of this timeline clip inside the editor.
-        // For video clips, we are using built-in support for clip-in, speed, blending and looping.
-        public ClipCaps clipCaps
-        {
-            get
-            {
-                var caps = ClipCaps.Blending | ClipCaps.ClipIn | ClipCaps.SpeedMultiplier;
-                if (loop)
-                    caps |= ClipCaps.Looping;
-                return caps;
-            }
-        }
-
-
-        VideoPlayer CreateVideoPlayer(Camera camera, AudioSource targetAudioSource)
+        private VideoPlayer CreateVideoPlayer(Camera camera, AudioSource targetAudioSource)
         {
             if (videoClip == null)
+            {
                 return null;
+            }
 
-            GameObject gameObject = new GameObject(videoClip.name) { hideFlags = HideFlags.HideAndDontSave };
-            VideoPlayer videoPlayer = gameObject.AddComponent<VideoPlayer>();
+            var gameObject = new GameObject(videoClip.name) { hideFlags = HideFlags.HideAndDontSave };
+            var videoPlayer = gameObject.AddComponent<VideoPlayer>();
             videoPlayer.playOnAwake = false;
             videoPlayer.source = VideoSource.VideoClip;
             videoPlayer.clip = videoClip;
             videoPlayer.waitForFirstFrame = false;
             videoPlayer.skipOnDrop = true;
             videoPlayer.targetCamera = camera;
-            videoPlayer.renderMode = renderMode == RenderMode.CameraFarPlane ? VideoRenderMode.CameraFarPlane : VideoRenderMode.CameraNearPlane;
+            videoPlayer.renderMode = renderMode == RenderMode.CameraFarPlane
+                ? VideoRenderMode.CameraFarPlane
+                : VideoRenderMode.CameraNearPlane;
             videoPlayer.aspectRatio = aspectRatio;
             videoPlayer.isLooping = loop;
 
@@ -122,7 +135,9 @@ namespace Timeline.Samples
             {
                 videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
                 for (ushort i = 0; i < videoPlayer.clip.audioTrackCount; ++i)
+                {
                     videoPlayer.SetTargetAudioSource(i, targetAudioSource);
+                }
             }
 
             return videoPlayer;

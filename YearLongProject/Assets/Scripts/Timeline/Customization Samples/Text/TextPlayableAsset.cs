@@ -13,13 +13,10 @@ namespace Timeline.Samples
     {
         [NoFoldOut]
         [NotKeyable] // NotKeyable used to prevent Timeline from making fields available for animation.
-        public TextPlayableBehaviour template = new TextPlayableBehaviour();
+        public TextPlayableBehaviour template = new();
 
         // Implementation of ITimelineClipAsset. This specifies the capabilities of this timeline clip inside the editor.
-        public ClipCaps clipCaps
-        {
-            get { return ClipCaps.Blending; }
-        }
+        public ClipCaps clipCaps => ClipCaps.Blending;
 
         // Creates the playable that represents the instance of this clip.
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)

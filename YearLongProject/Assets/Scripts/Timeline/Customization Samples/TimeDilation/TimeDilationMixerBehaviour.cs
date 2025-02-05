@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 namespace Timeline.Samples
 {
@@ -13,15 +12,15 @@ namespace Timeline.Samples
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             int inputCount = playable.GetInputCount();
-            float timeScale = 0f;
-            float totalWeight = 0f;
+            var timeScale = 0f;
+            var totalWeight = 0f;
 
             // blend clips together
-            for (int i = 0; i < inputCount; i++)
+            for (var i = 0; i < inputCount; i++)
             {
                 float inputWeight = playable.GetInputWeight(i);
 
-                ScriptPlayable<TimeDilationBehaviour> playableInput = (ScriptPlayable<TimeDilationBehaviour>)playable.GetInput(i);
+                var playableInput = (ScriptPlayable<TimeDilationBehaviour>)playable.GetInput(i);
                 TimeDilationBehaviour input = playableInput.GetBehaviour();
 
                 timeScale += inputWeight * input.timeScale;

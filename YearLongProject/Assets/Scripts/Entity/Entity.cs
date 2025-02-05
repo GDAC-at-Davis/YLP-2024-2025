@@ -1,12 +1,17 @@
-using UnityEngine;
-using Hitbox.DataStructures;
 using Base;
+using Hitbox.DataStructures;
+using UnityEngine;
 
 public abstract class Entity : DescriptionMono
 {
     [SerializeField]
-    private int _entityID;
-    public int EntityID { get => _entityID; set => _entityID = value; }
+    private int entityID;
+
+    public int EntityID
+    {
+        get => entityID;
+        set => entityID = value;
+    }
 
     public virtual void Init(int id)
     {

@@ -13,32 +13,33 @@ namespace Hitbox.Emitters
         [Header("Depends")]
 
         [SerializeField]
-        private HitboxSystemSO _hitboxSystemSo;
+        private HitboxSystemSo hitboxSystemSo;
 
         [SerializeField]
-        private Entity _entity;
+        private Entity entity;
 
         [SerializeField]
-        private Transform _hitboxSourceTransform;
+        private Transform hitboxSourceTransform;
 
         [SerializeField]
-        private bool _flipX;
+        private bool flipX;
 
         [SerializeField]
-        private LayerMask _hitboxLayerMask;
+        private LayerMask hitboxLayerMask;
 
         [SerializeField]
-        private string _hitboxID;
+        private string hitboxID;
+
+        public Entity Entity => entity;
 
         // prevents hitbox from repeatedly hitting hurtboxes
         public HashSet<Entity> HitEntities = new();
-        public Entity Entity => _entity;
 
         public void EmitHitbox(IHitboxArea hitboxArea, HitboxEffect hitboxEffect)
         {
             HitboxContext context = GetContext();
 
-            _hitboxSystemSo.InstantiateHitbox(new HitboxInstance
+            hitboxSystemSo.InstantiateHitbox(new HitboxInstance
             {
                 HitboxArea = hitboxArea,
                 Context = context,
@@ -51,17 +52,17 @@ namespace Hitbox.Emitters
             return new HitboxContext
             {
                 Source = this,
-                SourcePosition = _hitboxSourceTransform.position,
-                SourceAngle = _hitboxSourceTransform.eulerAngles.z,
-                LayerMask = _hitboxLayerMask,
-                FlipX = _flipX,
-                HitboxID = _hitboxID
+                SourcePosition = hitboxSourceTransform.position,
+                SourceAngle = hitboxSourceTransform.eulerAngles.z,
+                LayerMask = hitboxLayerMask,
+                FlipX = flipX,
+                HitboxID = hitboxID
             };
         }
 
         public void SetFlipX(bool flipX)
         {
-            _flipX = flipX;
+            this.flipX = flipX;
         }
     }
 }

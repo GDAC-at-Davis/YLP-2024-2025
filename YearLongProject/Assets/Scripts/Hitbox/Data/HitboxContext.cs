@@ -1,5 +1,5 @@
-using UnityEngine;
 using Hitbox.Emitters;
+using UnityEngine;
 
 namespace Hitbox.DataStructures
 {

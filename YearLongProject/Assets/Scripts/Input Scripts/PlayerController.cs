@@ -1,45 +1,46 @@
+using Input_Scripts;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInputSO _playerInputSO;
+    private PlayerInputSo playerInputSo;
 
     [SerializeField]
-    private CharacterMovementController _playerMovementController;
+    private CharacterMovementController playerMovementController;
 
     [SerializeField]
-    private Vector2 _moveInput;
+    private Vector2 moveInput;
 
     [SerializeField]
-    private bool _jump;
+    private bool jump;
 
     [SerializeField]
-    private bool _dash;
+    private bool dash;
 
     [SerializeField]
-    private bool _lightAttack;
+    private bool lightAttack;
 
     [SerializeField]
-    private bool _heavyAttack;
+    private bool heavyAttack;
 
     [SerializeField]
-    private bool _specialAttack;
+    private bool specialAttack;
 
-    public Vector2 MoveInput => _moveInput;
+    public Vector2 MoveInput => moveInput;
 
-    public bool Jump => _jump;
-    private int _id = -1;
+    public bool Jump => jump;
+    private int id = -1;
 
     private void OnEnable()
     {
         // When object is first instantiated OnEnable runs before Init sets the ID
-        if (_id == -1)
+        if (id == -1)
         {
             return;
         }
 
-        PlayerInputSO.PlayerInputEvents events = _playerInputSO.GetPlayerInputEvents(_id);
+        PlayerInputSo.PlayerInputEvents events = playerInputSo.TryGetPlayerInputEvents(id);
         events.MoveEvent += OnMove;
         events.JumpEvent += OnJump;
         events.DashEvent += OnDash;
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerInputSO.PlayerInputEvents events = _playerInputSO.GetPlayerInputEvents(_id);
+        PlayerInputSo.PlayerInputEvents events = playerInputSo.TryGetPlayerInputEvents(id);
         // Sometimes the PlayerInputReader removes the PlayerInputEvents before we can unsubscribe from them resulting in a NullRef 
         // Could probably be resolved by setting this to run before PlayerInputEvents in code execution order but I'd rather not mess with that 
         if (events == null)
@@ -68,11 +69,11 @@ public class PlayerController : MonoBehaviour
 
     public void Init(int id)
     {
-        _id = id;
+        this.id = id;
         transform.parent = null;
 
         // We dont subscribe in first OnEnable and do it here instead so we can use the correct ID
-        PlayerInputSO.PlayerInputEvents events = _playerInputSO.GetPlayerInputEvents(_id);
+        PlayerInputSo.PlayerInputEvents events = playerInputSo.TryGetPlayerInputEvents(this.id);
         events.MoveEvent += OnMove;
         events.JumpEvent += OnJump;
         events.DashEvent += OnDash;
@@ -83,31 +84,31 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 moveInput)
     {
-        _moveInput = moveInput;
+        this.moveInput = moveInput;
     }
 
     private void OnJump(bool jump)
     {
-        _jump = jump;
+        this.jump = jump;
     }
 
     private void OnDash(bool dash)
     {
-        _dash = dash;
+        this.dash = dash;
     }
 
     private void OnLightAttack(bool attack)
     {
-        _lightAttack = attack;
+        lightAttack = attack;
     }
 
     private void OnHeavyAttack(bool attack)
     {
-        _heavyAttack = attack;
+        heavyAttack = attack;
     }
 
     private void OnSpecialAttack(bool attack)
     {
-        _specialAttack = attack;
+        specialAttack = attack;
     }
 }
