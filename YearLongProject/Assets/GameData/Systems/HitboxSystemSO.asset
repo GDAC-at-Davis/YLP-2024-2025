@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devDescription: 
   showHitboxAreas: 1
-  detailedLogging: 0
+  detailedLogging: 1
   hitboxVisualizeDuration: 0
