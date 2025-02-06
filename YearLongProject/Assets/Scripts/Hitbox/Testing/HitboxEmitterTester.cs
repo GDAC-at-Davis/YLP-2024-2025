@@ -67,13 +67,13 @@ namespace Hitbox.Testing
                         throw new ArgumentOutOfRangeException();
                 }
 
-                hitboxEmitter.EmitHitbox(area, new HitboxEffect());
+                hitboxEmitter.EmitHitbox(area, new HitboxEffect(), string.Empty);
             }
         }
 
         private void OnDrawGizmos()
         {
-            HitboxContext context = hitboxEmitter.GetContext();
+            HitboxContext context = hitboxEmitter.GetContext(string.Empty);
             IHitboxArea area = null;
 
             switch (areaType)

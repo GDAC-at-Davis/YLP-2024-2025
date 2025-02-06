@@ -1,5 +1,6 @@
 using Animancer;
 using Base;
+using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.Hurtboxes;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace Hitbox
         }
 #endif
 
-        public void OnHit(HitboxInstance hitboxInstance)
+        public virtual void OnHit(HitboxInstance hitboxInstance)
         {
             if (attachedEntity == null)
             {

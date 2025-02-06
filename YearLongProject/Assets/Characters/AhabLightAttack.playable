@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: HitboxPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
   template:
-    HitboxArea:
-      center: {x: 0, y: 0}
-      rotation: 0
-      size: {x: 2, y: 1}
     HitEffect:
       <Damage>k__BackingField: 0
       <Knockback>k__BackingField: {x: 0, y: 0}
+    EndHitboxGroup: 1
+    HitboxGroupId: LightPrimary
+    HitboxArea:
+      rotation: 0
+      startOffset: {x: 0, y: 0}
+      length: 9.2
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,10 +259,12 @@ MonoBehaviour:
   m_Name: HitboxPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    HitboxArea:
-      center: {x: 0, y: 0}
-      rotation: 0
-      size: {x: 5, y: 1}
     HitEffect:
       <Damage>k__BackingField: 0
       <Knockback>k__BackingField: {x: 0, y: 0}
+    EndHitboxGroup: 0
+    HitboxGroupId: LightPrimary
+    HitboxArea:
+      rotation: 5.53
+      startOffset: {x: 0, y: 0}
+      length: 11.01

@@ -1,7 +1,7 @@
 using Animancer;
+using GameEntities;
 using Hitbox.DataStructures;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Character : Entity
 {
