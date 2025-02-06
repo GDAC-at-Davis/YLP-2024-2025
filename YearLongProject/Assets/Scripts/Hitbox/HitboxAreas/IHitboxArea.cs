@@ -9,10 +9,12 @@ namespace Hitbox.HitboxAreas
     /// </summary>
     public interface IHitboxArea
     {
+        public bool StopOnFirstHit { get; }
+
         /// <summary>
-        ///     Run physics check for colliders in the area
+        ///     Running the physics check is delegated to the IHitboxArea implementations for their unique shapes
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Hitbox instance context</param>
         /// <returns></returns>
         public Collider2D[] GetCollidersInArea(HitboxContext context);
 

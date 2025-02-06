@@ -35,6 +35,11 @@ namespace Hitbox.HitboxAreas
             this.size = size;
         }
 
+        /// <summary>
+        ///     No way to get the first hit with overlap boxes, so irrelevant
+        /// </summary>
+        public bool StopOnFirstHit => false;
+
         public Collider2D[] GetCollidersInArea(HitboxContext context)
         {
             TransformToContext(context, out Vector2 center, out float rotation);

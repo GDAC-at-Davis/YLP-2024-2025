@@ -1,4 +1,5 @@
-using Hitbox.Emitters;
+using System.Collections.Generic;
+using GameEntities;
 using UnityEngine;
 
 namespace Hitbox.DataStructures
@@ -32,11 +33,11 @@ namespace Hitbox.DataStructures
         /// <summary>
         ///     Character that created the hitbox
         /// </summary>
-        public HitboxEmitter Source;
+        public Entity Source;
 
         /// <summary>
-        ///     ID of the attack that hitbox belongs to
+        ///     Entity that the hitbox should ignore
         /// </summary>
-        public string HitboxID;
+        public List<Entity> IgnoreEntities;
     }
 }

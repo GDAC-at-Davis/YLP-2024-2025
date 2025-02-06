@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Base;
+using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
 using UnityEngine;
@@ -8,6 +10,11 @@ namespace Hitbox
     [CreateAssetMenu(menuName = "Systems/HitboxSystem")]
     public class HitboxSystemSo : DescriptionSO
     {
+        public struct HitboxInstantiateResult
+        {
+            public List<Entity> HitEntities;
+        }
+
         [SerializeField]
         [Tooltip("Whether to draw hitbox areas for debugging purposes")]
         private bool showHitboxAreas;
@@ -22,7 +29,7 @@ namespace Hitbox
         ///     Instantiates a hitbox and applies its effects
         /// </summary>
         /// <param name="hitboxInstance"></param>
-        public void InstantiateHitbox(HitboxInstance hitboxInstance)
+        public HitboxInstantiateResult InstantiateHitbox(HitboxInstance hitboxInstance)
         {
             HitboxContext context = hitboxInstance.Context;
             HitboxEffect effect = hitboxInstance.HitboxEffect;
@@ -35,13 +42,10 @@ namespace Hitbox
 
             Collider2D[] hits = area.GetCollidersInArea(context);
 
+            var hitList = new List<Entity>();
+
             foreach (Collider2D hit in hits)
             {
-                if (detailedLogging)
-                {
-                    Debug.Log($"Hitbox overlapped collider {hit.gameObject}");
-                }
-
                 var hurtbox = hit.GetComponent<EntityHurtbox>();
 
                 if (hurtbox == null)
@@ -56,12 +60,17 @@ namespace Hitbox
                     continue;
                 }
 
-                if (entity == context.Source.Entity)
+                if (entity == context.Source)
                 {
                     continue;
                 }
 
-                if (context.Source.HitEntities.Contains(entity))
+                if (context.IgnoreEntities.Contains(entity))
+                {
+                    continue;
+                }
+
+                if (hitList.Contains(entity))
                 {
                     continue;
                 }
@@ -71,9 +80,20 @@ namespace Hitbox
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }
 
-                context.Source.HitEntities.Add(entity);
                 hurtbox.OnHit(hitboxInstance);
+
+                hitList.Add(entity);
+
+                if (area.StopOnFirstHit)
+                {
+                    break;
+                }
             }
+
+            return new HitboxInstantiateResult
+            {
+                HitEntities = hitList
+            };
         }
     }
 }
