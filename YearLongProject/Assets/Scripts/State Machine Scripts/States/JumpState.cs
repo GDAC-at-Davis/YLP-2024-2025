@@ -1,54 +1,51 @@
-using State_Machine_Scripts;
 using UnityEngine;
 
-public class JumpState : CharacterState
+namespace State_Machine_Scripts.States
 {
-    [SerializeField]
-    private float jumpVelocity = 10;
-
-    [SerializeField]
-    private float maxJumpDuration = 2;
-
-    [SerializeField]
-    private SimpleMovementController movementController;
-
-    [SerializeField]
-    private AnimationCurve jumpMultCurve;
-
-    public override bool CanEnterState
-        => ActionManager.GetActionTypeAllowed(ActionType) && movementController.GetIsGrounded();
-
-    private float jumpTimer;
-
-    private void Awake()
+    public class JumpState : CharacterState
     {
-        ActionType = CharacterActionType.Jump;
-    }
+        [SerializeField]
+        private float jumpVelocity = 10;
 
-    private void Update()
-    {
-        Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
-        movementController.SetCharacterMove(moveInput.x);
+        [SerializeField]
+        private float maxJumpDuration = 2;
 
-        movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
+        [SerializeField]
+        private SimpleMovementController movementController;
 
-        jumpTimer += Time.deltaTime;
+        [SerializeField]
+        private AnimationCurve jumpMultCurve;
 
-        if (!ActionManager.GetPlayerActionInput().JumpHeld || jumpTimer > maxJumpDuration)
+        public override bool CanEnterState
+            => ActionManager.GetActionTypeAllowed(StateName) && movementController.GetIsGrounded();
+
+        private float jumpTimer;
+
+        private void Update()
+        {
+            Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
+            movementController.SetCharacterMove(moveInput.x);
+
+            movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
+
+            jumpTimer += Time.deltaTime;
+
+            if (!ActionManager.CharacterActionInput.JumpHeld || jumpTimer > maxJumpDuration)
+            {
+                movementController.StopJump();
+                ActionManager.StateMachine.ForceSetDefaultState();
+            }
+        }
+
+        protected override void OnEnable()
+        {
+            movementController.StartJump();
+            jumpTimer = 0;
+        }
+
+        protected override void OnDisable()
         {
             movementController.StopJump();
-            ActionManager.StateMachine.ForceSetDefaultState();
         }
-    }
-
-    protected override void OnEnable()
-    {
-        movementController.StartJump();
-        jumpTimer = 0;
-    }
-
-    protected override void OnDisable()
-    {
-        movementController.StopJump();
     }
 }

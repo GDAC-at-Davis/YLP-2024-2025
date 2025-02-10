@@ -1,59 +1,65 @@
-using Input_Scripts;
+using GameEntities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputReader : MonoBehaviour
+namespace Input_Scripts
 {
-    [SerializeField]
-    private PlayerInputSo playerInputSo;
-
-    // Set by character select in the future
-
-    public GameObject Character;
-    private int id;
-    private UnityEngine.InputSystem.PlayerInput playerInput;
-
-    private void Start()
+    /// <summary>
+    ///     Mediator between the Input System and the PlayerInputSO
+    /// </summary>
+    public class PlayerInputReader : MonoBehaviour
     {
-        playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        id = playerInput.playerIndex;
+        [SerializeField]
+        private PlayerInputSo playerInputSo;
 
-        // Run by character selection in the future
-        Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<Character>().Init(id);
-    }
+        // Set by character select in the future
 
-    private void OnDestroy()
-    {
-        playerInputSo.RemoveInputReader(id);
-    }
+        public GameObject Character;
+        private int id;
+        private UnityEngine.InputSystem.PlayerInput playerInput;
 
-    public void OnLightAttack(InputAction.CallbackContext context)
-    {
-        playerInputSo.LightAttackEvent(id)?.Invoke(context.action.triggered);
-    }
+        private void Start()
+        {
+            playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+            id = playerInput.playerIndex;
 
-    public void OnHeavyAttack(InputAction.CallbackContext context)
-    {
-        playerInputSo.HeavyAttackEvent(id)?.Invoke(context.action.triggered);
-    }
+            // Run by character selection in the future
+            Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
+        }
 
-    public void OnSpecialAttack(InputAction.CallbackContext context)
-    {
-        playerInputSo.SpecialAttackEvent(id)?.Invoke(context.action.triggered);
-    }
+        private void OnDestroy()
+        {
+            playerInputSo.RemoveInputReader(id);
+        }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        playerInputSo.MoveEvent(id)?.Invoke(context.ReadValue<Vector2>());
-    }
+        public void OnLightAttack(InputAction.CallbackContext context)
+        {
+            playerInputSo.LightAttackEvent(id)?.Invoke(context.action.triggered);
+        }
 
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        playerInputSo.JumpEvent(id)?.Invoke(context.action.triggered);
-    }
+        public void OnHeavyAttack(InputAction.CallbackContext context)
+        {
+            playerInputSo.HeavyAttackEvent(id)?.Invoke(context.action.triggered);
+        }
 
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        playerInputSo.DashEvent(id)?.Invoke(context.action.triggered);
+        public void OnSpecialAttack(InputAction.CallbackContext context)
+        {
+            playerInputSo.SpecialAttackEvent(id)?.Invoke(context.action.triggered);
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            playerInputSo.MoveEvent(id)?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            playerInputSo.JumpEvent(id)?.Invoke(context.action.triggered);
+        }
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            playerInputSo.DashEvent(id)?.Invoke(context.action.triggered);
+        }
     }
 }

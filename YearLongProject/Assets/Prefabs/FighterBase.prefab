@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8710895339890870979}
   - component: {fileID: 6564235481833952604}
+  - component: {fileID: 3143770971735428548}
   m_Layer: 3
   m_Name: ActionManager
   m_TagString: Untagged
@@ -104,23 +105,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  Anim: {fileID: 4398300151406142170}
-  Character: {fileID: 5002924662183864281}
-  MoveState: {fileID: 0}
-  JumpState: {fileID: 0}
-  LightAttackState: {fileID: 0}
-  HeavyAttackState: {fileID: 0}
-  SpecialAttackState: {fileID: 0}
-  DashState: {fileID: 0}
-  HitstunState: {fileID: 0}
-  playerActionInput:
-    MoveDir: {x: 0, y: 0}
-    JumpHeld: 0
-    DashHeld: 0
-    LightAttackHeld: 0
-    HeavyAttackHeld: 0
-    SpecialAttackHeld: 0
+  devDescription: Manages the character state machine
+  Anim: {fileID: 3143770971735428548}
+  states: []
+--- !u!114 &3143770971735428548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968648881426466404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 9022335918410440386}
+  _Transitions: {fileID: 0}
+  _ActionOnDisable: 0
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3525838291768555810}
   - component: {fileID: 5002924662183864281}
-  - component: {fileID: 4398300151406142170}
+  - component: {fileID: 5764878026857287626}
   m_Layer: 3
   m_Name: FighterBase
   m_TagString: Untagged
@@ -169,11 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: 
+  devDescription: Top level representation of a 'Character'
   entityID: 0
   ActionManager: {fileID: 6564235481833952604}
-  MovementController: {fileID: 0}
---- !u!114 &4398300151406142170
+  actionInput: {fileID: 5764878026857287626}
+--- !u!114 &5764878026857287626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,12 +184,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2784295652820237144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 47710bd74423ae844b911d35bcd4e522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Animator: {fileID: 9022335918410440386}
-  _Transitions: {fileID: 0}
-  _ActionOnDisable: 0
+  devDescription: Provides input specific to the character instance and player ID
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  OnJumpPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLightAttackPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a3bc5cb93a0c4486b5b12b519748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5002924662183864281}
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  characterActionInput: {fileID: 5764878026857287626}
   OnFlipXChange:
     m_PersistentCalls:
       m_Calls:

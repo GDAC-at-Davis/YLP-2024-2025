@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 namespace Input_Scripts
 {
+    /// <summary>
+    ///     Usable input service that Characters interface with
+    /// </summary>
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Scriptable Objects/PlayerInputSO")]
     public class PlayerInputSo : ScriptableObject
     {

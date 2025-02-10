@@ -2,37 +2,37 @@ using Animancer;
 using Animancer.FSM;
 using UnityEngine;
 
-public class CharacterState : StateBehaviour
+namespace State_Machine_Scripts
 {
-    [SerializeField]
-    protected Character Character;
-
-    [SerializeField]
-    protected CharacterActionManager ActionManager;
-
-    public AnimancerComponent Anim => ActionManager.Anim;
-
-    // Uses allowedActionTypes to control if entering this state is allowed.
-    public override bool CanEnterState
-        => ActionManager.GetActionTypeAllowed(ActionType);
-
-    protected CharacterActionType ActionType;
-
-    protected virtual void OnEnable()
+    public class CharacterState : StateBehaviour
     {
-    }
+        [Header("Base State Config")]
 
-    protected virtual void OnDisable()
-    {
-    }
+        [SerializeField]
+        protected StateNameSO StateNameSO;
 
-#if UNITY_EDITOR
-    protected override void OnValidate()
-    {
-        base.OnValidate();
+        public AnimancerComponent Anim => ActionManager.Anim;
 
-        gameObject.GetComponentInParentOrChildren(ref Character);
-        ActionManager = Character.ActionManager;
+        public string StateName => StateNameSO;
+
+        public override bool CanEnterState
+            => ActionManager.GetActionTypeAllowed(StateNameSO.Value);
+
+        [Header("Depends")]
+
+        protected CharacterActionManager ActionManager;
+
+        protected virtual void OnEnable()
+        {
+        }
+
+        protected virtual void OnDisable()
+        {
+        }
+
+        public void Initialize(CharacterActionManager actionManager)
+        {
+            ActionManager = actionManager;
+        }
     }
-#endif
 }
