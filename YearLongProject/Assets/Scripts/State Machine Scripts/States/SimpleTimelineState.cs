@@ -3,22 +3,25 @@ using UnityEngine;
 
 namespace State_Machine_Scripts.States
 {
-    public class LightAttackState : CharacterState
+    /// <summary>
+    ///     Bare bones state that plays a timeline and then returns to the default state.
+    /// </summary>
+    public class SimpleTimelineState : CharacterState
     {
         [SerializeField]
-        private AnimancerComponent animancer;
+        private SimpleMovementController movementController;
 
         [SerializeField]
         private PlayableAssetTransition lightAttackPlayableAsset;
 
         private void Update()
         {
-            MovementController.SetCharacterMove(0);
+            movementController.SetCharacterMove(0);
         }
 
         public override void OnEnterState()
         {
-            animancer.Play(lightAttackPlayableAsset);
+            Anim.Play(lightAttackPlayableAsset);
             lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
             ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, false);
         }

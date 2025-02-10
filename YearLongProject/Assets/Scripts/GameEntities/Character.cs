@@ -8,9 +8,6 @@ public class Character : Entity
     [SerializeField]
     public CharacterActionManager ActionManager;
 
-    [SerializeField]
-    public CharacterMovementController MovementController;
-
     /// <summary>
     ///     Id of the actual player. Used for input and other player specific things.
     /// </summary>
@@ -24,7 +21,6 @@ public class Character : Entity
     private void OnValidate()
     {
         gameObject.GetComponentInParentOrChildren(ref ActionManager);
-        gameObject.GetComponentInParentOrChildren(ref MovementController);
     }
 #endif
 
