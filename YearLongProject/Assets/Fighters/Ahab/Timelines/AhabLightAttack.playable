@@ -260,15 +260,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 0
-      <Knockback>k__BackingField: {x: 0, y: 0}
+      <Damage>k__BackingField: 15
+      <Knockback>k__BackingField: {x: 8, y: 8}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
-    RaycastArea:
-    - rotation: -36.6
-      startOffset: {x: 0, y: 0.93}
-      length: 2
+    RaycastArea: []
     BoxArea:
-    - center: {x: 0.89, y: -0.19}
+    - center: {x: 0.89, y: -0.25}
       rotation: 0
-      size: {x: 1.32, y: 0.79}
+      size: {x: 1.52, y: 1.04}
+    - center: {x: 0.65, y: 0.27}
+      rotation: -29.5
+      size: {x: 1.54, y: 0.79}
