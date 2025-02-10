@@ -1,4 +1,3 @@
-using GameEntities;
 using Input_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,10 +7,7 @@ namespace CharacterScripts
     public class FlipXHandler : MonoBehaviour
     {
         [SerializeField]
-        private Character character;
-
-        [SerializeField]
-        private PlayerInputSo playerInputSo;
+        private CharacterActionInput characterActionInput;
 
         public UnityEvent<bool> OnFlipXChange;
 
@@ -26,12 +22,12 @@ namespace CharacterScripts
 
         private void Start()
         {
-            playerInputSo.MoveEvent(character.PlayerId) += HandleMoveInput;
+            characterActionInput.MoveInputChanged += HandleMoveInput;
         }
 
         private void OnDestroy()
         {
-            playerInputSo.MoveEvent(character.PlayerId) -= HandleMoveInput;
+            characterActionInput.MoveInputChanged -= HandleMoveInput;
         }
 
         private void HandleMoveInput(Vector2 moveDir)

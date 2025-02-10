@@ -13,7 +13,7 @@ namespace State_Machine_Scripts.States
 
         private void Update()
         {
-            Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
+            Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
             movementController.SetCharacterMove(moveInput.x);
         }
 

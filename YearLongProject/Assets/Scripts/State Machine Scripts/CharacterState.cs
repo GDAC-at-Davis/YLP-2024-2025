@@ -1,14 +1,12 @@
 using Animancer;
 using Animancer.FSM;
-using GameEntities;
 using UnityEngine;
 
 namespace State_Machine_Scripts
 {
     public class CharacterState : StateBehaviour
     {
-        [SerializeField]
-        protected Character Character;
+        [Header("Depends")]
 
         [SerializeField]
         protected CharacterActionManager ActionManager;
@@ -20,7 +18,6 @@ namespace State_Machine_Scripts
 
         public string StateName => StateNameSO;
 
-        // Uses allowedActionTypes to control if entering this state is allowed.
         public override bool CanEnterState
             => ActionManager.GetActionTypeAllowed(StateNameSO.Value);
 
@@ -32,14 +29,9 @@ namespace State_Machine_Scripts
         {
         }
 
-#if UNITY_EDITOR
-        protected override void OnValidate()
+        public void Initialize(CharacterActionManager actionManager)
         {
-            base.OnValidate();
-
-            gameObject.GetComponentInParentOrChildren(ref Character);
-            ActionManager = Character.ActionManager;
+            ActionManager = actionManager;
         }
-#endif
     }
 }

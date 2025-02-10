@@ -1,5 +1,6 @@
 using Animancer;
 using Hitbox.DataStructures;
+using Input_Scripts;
 using State_Machine_Scripts;
 using UnityEngine;
 
@@ -7,8 +8,13 @@ namespace GameEntities
 {
     public class Character : Entity
     {
+        [Header("Depends")]
+
         [SerializeField]
         public CharacterActionManager ActionManager;
+
+        [SerializeField]
+        private CharacterActionInput actionInput;
 
         /// <summary>
         ///     Id of the actual player. Used for input and other player specific things.
@@ -19,6 +25,11 @@ namespace GameEntities
 
         protected bool IsInvincible;
 
+        public void OnDestroy()
+        {
+            actionInput.Cleanup();
+        }
+
 #if UNITY_EDITOR
         private void OnValidate()
         {
@@ -26,12 +37,13 @@ namespace GameEntities
         }
 #endif
 
-        public void Init(int id)
+        public void Initialize(int id)
         {
             playerId = id;
             transform.parent = null;
 
-            ActionManager.Init();
+            actionInput.Initialize(id);
+            ActionManager.Initialize(actionInput);
         }
 
         // Callback for this Character being hit by an attack
