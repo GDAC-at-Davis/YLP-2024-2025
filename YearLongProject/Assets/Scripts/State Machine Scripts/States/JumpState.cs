@@ -1,3 +1,4 @@
+using State_Machine_Scripts;
 using UnityEngine;
 
 public class JumpState : CharacterState
@@ -9,10 +10,13 @@ public class JumpState : CharacterState
     private float maxJumpDuration = 2;
 
     [SerializeField]
+    private SimpleMovementController movementController;
+
+    [SerializeField]
     private AnimationCurve jumpMultCurve;
 
     public override bool CanEnterState
-        => ActionManager.GetActionTypeAllowed(ActionType) && MovementController.GetIsGrounded();
+        => ActionManager.GetActionTypeAllowed(ActionType) && movementController.GetIsGrounded();
 
     private float jumpTimer;
 
@@ -24,27 +28,27 @@ public class JumpState : CharacterState
     private void Update()
     {
         Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
-        MovementController.SetCharacterMove(moveInput.x);
+        movementController.SetCharacterMove(moveInput.x);
 
-        MovementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
+        movementController.SetJumpVelocity(jumpVelocity * jumpMultCurve.Evaluate(jumpTimer / maxJumpDuration));
 
         jumpTimer += Time.deltaTime;
 
         if (!ActionManager.GetPlayerActionInput().JumpHeld || jumpTimer > maxJumpDuration)
         {
-            MovementController.StopJump();
+            movementController.StopJump();
             ActionManager.StateMachine.ForceSetDefaultState();
         }
     }
 
     protected override void OnEnable()
     {
-        MovementController.StartJump();
+        movementController.StartJump();
         jumpTimer = 0;
     }
 
     protected override void OnDisable()
     {
-        MovementController.StopJump();
+        movementController.StopJump();
     }
 }
