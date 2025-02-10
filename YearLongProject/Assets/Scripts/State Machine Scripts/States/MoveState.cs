@@ -5,16 +5,23 @@ namespace State_Machine_Scripts.States
 {
     public class MoveState : CharacterState
     {
+        [Header("MoveState Config")]
+
         [SerializeField]
         private SimpleMovementController movementController;
 
         [SerializeField]
         private PlayableAssetTransitionExt movementPlayableAsset;
 
+        [SerializeField]
+        private StateNameSO jumpState;
+
         private void Update()
         {
             Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
             movementController.SetCharacterMove(moveInput.x);
+
+            ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
         }
 
         protected override void OnEnable()
@@ -26,6 +33,8 @@ namespace State_Machine_Scripts.States
         protected override void OnDisable()
         {
             movementPlayableAsset.Events.OnEnd -= HandleOnEnd;
+
+            ActionManager.SetActionTypeAllowed(jumpState, true);
         }
 
         private void HandleOnEnd()
