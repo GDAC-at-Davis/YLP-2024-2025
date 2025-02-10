@@ -159,7 +159,7 @@ public class CharacterActionManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Application.isPlaying)
         {
-            Handles.Label(transform.position + Vector3.up * 10, StateMachine.CurrentState.ToString());
+            Handles.Label(transform.position + Vector3.up * 10, StateMachine?.CurrentState?.ToString());
         }
 #endif
     }

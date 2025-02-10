@@ -1,7 +1,6 @@
 using Animancer;
 using Animancer.FSM;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CharacterState : StateBehaviour
 {
@@ -11,19 +10,13 @@ public class CharacterState : StateBehaviour
     [SerializeField]
     protected CharacterActionManager ActionManager;
 
-    [SerializeField]
-    protected CharacterMovementController MovementController;
-
-    [SerializeField]
-    protected ClipTransition StateAnimation;
+    public AnimancerComponent Anim => ActionManager.Anim;
 
     // Uses allowedActionTypes to control if entering this state is allowed.
     public override bool CanEnterState
         => ActionManager.GetActionTypeAllowed(ActionType);
 
     protected CharacterActionType ActionType;
-
-    private AnimancerState currentState;
 
     protected virtual void OnEnable()
     {
@@ -40,7 +33,6 @@ public class CharacterState : StateBehaviour
 
         gameObject.GetComponentInParentOrChildren(ref Character);
         ActionManager = Character.ActionManager;
-        MovementController = Character.MovementController;
     }
 #endif
 }

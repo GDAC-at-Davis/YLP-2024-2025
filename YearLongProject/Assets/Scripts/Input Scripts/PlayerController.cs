@@ -1,4 +1,5 @@
 using Input_Scripts;
+using State_Machine_Scripts;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputSo playerInputSo;
 
     [SerializeField]
-    private CharacterMovementController playerMovementController;
+    private SimpleMovementController playerMovementController;
 
     [SerializeField]
     private Vector2 moveInput;
