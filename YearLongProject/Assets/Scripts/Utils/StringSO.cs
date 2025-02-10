@@ -14,5 +14,10 @@ namespace Utils
             get => value;
             set => this.value = value;
         }
+
+        public static implicit operator string(StringSO so)
+        {
+            return so.Value;
+        }
     }
 }

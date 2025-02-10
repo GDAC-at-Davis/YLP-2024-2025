@@ -16,14 +16,9 @@ public class JumpState : CharacterState
     private AnimationCurve jumpMultCurve;
 
     public override bool CanEnterState
-        => ActionManager.GetActionTypeAllowed(ActionType) && movementController.GetIsGrounded();
+        => ActionManager.GetActionTypeAllowed(StateName) && movementController.GetIsGrounded();
 
     private float jumpTimer;
-
-    private void Awake()
-    {
-        ActionType = CharacterActionType.Jump;
-    }
 
     private void Update()
     {

@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 3850342251300834818}
   ActionManager: {fileID: 3105801480486927495}
+  StateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   jumpVelocity: 8
   maxJumpDuration: 0.5
   movementController: {fileID: 1278654112016437739}
@@ -295,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 3850342251300834818}
   ActionManager: {fileID: 3105801480486927495}
+  StateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
   movementController: {fileID: 1278654112016437739}
   movementPlayableAsset:
     _FadeDuration: 0
@@ -383,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 3850342251300834818}
   ActionManager: {fileID: 3105801480486927495}
+  StateNameSO: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
   movementController: {fileID: 1278654112016437739}
   lightAttackPlayableAsset:
     _FadeDuration: 0
@@ -397,6 +400,7 @@ MonoBehaviour:
     _Bindings:
     - {fileID: 0}
     - {fileID: 6972243527925525426}
+  jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
     version: 2
     RefIds: []
@@ -486,7 +490,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6997445811819203289}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 3850342251300834818}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: jumpStateName
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: LightAttackState
+      value: 
+      objectReference: {fileID: 2105862708615594874}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: states.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: lightAttackStateName
+      value: 
+      objectReference: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: 'states.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6997445811819203289}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: 'states.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4410214796524957275}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: 'states.Array.data[2]'
       value: 
       objectReference: {fileID: 2105862708615594874}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
