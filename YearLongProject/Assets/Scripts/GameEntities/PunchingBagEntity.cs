@@ -1,5 +1,6 @@
 using Hitbox.DataStructures;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GameEntities
 {
@@ -11,12 +12,16 @@ namespace GameEntities
         [SerializeField]
         private Rigidbody2D rb;
 
+        public UnityEvent<bool> OnHitEvent;
+
         public override void OnHitByAttack(HitboxInstance hitboxInstance)
         {
             Vector2 kb = hitboxInstance.HitboxEffect.Knockback;
             int dir = hitboxInstance.Context.FlipX ? -1 : 1;
             kb.x *= dir;
             rb.linearVelocity = kb;
+
+            OnHitEvent.Invoke(hitboxInstance.Context.FlipX);
         }
     }
 }
