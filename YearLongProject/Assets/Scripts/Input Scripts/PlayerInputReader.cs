@@ -24,7 +24,7 @@ namespace Input_Scripts
             id = playerInput.playerIndex;
 
             // Run by character selection in the future
-            Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<Character>().Initialize(id);
+            Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
         }
 
         private void OnDestroy()

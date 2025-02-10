@@ -8,6 +8,8 @@ namespace State_Machine_Scripts.States
     /// </summary>
     public class SimpleTimelineState : CharacterState
     {
+        [Header("Config")]
+
         [SerializeField]
         private SimpleMovementController movementController;
 

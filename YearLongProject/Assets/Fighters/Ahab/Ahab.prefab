@@ -90,7 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f64de74083e37408fe650c6c916785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionManager: {fileID: 3105801480486927495}
   StateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   jumpVelocity: 8
   maxJumpDuration: 0.5
@@ -293,7 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionManager: {fileID: 3105801480486927495}
   StateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
   movementController: {fileID: 1278654112016437739}
   movementPlayableAsset:
@@ -381,7 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72620036c08932641825f9b811ccb079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionManager: {fileID: 3105801480486927495}
   StateNameSO: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
   movementController: {fileID: 1278654112016437739}
   lightAttackPlayableAsset:

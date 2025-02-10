@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using Animancer;
 using Animancer.FSM;
+using Base;
 using Input_Scripts;
 using UnityEditor;
 using UnityEngine;
 
 namespace State_Machine_Scripts
 {
-    public class CharacterActionManager : MonoBehaviour
+    public class CharacterActionManager : DescriptionMono
     {
         [Header("Depends")]
 
@@ -16,6 +17,7 @@ namespace State_Machine_Scripts
 
         [Header("States")]
 
+        [Tooltip("All the states in the state machine")]
         [SerializeField]
         private List<CharacterState> states;
 
@@ -74,7 +76,6 @@ namespace State_Machine_Scripts
                 Debug.LogError("No states found in " + name);
             }
 
-            StateMachine.DefaultState = states[0];
             stateInputBuffer = new StateMachine<CharacterState>.InputBuffer(StateMachine);
 
             foreach (CharacterState state in states)
@@ -84,22 +85,17 @@ namespace State_Machine_Scripts
 
                 state.Initialize(this);
             }
+
+            StateMachine.DefaultState = states[0];
         }
 
+        /// <summary>
+        ///     Find all states in children. Small helper tool
+        /// </summary>
         [ContextMenu("Find States")]
-        public void FindStates()
+        private void FindStates()
         {
             states = new List<CharacterState>(GetComponentsInChildren<CharacterState>());
-        }
-
-        public virtual void SetActionTypeAllowed(string action, bool isAllowed)
-        {
-            allowedStatesToEnter[action] = isAllowed;
-        }
-
-        public virtual bool GetActionTypeAllowed(string action)
-        {
-            return allowedStatesToEnter[action];
         }
 
         /// <summary>
@@ -126,6 +122,16 @@ namespace State_Machine_Scripts
         public void SetState(StateNameSO stateName)
         {
             SetState(stateName.Value);
+        }
+
+        public virtual void SetActionTypeAllowed(string action, bool isAllowed)
+        {
+            allowedStatesToEnter[action] = isAllowed;
+        }
+
+        public virtual bool GetActionTypeAllowed(string action)
+        {
+            return allowedStatesToEnter[action];
         }
 
         public virtual void SetAllActionTypeAllowed(bool b)

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GameEntities
 {
-    public class Character : Entity
+    public class CharacterEntity : Entity
     {
         [Header("Depends")]
 
@@ -58,7 +58,7 @@ namespace GameEntities
 
         // Callback for landing an attack on a Character
         // Example of override: granting this Character buffs on landing hit
-        public virtual void OnAttackHit(Character other)
+        public virtual void OnAttackHit(CharacterEntity other)
         {
         }
 

@@ -1,4 +1,5 @@
 using System;
+using Base;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +8,7 @@ namespace Input_Scripts
     /// <summary>
     ///     Interface exposing input actions for a character instance
     /// </summary>
-    public class CharacterActionInput : MonoBehaviour
+    public class CharacterActionInput : DescriptionMono
     {
         [Header("Depends")]
 
@@ -19,16 +20,16 @@ namespace Input_Scripts
         public UnityEvent OnJumpPressed;
 
         public UnityEvent OnLightAttackPressed;
-        
-        public event Action<Vector2> MoveInputChanged;
 
+        // Properties
         public Vector2 MoveInput => moveInput;
         public bool JumpHeld => jumpInputActive;
 
+        // Non-serialized events
+        public event Action<Vector2> MoveInputChanged;
+
         private int playerId;
-
         private Vector2 moveInput;
-
         private bool jumpInputActive;
 
         public void Initialize(int playerId)
@@ -63,6 +64,7 @@ namespace Input_Scripts
             {
                 MoveInputChanged?.Invoke(move);
             }
+
             moveInput = move;
         }
 

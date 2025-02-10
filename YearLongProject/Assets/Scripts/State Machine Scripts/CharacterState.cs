@@ -6,10 +6,7 @@ namespace State_Machine_Scripts
 {
     public class CharacterState : StateBehaviour
     {
-        [Header("Depends")]
-
-        [SerializeField]
-        protected CharacterActionManager ActionManager;
+        [Header("Base State Config")]
 
         [SerializeField]
         protected StateNameSO StateNameSO;
@@ -20,6 +17,10 @@ namespace State_Machine_Scripts
 
         public override bool CanEnterState
             => ActionManager.GetActionTypeAllowed(StateNameSO.Value);
+
+        [Header("Depends")]
+
+        protected CharacterActionManager ActionManager;
 
         protected virtual void OnEnable()
         {
