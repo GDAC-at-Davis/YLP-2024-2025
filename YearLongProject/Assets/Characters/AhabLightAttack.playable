@@ -18,10 +18,11 @@ MonoBehaviour:
       <Knockback>k__BackingField: {x: 0, y: 0}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
-    HitboxArea:
+    RaycastArea: []
+    BoxArea:
+    - center: {x: 1.1, y: 0}
       rotation: 0
-      startOffset: {x: 0, y: 0}
-      length: 9.2
+      size: {x: 2, y: 1}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,7 +265,8 @@ MonoBehaviour:
       <Knockback>k__BackingField: {x: 0, y: 0}
     EndHitboxGroup: 0
     HitboxGroupId: LightPrimary
-    HitboxArea:
-      rotation: 5.53
-      startOffset: {x: 0, y: 0}
-      length: 11.01
+    RaycastArea: []
+    BoxArea:
+    - center: {x: 0, y: 0}
+      rotation: 0
+      size: {x: 2, y: 2}

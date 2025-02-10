@@ -20,7 +20,8 @@ namespace Timeline.Hitboxes
             "ID of the hitboxgroup these hitboxes belong to. Hitboxes from the same hitbox group cannot hit an Entity more than once")]
         public string HitboxGroupId;
 
-        public RaycastArea HitboxArea;
+        public RaycastArea[] RaycastArea;
+        public BoxArea[] BoxArea;
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
@@ -35,19 +36,36 @@ namespace Timeline.Hitboxes
             {
                 if (hitboxEmitter != null)
                 {
-                    hitboxEmitter.EmitHitbox(HitboxArea, HitEffect, HitboxGroupId);
+                    foreach (RaycastArea raycastArea in RaycastArea)
+                    {
+                        hitboxEmitter.EmitHitbox(raycastArea, HitEffect, HitboxGroupId);
+                    }
+                    foreach (BoxArea boxArea in BoxArea)
+                    {
+                        hitboxEmitter.EmitHitbox(boxArea, HitEffect, HitboxGroupId);
+                    }
                 }
             }
             else
             {
                 // In edit mode, just draw the hitbox area
                 HitboxContext context = hitboxEmitter.GetContext(HitboxGroupId);
-
-                HitboxArea.DrawAreaDebug(context, new DrawDebugConfig
+                foreach (RaycastArea raycastArea in RaycastArea)
                 {
-                    Color = Color.red,
-                    Duration = 0
-                });
+                    raycastArea.DrawAreaDebug(context, new DrawDebugConfig
+                    {
+                        Color = Color.red,
+                        Duration = 0
+                    });
+                }
+                foreach (BoxArea boxArea in BoxArea)
+                {
+                    boxArea.DrawAreaDebug(context, new DrawDebugConfig
+                    {
+                        Color = Color.red,
+                        Duration = 0
+                    });
+                }
             }
 
             base.ProcessFrame(playable, info, playerData);

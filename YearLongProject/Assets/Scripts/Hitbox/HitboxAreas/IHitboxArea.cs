@@ -1,4 +1,5 @@
 using Hitbox.DataStructures;
+using System;
 using UnityEngine;
 
 namespace Hitbox.HitboxAreas
