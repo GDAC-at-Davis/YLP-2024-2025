@@ -20,9 +20,6 @@ namespace Hitbox
         private bool showHitboxAreas;
 
         [SerializeField]
-        private bool detailedLogging;
-
-        [SerializeField]
         private float hitboxVisualizeDuration;
 
         /// <summary>
@@ -75,7 +72,7 @@ namespace Hitbox
                     continue;
                 }
 
-                if (detailedLogging)
+                if (DebugWindow.hitboxSystemDebug)
                 {
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }
