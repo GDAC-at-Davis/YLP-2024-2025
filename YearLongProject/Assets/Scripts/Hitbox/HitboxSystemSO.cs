@@ -71,12 +71,12 @@ namespace Hitbox
                 {
                     continue;
                 }
-
+#if UNITY_EDITOR
                 if (DebugWindow.hitboxSystemDebug)
                 {
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }
-
+#endif
                 hurtbox.OnHit(hitboxInstance);
 
                 hitList.Add(entity);
