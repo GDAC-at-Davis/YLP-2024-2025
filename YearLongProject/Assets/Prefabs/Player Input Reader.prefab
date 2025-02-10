@@ -212,4 +212,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  Character: {fileID: 2784295652820237144, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+  Character: {fileID: 8941490867968889106, guid: 48404e96454d3674e93553afc33b3713, type: 3}

@@ -11,7 +11,7 @@ public class TimeSlow : MonoBehaviour
             slow = !slow;
             if (slow)
             {
-                Time.timeScale = 0.1f;
+                Time.timeScale = 0.02f;
             }
             else
             {
