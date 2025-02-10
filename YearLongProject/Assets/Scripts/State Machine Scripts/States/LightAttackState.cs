@@ -1,37 +1,36 @@
+using Animancer;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace State_Machine_Scripts.States
 {
     public class LightAttackState : CharacterState
     {
         [SerializeField]
-        private PlayableDirector playableDirector;
+        private AnimancerComponent animancer;
 
         [SerializeField]
-        private PlayableAsset lightAttackPlayableAsset;
+        private PlayableAssetTransition lightAttackPlayableAsset;
 
         private void Update()
         {
             MovementController.SetCharacterMove(0);
-            if (playableDirector.state != PlayState.Playing)
-            {
-                ActionManager.StateMachine.TrySetDefaultState();
-            }
         }
 
         public override void OnEnterState()
         {
-            playableDirector.playableAsset = lightAttackPlayableAsset;
-            playableDirector.Play();
-            enabled = true;
+            animancer.Play(lightAttackPlayableAsset);
+            lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
             ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, false);
+        }
+
+        private void HandleOnEnd()
+        {
+            ActionManager.StateMachine.TrySetDefaultState();
         }
 
         public override void OnExitState()
         {
-            playableDirector.Stop();
-            enabled = false;
+            lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
             ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, true);
         }
     }

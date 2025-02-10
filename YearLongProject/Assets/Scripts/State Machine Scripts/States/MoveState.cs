@@ -1,7 +1,11 @@
+using Animancer;
 using UnityEngine;
 
 public class MoveState : CharacterState
 {
+    [SerializeField]
+    private AnimancerComponent animancer;
+
     private void Update()
     {
         Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
@@ -10,6 +14,7 @@ public class MoveState : CharacterState
 
     protected override void OnEnable()
     {
+        animancer.Play(StateAnimation);
     }
 
     protected override void OnDisable()
