@@ -8,7 +8,7 @@ public class DebugWindow : EditorWindow
     float timeScale = 1;
     public static bool hitboxSystemDebug = false;
 
-    [MenuItem("Window/DebugMenu")]
+    [MenuItem("Debug/DebugMenu")]
     public static void ShowWindow()
     {
         GetWindow<DebugWindow>();
