@@ -3,7 +3,7 @@ using UnityEngine.Playables;
 namespace Timeline.Hitboxes
 {
     /// <summary>
-    ///     Runtime behavior for the Hitbox track
+    ///     Mixer behavior for hitbox track. Empty since hitboxes don't blend.
     /// </summary>
     public class HitboxTrackMixerBehavior : PlayableBehaviour
     {

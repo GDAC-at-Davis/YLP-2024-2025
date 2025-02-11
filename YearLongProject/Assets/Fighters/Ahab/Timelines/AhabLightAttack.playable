@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5622174148091853810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: AnimationPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 7400000, guid: 041d9cf492062e9478f1c1abc126a4ac, type: 2}
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 1
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24,8 +46,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 1206617100905899009}
-    m_Duration: 0.4117647058823529
+    m_Asset: {fileID: -5622174148091853810}
+    m_Duration: 0.6666666666666666
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3630007790177556980}
     m_EaseInDuration: 0
@@ -89,7 +111,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 0
-    m_DisplayName: gundam_punch
+    m_DisplayName: Ahab_LightAttack
   m_Markers:
     m_Objects: []
   m_InfiniteClipPreExtrapolation: 0
@@ -154,7 +176,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.23520095646381378
+    m_Start: 0.41730475425720215
     m_ClipIn: 0
     m_Asset: {fileID: 7787682714500096443}
     m_Duration: 0.11773650348186493
@@ -224,28 +246,6 @@ MonoBehaviour:
     m_DisplayName: HitboxPlayableAsset
   m_Markers:
     m_Objects: []
---- !u!114 &1206617100905899009
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
-  m_Name: AnimationPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 3aa48caac1f61dc47b4c4fd8a27b75a0, type: 2}
-  m_Position: {x: 0, y: 0, z: 0}
-  m_EulerAngles: {x: 0, y: 0, z: 0}
-  m_UseTrackMatchFields: 1
-  m_MatchTargetFields: 63
-  m_RemoveStartOffset: 1
-  m_ApplyFootIK: 1
-  m_Loop: 0
-  m_Version: 1
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &7787682714500096443
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,15 +260,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 0
-      <Knockback>k__BackingField: {x: 0, y: 0}
+      <Damage>k__BackingField: 15
+      <Knockback>k__BackingField: {x: 8, y: 8}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
-    RaycastArea:
-    - rotation: 0
-      startOffset: {x: 0, y: 0}
-      length: 5
+    RaycastArea: []
     BoxArea:
-    - center: {x: 0.78, y: -0.02}
+    - center: {x: 0.89, y: -0.25}
       rotation: 0
-      size: {x: 1, y: 0.4}
+      size: {x: 1.52, y: 1.04}
+    - center: {x: 0.65, y: 0.27}
+      rotation: -29.5
+      size: {x: 1.54, y: 0.79}

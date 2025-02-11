@@ -10,6 +10,14 @@ namespace State_Machine_Scripts
         [SerializeField]
         private Rigidbody2D characterRigidbody;
 
+        [SerializeField]
+        private LayerMask groundLayer;
+
+        [SerializeField]
+        private float groundCheckDistance;
+
+        private Vector2 Position => characterRigidbody ? characterRigidbody.position : Vector2.zero;
+
         private bool inJump;
         private bool isGrounded;
         private float playerMove;
@@ -17,7 +25,7 @@ namespace State_Machine_Scripts
 
         private void FixedUpdate()
         {
-            isGrounded = Physics2D.Raycast(transform.position, -Vector2.up, 0.55f, 3);
+            isGrounded = Physics2D.Raycast(Position, -Vector2.up, groundCheckDistance, groundLayer);
 
             float playerIntendedMove = playerMove * speed;
             float newVelocity = Mathf.Lerp(characterRigidbody.linearVelocityX, playerIntendedMove, 0.2f);
@@ -27,6 +35,12 @@ namespace State_Machine_Scripts
             {
                 SetVerticalVelocity(jumpVelocity);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(Position, Position - Vector2.up * groundCheckDistance);
         }
 
         public void SetCharacterMove(float playerMove)

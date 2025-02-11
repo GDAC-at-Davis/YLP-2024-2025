@@ -46,6 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   characterRigidbody: {fileID: 3398148317259022351}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckDistance: 0.11
 --- !u!1 &2657891517437868586
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f64de74083e37408fe650c6c916785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 3850342251300834818}
-  ActionManager: {fileID: 3105801480486927495}
+  StateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   jumpVelocity: 8
   maxJumpDuration: 0.5
   movementController: {fileID: 1278654112016437739}
@@ -293,8 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 3850342251300834818}
-  ActionManager: {fileID: 3105801480486927495}
+  StateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
   movementController: {fileID: 1278654112016437739}
   movementPlayableAsset:
     _FadeDuration: 0
@@ -309,6 +311,7 @@ MonoBehaviour:
     _NormalizedStartTime: NaN
     _Bindings: []
     isLooping: 0
+  jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
     version: 2
     RefIds:
@@ -381,8 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72620036c08932641825f9b811ccb079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 3850342251300834818}
-  ActionManager: {fileID: 3105801480486927495}
+  StateNameSO: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
   movementController: {fileID: 1278654112016437739}
   lightAttackPlayableAsset:
     _FadeDuration: 0
@@ -397,6 +399,7 @@ MonoBehaviour:
     _Bindings:
     - {fileID: 0}
     - {fileID: 6972243527925525426}
+  jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
     version: 2
     RefIds: []
@@ -477,6 +480,74 @@ PrefabInstance:
       propertyPath: MovementController
       value: 
       objectReference: {fileID: 1278654112016437739}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3105801480486927495}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetState
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3105801480486927495}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetState
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Cheeses
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnJumpPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: State_Machine_Scripts.StateNameSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnLightAttackPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: State_Machine_Scripts.StateNameSO, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: JumpState
       value: 
@@ -486,13 +557,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6997445811819203289}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 3850342251300834818}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: jumpStateName
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: LightAttackState
       value: 
       objectReference: {fileID: 2105862708615594874}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: states.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: lightAttackStateName
+      value: 
+      objectReference: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: 'states.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6997445811819203289}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: 'states.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4410214796524957275}
+    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: 'states.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2105862708615594874}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6972243527925525426}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2944786106497706937}
     - target: {fileID: 8937021948173160725, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Size.x
       value: 4.2666664
@@ -507,8 +614,12 @@ PrefabInstance:
       objectReference: {fileID: -1251192593, guid: ca53b4dbcdef6e04396c8725e9e7a7e6, type: 3}
     - target: {fileID: 8937021948173160725, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9022335918410440386, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 752d78ad43f3c434fa32d5608f11189b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -530,7 +641,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2324917260605002194, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1794304204803512191}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3193871950307689153, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2944786106497706937}
   m_SourcePrefab: {fileID: 100100000, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
 --- !u!4 &639948414992868120 stripped
 Transform:
@@ -579,3 +693,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2324917260605002194, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
   m_PrefabInstance: {fileID: 8071256034438834651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6651874942664633114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3193871950307689153, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+  m_PrefabInstance: {fileID: 8071256034438834651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2944786106497706937
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651874942664633114}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 67780cb283eb0774e86cd03012cf9ffb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

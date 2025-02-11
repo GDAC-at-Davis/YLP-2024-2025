@@ -8,11 +8,16 @@ namespace State_Machine_Scripts.States
     /// </summary>
     public class SimpleTimelineState : CharacterState
     {
+        [Header("Config")]
+
         [SerializeField]
         private SimpleMovementController movementController;
 
         [SerializeField]
         private PlayableAssetTransition lightAttackPlayableAsset;
+
+        [SerializeField]
+        private StateNameSO jumpState;
 
         private void Update()
         {
@@ -23,7 +28,7 @@ namespace State_Machine_Scripts.States
         {
             Anim.Play(lightAttackPlayableAsset);
             lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
-            ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, false);
+            ActionManager.SetActionTypeAllowed(jumpState, false);
         }
 
         private void HandleOnEnd()
@@ -34,7 +39,7 @@ namespace State_Machine_Scripts.States
         public override void OnExitState()
         {
             lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
-            ActionManager.SetActionTypeAllowed(CharacterActionType.Jump, true);
+            ActionManager.SetActionTypeAllowed(jumpState, true);
         }
     }
 }

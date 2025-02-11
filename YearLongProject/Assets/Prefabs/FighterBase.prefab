@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8710895339890870979}
   - component: {fileID: 6564235481833952604}
+  - component: {fileID: 3143770971735428548}
   m_Layer: 3
   m_Name: ActionManager
   m_TagString: Untagged
@@ -104,23 +105,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  Anim: {fileID: 4398300151406142170}
-  Character: {fileID: 5002924662183864281}
-  MoveState: {fileID: 0}
-  JumpState: {fileID: 0}
-  LightAttackState: {fileID: 0}
-  HeavyAttackState: {fileID: 0}
-  SpecialAttackState: {fileID: 0}
-  DashState: {fileID: 0}
-  HitstunState: {fileID: 0}
-  playerActionInput:
-    MoveDir: {x: 0, y: 0}
-    JumpHeld: 0
-    DashHeld: 0
-    LightAttackHeld: 0
-    HeavyAttackHeld: 0
-    SpecialAttackHeld: 0
+  devDescription: Manages the character state machine
+  Anim: {fileID: 3143770971735428548}
+  states: []
+--- !u!114 &3143770971735428548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968648881426466404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 9022335918410440386}
+  _Transitions: {fileID: 0}
+  _ActionOnDisable: 0
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3525838291768555810}
   - component: {fileID: 5002924662183864281}
-  - component: {fileID: 4398300151406142170}
+  - component: {fileID: 5764878026857287626}
   m_Layer: 3
   m_Name: FighterBase
   m_TagString: Untagged
@@ -169,11 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: 
+  devDescription: Top level representation of a 'Character'
   entityID: 0
   ActionManager: {fileID: 6564235481833952604}
-  MovementController: {fileID: 0}
---- !u!114 &4398300151406142170
+  actionInput: {fileID: 5764878026857287626}
+--- !u!114 &5764878026857287626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,12 +184,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2784295652820237144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 47710bd74423ae844b911d35bcd4e522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Animator: {fileID: 9022335918410440386}
-  _Transitions: {fileID: 0}
-  _ActionOnDisable: 0
+  devDescription: Provides input specific to the character instance and player ID
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  OnJumpPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLightAttackPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,10 +204,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4783867218396614651}
-  - component: {fileID: 8937021948173160725}
   - component: {fileID: 9022335918410440386}
   m_Layer: 3
-  m_Name: Sprite
+  m_Name: VisualObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,61 +227,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2324917260605002194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8937021948173160725
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3193871950307689153}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eda8400c02cdc6a46aed8000437ac7aa, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!95 &9022335918410440386
 Animator:
   serializedVersion: 7
@@ -342,8 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a3bc5cb93a0c4486b5b12b519748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5002924662183864281}
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  characterActionInput: {fileID: 5764878026857287626}
   OnFlipXChange:
     m_PersistentCalls:
       m_Calls:
@@ -359,7 +309,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8937021948173160725}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
         m_MethodName: set_flipX
         m_Mode: 0

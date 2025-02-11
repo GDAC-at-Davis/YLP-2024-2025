@@ -1,36 +1,47 @@
 using Animancer;
-using State_Machine_Scripts;
 using UnityEngine;
 
-public class MoveState : CharacterState
+namespace State_Machine_Scripts.States
 {
-    [SerializeField]
-    private SimpleMovementController movementController;
-
-    [SerializeField]
-    private PlayableAssetTransitionExt movementPlayableAsset;
-
-    private void Update()
+    public class MoveState : CharacterState
     {
-        Vector2 moveInput = ActionManager.GetPlayerActionInput().MoveDir;
-        movementController.SetCharacterMove(moveInput.x);
-    }
+        [Header("MoveState Config")]
 
-    protected override void OnEnable()
-    {
-        Anim.Play(movementPlayableAsset);
-        movementPlayableAsset.Events.OnEnd += HandleOnEnd;
-    }
+        [SerializeField]
+        private SimpleMovementController movementController;
 
-    protected override void OnDisable()
-    {
-        movementPlayableAsset.Events.OnEnd -= HandleOnEnd;
-    }
+        [SerializeField]
+        private PlayableAssetTransitionExt movementPlayableAsset;
 
-    private void HandleOnEnd()
-    {
-        // Only way to loop timelines
-        // https://discussions.unity.com/t/animancer-less-animator-controller-more-animator-control/717489/868?page=44
-        Anim.Play(movementPlayableAsset).Time = 0;
+        [SerializeField]
+        private StateNameSO jumpState;
+
+        private void Update()
+        {
+            Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
+            movementController.SetCharacterMove(moveInput.x);
+
+            ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
+        }
+
+        protected override void OnEnable()
+        {
+            Anim.Play(movementPlayableAsset);
+            movementPlayableAsset.Events.OnEnd += HandleOnEnd;
+        }
+
+        protected override void OnDisable()
+        {
+            movementPlayableAsset.Events.OnEnd -= HandleOnEnd;
+
+            ActionManager.SetActionTypeAllowed(jumpState, true);
+        }
+
+        private void HandleOnEnd()
+        {
+            // Only way to loop timelines
+            // https://discussions.unity.com/t/animancer-less-animator-controller-more-animator-control/717489/868?page=44
+            Anim.Play(movementPlayableAsset).Time = 0;
+        }
     }
 }

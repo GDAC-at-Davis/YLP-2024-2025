@@ -20,8 +20,6 @@ namespace GameEntities
             EntityID = id;
         }
 
-        public virtual void OnHitByAttack(HitboxInstance hitboxInstance)
-        {
-        }
+        public abstract void OnHitByAttack(HitboxInstance hitboxInstance);
     }
 }
