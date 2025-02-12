@@ -3,6 +3,7 @@ using Base;
 using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.Hurtboxes;
+using Hitbox.System;
 using UnityEngine;
 
 namespace Hitbox
@@ -24,14 +25,14 @@ namespace Hitbox
         }
 #endif
 
-        public virtual void OnHit(HitboxInstance hitboxInstance)
+        public virtual void OnHit(HitboxInstance hitInstance, HitImpact hitImpact)
         {
             if (attachedEntity == null)
             {
                 return;
             }
 
-            attachedEntity.OnHitByAttack(hitboxInstance);
+            attachedEntity.OnHitByAttack(hitInstance, hitImpact);
         }
     }
 }
