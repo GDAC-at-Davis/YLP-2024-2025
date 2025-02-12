@@ -1,3 +1,4 @@
+using Base;
 using CharacterScripts;
 using Hitbox.System;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Camera
     /// <summary>
     ///     Script for emitting screen shake events on an entity
     /// </summary>
-    public class EntityScreenShakeEmitter : MonoBehaviour
+    public class EntityScreenShakeEmitter : DescriptionMono
     {
         [SerializeField]
         private FlipXHandler flipXHandler;

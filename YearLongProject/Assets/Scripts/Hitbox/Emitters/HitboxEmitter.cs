@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Base;
 using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
@@ -12,7 +13,7 @@ namespace Hitbox.Emitters
     /// <summary>
     ///     Emits hitboxes
     /// </summary>
-    public class HitboxEmitter : MonoBehaviour
+    public class HitboxEmitter : DescriptionMono
     {
         [Serializable]
         public class HitboxLandEvent : UnityEvent<HitboxInstantiateResult>

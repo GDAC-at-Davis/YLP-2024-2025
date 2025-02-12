@@ -1,4 +1,5 @@
 using Animancer;
+using Base;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace CharacterScripts
     /// <summary>
     ///     Script that handles all hit stop logic
     /// </summary>
-    public class HitStop : MonoBehaviour
+    public class HitStop : DescriptionMono
     {
         [Header("Depends")]
 

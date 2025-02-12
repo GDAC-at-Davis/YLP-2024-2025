@@ -1,10 +1,14 @@
+using Base;
 using Input_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace CharacterScripts
 {
-    public class FlipXHandler : MonoBehaviour
+    /// <summary>
+    ///     Handles flipping the character based on input
+    /// </summary>
+    public class FlipXHandler : DescriptionMono
     {
         [SerializeField]
         private CharacterActionInput characterActionInput;
