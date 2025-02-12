@@ -15,14 +15,21 @@ MonoBehaviour:
   template:
     HitEffect:
       <Damage>k__BackingField: 0
-      <Knockback>k__BackingField: {x: 0, y: 0}
-      <HitPauseDuration>k__BackingField: 0
-      <GiveTargetHitStop>k__BackingField: 0
-      <GiveAttackerHitStop>k__BackingField: 0
+      <Knockback>k__BackingField: {x: 15, y: 15}
+      <HitPauseDuration>k__BackingField: 0.2
+      <GiveTargetHitStop>k__BackingField: 1
+      <GiveAttackerHitStop>k__BackingField: 1
+      <ScreenShakeEffect>k__BackingField: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
     RaycastArea: []
-    BoxArea: []
+    BoxArea:
+    - center: {x: 0.94, y: -0.33}
+      rotation: 0
+      size: {x: 1.54, y: 1}
+    - center: {x: 0.61, y: 0.18}
+      rotation: -35.57
+      size: {x: 1.54, y: 1}
 --- !u!114 &-5622174148091853810
 MonoBehaviour:
   m_ObjectHideFlags: 1

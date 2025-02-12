@@ -53,5 +53,5 @@ MonoBehaviour:
     DissipationMode: 2
     DissipationDistance: 100
     PropagationSpeed: 343
-  <Velocity>k__BackingField: {x: 0, y: 0.5}
+  <Velocity>k__BackingField: {x: -0.3, y: 0}
   <FlipXVelocity>k__BackingField: 1
