@@ -15,7 +15,7 @@ MonoBehaviour:
   template:
     HitEffect:
       <Damage>k__BackingField: 0
-      <Knockback>k__BackingField: {x: 15, y: 15}
+      <Knockback>k__BackingField: {x: 8, y: 8}
       <HitPauseDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
