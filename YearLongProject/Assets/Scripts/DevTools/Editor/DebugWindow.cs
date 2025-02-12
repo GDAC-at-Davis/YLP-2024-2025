@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using Hitbox;
+using Hitbox.System;
 
 public class DebugWindow : EditorWindow
 {
