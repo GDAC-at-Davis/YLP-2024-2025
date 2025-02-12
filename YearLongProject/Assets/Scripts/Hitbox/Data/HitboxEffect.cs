@@ -1,4 +1,5 @@
 using System;
+using Camera;
 using UnityEngine;
 
 namespace Hitbox.DataStructures
@@ -25,5 +26,11 @@ namespace Hitbox.DataStructures
 
         [field: SerializeField]
         public bool GiveAttackerHitStop { get; set; }
+
+        [field: Header("Screen Shake")]
+
+        [field: SerializeField]
+
+        public ScreenShakeSO ScreenShakeEffect { get; set; }
     }
 }

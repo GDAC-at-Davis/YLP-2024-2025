@@ -265,6 +265,7 @@ MonoBehaviour:
       <HitPauseDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
+      <ScreenShakeEffect>k__BackingField: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
     RaycastArea: []
