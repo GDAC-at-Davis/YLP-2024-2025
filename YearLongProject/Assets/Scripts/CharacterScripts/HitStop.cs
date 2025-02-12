@@ -38,6 +38,10 @@ namespace CharacterScripts
             }
         }
 
+        /// <summary>
+        ///     Do hit stop when landing a hit
+        /// </summary>
+        /// <param name="hitboxInstantiateResult"></param>
         public void DoHitStopLandingHit(HitboxInstantiateResult hitboxInstantiateResult)
         {
             if (!hitboxInstantiateResult.HitboxInstance.HitboxEffect.GiveAttackerHitStop)
@@ -53,6 +57,11 @@ namespace CharacterScripts
             }
         }
 
+        /// <summary>
+        ///     Do hit stop when hit by something else
+        /// </summary>
+        /// <param name="hitboxInstance"></param>
+        /// <param name="hitImpact"></param>
         public void DoHitStopWhenHit(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
             if (!hitboxInstance.HitboxEffect.GiveTargetHitStop)
@@ -88,7 +97,7 @@ namespace CharacterScripts
             }
         }
 
-        public void StopHitStop()
+        private void StopHitStop()
         {
             if (animancerComponent)
             {

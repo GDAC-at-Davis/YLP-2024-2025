@@ -15,7 +15,7 @@ namespace Camera
 
         public void ShakeOnLandHit(HitboxInstantiateResult hitboxInstantiateResult)
         {
-            ScreenShakeSO effect = hitboxInstantiateResult.HitboxInstance.HitboxEffect.ScreenShakeEffect;
+            ScreenShakeEffect effect = hitboxInstantiateResult.HitboxInstance.HitboxEffect.ScreenShakeEffect;
 
             Vector2 velocity = effect.Velocity;
 

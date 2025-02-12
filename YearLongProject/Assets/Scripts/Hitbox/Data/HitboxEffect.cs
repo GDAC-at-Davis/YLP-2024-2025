@@ -30,7 +30,6 @@ namespace Hitbox.DataStructures
         [field: Header("Screen Shake")]
 
         [field: SerializeField]
-
-        public ScreenShakeSO ScreenShakeEffect { get; set; }
+        public ScreenShakeEffect ScreenShakeEffect { get; set; }
     }
 }

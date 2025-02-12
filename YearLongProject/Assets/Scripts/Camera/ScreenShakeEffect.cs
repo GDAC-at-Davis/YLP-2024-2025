@@ -1,4 +1,4 @@
-using Base;
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -7,8 +7,8 @@ namespace Camera
     /// <summary>
     ///     Defines a screen shake effect
     /// </summary>
-    [CreateAssetMenu(fileName = "ScreenShake", menuName = "Effects/ScreenShake")]
-    public class ScreenShakeSO : DescriptionSO
+    [Serializable]
+    public struct ScreenShakeEffect
     {
         [field: SerializeField]
         public CinemachineImpulseDefinition ImpulseDefinition { get; set; }

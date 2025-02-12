@@ -1,9 +1,11 @@
 using System;
+using Camera;
 using Hitbox.DataStructures;
 using Hitbox.Emitters;
 using Hitbox.HitboxAreas;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 
 namespace Timeline.Hitboxes
 {
@@ -14,6 +16,10 @@ namespace Timeline.Hitboxes
     public class HitboxPlayableBehavior : PlayableBehaviour
     {
         public HitboxEffect HitEffect;
+
+        [FormerlySerializedAs("ScreenShakeEffect")]
+        public ScreenShakeEffectSO ScreenShakeSO;
+
         public bool EndHitboxGroup;
 
         [Tooltip(
@@ -36,6 +42,10 @@ namespace Timeline.Hitboxes
             {
                 if (hitboxEmitter != null)
                 {
+                    // Copy data from SO
+                    // We don't want to pass SOs in directly so values can safely be overriden by the hitbox emitter
+                    HitEffect.ScreenShakeEffect = ScreenShakeSO.ScreenShakeEffect;
+
                     foreach (RaycastArea raycastArea in RaycastArea)
                     {
                         hitboxEmitter.EmitHitbox(raycastArea, HitEffect, HitboxGroupId);
