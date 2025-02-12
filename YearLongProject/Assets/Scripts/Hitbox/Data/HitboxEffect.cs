@@ -14,5 +14,16 @@ namespace Hitbox.DataStructures
 
         [field: SerializeField]
         public Vector2 Knockback { get; set; }
+
+        [field: Header("Hit Stop")]
+
+        [field: SerializeField]
+        public float HitPauseDuration { get; set; }
+
+        [field: SerializeField]
+        public bool GiveTargetHitStop { get; set; }
+
+        [field: SerializeField]
+        public bool GiveAttackerHitStop { get; set; }
     }
 }

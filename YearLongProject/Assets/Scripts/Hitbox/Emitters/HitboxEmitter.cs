@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
+using Hitbox.System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Hitbox.Emitters
 {
@@ -11,6 +14,11 @@ namespace Hitbox.Emitters
     /// </summary>
     public class HitboxEmitter : MonoBehaviour
     {
+        [Serializable]
+        public class HitboxLandEvent : UnityEvent<HitboxInstantiateResult>
+        {
+        }
+
         private struct HitboxGroupContext
         {
             /// <summary>
@@ -36,6 +44,8 @@ namespace Hitbox.Emitters
         [SerializeField]
         private LayerMask hitboxLayerMask;
 
+        public HitboxLandEvent OnLandHit;
+
         public Entity Entity => entity;
 
         /// <summary>
@@ -57,16 +67,24 @@ namespace Hitbox.Emitters
 
             HitboxContext context = GetContext(hitboxGroupId);
 
-            HitboxSystemSo.HitboxInstantiateResult instantiateResult = hitboxSystemSo.InstantiateHitbox(
-                new HitboxInstance
-                {
-                    HitboxArea = hitboxArea,
-                    Context = context,
-                    HitboxEffect = hitboxEffect
-                });
+            var hitboxInstance = new HitboxInstance
+            {
+                HitboxArea = hitboxArea,
+                Context = context,
+                HitboxEffect = hitboxEffect
+            };
 
-            // Add hit entities to hitbox group context
-            hitEntities[hitboxGroupId].HitEntities.AddRange(instantiateResult.HitEntities);
+            HitboxInstantiateResult instantiateResult = hitboxSystemSo.InstantiateHitbox(
+                hitboxInstance
+            );
+
+            if (instantiateResult.HitImpacts.Count > 0)
+            {
+                OnLandHit?.Invoke(instantiateResult);
+                // Add hit entities to hitbox group context
+                hitEntities[hitboxGroupId].HitEntities
+                    .AddRange(instantiateResult.HitImpacts.ConvertAll(hitImpact => hitImpact.HitEntity));
+            }
         }
 
         public HitboxContext GetContext(string hitboxGroupId)

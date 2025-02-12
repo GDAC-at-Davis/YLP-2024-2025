@@ -5,16 +5,11 @@ using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
 using UnityEngine;
 
-namespace Hitbox
+namespace Hitbox.System
 {
     [CreateAssetMenu(menuName = "Systems/HitboxSystem")]
     public class HitboxSystemSo : DescriptionSO
     {
-        public struct HitboxInstantiateResult
-        {
-            public List<Entity> HitEntities;
-        }
-
         [SerializeField]
         [Tooltip("Whether to draw hitbox areas for debugging purposes")]
         private bool showHitboxAreas;
@@ -39,7 +34,8 @@ namespace Hitbox
 
             Collider2D[] hits = area.GetCollidersInArea(context);
 
-            var hitList = new List<Entity>();
+            var hitEntities = new List<Entity>();
+            var hitImpacts = new List<HitImpact>();
 
             foreach (Collider2D hit in hits)
             {
@@ -67,7 +63,7 @@ namespace Hitbox
                     continue;
                 }
 
-                if (hitList.Contains(entity))
+                if (hitEntities.Contains(entity))
                 {
                     continue;
                 }
@@ -77,9 +73,16 @@ namespace Hitbox
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }
 #endif
-                hurtbox.OnHit(hitboxInstance);
 
-                hitList.Add(entity);
+                var hitImpact = new HitImpact
+                {
+                    HitEntity = entity
+                };
+
+                hurtbox.OnHit(hitboxInstance, hitImpact);
+
+                hitEntities.Add(entity);
+                hitImpacts.Add(hitImpact);
 
                 if (area.StopOnFirstHit)
                 {
@@ -89,7 +92,8 @@ namespace Hitbox
 
             return new HitboxInstantiateResult
             {
-                HitEntities = hitList
+                HitboxInstance = hitboxInstance,
+                HitImpacts = hitImpacts
             };
         }
     }

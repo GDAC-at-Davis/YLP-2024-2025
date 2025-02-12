@@ -1,5 +1,6 @@
 using Base;
 using Hitbox.DataStructures;
+using Hitbox.System;
 using UnityEngine;
 
 namespace GameEntities
@@ -20,6 +21,6 @@ namespace GameEntities
             EntityID = id;
         }
 
-        public abstract void OnHitByAttack(HitboxInstance hitboxInstance);
+        public abstract void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact);
     }
 }

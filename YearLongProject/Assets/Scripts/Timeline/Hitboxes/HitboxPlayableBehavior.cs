@@ -40,6 +40,7 @@ namespace Timeline.Hitboxes
                     {
                         hitboxEmitter.EmitHitbox(raycastArea, HitEffect, HitboxGroupId);
                     }
+
                     foreach (BoxArea boxArea in BoxArea)
                     {
                         hitboxEmitter.EmitHitbox(boxArea, HitEffect, HitboxGroupId);
@@ -58,6 +59,7 @@ namespace Timeline.Hitboxes
                         Duration = 0
                     });
                 }
+
                 foreach (BoxArea boxArea in BoxArea)
                 {
                     boxArea.DrawAreaDebug(context, new DrawDebugConfig

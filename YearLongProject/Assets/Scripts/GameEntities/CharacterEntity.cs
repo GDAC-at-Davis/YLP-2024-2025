@@ -1,5 +1,6 @@
 using Animancer;
 using Hitbox.DataStructures;
+using Hitbox.System;
 using Input_Scripts;
 using State_Machine_Scripts;
 using UnityEngine;
@@ -15,6 +16,9 @@ namespace GameEntities
 
         [SerializeField]
         private CharacterActionInput actionInput;
+
+        [SerializeField]
+        private AnimancerComponent animancerComponent;
 
         /// <summary>
         ///     Id of the actual player. Used for input and other player specific things.
@@ -49,7 +53,7 @@ namespace GameEntities
         // Callback for this Character being hit by an attack
         // Will route calls to health/stats manager, action manager
         // Example of override: reflecting damage back at attacker
-        public override void OnHitByAttack(HitboxInstance hitboxInstance)
+        public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
             if (IsInvincible)
             {
@@ -58,7 +62,7 @@ namespace GameEntities
 
         // Callback for landing an attack on a Character
         // Example of override: granting this Character buffs on landing hit
-        public virtual void OnAttackHit(CharacterEntity other)
+        public virtual void OnAttackHit(HitboxInstantiateResult result)
         {
         }
 

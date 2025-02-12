@@ -1,4 +1,5 @@
 using Hitbox.DataStructures;
+using Hitbox.System;
 
 namespace Hitbox.Hurtboxes
 {
@@ -7,6 +8,6 @@ namespace Hitbox.Hurtboxes
     /// </summary>
     public interface IHurtbox
     {
-        public void OnHit(HitboxInstance hitboxInstance);
+        public void OnHit(HitboxInstance result, HitImpact hitImpact);
     }
 }
