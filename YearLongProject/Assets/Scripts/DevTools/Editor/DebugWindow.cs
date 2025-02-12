@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using Hitbox;
 
 public class DebugWindow : EditorWindow
 {
 
     float timeScale = 1;
-    public static bool hitboxSystemDebug = false;
 
     [MenuItem("Debug/DebugMenu")]
     public static void ShowWindow()
@@ -17,7 +17,7 @@ public class DebugWindow : EditorWindow
     private void OnGUI()
     {
         timeScale = Mathf.Clamp(EditorGUI.FloatField(new Rect(5, 5, position.width, 20), $"Set timescale to {timeScale}", timeScale), 0, 2);
-        hitboxSystemDebug = EditorGUI.Toggle(new Rect(5, 30, position.width, 20), "Toggle Hitbox System Debug", hitboxSystemDebug);
+        HitboxSystemSo.ShowHitboxAreas = EditorGUI.Toggle(new Rect(5, 30, position.width, 20), "Toggle Hitbox System Debug", HitboxSystemSo.ShowHitboxAreas);
         if (GUI.Button(new Rect(5, 55, position.width, 20), "Reset Scene"))
         {
             if (!Application.isPlaying) return;

@@ -17,7 +17,7 @@ namespace Hitbox
 
         [SerializeField]
         [Tooltip("Whether to draw hitbox areas for debugging purposes")]
-        private bool showHitboxAreas;
+        public static bool ShowHitboxAreas = false;
 
         [SerializeField]
         private float hitboxVisualizeDuration;
@@ -32,7 +32,7 @@ namespace Hitbox
             HitboxEffect effect = hitboxInstance.HitboxEffect;
             IHitboxArea area = hitboxInstance.HitboxArea;
 
-            if (showHitboxAreas)
+            if (ShowHitboxAreas)
             {
                 area.DrawAreaDebug(context, new DrawDebugConfig(Color.red, hitboxVisualizeDuration));
             }
@@ -71,12 +71,10 @@ namespace Hitbox
                 {
                     continue;
                 }
-#if UNITY_EDITOR
-                if (DebugWindow.hitboxSystemDebug)
+                if (ShowHitboxAreas)
                 {
                     Debug.Log($"Hit Hurtbox {hit.gameObject}", hit.gameObject);
                 }
-#endif
                 hurtbox.OnHit(hitboxInstance);
 
                 hitList.Add(entity);
