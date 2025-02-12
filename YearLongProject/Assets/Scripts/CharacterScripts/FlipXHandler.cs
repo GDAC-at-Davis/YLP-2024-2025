@@ -11,6 +11,8 @@ namespace CharacterScripts
 
         public UnityEvent<bool> OnFlipXChange;
 
+        public bool CurrentFlipX => currentFlipX;
+
         public bool CanFlipX
         {
             get => canFlipX;

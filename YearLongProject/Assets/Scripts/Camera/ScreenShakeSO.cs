@@ -15,5 +15,9 @@ namespace Camera
 
         [field: SerializeField]
         public Vector2 Velocity { get; set; }
+
+        [field: Tooltip("Flip the X velocity when emitting the impulse based on the characters's facing direction")]
+        [field: SerializeField]
+        public bool FlipXVelocity { get; set; }
     }
 }
