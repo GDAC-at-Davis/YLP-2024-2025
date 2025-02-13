@@ -363,6 +363,7 @@ MonoBehaviour:
     _Bindings:
     - {fileID: 0}
     - {fileID: 6972243527925525426}
+    - {fileID: 0}
   jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
     version: 2
@@ -386,6 +387,8 @@ PlayableDirector:
     value: {fileID: 6972243527925525426}
   - key: {fileID: -3630007790177556980, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 952258634084939545}
+  - key: {fileID: 805959939788455700, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 6276305116148654308}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &8071256034438834651
