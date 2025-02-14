@@ -8,6 +8,9 @@ namespace State_Machine_Scripts
         private float speed = 5;
 
         [SerializeField]
+        private float acceleration;
+
+        [SerializeField]
         private Rigidbody2D characterRigidbody;
 
         [SerializeField]
@@ -15,6 +18,7 @@ namespace State_Machine_Scripts
 
         [SerializeField]
         private float groundCheckDistance;
+
         public float stunTime;
 
         public Vector2 Knockback { get; set; }
@@ -31,7 +35,8 @@ namespace State_Machine_Scripts
             isGrounded = Physics2D.Raycast(Position, -Vector2.up, groundCheckDistance, groundLayer);
 
             float playerIntendedMove = playerMove * speed;
-            float newVelocity = Mathf.Lerp(characterRigidbody.linearVelocityX, playerIntendedMove, 0.2f);
+            float newVelocity = Mathf.Lerp(characterRigidbody.linearVelocity.x, playerIntendedMove,
+                acceleration * Time.fixedDeltaTime);
             SetHorizontalVelocity(newVelocity);
 
             if (inJump)

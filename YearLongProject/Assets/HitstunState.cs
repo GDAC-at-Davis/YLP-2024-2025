@@ -18,7 +18,10 @@ namespace State_Machine_Scripts.States
 
         private void Update()
         {
-            if (Time.time < movementController.stunTime) return;
+            if (Time.time < movementController.stunTime)
+            {
+                return;
+            }
 
             ActionManager.SetAllActionTypeAllowed(true);
             ActionManager.StateMachine.TrySetDefaultState();
@@ -32,16 +35,17 @@ namespace State_Machine_Scripts.States
 
             movementController.ApplyImpulseForce(movementController.Knockback);
             ActionManager.SetAllActionTypeAllowed(false);
+            movementController.enabled = false;
         }
 
         protected override void OnDisable()
         {
             hitstunPlayableAsset.Events.OnEnd -= HandleOnEnd;
+            movementController.enabled = true;
         }
 
         private void HandleOnEnd()
         {
-
         }
     }
 }

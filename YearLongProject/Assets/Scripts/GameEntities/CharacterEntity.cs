@@ -23,19 +23,22 @@ namespace GameEntities
         private AnimancerComponent animancerComponent;
 
         [SerializeField]
-        SimpleMovementController movementController;
+        private SimpleMovementController movementController;
+
+        public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;
+
+        [SerializeField]
+        private int health = 50;
 
         /// <summary>
         ///     Id of the actual player. Used for input and other player specific things.
         /// </summary>
         public int PlayerId => playerId;
 
-        private int playerId = -1;
-
         public int Health => health;
-        [SerializeField]
-        int health = 50;
         public UnityAction<int> UpdateHealth;
+
+        private int playerId = -1;
 
         protected bool IsInvincible;
 
@@ -65,15 +68,22 @@ namespace GameEntities
         // Example of override: reflecting damage back at attacker
         public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
-            if (IsInvincible) return;
+            if (IsInvincible)
+            {
+                return;
+            }
 
             // TODO: move this logic into a function in movement controller?
-            movementController.Knockback = hitboxInstance.HitboxEffect.Knockback;
+            Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
+            knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
+            movementController.Knockback = knockback;
             movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
             TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
 
             ActionManager.SetState("AhabHitstun");
+
+            OnHitByAttackEvent?.Invoke(hitboxInstance, hitImpact);
         }
 
         public void TakeDamage(int damage)
@@ -81,7 +91,10 @@ namespace GameEntities
             health -= damage;
             UpdateHealth.Invoke(health);
 
-            if (health <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (health <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
 
         // Callback for landing an attack on a Character
