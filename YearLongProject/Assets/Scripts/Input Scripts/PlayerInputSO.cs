@@ -74,5 +74,10 @@ namespace Input_Scripts
 
             playerInputEvents.Remove(id);
         }
+
+        public void ClearAllInputReaders()
+        {
+            playerInputEvents.Clear();
+        }
     }
 }

@@ -1,21 +1,21 @@
 using Input_Scripts;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
-///  Temporary character select UI component
-///  Spawns playerreadybutton when a controller is conencted
+///     Temporary character select UI component
+///     Spawns playerreadybutton when a controller is conencted
 /// </summary>
 public class PlayerReady : MonoBehaviour
 {
     [SerializeField]
-    GameObject playerReady;
+    private GameObject playerReady;
+
     [SerializeField]
-    PlayerInputSo playerInputSO;
+    private PlayerInputSo playerInputSO;
 
     private void OnEnable()
     {
+        playerInputSO.ClearAllInputReaders();
         playerInputSO.PlayerInputAdded += OnInputAdded;
     }
 
@@ -24,9 +24,10 @@ public class PlayerReady : MonoBehaviour
         playerInputSO.PlayerInputAdded -= OnInputAdded;
     }
 
-    void OnInputAdded(int id)
+    private void OnInputAdded(int id)
     {
-        PlayerReadyButton button = Instantiate(playerReady, transform).GetComponent<PlayerReadyButton>();
+        Debug.Log($"Player {id} connected");
+        var button = Instantiate(playerReady, transform).GetComponent<PlayerReadyButton>();
         button.Initialize(id);
     }
 }
