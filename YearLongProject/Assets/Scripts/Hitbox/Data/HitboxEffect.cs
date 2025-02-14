@@ -31,5 +31,8 @@ namespace Hitbox.DataStructures
 
         [field: SerializeField]
         public ScreenShakeEffect ScreenShakeEffect { get; set; }
+
+        [field: SerializeField]
+        public float Hitstun { get; set; }
     }
 }

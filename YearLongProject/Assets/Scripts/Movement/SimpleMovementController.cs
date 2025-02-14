@@ -15,6 +15,9 @@ namespace State_Machine_Scripts
 
         [SerializeField]
         private float groundCheckDistance;
+        public float stunTime;
+
+        public Vector2 Knockback { get; set; }
 
         private Vector2 Position => characterRigidbody ? characterRigidbody.position : Vector2.zero;
 

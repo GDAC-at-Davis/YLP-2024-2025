@@ -20,6 +20,8 @@ namespace Input_Scripts
             public UnityAction<bool> JumpEvent;
         }
 
+        public UnityAction<int> PlayerInputAdded;
+
         private readonly Dictionary<int, PlayerInputEvents> playerInputEvents = new();
 
         public ref UnityAction<Vector2> MoveEvent(int id)
@@ -57,6 +59,7 @@ namespace Input_Scripts
             if (!playerInputEvents.TryGetValue(id, out _))
             {
                 playerInputEvents.Add(id, new PlayerInputEvents());
+                PlayerInputAdded?.Invoke(id);
             }
 
             return playerInputEvents[id];
