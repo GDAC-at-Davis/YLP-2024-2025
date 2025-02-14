@@ -23,8 +23,12 @@ namespace Input_Scripts
             playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
             id = playerInput.playerIndex;
 
+            playerInputSo.TryGetPlayerInputEvents(id);
+
+            DontDestroyOnLoad(gameObject);
+
             // Run by character selection in the future
-            Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
+            //Instantiate(Character, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
         }
 
         private void OnDestroy()

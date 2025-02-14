@@ -19,7 +19,7 @@ namespace Hitbox.DataStructures
         [field: Header("Hit Stop")]
 
         [field: SerializeField]
-        public float HitPauseDuration { get; set; }
+        public float HitStopDuration { get; set; }
 
         [field: SerializeField]
         public bool GiveTargetHitStop { get; set; }
@@ -31,5 +31,8 @@ namespace Hitbox.DataStructures
 
         [field: SerializeField]
         public ScreenShakeEffect ScreenShakeEffect { get; set; }
+
+        [field: SerializeField]
+        public float Hitstun { get; set; }
     }
 }
