@@ -4,6 +4,8 @@ using Hitbox.System;
 using Input_Scripts;
 using State_Machine_Scripts;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace GameEntities
 {
@@ -20,10 +22,21 @@ namespace GameEntities
         [SerializeField]
         private AnimancerComponent animancerComponent;
 
+        [SerializeField]
+        private SimpleMovementController movementController;
+
+        public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;
+
+        [SerializeField]
+        private int health = 50;
+
         /// <summary>
         ///     Id of the actual player. Used for input and other player specific things.
         /// </summary>
         public int PlayerId => playerId;
+
+        public int Health => health;
+        public UnityAction<int> UpdateHealth;
 
         private int playerId = -1;
 
@@ -57,6 +70,30 @@ namespace GameEntities
         {
             if (IsInvincible)
             {
+                return;
+            }
+
+            // TODO: move this logic into a function in movement controller?
+            Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
+            knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
+            movementController.Knockback = knockback;
+            movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
+
+            TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
+
+            ActionManager.SetState("AhabHitstun");
+
+            OnHitByAttackEvent?.Invoke(hitboxInstance, hitImpact);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            health -= damage;
+            UpdateHealth.Invoke(health);
+
+            if (health <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
 

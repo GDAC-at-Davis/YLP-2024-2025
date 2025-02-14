@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{63ad7d1d-7208-4a5c-893d-87a5cf4853b8}">
+		<property name="assetPath">
+			<value>Test/SFX - FishMonger Weaponswing - Light attack.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.6428571428571429</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{91809af5-d656-4fcd-81fa-52f4061d6beb}</destination>
+		</relationship>
+	</object>
+</objects>

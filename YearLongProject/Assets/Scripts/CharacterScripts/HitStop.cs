@@ -26,6 +26,11 @@ namespace CharacterScripts
         private Vector2 lastVelocity;
         private RigidbodyConstraints2D lastConstraints;
 
+        private void Awake()
+        {
+            lastConstraints = rb.constraints;
+        }
+
         private void Update()
         {
             if (hitStopTimer > 0)
@@ -44,15 +49,17 @@ namespace CharacterScripts
         /// <param name="hitboxInstantiateResult"></param>
         public void DoHitStopLandingHit(HitboxInstantiateResult hitboxInstantiateResult)
         {
-            if (!hitboxInstantiateResult.HitboxInstance.HitboxEffect.GiveAttackerHitStop)
+            HitboxEffect hitboxEffect = hitboxInstantiateResult.HitboxInstance.HitboxEffect;
+            if (!hitboxEffect.GiveAttackerHitStop)
             {
                 return;
             }
 
-            hitStopTimer = hitboxInstantiateResult.HitboxInstance.HitboxEffect.HitPauseDuration;
+            float hitStopDuration = hitboxEffect.HitStopDuration;
 
-            if (hitStopTimer > 0)
+            if (hitStopDuration > 0)
             {
+                hitStopTimer = hitStopDuration;
                 StartHitstop();
             }
         }
@@ -64,15 +71,18 @@ namespace CharacterScripts
         /// <param name="hitImpact"></param>
         public void DoHitStopWhenHit(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
-            if (!hitboxInstance.HitboxEffect.GiveTargetHitStop)
+            HitboxEffect hitboxEffect = hitboxInstance.HitboxEffect;
+
+            if (!hitboxEffect.GiveTargetHitStop)
             {
                 return;
             }
 
-            hitStopTimer = hitboxInstance.HitboxEffect.HitPauseDuration;
+            float hitStopDuration = hitboxEffect.HitStopDuration;
 
-            if (hitStopTimer > 0)
+            if (hitStopDuration > 0)
             {
+                hitStopTimer = hitStopDuration;
                 StartHitstop();
             }
         }
@@ -92,7 +102,6 @@ namespace CharacterScripts
             if (rb)
             {
                 lastVelocity = rb.linearVelocity;
-                lastConstraints = rb.constraints;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
