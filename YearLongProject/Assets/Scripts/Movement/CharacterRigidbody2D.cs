@@ -31,6 +31,12 @@ namespace Movement
             }
         }
 
+        public Vector2 Gravity
+        {
+            get => gravityAcceleration;
+            set => gravityAcceleration = value;
+        }
+
         private Vector2 movePositionAccumulator;
 
         private int xFlipTransform = 1;

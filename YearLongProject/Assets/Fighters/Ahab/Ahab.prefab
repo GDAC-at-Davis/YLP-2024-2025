@@ -616,6 +616,8 @@ MonoBehaviour:
     - {fileID: 6972243527925525426}
     - {fileID: 0}
     - {fileID: 4198994870414546198}
+    - {fileID: 4198994870414546198}
+    - {fileID: 4198994870414546198}
   useDefaultMovement: 0
   jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
@@ -643,6 +645,10 @@ PlayableDirector:
   - key: {fileID: 805959939788455700, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 6276305116148654308}
   - key: {fileID: 8331418713520652714, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 4198994870414546198}
+  - key: {fileID: 5684589929949749293, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 4198994870414546198}
+  - key: {fileID: 8829339449843730414, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
@@ -831,10 +837,6 @@ PrefabInstance:
     - target: {fileID: 1207173700868113001, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnLandHit.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2324917260605002194, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.6392154
       objectReference: {fileID: 0}
     - target: {fileID: 2324917260605002194, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_LocalPosition.y

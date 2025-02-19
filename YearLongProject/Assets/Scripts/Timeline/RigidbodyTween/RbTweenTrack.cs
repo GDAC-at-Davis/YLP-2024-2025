@@ -20,13 +20,14 @@ namespace Timeline.RigidbodyTween
 
         public override void GatherProperties(PlayableDirector director, IPropertyCollector driver)
         {
-            var trackBinding = director.GetGenericBinding(this) as Rigidbody2D;
+            var trackBinding = director.GetGenericBinding(this) as CharacterRigidbody2D;
             if (trackBinding == null)
             {
                 return;
             }
 
             driver.AddFromName<Transform>(trackBinding.gameObject, "m_LocalPosition");
+            driver.AddFromName<CharacterRigidbody2D>(trackBinding.gameObject, "gravityAcceleration");
 
             base.GatherProperties(director, driver);
         }

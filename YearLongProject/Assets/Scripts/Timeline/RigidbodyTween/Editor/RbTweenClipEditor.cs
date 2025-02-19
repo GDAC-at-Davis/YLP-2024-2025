@@ -1,10 +1,11 @@
+using Timeline.RigidbodyTween.PositionTween;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 
 namespace Timeline.RigidbodyTween.Editor
 {
-    [CustomEditor(typeof(RbTweenPlayableAsset))]
+    [CustomEditor(typeof(PositionTweenPlayableAsset))]
     public class RbTweenClipEditor : UnityEditor.Editor
     {
         private GUIStyle _labelStyle;
@@ -28,8 +29,8 @@ namespace Timeline.RigidbodyTween.Editor
 
         private void OnSceneGUI(SceneView sceneView)
         {
-            var clip = target as RbTweenPlayableAsset;
-            RbTweenPlayableBehavior template = (target as RbTweenPlayableAsset)?.template;
+            var clip = target as PositionTweenPlayableAsset;
+            PositionTweenPlayableBehavior template = (target as PositionTweenPlayableAsset)?.template;
 
             if (template == null)
             {
@@ -61,7 +62,7 @@ namespace Timeline.RigidbodyTween.Editor
         ///     Refresh the timeline when the position handle changes, so the tweened object updates to match the new position
         /// </summary>
         /// <param name="clip"></param>
-        private void OnPositionHandleChange(RbTweenPlayableAsset clip)
+        private void OnPositionHandleChange(PositionTweenPlayableAsset clip)
         {
             Undo.RecordObject(clip, "Edited Timeline Note Clip Position");
             TimelineEditor.Refresh(RefreshReason.ContentsModified);

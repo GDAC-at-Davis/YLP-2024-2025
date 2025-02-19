@@ -3,13 +3,13 @@ using Movement;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace Timeline.RigidbodyTween
+namespace Timeline.RigidbodyTween.PositionTween
 {
     /// <summary>
-    ///     Hitbox runtime playable behavior
+    ///     Tweens the position of a Rigidbody2D directly, bypassing velocity
     /// </summary>
     [Serializable]
-    public class RbTweenPlayableBehavior : PlayableBehaviour
+    public class PositionTweenPlayableBehavior : PlayableBehaviour
     {
         public Vector2 StartPosition;
         public Vector2 EndPosition;
