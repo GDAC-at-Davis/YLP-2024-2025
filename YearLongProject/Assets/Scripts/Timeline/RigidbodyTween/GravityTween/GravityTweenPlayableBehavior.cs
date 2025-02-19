@@ -53,6 +53,11 @@ namespace Timeline.RigidbodyTween.GravityTween
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
+            if (rigidbody == null)
+            {
+                return;
+            }
+
             rigidbody.Gravity = EndGravity;
             if (ReturnToStartGravity)
             {

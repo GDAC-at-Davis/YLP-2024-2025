@@ -1,9 +1,8 @@
-using Timeline.RigidbodyTween.PositionTween;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 
-namespace Timeline.RigidbodyTween.Editor
+namespace Timeline.RigidbodyTween.PositionTween.Editor
 {
     [CustomEditor(typeof(PositionTweenPlayableAsset))]
     public class RbTweenClipEditor : UnityEditor.Editor
@@ -66,6 +65,7 @@ namespace Timeline.RigidbodyTween.Editor
         {
             Undo.RecordObject(clip, "Edited Timeline Note Clip Position");
             TimelineEditor.Refresh(RefreshReason.ContentsModified);
+            EditorUtility.SetDirty(clip);
         }
 
         private Vector2 LabeledPositionHandle(Vector2 pos, Color c, string label)

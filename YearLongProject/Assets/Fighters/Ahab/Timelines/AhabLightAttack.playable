@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     StartPosition: {x: 0.01581633, y: 0.039540768}
-    EndPosition: {x: 3.712487, y: 2.3102708}
+    EndPosition: {x: -0.10825324, y: 4.6734295}
     Curve:
       serializedVersion: 2
       m_Curve:
