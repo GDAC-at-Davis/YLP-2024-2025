@@ -49,9 +49,9 @@ namespace State_Machine_Scripts
         private void OnDrawGizmos()
         {
 #if UNITY_EDITOR
-            if (Application.isPlaying)
+            if (Application.isPlaying && StateMachine?.CurrentState != null)
             {
-                Handles.Label(transform.position + Vector3.up * 10, StateMachine?.CurrentState.StateName);
+                Handles.Label(transform.position + Vector3.up * 10, StateMachine.CurrentState.StateName);
             }
 #endif
         }

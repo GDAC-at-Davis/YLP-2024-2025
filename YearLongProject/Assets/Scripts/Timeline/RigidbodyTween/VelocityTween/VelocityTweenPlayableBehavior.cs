@@ -31,7 +31,7 @@ namespace Timeline.RigidbodyTween.VelocityTween
 
             if (Application.isPlaying)
             {
-                rigidbody.LinearVelocity = newVelocity;
+                rigidbody.SetVelocityWithFlipX(newVelocity);
             }
 
             base.ProcessFrame(playable, info, playerData);
@@ -53,7 +53,7 @@ namespace Timeline.RigidbodyTween.VelocityTween
         {
             if (Application.isPlaying && rigidbody != null)
             {
-                rigidbody.LinearVelocity = EndVelocity;
+                rigidbody.SetVelocityWithFlipX(EndVelocity);
             }
         }
     }

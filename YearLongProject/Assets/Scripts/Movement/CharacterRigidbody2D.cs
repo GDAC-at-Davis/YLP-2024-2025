@@ -95,5 +95,11 @@ namespace Movement
             moveAmount.x *= xFlipTransform;
             movePositionAccumulator += moveAmount;
         }
+
+        public void SetVelocityWithFlipX(Vector2 velocity)
+        {
+            velocity.x *= xFlipTransform;
+            LinearVelocity = velocity;
+        }
     }
 }
