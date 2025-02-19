@@ -43,7 +43,7 @@ namespace State_Machine_Scripts
 
         private void Update()
         {
-            stateInputBuffer.Update();
+            stateInputBuffer?.Update();
         }
 
         private void OnDrawGizmos()

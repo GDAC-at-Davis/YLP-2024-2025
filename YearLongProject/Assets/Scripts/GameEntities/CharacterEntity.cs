@@ -30,6 +30,8 @@ namespace GameEntities
         [SerializeField]
         private int health = 50;
 
+        public bool Initialized => playerId != -1;
+
         /// <summary>
         ///     Id of the actual player. Used for input and other player specific things.
         /// </summary>
