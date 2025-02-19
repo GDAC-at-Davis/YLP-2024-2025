@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3113391724351496076}
   - component: {fileID: 3710255461146798217}
+  - component: {fileID: 4491335647793880029}
   - component: {fileID: 3443485117927734770}
   m_Layer: 7
   m_Name: Punching Bag
@@ -79,6 +80,21 @@ MonoBehaviour:
           m_StringArgument: Hit
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4491335647793880029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825020890591617384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736c5db837500fc4cb8aec7429732351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: 
+  rb2D: {fileID: 3443485117927734770}
+  gravityAcceleration: {x: 0, y: -10}
 --- !u!50 &3443485117927734770
 Rigidbody2D:
   serializedVersion: 5
@@ -94,7 +110,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: f316e5b5fc51c1440899f5b5047612e3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -102,7 +118,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -150,9 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78820d47945630c49a2cb0836f5ed459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  devDescription: 
   animancerComponent: {fileID: 0}
   animator: {fileID: 0}
-  rb: {fileID: 3443485117927734770}
+  rb: {fileID: 4491335647793880029}
 --- !u!1 &3676486719565506616
 GameObject:
   m_ObjectHideFlags: 0
