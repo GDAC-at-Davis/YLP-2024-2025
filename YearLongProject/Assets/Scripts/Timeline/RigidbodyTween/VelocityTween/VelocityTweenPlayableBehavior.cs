@@ -51,6 +51,7 @@ namespace Timeline.RigidbodyTween.VelocityTween
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
+            // Make sure the velocity leaving the timeline is consistent
             if (Application.isPlaying && rigidbody != null)
             {
                 rigidbody.SetVelocityWithFlipX(EndVelocity);

@@ -7,6 +7,9 @@ namespace Timeline.RigidbodyTween
     [Serializable]
     public abstract class RbTweenPlayableAsset : PlayableAsset, ITimelineClipAsset
     {
+        /// <summary>
+        ///     No blending...
+        /// </summary>
         public ClipCaps clipCaps => ClipCaps.None;
     }
 }

@@ -37,6 +37,11 @@ namespace Timeline.RigidbodyTween
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
+            if (Application.isPlaying)
+            {
+                return;
+            }
+
             if (rigidbody == null)
             {
                 return;

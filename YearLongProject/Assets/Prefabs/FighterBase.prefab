@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 8710895339890870979}
   - component: {fileID: 6564235481833952604}
   - component: {fileID: 3143770971735428548}
+  - component: {fileID: 8462776683840606368}
   m_Layer: 3
   m_Name: ActionManager
   m_TagString: Untagged
@@ -141,6 +142,21 @@ MonoBehaviour:
   _Animator: {fileID: 9022335918410440386}
   _Transitions: {fileID: 0}
   _ActionOnDisable: 0
+--- !u!114 &8462776683840606368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968648881426466404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fbd858e1bfc994b9f533db272c8382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: Used fixed time so everything is consistent with physics
+  animancer: {fileID: 3143770971735428548}
+  updateMode: 1
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
