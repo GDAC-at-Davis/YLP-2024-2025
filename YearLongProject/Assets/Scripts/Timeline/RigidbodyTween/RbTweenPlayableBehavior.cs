@@ -27,10 +27,11 @@ namespace Timeline.RigidbodyTween
 
             var time = (float)playable.GetTime();
             float t = time / (float)playable.GetDuration();
+            float curveValue = Curve.Evaluate(t);
+            Vector2 newLocalPosition = Vector2.Lerp(StartPosition, EndPosition, curveValue);
 
             if (Application.isPlaying)
             {
-                Vector2 newLocalPosition = Vector2.Lerp(StartPosition, EndPosition, Curve.Evaluate(t));
                 Vector2 delta = newLocalPosition - initialLocalPosition;
                 initialLocalPosition = newLocalPosition;
                 rigidbody.MoveRelativeWithFlipX(delta);
@@ -38,8 +39,7 @@ namespace Timeline.RigidbodyTween
             else
             {
                 // In editor mode assume we start at 0,0
-                Vector2 newPosition = Vector2.Lerp(StartPosition, EndPosition, Curve.Evaluate(t));
-                rigidbody.transform.position = newPosition;
+                rigidbody.transform.position = newLocalPosition;
             }
 
             base.ProcessFrame(playable, info, playerData);

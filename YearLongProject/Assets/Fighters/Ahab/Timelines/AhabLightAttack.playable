@@ -87,8 +87,8 @@ MonoBehaviour:
   m_Name: RbTweenPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    StartPosition: {x: 0, y: 0}
-    EndPosition: {x: 2, y: 0}
+    StartPosition: {x: 0.01581633, y: 0.039540768}
+    EndPosition: {x: 3.712487, y: 2.3102708}
     Curve:
       serializedVersion: 2
       m_Curve:
@@ -495,7 +495,7 @@ MonoBehaviour:
       Slot13: 0
       Slot14: 0
       Slot15: 0
-  EventLength: 0.561
+  EventLength: 0.611
   eventName: 
   EventReference:
     Guid:
