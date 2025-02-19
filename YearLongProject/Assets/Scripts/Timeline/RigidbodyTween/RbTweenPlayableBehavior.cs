@@ -61,7 +61,7 @@ namespace Timeline.RigidbodyTween
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
-            if (Application.isPlaying)
+            if (Application.isPlaying && rigidbody != null)
             {
                 Vector2 newLocalPosition = EndPosition;
                 Vector2 delta = newLocalPosition - initialLocalPosition;
