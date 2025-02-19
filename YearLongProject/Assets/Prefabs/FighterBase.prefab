@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2324917260605002194}
+  - component: {fileID: 5352263243400969421}
   - component: {fileID: 6857426949256817108}
   m_Layer: 3
   m_Name: Body
@@ -34,6 +35,22 @@ Transform:
   - {fileID: 8682635075572259813}
   m_Father: {fileID: 3525838291768555810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5352263243400969421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559988325042132921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736c5db837500fc4cb8aec7429732351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: Wrapper around Rigidbody2D to automatically handle hitstop and
+    flip X
+  rb2D: {fileID: 6857426949256817108}
+  gravityAcceleration: {x: 0, y: -30}
 --- !u!50 &6857426949256817108
 Rigidbody2D:
   serializedVersion: 5
@@ -49,7 +66,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -72,6 +89,7 @@ GameObject:
   - component: {fileID: 8710895339890870979}
   - component: {fileID: 6564235481833952604}
   - component: {fileID: 3143770971735428548}
+  - component: {fileID: 8462776683840606368}
   m_Layer: 3
   m_Name: ActionManager
   m_TagString: Untagged
@@ -124,6 +142,21 @@ MonoBehaviour:
   _Animator: {fileID: 9022335918410440386}
   _Transitions: {fileID: 0}
   _ActionOnDisable: 0
+--- !u!114 &8462776683840606368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968648881426466404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fbd858e1bfc994b9f533db272c8382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: Used fixed time so everything is consistent with physics
+  animancer: {fileID: 3143770971735428548}
+  updateMode: 1
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +350,7 @@ MonoBehaviour:
   devDescription: Handles the hit-stop effect by freezing animation and the rigidbody
   animancerComponent: {fileID: 3143770971735428548}
   animator: {fileID: 0}
-  rb: {fileID: 6857426949256817108}
+  rb: {fileID: 5352263243400969421}
 --- !u!1 &6386388433225497487
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +481,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1207173700868113001}
         m_TargetAssemblyTypeName: Hitbox.Emitters.HitboxEmitter, Assembly-CSharp
+        m_MethodName: SetFlipX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5352263243400969421}
+        m_TargetAssemblyTypeName: Movement.CharacterRigidbody2D, Assembly-CSharp
         m_MethodName: SetFlipX
         m_Mode: 0
         m_Arguments:

@@ -2,6 +2,7 @@ using Animancer;
 using Base;
 using Hitbox.DataStructures;
 using Hitbox.System;
+using Movement;
 using UnityEngine;
 
 namespace CharacterScripts
@@ -20,16 +21,10 @@ namespace CharacterScripts
         private Animator animator;
 
         [SerializeField]
-        private Rigidbody2D rb;
+        private CharacterRigidbody2D rb;
 
         private float hitStopTimer;
         private Vector2 lastVelocity;
-        private RigidbodyConstraints2D lastConstraints;
-
-        private void Awake()
-        {
-            lastConstraints = rb.constraints;
-        }
 
         private void Update()
         {
@@ -101,8 +96,7 @@ namespace CharacterScripts
 
             if (rb)
             {
-                lastVelocity = rb.linearVelocity;
-                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                rb.SetFrozen(true);
             }
         }
 
@@ -120,8 +114,7 @@ namespace CharacterScripts
 
             if (rb)
             {
-                rb.constraints = lastConstraints;
-                rb.linearVelocity = lastVelocity;
+                rb.SetFrozen(false);
             }
         }
     }

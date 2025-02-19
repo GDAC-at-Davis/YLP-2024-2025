@@ -615,6 +615,10 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 6972243527925525426}
     - {fileID: 0}
+    - {fileID: 4198994870414546198}
+    - {fileID: 4198994870414546198}
+    - {fileID: 4198994870414546198}
+  useDefaultMovement: 0
   jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
     version: 2
@@ -640,6 +644,12 @@ PlayableDirector:
     value: {fileID: 952258634084939545}
   - key: {fileID: 805959939788455700, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 6276305116148654308}
+  - key: {fileID: 8331418713520652714, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 4198994870414546198}
+  - key: {fileID: 5684589929949749293, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 4198994870414546198}
+  - key: {fileID: 8829339449843730414, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &8384448050197480863
@@ -828,6 +838,10 @@ PrefabInstance:
       propertyPath: OnLandHit.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2324917260605002194, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2784295652820237144, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Name
       value: Ahab
@@ -998,26 +1012,26 @@ PrefabInstance:
       objectReference: {fileID: 2105862708615594874}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2944786106497706937}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: set_flipX
       objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.SpriteRenderer, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8937021948173160725, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
@@ -1103,6 +1117,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4198994870414546198 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5352263243400969421, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+  m_PrefabInstance: {fileID: 8071256034438834651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736c5db837500fc4cb8aec7429732351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4678280858386419961 stripped

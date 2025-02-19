@@ -17,11 +17,22 @@ namespace State_Machine_Scripts.States
         private PlayableAssetTransition lightAttackPlayableAsset;
 
         [SerializeField]
+        private bool useDefaultMovement;
+
+        [SerializeField]
         private StateNameSO jumpState;
 
         private void Update()
         {
-            movementController.SetCharacterMove(0);
+            if (useDefaultMovement)
+            {
+                Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
+                movementController.SetCharacterMove(moveInput.x);
+            }
+            else
+            {
+                movementController.SetCharacterMove(0);
+            }
         }
 
         public override void OnEnterState()
