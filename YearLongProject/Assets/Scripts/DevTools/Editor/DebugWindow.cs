@@ -1,3 +1,4 @@
+using Animancer.Editor.Tools;
 using Hitbox.System;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -33,13 +34,19 @@ public class DebugWindow : EditorWindow
         }
     }
 
-    [MenuItem("Debug/DebugMenu")]
+    [MenuItem("GDAC YLP/DebugMenu")]
     public static void ShowWindow()
     {
         GetWindow<DebugWindow>();
     }
 
-    [MenuItem("Debug/Reset Timeline Shortcut %t")]
+    [MenuItem("GDAC YLP/Animancer Sprite Tools")]
+    public static void ShowAnimancerSpriteToolsWindow()
+    {
+        GetWindow<AnimancerToolsWindow>();
+    }
+
+    [MenuItem("GDAC YLP/Reset Timeline Shortcut %t")]
     public static void ResetTimelineShortcut()
     {
         Debug.Log("Resetting timeline");
