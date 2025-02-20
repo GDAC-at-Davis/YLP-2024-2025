@@ -16,6 +16,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 5
       <Knockback>k__BackingField: {x: 8, y: 8}
+      <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
@@ -62,7 +63,13 @@ MonoBehaviour:
           PropagationSpeed: 343
         <Velocity>k__BackingField: {x: 0, y: 0.4}
         <FlipXVelocity>k__BackingField: 1
-      <Hitstun>k__BackingField: 0.5
+      <HitSound>k__BackingField:
+        Guid:
+          Data1: 281330696
+          Data2: 1228196312
+          Data3: 1711216276
+          Data4: -439583530
+        Path: event:/Splat
     ScreenShakeSO: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
