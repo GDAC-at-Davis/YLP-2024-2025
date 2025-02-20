@@ -1,3 +1,4 @@
+using Animancer;
 using UnityEngine;
 
 namespace State_Machine_Scripts.States
@@ -15,6 +16,9 @@ namespace State_Machine_Scripts.States
 
         [SerializeField]
         private AnimationCurve jumpMultCurve;
+
+        [SerializeField]
+        private PlayableAssetTransitionExt jumpPlayableAsset;
 
         public override bool CanEnterState
             => ActionManager.GetActionTypeAllowed(StateName) && movementController.GetIsGrounded();
@@ -41,6 +45,7 @@ namespace State_Machine_Scripts.States
         {
             movementController.StartJump();
             jumpTimer = 0;
+            Anim.Play(jumpPlayableAsset);
         }
 
         protected override void OnDisable()

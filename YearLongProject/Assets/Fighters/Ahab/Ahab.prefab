@@ -208,6 +208,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  jumpPlayableAsset:
+    _FadeDuration: 0
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Asset: {fileID: 11400000, guid: b076554bfbf077444afd66ab69d48152, type: 2}
+    _NormalizedStartTime: NaN
+    _Bindings: []
+    isLooping: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &4044685141698899916
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,28 +362,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
   movementController: {fileID: 1278654112016437739}
-  movementPlayableAsset:
+  characterRigidbody: {fileID: 4198994870414546198}
+  movingPlayableAsset:
     _FadeDuration: 0
     _Speed: 1
     _Events:
       _NormalizedTimes:
       - 1
-      _Callbacks:
-      - rid: 3405683620675322187
+      _Callbacks: []
       _Names: []
     _Asset: {fileID: 11400000, guid: ac0ce67a5aa8d7644b424aad797bbab3, type: 2}
+    _NormalizedStartTime: NaN
+    _Bindings: []
+    isLooping: 0
+  idlePlayableAsset:
+    _FadeDuration: 0
+    _Speed: 1
+    _Events:
+      _NormalizedTimes:
+      - 1
+      _Callbacks: []
+      _Names: []
+    _Asset: {fileID: 11400000, guid: 67ef275317e4ea6408b2f0f28859da73, type: 2}
+    _NormalizedStartTime: NaN
+    _Bindings: []
+    isLooping: 0
+  airPlayableAsset:
+    _FadeDuration: 0
+    _Speed: 1
+    _Events:
+      _NormalizedTimes:
+      - 1
+      _Callbacks: []
+      _Names: []
+    _Asset: {fileID: 11400000, guid: b076554bfbf077444afd66ab69d48152, type: 2}
     _NormalizedStartTime: NaN
     _Bindings: []
     isLooping: 0
   jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
     version: 2
-    RefIds:
-    - rid: 3405683620675322187
-      type: {class: UnityEvent, ns: Animancer, asm: Kybernetik.Animancer}
-      data:
-        m_PersistentCalls:
-          m_Calls: []
+    RefIds: []
 --- !u!320 &2867404207828718042
 PlayableDirector:
   m_ObjectHideFlags: 0
