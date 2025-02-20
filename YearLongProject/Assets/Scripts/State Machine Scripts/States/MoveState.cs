@@ -46,13 +46,14 @@ namespace State_Machine_Scripts.States
 
         protected override void OnEnable()
         {
+            currentPlayableAsset = null;
+            currentSubState = (MoveSubStates)(-1);
             SelectMoveState(Vector2.zero);
         }
 
         protected override void OnDisable()
         {
             currentPlayableAsset.Events.OnEnd -= HandleOnEnd;
-            currentSubState = MoveSubStates.Idle;
         }
 
         private void SelectMoveState(Vector2 moveInput)
