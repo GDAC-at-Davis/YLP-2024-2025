@@ -1,5 +1,6 @@
 using System;
 using Camera;
+using FMODUnity;
 using UnityEngine;
 
 namespace Hitbox.DataStructures
@@ -10,11 +11,16 @@ namespace Hitbox.DataStructures
     [Serializable]
     public class HitboxEffect
     {
+        [field: Header("Gameplay Effects")]
+
         [field: SerializeField]
         public float Damage { get; set; }
 
         [field: SerializeField]
         public Vector2 Knockback { get; set; }
+
+        [field: SerializeField]
+        public float Hitstun { get; set; }
 
         [field: Header("Hit Stop")]
 
@@ -32,7 +38,10 @@ namespace Hitbox.DataStructures
         [field: SerializeField]
         public ScreenShakeEffect ScreenShakeEffect { get; set; }
 
+        [field: Header("Audio")]
+
         [field: SerializeField]
-        public float Hitstun { get; set; }
+
+        public EventReference HitSound { get; set; }
     }
 }

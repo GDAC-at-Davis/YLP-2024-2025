@@ -21,6 +21,8 @@ namespace Input_Scripts
 
         public UnityEvent OnLightAttackPressed;
 
+        public UnityEvent OnDashPressed;
+
         // Properties
         public Vector2 MoveInput => moveInput;
         public bool JumpHeld => jumpInputActive;
@@ -93,6 +95,7 @@ namespace Input_Scripts
 
         private void HandleOnDash(bool state)
         {
+            OnDashPressed.Invoke();
         }
     }
 }

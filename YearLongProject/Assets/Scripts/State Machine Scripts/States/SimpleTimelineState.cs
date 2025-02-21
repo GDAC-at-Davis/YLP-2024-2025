@@ -17,18 +17,37 @@ namespace State_Machine_Scripts.States
         private PlayableAssetTransition lightAttackPlayableAsset;
 
         [SerializeField]
-        private StateNameSO jumpState;
+        private bool useDefaultMovement;
+
+        [Tooltip("Which states can you not cancel into from this state?")]
+        [SerializeField]
+        private StateNameSO[] blockedStates;
 
         private void Update()
         {
-            movementController.SetCharacterMove(0);
+            if (useDefaultMovement)
+            {
+                Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
+                movementController.SetCharacterMove(moveInput.x);
+            }
+            else
+            {
+                movementController.SetCharacterMove(0);
+            }
         }
 
         public override void OnEnterState()
         {
+            if (lightAttackPlayableAsset.State != null)
+            {
+                lightAttackPlayableAsset.State.Destroy();
+            }
             Anim.Play(lightAttackPlayableAsset);
             lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
-            ActionManager.SetActionTypeAllowed(jumpState, false);
+            foreach( StateNameSO state in blockedStates)
+            {
+                ActionManager.SetActionTypeAllowed(state, false);
+            }
         }
 
         private void HandleOnEnd()
@@ -39,7 +58,10 @@ namespace State_Machine_Scripts.States
         public override void OnExitState()
         {
             lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
-            ActionManager.SetActionTypeAllowed(jumpState, true);
+            foreach (StateNameSO state in blockedStates)
+            {
+                ActionManager.SetActionTypeAllowed(state, true);
+            }
         }
     }
 }

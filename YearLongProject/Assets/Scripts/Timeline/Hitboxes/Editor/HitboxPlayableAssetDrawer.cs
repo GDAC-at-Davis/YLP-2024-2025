@@ -1,7 +1,4 @@
-using Hitbox.HitboxAreas;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Timeline.Hitboxes;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -11,10 +8,10 @@ using UnityEngine.Timeline;
 [CustomTimelineEditor(typeof(HitboxPlayableAsset))]
 public class HitboxPlayableAssetDrawer : ClipEditor
 {
-    static List<Texture2D> endHitboxGroup, notEndHitboxGroup;
-    string hitboxID;
-    bool endGroup;
-    Color color;
+    private static List<Texture2D> endHitboxGroup, notEndHitboxGroup;
+    private string hitboxID;
+    private bool endGroup;
+    private Color color;
 
     public override void OnCreate(TimelineClip clip, TrackAsset track, TimelineClip clonedFrom)
     {
@@ -27,20 +24,20 @@ public class HitboxPlayableAssetDrawer : ClipEditor
     {
         // It resets when scripts are edited and the domain reloads :(
         endHitboxGroup = new List<Texture2D> { EditorGUIUtility.FindTexture("PauseButton") };
-        notEndHitboxGroup = new();
+        notEndHitboxGroup = new List<Texture2D>();
 
         hitboxID = ((HitboxPlayableAsset)clip.asset).template.HitboxGroupId;
         endGroup = ((HitboxPlayableAsset)clip.asset).template.EndHitboxGroup;
 
         color = Color.red;
-        string hex = (hitboxID.GetHashCode() & 0x00FFFFFF).ToString("X6");
+        var hex = (hitboxID.GetHashCode() & 0x00FFFFFF).ToString("X6");
         ColorUtility.TryParseHtmlString($"#{hex}", out color);
     }
 
     public override ClipDrawOptions GetClipOptions(TimelineClip clip)
     {
         ClipDrawOptions clipOptions = base.GetClipOptions(clip);
-        clipOptions.displayClipName = false;
+        clipOptions.displayClipName = true;
 
         clipOptions.highlightColor = color;
         clipOptions.icons = endGroup ? endHitboxGroup : notEndHitboxGroup;

@@ -30,6 +30,8 @@ namespace GameEntities
         [SerializeField]
         private int health = 50;
 
+        public bool Initialized => playerId != -1;
+
         /// <summary>
         ///     Id of the actual player. Used for input and other player specific things.
         /// </summary>
@@ -39,8 +41,6 @@ namespace GameEntities
         public UnityAction<int> UpdateHealth;
 
         private int playerId = -1;
-
-        protected bool IsInvincible;
 
         public void OnDestroy()
         {
@@ -68,11 +68,6 @@ namespace GameEntities
         // Example of override: reflecting damage back at attacker
         public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
-            if (IsInvincible)
-            {
-                return;
-            }
-
             // TODO: move this logic into a function in movement controller?
             Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);

@@ -58,6 +58,11 @@ namespace Hitbox.System
                     continue;
                 }
 
+                if (entity.IsInvincible)
+                {
+                    continue;
+                }
+
                 if (context.IgnoreEntities.Contains(entity))
                 {
                     continue;

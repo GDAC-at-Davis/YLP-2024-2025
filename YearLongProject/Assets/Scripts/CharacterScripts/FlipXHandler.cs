@@ -20,9 +20,14 @@ namespace CharacterScripts
         public bool CanFlipX
         {
             get => canFlipX;
-            set => canFlipX = value;
+            set 
+            { 
+                canFlipX = value;
+                SyncFlipX();
+            }
         }
 
+        private bool targetFlipX;
         private bool currentFlipX;
         private bool canFlipX = true;
 
@@ -38,27 +43,32 @@ namespace CharacterScripts
 
         private void HandleMoveInput(Vector2 moveDir)
         {
-            if (!canFlipX)
-            {
-                return;
-            }
-
             if (moveDir.x > 0)
             {
-                if (currentFlipX)
+                if (targetFlipX)
                 {
-                    currentFlipX = false;
-                    OnFlipXChange?.Invoke(currentFlipX);
+                    targetFlipX = false;
                 }
             }
             else if (moveDir.x < 0)
             {
-                if (!currentFlipX)
+                if (!targetFlipX)
                 {
-                    currentFlipX = true;
-                    OnFlipXChange?.Invoke(currentFlipX);
+                    targetFlipX = true;
                 }
             }
+
+            if (!canFlipX) return;
+
+            SyncFlipX();
+        }
+
+        void SyncFlipX()
+        {
+            if (currentFlipX == targetFlipX) return;
+
+            currentFlipX = targetFlipX;
+            OnFlipXChange?.Invoke(currentFlipX);
         }
     }
 }
