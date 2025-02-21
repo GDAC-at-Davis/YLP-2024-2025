@@ -31,6 +31,12 @@ namespace Movement
             }
         }
 
+        public Vector3 Position
+        {
+            get => rb2D.position;
+            set => rb2D.position = value;
+        }
+
         public Vector2 Gravity
         {
             get => gravityAcceleration;
@@ -100,6 +106,11 @@ namespace Movement
         {
             velocity.x *= xFlipTransform;
             LinearVelocity = velocity;
+        }
+
+        public void AddForce(Vector2 force, ForceMode2D forceMode)
+        {
+            rb2D.AddForce(force, forceMode);
         }
     }
 }

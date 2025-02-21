@@ -1,3 +1,4 @@
+using Movement;
 using UnityEngine;
 
 namespace State_Machine_Scripts
@@ -11,7 +12,7 @@ namespace State_Machine_Scripts
         private float acceleration;
 
         [SerializeField]
-        private Rigidbody2D characterRigidbody;
+        private CharacterRigidbody2D characterRigidbody;
 
         [SerializeField]
         private LayerMask groundLayer;
@@ -23,7 +24,7 @@ namespace State_Machine_Scripts
 
         public Vector2 Knockback { get; set; }
 
-        private Vector2 Position => characterRigidbody ? characterRigidbody.position : Vector2.zero;
+        private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
 
         private bool inJump;
         private bool isGrounded;
@@ -35,7 +36,7 @@ namespace State_Machine_Scripts
             isGrounded = Physics2D.Raycast(Position, -Vector2.up, groundCheckDistance, groundLayer);
 
             float playerIntendedMove = playerMove * speed;
-            float newVelocity = Mathf.Lerp(characterRigidbody.linearVelocity.x, playerIntendedMove,
+            float newVelocity = Mathf.Lerp(characterRigidbody.LinearVelocity.x, playerIntendedMove,
                 acceleration * Time.fixedDeltaTime);
             SetHorizontalVelocity(newVelocity);
 
@@ -81,14 +82,14 @@ namespace State_Machine_Scripts
 
         public void SetHorizontalVelocity(float velocity)
         {
-            Vector3 curVel = characterRigidbody.linearVelocity;
-            characterRigidbody.linearVelocity = new Vector2(velocity, curVel.y);
+            Vector3 curVel = characterRigidbody.LinearVelocity;
+            characterRigidbody.LinearVelocity = new Vector2(velocity, curVel.y);
         }
 
         public void SetVerticalVelocity(float velocity)
         {
-            Vector3 curVel = characterRigidbody.linearVelocity;
-            characterRigidbody.linearVelocity = new Vector2(curVel.x, velocity);
+            Vector3 curVel = characterRigidbody.LinearVelocity;
+            characterRigidbody.LinearVelocity = new Vector2(curVel.x, velocity);
         }
 
         public void ApplyImpulseForce(Vector2 force)

@@ -2,6 +2,7 @@ using Base;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GameEntities
 {
@@ -15,6 +16,19 @@ namespace GameEntities
             get => entityID;
             set => entityID = value;
         }
+
+        public UnityAction<bool> InvincibleChanged;
+        private bool isInvincible = false;
+        public virtual bool IsInvincible 
+        {
+            get => isInvincible;
+            set
+            {
+                isInvincible = value;
+                InvincibleChanged.Invoke(value);
+            }
+        }
+        
 
         public virtual void Init(int id)
         {

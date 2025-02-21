@@ -42,8 +42,6 @@ namespace GameEntities
 
         private int playerId = -1;
 
-        protected bool IsInvincible;
-
         public void OnDestroy()
         {
             actionInput.Cleanup();
@@ -70,11 +68,6 @@ namespace GameEntities
         // Example of override: reflecting damage back at attacker
         public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
-            if (IsInvincible)
-            {
-                return;
-            }
-
             // TODO: move this logic into a function in movement controller?
             Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);

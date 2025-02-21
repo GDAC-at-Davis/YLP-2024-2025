@@ -18,10 +18,22 @@ public class HealthDisplay : MonoBehaviour
     private void OnEnable()
     {
         entity.UpdateHealth += UpdateHealth;
+        entity.InvincibleChanged += UpdateInvincibilityStatus;
+    }
+
+    private void OnDisable()
+    {
+        entity.UpdateHealth -= UpdateHealth;
+        entity.InvincibleChanged -= UpdateInvincibilityStatus;
     }
 
     void UpdateHealth(int health)
     {
         text.text = health.ToString();
+    }
+
+    void UpdateInvincibilityStatus(bool isInvuln)
+    {
+        text.color = isInvuln ? Color.blue : Color.white;
     }
 }

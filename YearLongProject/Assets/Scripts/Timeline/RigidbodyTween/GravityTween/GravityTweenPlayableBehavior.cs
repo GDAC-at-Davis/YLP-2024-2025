@@ -48,6 +48,7 @@ namespace Timeline.RigidbodyTween.GravityTween
 
             initialGravity = rigidbody.Gravity;
 
+            Debug.Log(initialGravity);
             base.OnBehaviourPlay(playable, info);
         }
 
@@ -58,10 +59,12 @@ namespace Timeline.RigidbodyTween.GravityTween
                 return;
             }
 
+            
             rigidbody.Gravity = EndGravity;
             if (ReturnToStartGravity)
             {
-                rigidbody.Gravity = initialGravity;
+                rigidbody.Gravity = initialGravity; 
+                Debug.Log($"resetting to {initialGravity}");
             }
         }
     }

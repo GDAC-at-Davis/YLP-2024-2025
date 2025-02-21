@@ -19,8 +19,9 @@ namespace State_Machine_Scripts.States
         [SerializeField]
         private bool useDefaultMovement;
 
+        [Tooltip("Which states can you not cancel into from this state?")]
         [SerializeField]
-        private StateNameSO jumpState;
+        private StateNameSO[] blockedStates;
 
         private void Update()
         {
@@ -37,9 +38,16 @@ namespace State_Machine_Scripts.States
 
         public override void OnEnterState()
         {
+            if (lightAttackPlayableAsset.State != null)
+            {
+                lightAttackPlayableAsset.State.Destroy();
+            }
             Anim.Play(lightAttackPlayableAsset);
             lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
-            ActionManager.SetActionTypeAllowed(jumpState, false);
+            foreach( StateNameSO state in blockedStates)
+            {
+                ActionManager.SetActionTypeAllowed(state, false);
+            }
         }
 
         private void HandleOnEnd()
@@ -50,7 +58,10 @@ namespace State_Machine_Scripts.States
         public override void OnExitState()
         {
             lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
-            ActionManager.SetActionTypeAllowed(jumpState, true);
+            foreach (StateNameSO state in blockedStates)
+            {
+                ActionManager.SetActionTypeAllowed(state, true);
+            }
         }
     }
 }
