@@ -1,6 +1,6 @@
 using UnityEngine.Playables;
 
-namespace Timeline
+namespace Timeline.LockFlipX
 {
     /// <summary>
     ///     Mixer behavior for hitbox track. Empty since hitboxes don't blend.
