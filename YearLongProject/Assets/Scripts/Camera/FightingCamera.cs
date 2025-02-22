@@ -15,6 +15,7 @@ public class FightingCamera : MonoBehaviour
 
     [SerializeField]
     private float lerpingRate = 0.005f;
+
     [SerializeField]
     private float cameraVelocityAnticipation = 1;
 
@@ -68,13 +69,12 @@ public class FightingCamera : MonoBehaviour
         {
             Vector3 focusPoint = target.transform.position;
 
-            Rigidbody2D targetBody = target.GetComponent<Rigidbody2D>();
+            var targetBody = target.GetComponent<Rigidbody2D>();
             if (targetBody)
             {
                 Vector3 targetVel = targetBody.linearVelocity;
                 focusPoint += targetVel * cameraVelocityAnticipation;
             }
-
 
             if (focusPoint.x > topRightBound.x)
             {
@@ -130,7 +130,9 @@ public class FightingCamera : MonoBehaviour
             cameraDistance = cameraDistanceVertical;
         }
 
-        cam.transform.position = cam.transform.position * (1-lerpingRate) + lerpingRate * (cameraFocusPoint + new Vector3(0, 0, -cameraDistance));
+        float t = 1 - Mathf.Pow(1 - lerpingRate, Time.deltaTime);
+        Vector3 targetPosition = cameraFocusPoint + new Vector3(0, 0, -cameraDistance);
+        cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, t);
     }
 
     public void SetTargets(IEnumerable<GameObject> gameObjects)
