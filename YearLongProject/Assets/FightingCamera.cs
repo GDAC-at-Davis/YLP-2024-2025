@@ -13,6 +13,11 @@ public class FightingCamera : MonoBehaviour
     [SerializeField]
     private Vector2 offset;
 
+    [SerializeField]
+    private float lerpingRate = 0.005f;
+    [SerializeField]
+    private float cameraVelocityAnticipation = 1;
+
     private CinemachineCamera cam;
 
     private Vector2 topRightBound;
@@ -28,7 +33,7 @@ public class FightingCamera : MonoBehaviour
     {
         //cam.transform.position += new Vector3(0.0f, 0, 0.1f);
 
-        if (targets.Count > 0)
+        if (targets.Count == 1)
         {
             cam.transform.position = targets[0].transform.position + new Vector3(0.0f, 0, -15f);
         }
@@ -61,24 +66,34 @@ public class FightingCamera : MonoBehaviour
 
         foreach (GameObject target in targets)
         {
-            if (target.transform.position.x > topRightBound.x)
+            Vector3 focusPoint = target.transform.position;
+
+            Rigidbody2D targetBody = target.GetComponent<Rigidbody2D>();
+            if (targetBody)
             {
-                topRightBound.x = target.transform.position.x;
+                Vector3 targetVel = targetBody.linearVelocity;
+                focusPoint += targetVel * cameraVelocityAnticipation;
             }
 
-            if (target.transform.position.y > topRightBound.y)
+
+            if (focusPoint.x > topRightBound.x)
             {
-                topRightBound.y = target.transform.position.y;
+                topRightBound.x = focusPoint.x;
             }
 
-            if (target.transform.position.x < bottomLeftBound.x)
+            if (focusPoint.y > topRightBound.y)
             {
-                bottomLeftBound.x = target.transform.position.x;
+                topRightBound.y = focusPoint.y;
             }
 
-            if (target.transform.position.y < bottomLeftBound.y)
+            if (focusPoint.x < bottomLeftBound.x)
             {
-                bottomLeftBound.y = target.transform.position.y;
+                bottomLeftBound.x = focusPoint.x;
+            }
+
+            if (focusPoint.y < bottomLeftBound.y)
+            {
+                bottomLeftBound.y = focusPoint.y;
             }
         }
 
@@ -115,7 +130,7 @@ public class FightingCamera : MonoBehaviour
             cameraDistance = cameraDistanceVertical;
         }
 
-        cam.transform.position = cameraFocusPoint + new Vector3(0, 0, -cameraDistance);
+        cam.transform.position = cam.transform.position * (1-lerpingRate) + lerpingRate * (cameraFocusPoint + new Vector3(0, 0, -cameraDistance));
     }
 
     public void SetTargets(IEnumerable<GameObject> gameObjects)
