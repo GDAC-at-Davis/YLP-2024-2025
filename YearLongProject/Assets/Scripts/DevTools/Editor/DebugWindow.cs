@@ -1,4 +1,5 @@
 using Animancer.Editor.Tools;
+using GBG.PlayableGraphMonitor.Editor;
 using Hitbox.System;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -44,6 +45,12 @@ public class DebugWindow : EditorWindow
     public static void ShowAnimancerSpriteToolsWindow()
     {
         GetWindow<AnimancerToolsWindow>();
+    }
+    
+    [MenuItem("GDAC YLP/Playable Graph Visualizer")]
+    public static void ShowPlayableGraphMonitorWindow()
+    {
+        GetWindow<PlayableGraphMonitorWindow>();
     }
 
     [MenuItem("GDAC YLP/Reset Timeline Shortcut %t")]

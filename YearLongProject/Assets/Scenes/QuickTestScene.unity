@@ -4030,10 +4030,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2748817992342692744, guid: 0bbfa49a0db053348b77ab37a9aff034, type: 3}
-      propertyPath: lerpingRate
-      value: 0.005
-      objectReference: {fileID: 0}
     - target: {fileID: 7798950107443839925, guid: 0bbfa49a0db053348b77ab37a9aff034, type: 3}
       propertyPath: m_Name
       value: StageCameraSystem
