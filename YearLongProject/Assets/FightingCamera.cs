@@ -1,27 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FightingCamera : MonoBehaviour
 {
-    private CinemachineCamera cam;
+    [SerializeField]
+    private List<GameObject> targets;
 
-    [SerializeField] List<GameObject> targets;
+    [SerializeField]
+    private Vector2 padding;
+
+    [SerializeField]
+    private Vector2 offset;
+
+    private CinemachineCamera cam;
 
     private Vector2 topRightBound;
     private Vector2 bottomLeftBound;
-    private Vector3 CameraFocusPoint;
+    private Vector3 cameraFocusPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         cam = gameObject.GetComponent<CinemachineCamera>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //cam.transform.position += new Vector3(0.0f, 0, 0.1f);
 
@@ -30,16 +33,23 @@ public class FightingCamera : MonoBehaviour
             cam.transform.position = targets[0].transform.position + new Vector3(0.0f, 0, -15f);
         }
 
-        findCameraBounds();
+        FindCameraBounds();
 
-        findCameraDistance();
-
-
+        FindCameraDistance();
     }
 
-    // Finds the smallest necessary box to cover all characters in combat.
-    // Determines minimum camera width and height.
-    void findCameraBounds()
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(topRightBound, 0.15f);
+        Gizmos.DrawSphere(bottomLeftBound, 0.15f);
+    }
+
+    /// <summary>
+    ///     Finds the smallest necessary box to cover all characters in combat.
+    ///     Determines minimum camera width and height.
+    /// </summary>
+    private void FindCameraBounds()
     {
         topRightBound = targets[0].transform.position;
         bottomLeftBound = targets[0].transform.position;
@@ -47,34 +57,50 @@ public class FightingCamera : MonoBehaviour
         foreach (GameObject target in targets)
         {
             if (target.transform.position.x > topRightBound.x)
+            {
                 topRightBound.x = target.transform.position.x;
-            if (target.transform.position.y > topRightBound.y)
-                topRightBound.y = target.transform.position.y;
-            
-            if (target.transform.position.x < bottomLeftBound.x)
-                bottomLeftBound.x = target.transform.position.x;
-            if (target.transform.position.y < bottomLeftBound.y)
-                bottomLeftBound.y = target.transform.position.y;
+            }
 
-            
+            if (target.transform.position.y > topRightBound.y)
+            {
+                topRightBound.y = target.transform.position.y;
+            }
+
+            if (target.transform.position.x < bottomLeftBound.x)
+            {
+                bottomLeftBound.x = target.transform.position.x;
+            }
+
+            if (target.transform.position.y < bottomLeftBound.y)
+            {
+                bottomLeftBound.y = target.transform.position.y;
+            }
         }
 
+        // Add padding
+        topRightBound += padding;
+        bottomLeftBound -= padding;
 
-        CameraFocusPoint = topRightBound / 2 + bottomLeftBound / 2;
-        CameraFocusPoint.z = 0;
+        // Offset
+        topRightBound += offset;
+        bottomLeftBound += offset;
+
+        cameraFocusPoint = topRightBound / 2 + bottomLeftBound / 2;
+        cameraFocusPoint.z = 0;
     }
 
-    void findCameraDistance()
+    private void FindCameraDistance()
     {
         float height = topRightBound.y - bottomLeftBound.y;
         float width = topRightBound.x - bottomLeftBound.x;
-        float cameraDistanceVertical = (height/2) / Mathf.Tan( Mathf.Deg2Rad * cam.Lens.FieldOfView/2 );
-        float horizontalFOV = Mathf.Tan( Mathf.Deg2Rad * cam.Lens.FieldOfView / 2) * (16f/9f);
-        Debug.Log(horizontalFOV * Mathf.Rad2Deg);
-        float cameraDistanceHorizontal = (width/2) / (horizontalFOV);
+        float cameraDistanceVertical = height / 2 / Mathf.Tan(Mathf.Deg2Rad * cam.Lens.FieldOfView / 2);
 
+        // Calculate tangent of horizontal half FOV
+        float horizontalHalfFovTangent = Mathf.Tan(Mathf.Deg2Rad * cam.Lens.FieldOfView / 2) * (16f / 9f);
+        float cameraDistanceHorizontal = width / 2 / horizontalHalfFovTangent;
+
+        // Find the largest distance
         float cameraDistance;
-
         if (cameraDistanceHorizontal > cameraDistanceVertical)
         {
             cameraDistance = cameraDistanceHorizontal;
@@ -84,13 +110,12 @@ public class FightingCamera : MonoBehaviour
             cameraDistance = cameraDistanceVertical;
         }
 
-        cam.transform.position = CameraFocusPoint + new Vector3(0, 0, -cameraDistance);
+        cam.transform.position = cameraFocusPoint + new Vector3(0, 0, -cameraDistance);
     }
 
-    void OnDrawGizmos()
+    public void SetTargets(IEnumerable<GameObject> gameObjects)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(topRightBound, 0.15f);
-        Gizmos.DrawSphere(bottomLeftBound, 0.15f);
+        targets.Clear();
+        targets.AddRange(gameObjects);
     }
 }

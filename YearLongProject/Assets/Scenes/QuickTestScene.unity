@@ -1184,6 +1184,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &393124490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 825020890591617384, guid: 30c9368bb81abc6428ca04e92d2bd480, type: 3}
+  m_PrefabInstance: {fileID: 3337108818101308521}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425230276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,6 +2589,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1163708538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8631050776698224226, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
+  m_PrefabInstance: {fileID: 1283440678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1276748092
 Mesh:
   m_ObjectHideFlags: 0
@@ -3283,8 +3293,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1397171857}
   - component: {fileID: 1397171858}
-  - component: {fileID: 1397171860}
   - component: {fileID: 1397171859}
+  - component: {fileID: 1397171861}
   m_Layer: 0
   m_Name: Stage Camera
   m_TagString: Untagged
@@ -3373,7 +3383,7 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
---- !u!114 &1397171860
+--- !u!114 &1397171861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3382,16 +3392,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397171856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 27f662b2c24a83a49aa6d9f818323f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackerSettings:
-    BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
-    AngularDampingMode: 0
-    RotationDamping: {x: 1, y: 1, z: 1}
-    QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 2, z: -15}
+  targets:
+  - {fileID: 393124490}
+  - {fileID: 1163708538}
+  padding: {x: 3, y: 4}
+  offset: {x: 0, y: 1}
 --- !u!1 &1465782233
 GameObject:
   m_ObjectHideFlags: 0
