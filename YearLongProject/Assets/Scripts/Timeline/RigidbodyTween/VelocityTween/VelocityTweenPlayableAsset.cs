@@ -10,7 +10,7 @@ namespace Timeline.RigidbodyTween.VelocityTween
     {
         public VelocityTweenPlayableBehavior template = new();
 
-        public ClipCaps clipCaps => ClipCaps.None;
+        public new ClipCaps clipCaps => ClipCaps.None;
 
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {

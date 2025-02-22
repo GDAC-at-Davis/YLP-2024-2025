@@ -1,19 +1,18 @@
 using CharacterScripts;
-using GameEntities;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-namespace Timeline
+namespace Timeline.LockFlipX
 {
     // A track that allows timed restriction of changing directions
-    [TrackBindingType(typeof(Entity))]
-    [TrackClipType(typeof(SetInvinciblePlayableAsset))]
-    public class SetInvincibleTrack : TrackAsset
+    [TrackBindingType(typeof(FlipXHandler))]
+    [TrackClipType(typeof(LockFlipXPlayableAsset))]
+    public class LockFlipXTrack : TrackAsset
     {
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
-            return ScriptPlayable<SetInvinciblePlayableBehavior>.Create(graph, inputCount);
+            return ScriptPlayable<LockFlipXTrackMixerBehavior>.Create(graph, inputCount);
         }
     }
 }

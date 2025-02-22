@@ -10,7 +10,7 @@ namespace Timeline.RigidbodyTween.PositionTween
     {
         public PositionTweenPlayableBehavior template = new();
 
-        public ClipCaps clipCaps => ClipCaps.None;
+        public new ClipCaps clipCaps => ClipCaps.None;
 
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {

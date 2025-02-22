@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-namespace Timeline
+namespace Timeline.SetInvincible
 {
     public class SetInvinciblePlayableAsset : PlayableAsset, ITimelineClipAsset
     {

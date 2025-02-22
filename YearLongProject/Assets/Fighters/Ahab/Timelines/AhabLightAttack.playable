@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     StartPosition: {x: 0.01581633, y: 0.039540768}
-    EndPosition: {x: 2.9475908, y: 0.032057405}
+    EndPosition: {x: 1.7427711, y: 0.032057405}
     Curve:
       serializedVersion: 2
       m_Curve:
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: VelocityTweenPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    StartVelocity: {x: -15, y: 0}
+    StartVelocity: {x: 0, y: 0}
     EndVelocity: {x: 0, y: 0}
     Curve:
       serializedVersion: 2
