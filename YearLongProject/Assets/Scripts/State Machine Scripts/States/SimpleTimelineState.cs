@@ -42,6 +42,7 @@ namespace State_Machine_Scripts.States
             {
                 lightAttackPlayableAsset.State.Destroy();
             }
+            
             Anim.Play(lightAttackPlayableAsset);
             lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
             foreach( StateNameSO state in blockedStates)
