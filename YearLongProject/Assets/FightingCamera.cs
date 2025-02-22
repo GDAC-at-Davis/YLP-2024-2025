@@ -51,6 +51,11 @@ public class FightingCamera : MonoBehaviour
     /// </summary>
     private void FindCameraBounds()
     {
+        if (targets.Count == 0)
+        {
+            return;
+        }
+
         topRightBound = targets[0].transform.position;
         bottomLeftBound = targets[0].transform.position;
 

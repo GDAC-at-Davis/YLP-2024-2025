@@ -1184,11 +1184,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &393124490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 825020890591617384, guid: 30c9368bb81abc6428ca04e92d2bd480, type: 3}
-  m_PrefabInstance: {fileID: 3337108818101308521}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425230276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,11 +2584,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1163708538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8631050776698224226, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-  m_PrefabInstance: {fileID: 1283440678}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1276748092
 Mesh:
   m_ObjectHideFlags: 0
@@ -3295,6 +3285,7 @@ GameObject:
   - component: {fileID: 1397171858}
   - component: {fileID: 1397171859}
   - component: {fileID: 1397171861}
+  - component: {fileID: 1397171862}
   m_Layer: 0
   m_Name: Stage Camera
   m_TagString: Untagged
@@ -3395,11 +3386,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f662b2c24a83a49aa6d9f818323f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 393124490}
-  - {fileID: 1163708538}
+  targets: []
   padding: {x: 3, y: 4}
   offset: {x: 0, y: 1}
+--- !u!114 &1397171862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397171856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af30d91a1f44e74d9830daf313fc1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightingCamera: {fileID: 1397171861}
 --- !u!1 &1465782233
 GameObject:
   m_ObjectHideFlags: 0
