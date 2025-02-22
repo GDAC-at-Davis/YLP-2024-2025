@@ -69,9 +69,9 @@ public class FightingCamera : MonoBehaviour
         float height = topRightBound.y - bottomLeftBound.y;
         float width = topRightBound.x - bottomLeftBound.x;
         float cameraDistanceVertical = (height/2) / Mathf.Tan( Mathf.Deg2Rad * cam.Lens.FieldOfView/2 );
-        float horizontalFOV = Mathf.Tan( Mathf.Deg2Rad * cam.Lens.FieldOfView / 2) * (16/16);
+        float horizontalFOV = Mathf.Tan( Mathf.Deg2Rad * cam.Lens.FieldOfView / 2) * (16f/9f);
         Debug.Log(horizontalFOV * Mathf.Rad2Deg);
-        float cameraDistanceHorizontal = (width/2) / (horizontalFOV) / 2;
+        float cameraDistanceHorizontal = (width/2) / (horizontalFOV);
 
         float cameraDistance;
 
