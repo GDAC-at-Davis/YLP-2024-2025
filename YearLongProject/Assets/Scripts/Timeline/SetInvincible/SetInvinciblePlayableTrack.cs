@@ -5,7 +5,7 @@ using UnityEngine.Timeline;
 
 namespace Timeline.SetInvincible
 {
-    // A track that allows timed restriction of changing directions
+    // A track that allows timed durations of invincibility 
     [TrackBindingType(typeof(Entity))]
     [TrackClipType(typeof(SetInvinciblePlayableAsset))]
     public class SetInvincibleTrack : TrackAsset

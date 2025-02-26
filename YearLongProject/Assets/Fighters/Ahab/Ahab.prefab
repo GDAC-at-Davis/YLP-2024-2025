@@ -471,7 +471,7 @@ MonoBehaviour:
   movementController: {fileID: 1278654112016437739}
   lightAttackPlayableAsset:
     _FadeDuration: 0
-    _Speed: 1
+    _Speed: 1.5
     _Events:
       _NormalizedTimes:
       - 1
@@ -487,10 +487,9 @@ MonoBehaviour:
     - {fileID: 4198994870414546198}
     - {fileID: 4198994870414546198}
     - {fileID: 1510922958757828136}
+    - {fileID: 3105801480486927495}
   useDefaultMovement: 0
-  blockedStates:
-  - {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
-  - {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
+  blockedStates: []
   references:
     version: 2
     RefIds: []
@@ -523,6 +522,8 @@ PlayableDirector:
     value: {fileID: 4198994870414546198}
   - key: {fileID: 727510962836346268, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 1510922958757828136}
+  - key: {fileID: 134961741509081110, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &8646585484509999927
@@ -589,10 +590,9 @@ MonoBehaviour:
     - {fileID: 4198994870414546198}
     - {fileID: 3850342251300834818}
     - {fileID: 1510922958757828136}
+    - {fileID: 3105801480486927495}
   useDefaultMovement: 0
-  blockedStates:
-  - {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
-  - {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+  blockedStates: []
   references:
     version: 2
     RefIds: []
@@ -623,6 +623,8 @@ PlayableDirector:
     value: {fileID: 3850342251300834818}
   - key: {fileID: 2480572688218748153, guid: 4777c4b8df04be741b0d782f644ff716, type: 2}
     value: {fileID: 1510922958757828136}
+  - key: {fileID: -7105747096824312016, guid: 4777c4b8df04be741b0d782f644ff716, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &8071256034438834651
