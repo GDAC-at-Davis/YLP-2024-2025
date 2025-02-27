@@ -1,19 +1,15 @@
+using System;
 using State_Machine_Scripts;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace Timeline.SetTransitionStates
 {
-    [System.Serializable]
+    [Serializable]
     public class SetTransitionStatesPlayableBehavior : PlayableBehaviour
     {
-        public bool isAllowed = true;
-        public string[] allowedStates;
-        public CharacterActionManager actionManager;
-
-        public int flags = 0;
-        public string[] states;
+        public StateNameSO[] AllowedStates = { };
+        public CharacterActionManager ActionManager;
 
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
@@ -22,9 +18,21 @@ namespace Timeline.SetTransitionStates
                 return;
             }
 
-            actionManager = info.output.GetUserData() as CharacterActionManager;
-            actionManager.SetActionTypesAllowed(isAllowed, allowedStates);
+            ActionManager = info.output.GetUserData() as CharacterActionManager;
 
+            if (ActionManager == null)
+            {
+                Debug.LogWarning("No CharacterActionManager bound to this clip");
+                return;
+            }
+
+            ActionManager.SetAllActionTypeAllowed(false);
+            ActionManager.SetActionTypesAllowed(true, AllowedStates);
+        }
+
+        public override void OnBehaviourPause(Playable playable, FrameData info)
+        {
+            ActionManager.SetAllActionTypeAllowed(true);
         }
     }
 }

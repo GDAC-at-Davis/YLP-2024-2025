@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d323e4d1f07d9d24a9287354d8478553, type: 3}
-  m_Name: AhabDash
+  m_Name: AhabDashes
   m_EditorClassIdentifier: 
   devDescription: 

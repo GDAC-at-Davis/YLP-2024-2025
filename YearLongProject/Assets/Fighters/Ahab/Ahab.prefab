@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ebd53e44d16f549b9e5572fc135870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateNameSO: {fileID: 11400000, guid: 0e10f278ea9823445b9ecac3cd38e2e5, type: 2}
+  stateNameSO: {fileID: 11400000, guid: 0e10f278ea9823445b9ecac3cd38e2e5, type: 2}
   movementController: {fileID: 1278654112016437739}
   hitstunPlayableAsset:
     _FadeDuration: 0
@@ -57,7 +57,9 @@ MonoBehaviour:
       _Names: []
     _Asset: {fileID: 11400000, guid: 50ccf3096063bee418c224e3c303610a, type: 2}
     _NormalizedStartTime: NaN
-    _Bindings: []
+    _Bindings:
+    - {fileID: 0}
+    - {fileID: 3105801480486927495}
     isLooping: 0
   jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   references:
@@ -82,6 +84,8 @@ PlayableDirector:
     value: {fileID: 952258634084939545}
   - key: {fileID: -7379511012254884165, guid: 50ccf3096063bee418c224e3c303610a, type: 2}
     value: {fileID: 952258634084939545}
+  - key: {fileID: -3466524602175485907, guid: 50ccf3096063bee418c224e3c303610a, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2630769317524410894
@@ -180,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f64de74083e37408fe650c6c916785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+  stateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
   jumpVelocity: 8
   maxJumpDuration: 0.5
   movementController: {fileID: 1278654112016437739}
@@ -360,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
+  stateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
   movementController: {fileID: 1278654112016437739}
   characterRigidbody: {fileID: 4198994870414546198}
   movingPlayableAsset:
@@ -467,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72620036c08932641825f9b811ccb079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateNameSO: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+  stateNameSO: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
   movementController: {fileID: 1278654112016437739}
   lightAttackPlayableAsset:
     _FadeDuration: 0
@@ -489,7 +493,6 @@ MonoBehaviour:
     - {fileID: 1510922958757828136}
     - {fileID: 3105801480486927495}
   useDefaultMovement: 0
-  blockedStates: []
   references:
     version: 2
     RefIds: []
@@ -522,6 +525,8 @@ PlayableDirector:
     value: {fileID: 4198994870414546198}
   - key: {fileID: 727510962836346268, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 1510922958757828136}
+  - key: {fileID: 134961741509081110, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 3105801480486927495}
   - key: {fileID: 134961741509081110, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
     value: {fileID: 3105801480486927495}
   m_ExposedReferences:
@@ -571,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72620036c08932641825f9b811ccb079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateNameSO: {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
+  stateNameSO: {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
   movementController: {fileID: 1278654112016437739}
   lightAttackPlayableAsset:
     _FadeDuration: 0
@@ -592,7 +597,6 @@ MonoBehaviour:
     - {fileID: 1510922958757828136}
     - {fileID: 3105801480486927495}
   useDefaultMovement: 0
-  blockedStates: []
   references:
     version: 2
     RefIds: []
@@ -826,11 +830,11 @@ PrefabInstance:
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: 'states.Array.data[1]'
       value: 
-      objectReference: {fileID: 707514030058498193}
+      objectReference: {fileID: 5515866176446940285}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: 'states.Array.data[2]'
       value: 
-      objectReference: {fileID: 4410214796524957275}
+      objectReference: {fileID: 707514030058498193}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: 'states.Array.data[3]'
       value: 
@@ -838,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: 'states.Array.data[4]'
       value: 
-      objectReference: {fileID: 5515866176446940285}
+      objectReference: {fileID: 4410214796524957275}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -890,10 +894,10 @@ PrefabInstance:
       addedObject: {fileID: 4101122284215365208}
     - targetCorrespondingSourceObject: {fileID: 8710895339890870979, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 204629455987176897}
+      addedObject: {fileID: 8832382987803144577}
     - targetCorrespondingSourceObject: {fileID: 8710895339890870979, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8832382987803144577}
+      addedObject: {fileID: 204629455987176897}
     - targetCorrespondingSourceObject: {fileID: 8710895339890870979, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7673798463484185705}

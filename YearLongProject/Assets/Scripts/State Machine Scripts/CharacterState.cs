@@ -9,11 +9,13 @@ namespace State_Machine_Scripts
         [Header("Base State Config")]
 
         [SerializeField]
-        protected StateNameSO StateNameSO;
+        private StateNameSO stateNameSO;
 
         public AnimancerComponent Anim => ActionManager.Anim;
 
         public string StateName => StateNameSO;
+
+        public StateNameSO StateNameSO => stateNameSO;
 
         public override bool CanEnterState
             => ActionManager.GetActionTypeAllowed(StateNameSO.Value);

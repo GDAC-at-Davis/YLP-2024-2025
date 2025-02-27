@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using Animancer;
 using Animancer.FSM;
 using Base;
 using Input_Scripts;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -132,7 +132,7 @@ namespace State_Machine_Scripts
 
         // more user friendly than setting action types one at a time
         /// <summary>
-        /// Set whether listed actions are available for transition or not
+        ///     Set whether listed actions are available for transition or not
         /// </summary>
         /// <param name="isAllowed">can the listed actions be transitioned to?</param>
         /// <param name="actions">list of actions to change</param>
@@ -147,7 +147,7 @@ namespace State_Machine_Scripts
         /// <inheritdoc cref="SetActionTypesAllowed(bool, string[])" />
         public virtual void SetActionTypesAllowed(bool isAllowed, params StateNameSO[] actions)
         {
-            foreach(StateNameSO action in actions)
+            foreach (StateNameSO action in actions)
             {
                 allowedStatesToEnter[action.Value] = isAllowed;
             }
@@ -166,9 +166,9 @@ namespace State_Machine_Scripts
             }
         }
 
-        public string[] GetStates()
+        public StateNameSO[] GetStates()
         {
-            return states.Select(item => item.StateName).ToArray();
+            return states.Select(item => item.StateNameSO).ToArray();
         }
     }
 }

@@ -788,13 +788,10 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    isAllowed: 0
-    allowedStates:
-    - AhabJump
-    - AhabDash
-    actionManager: {fileID: 0}
-    flags: 20
-    states: []
+    IsAllowed: 1
+    StateMask:
+    - {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
+    ActionManager: {fileID: 0}
 --- !u!114 &5684589929949749293
 MonoBehaviour:
   m_ObjectHideFlags: 1

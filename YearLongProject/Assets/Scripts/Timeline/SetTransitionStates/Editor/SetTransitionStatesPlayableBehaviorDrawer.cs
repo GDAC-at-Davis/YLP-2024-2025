@@ -1,36 +1,64 @@
-using State_Machine_Scripts;
 using System.Collections.Generic;
+using System.Linq;
+using State_Machine_Scripts;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Timeline;
-using UnityEngine.UIElements;
 
-namespace Timeline.SetTransitionStates
+namespace Timeline.SetTransitionStates.Editor
 {
     [CustomPropertyDrawer(typeof(SetTransitionStatesPlayableBehavior))]
     public class SetTransitionStatesPlayableBehaviorDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SetTransitionStatesPlayableBehavior behavior = ((SetTransitionStatesPlayableAsset)property.serializedObject.targetObject).template;
-            string[] states = behavior.actionManager.GetStates();
+            SetTransitionStatesPlayableBehavior behavior =
+                ((SetTransitionStatesPlayableAsset)property.serializedObject.targetObject).template;
 
-            behavior.isAllowed = EditorGUILayout.Toggle("Is Allowed?", behavior.isAllowed);
-            behavior.flags = EditorGUILayout.MaskField("Set States", behavior.flags, states);
+            if (behavior.ActionManager == null)
+            {
+                EditorGUILayout.HelpBox("No CharacterActionManager bound to this track", MessageType.Warning);
+                return;
+            }
 
-            List<string> allowedStates = new();
-            for (var i = 0; i < states.Length; i++)
+            StateNameSO[] currentStates = behavior.ActionManager.GetStates();
+            StateNameSO[] behaviorStates = behavior.AllowedStates;
+
+            // Convert into integer mask
+            var flags = 0;
+            for (var i = 0; i < currentStates.Length; i++)
             {
                 // what the fuck am I doing
-                var value = (behavior.flags & (1 << i)) != 0;
+                // So real king
+                StateNameSO state = currentStates[i];
+
+                // The existing mask has this state, so we add it to the integer mask
+                if (behaviorStates.Contains(state))
+                {
+                    flags |= 1 << i;
+                }
+            }
+
+            flags = EditorGUILayout.MaskField("Allowed State Transitions",
+                flags,
+                currentStates.Select(a => (string)a).ToArray());
+
+            // Convert int mask back into list of StateNames
+            List<StateNameSO> allowedStates = new();
+            for (var i = 0; i < currentStates.Length; i++)
+            {
+                // what the fuck am I doing
+                bool value = (flags & (1 << i)) != 0;
                 if (!value)
                 {
                     continue;
                 }
-                allowedStates.Add(states[i]);
+
+                allowedStates.Add(currentStates[i]);
             }
-            behavior.allowedStates = allowedStates.ToArray();
+
+            behavior.AllowedStates = allowedStates.ToArray();
         }
     }
 
@@ -39,8 +67,10 @@ namespace Timeline.SetTransitionStates
     {
         public override void OnClipChanged(TimelineClip clip)
         {
-            CharacterActionManager manager = TimelineEditor.inspectedDirector.GetGenericBinding(clip.GetParentTrack()) as CharacterActionManager;
-            ((SetTransitionStatesPlayableAsset)clip.asset).template.actionManager = manager;
+            // Only way to get a reference to the action manager for the editor drawer
+            var manager =
+                TimelineEditor.inspectedDirector.GetGenericBinding(clip.GetParentTrack()) as CharacterActionManager;
+            ((SetTransitionStatesPlayableAsset)clip.asset).template.ActionManager = manager;
         }
     }
 }
