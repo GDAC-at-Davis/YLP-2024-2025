@@ -68,6 +68,32 @@ namespace Timeline.SetTransitionStates.Editor
                 allowedStates.Add(currentStates[i]);
             }
 
+            // Compare old and new to set dirty and record undo if needed
+            var shouldSetDirty = false;
+            if (behavior.AllowedStates.Length == allowedStates.Count)
+            {
+                for (var i = 0; i < behavior.AllowedStates.Length; i++)
+                {
+                    if (behaviorStates[i] != behavior.AllowedStates[i])
+                    {
+                        shouldSetDirty = true;
+                    }
+                }
+            }
+            else
+            {
+                shouldSetDirty = true;
+            }
+
+            if (shouldSetDirty)
+            {
+                // Record object doesn't work unless we can get reference to the clip asset...
+                Undo.RecordObject(TimelineEditor.inspectedAsset, "Edited Allowed State");
+
+                // Dirt works fine
+                EditorUtility.SetDirty(TimelineEditor.inspectedAsset);
+            }
+
             behavior.AllowedStates = allowedStates.ToArray();
         }
     }
