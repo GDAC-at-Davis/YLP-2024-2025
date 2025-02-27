@@ -285,8 +285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8710895339890870979}
   - component: {fileID: 6564235481833952604}
-  - component: {fileID: 3143770971735428548}
-  - component: {fileID: 8462776683840606368}
   m_Layer: 3
   m_Name: ActionManager
   m_TagString: Untagged
@@ -322,38 +320,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devDescription: Manages the character state machine
-  Anim: {fileID: 3143770971735428548}
-  states: []
---- !u!114 &3143770971735428548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968648881426466404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Animator: {fileID: 9022335918410440386}
-  _Transitions: {fileID: 0}
-  _ActionOnDisable: 0
---- !u!114 &8462776683840606368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968648881426466404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6fbd858e1bfc994b9f533db272c8382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  devDescription: Used fixed time so everything is consistent with physics
-  animancer: {fileID: 3143770971735428548}
-  updateMode: 1
+  _body: {fileID: 2324917260605002194}
+  states:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2784295652820237144
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +381,6 @@ MonoBehaviour:
   entityID: 0
   ActionManager: {fileID: 6564235481833952604}
   actionInput: {fileID: 5764878026857287626}
-  animancerComponent: {fileID: 3143770971735428548}
   movementController: {fileID: 0}
   OnHitByAttackEvent:
     m_PersistentCalls:
@@ -442,13 +414,49 @@ MonoBehaviour:
   playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
   OnJumpPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6564235481833952604}
+        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.StateNameSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cheeses
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLightAttackPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6564235481833952604}
+        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.StateNameSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDashPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6564235481833952604}
+        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.StateNameSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,8 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devDescription: Handles the hit-stop effect by freezing animation and the rigidbody
-  animancerComponent: {fileID: 3143770971735428548}
-  animator: {fileID: 0}
+  actionManager: {fileID: 6564235481833952604}
   rb: {fileID: 5352263243400969421}
 --- !u!1 &5723345165969120124
 GameObject:
@@ -853,6 +860,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5352263243400969421}
         m_TargetAssemblyTypeName: Movement.CharacterRigidbody2D, Assembly-CSharp
         m_MethodName: SetFlipX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_flipX
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

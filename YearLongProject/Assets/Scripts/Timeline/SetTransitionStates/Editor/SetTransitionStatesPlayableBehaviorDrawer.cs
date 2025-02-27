@@ -29,6 +29,12 @@ namespace Timeline.SetTransitionStates.Editor
                 : behavior.ActionManager.GetStates();
             StateNameSO[] behaviorStates = behavior.AllowedStates;
 
+            // Mask field can't draw empty lists, so just exit early
+            if (currentStates.Length == 0)
+            {
+                return;
+            }
+
             // Convert into integer mask
             var flags = 0;
             for (var i = 0; i < currentStates.Length; i++)

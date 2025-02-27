@@ -46,14 +46,16 @@ namespace State_Machine_Scripts.States
 
         private void HandleOnEnd()
         {
-            timelinePlayer.OnFinished -= HandleOnEnd;
-            timelinePlayer.Stop();
             ActionManager.StateMachine.TrySetDefaultState();
         }
 
         public override void OnExitState()
         {
             base.OnExitState();
+
+            timelinePlayer.OnFinished -= HandleOnEnd;
+            timelinePlayer.Stop();
+
             ActionManager.SetAllActionTypeAllowed(true);
         }
     }

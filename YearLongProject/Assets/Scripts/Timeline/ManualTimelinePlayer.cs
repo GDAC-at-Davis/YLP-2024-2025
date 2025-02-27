@@ -30,12 +30,16 @@ namespace Timeline
 
         public void Play()
         {
-            playableDirector.time = 0;
             playableDirector.Play();
         }
 
         public void Stop()
         {
+            if (playableDirector.state != PlayState.Playing)
+            {
+                return;
+            }
+
             if (DestroyGraphOnStop)
             {
                 playableDirector.Stop();
@@ -46,6 +50,8 @@ namespace Timeline
                 // Slightly more performant
                 playableDirector.Pause();
             }
+
+            playableDirector.time = 0;
         }
 
         public void Evaluate(float deltaTime)

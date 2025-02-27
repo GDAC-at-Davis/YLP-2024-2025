@@ -59,6 +59,12 @@ namespace State_Machine_Scripts.States
             SelectMoveState(Vector2.zero);
         }
 
+        protected override void OnDisable()
+        {
+            currentPlayableAsset?.Stop();
+            currentPlayableAsset = null;
+        }
+
         private void SelectMoveState(Vector2 moveInput)
         {
             if (movementController.GetIsGrounded())
