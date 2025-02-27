@@ -37,9 +37,9 @@ namespace Timeline.SetTransitionStates
     [CustomTimelineEditor(typeof(SetTransitionStatesPlayableAsset))]
     public class SetTransitionStatesPlayableAssetEditor : ClipEditor
     {
-        public override void OnCreate(TimelineClip clip, TrackAsset track, TimelineClip clonedFrom)
+        public override void OnClipChanged(TimelineClip clip)
         {
-            CharacterActionManager manager = TimelineEditor.inspectedDirector.GetGenericBinding(track) as CharacterActionManager;
+            CharacterActionManager manager = TimelineEditor.inspectedDirector.GetGenericBinding(clip.GetParentTrack()) as CharacterActionManager;
             ((SetTransitionStatesPlayableAsset)clip.asset).template.actionManager = manager;
         }
     }
