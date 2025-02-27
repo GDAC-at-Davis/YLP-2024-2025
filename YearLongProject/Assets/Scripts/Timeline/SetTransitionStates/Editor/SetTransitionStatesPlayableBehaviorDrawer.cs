@@ -18,11 +18,15 @@ namespace Timeline.SetTransitionStates.Editor
 
             if (behavior.ActionManager == null)
             {
-                EditorGUILayout.HelpBox("No CharacterActionManager bound to this track", MessageType.Warning);
-                return;
+                EditorGUILayout.HelpBox("No CharacterActionManager bound to this track, using existing values. " +
+                                        "Please inspect this through a director component to get all the states listed.",
+                    MessageType.Warning);
             }
 
-            StateNameSO[] currentStates = behavior.ActionManager.GetStates();
+            // If we're inspecting without a director, we can't get the action manager, so just assume the existing listed states
+            StateNameSO[] currentStates = behavior.ActionManager == null
+                ? behavior.AllowedStates
+                : behavior.ActionManager.GetStates();
             StateNameSO[] behaviorStates = behavior.AllowedStates;
 
             // Convert into integer mask
@@ -67,6 +71,11 @@ namespace Timeline.SetTransitionStates.Editor
     {
         public override void OnClipChanged(TimelineClip clip)
         {
+            if (TimelineEditor.inspectedDirector == null)
+            {
+                return;
+            }
+
             // Only way to get a reference to the action manager for the editor drawer
             var manager =
                 TimelineEditor.inspectedDirector.GetGenericBinding(clip.GetParentTrack()) as CharacterActionManager;

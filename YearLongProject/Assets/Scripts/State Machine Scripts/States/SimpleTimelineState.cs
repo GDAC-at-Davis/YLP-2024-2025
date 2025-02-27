@@ -47,7 +47,7 @@ namespace State_Machine_Scripts.States
         private void HandleOnEnd()
         {
             timelinePlayer.OnFinished -= HandleOnEnd;
-            timelinePlayer.Pause();
+            timelinePlayer.Stop();
             ActionManager.StateMachine.TrySetDefaultState();
         }
 

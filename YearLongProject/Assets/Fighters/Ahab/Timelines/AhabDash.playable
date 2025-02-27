@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: VelocityTweenPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    StartVelocity: {x: 20, y: 0}
+    StartVelocity: {x: 25, y: 0}
     EndVelocity: {x: 5, y: 0}
     Curve:
       serializedVersion: 2

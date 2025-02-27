@@ -50,7 +50,7 @@ namespace State_Machine_Scripts.States
 
         private void HandleOnEnd()
         {
-            hitstunPlayableAsset.Pause();
+            hitstunPlayableAsset.Stop();
         }
     }
 }

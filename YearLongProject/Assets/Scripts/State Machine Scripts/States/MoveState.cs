@@ -87,7 +87,7 @@ namespace State_Machine_Scripts.States
 
             currentSubState = subState;
 
-            currentPlayableAsset?.Pause();
+            currentPlayableAsset?.Stop();
 
             switch (subState)
             {

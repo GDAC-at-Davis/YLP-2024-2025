@@ -55,7 +55,7 @@ namespace State_Machine_Scripts.States
 
         protected override void OnDisable()
         {
-            jumpPlayableAsset.Pause();
+            jumpPlayableAsset.Stop();
             movementController.StopJump();
         }
     }
