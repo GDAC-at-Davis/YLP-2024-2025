@@ -53,7 +53,7 @@ namespace State_Machine_Scripts
 #if UNITY_EDITOR
             if (Application.isPlaying && StateMachine?.CurrentState != null)
             {
-                Handles.Label(_body.position + Vector3.up * 2, StateMachine.CurrentState.StateName);
+                Handles.Label(_body.position + Vector3.up * 3, StateMachine.CurrentState.StateName);
             }
 #endif
         }

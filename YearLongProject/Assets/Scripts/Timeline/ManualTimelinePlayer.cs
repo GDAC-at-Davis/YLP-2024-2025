@@ -30,6 +30,7 @@ namespace Timeline
 
         public void Play()
         {
+            playableDirector.timeUpdateMode = DirectorUpdateMode.Manual;
             playableDirector.Play();
         }
 
