@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -10,16 +11,6 @@ namespace Timeline
     [Serializable]
     public class ManualTimelinePlayer
     {
-#if UNITY_EDITOR
-        /// <summary>
-        ///     If true, the playable graph will be destroyed when the timeline is stopped, instead of paused.
-        ///     This is used to support live-editing of timelines while playing.
-        /// </summary>
-        public static bool DestroyGraphOnStop = true;
-#else
-        public static bool DestroyGraphOnStop = false;
-#endif
-
         [SerializeField]
         private PlayableDirector playableDirector;
 
@@ -41,7 +32,17 @@ namespace Timeline
                 return;
             }
 
-            if (DestroyGraphOnStop)
+            var destroyGraphOnStop = false;
+#if UNITY_EDITOR
+            // If we're editing a timeline, then destroy the graph so it recreates from asset
+            // for Live-Editing functionality
+            if (TimelineEditor.inspectedAsset != null)
+            {
+                destroyGraphOnStop = true;
+            }
+#endif
+
+            if (destroyGraphOnStop)
             {
                 playableDirector.Stop();
             }

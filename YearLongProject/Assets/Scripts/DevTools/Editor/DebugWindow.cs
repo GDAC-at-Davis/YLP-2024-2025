@@ -1,7 +1,6 @@
 using Animancer.Editor.Tools;
 using GBG.PlayableGraphMonitor.Editor;
 using Hitbox.System;
-using Timeline;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
@@ -20,9 +19,6 @@ namespace DevTools.Editor
 
             HitboxSystemSo.ShowHitboxAreas = EditorGUILayout.Toggle(
                 "Toggle Hitbox System Debug", HitboxSystemSo.ShowHitboxAreas);
-
-            ManualTimelinePlayer.DestroyGraphOnStop = EditorGUILayout.Toggle(
-                "Timeline Live-Update", ManualTimelinePlayer.DestroyGraphOnStop);
 
             if (GUILayout.Button("Reset Scene"))
             {

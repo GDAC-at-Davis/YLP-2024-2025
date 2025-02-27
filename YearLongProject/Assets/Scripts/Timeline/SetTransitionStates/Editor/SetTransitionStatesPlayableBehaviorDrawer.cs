@@ -87,10 +87,7 @@ namespace Timeline.SetTransitionStates.Editor
 
             if (shouldSetDirty)
             {
-                // Record object doesn't work unless we can get reference to the clip asset...
-                Undo.RecordObject(TimelineEditor.inspectedAsset, "Edited Allowed State");
-
-                // Dirt works fine
+                Undo.RecordObject(TimelineEditor.selectedClip.asset, "Edited Allowed State");
                 EditorUtility.SetDirty(TimelineEditor.inspectedAsset);
             }
 
