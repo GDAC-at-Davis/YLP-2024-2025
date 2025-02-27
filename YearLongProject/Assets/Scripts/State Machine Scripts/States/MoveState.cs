@@ -1,5 +1,5 @@
-using Animancer;
 using Movement;
+using Timeline;
 using UnityEngine;
 
 namespace State_Machine_Scripts.States
@@ -22,19 +22,19 @@ namespace State_Machine_Scripts.States
         private CharacterRigidbody2D characterRigidbody;
 
         [SerializeField]
-        private PlayableAssetTransitionExt movingPlayableAsset;
+        private ManualTimelinePlayer movingPlayableAsset;
 
         [SerializeField]
-        private PlayableAssetTransitionExt idlePlayableAsset;
+        private ManualTimelinePlayer idlePlayableAsset;
 
         [SerializeField]
-        private PlayableAssetTransitionExt airPlayableAsset;
+        private ManualTimelinePlayer airPlayableAsset;
 
         [SerializeField]
         private StateNameSO jumpState;
 
         private MoveSubStates currentSubState;
-        private PlayableAssetTransitionExt currentPlayableAsset;
+        private ManualTimelinePlayer currentPlayableAsset;
 
         private void Update()
         {
@@ -44,16 +44,19 @@ namespace State_Machine_Scripts.States
             ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
         }
 
+        private void FixedUpdate()
+        {
+            if (currentPlayableAsset != null)
+            {
+                currentPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
+            }
+        }
+
         protected override void OnEnable()
         {
             currentPlayableAsset = null;
             currentSubState = (MoveSubStates)(-1);
             SelectMoveState(Vector2.zero);
-        }
-
-        protected override void OnDisable()
-        {
-            currentPlayableAsset.Events.OnEnd -= HandleOnEnd;
         }
 
         private void SelectMoveState(Vector2 moveInput)
@@ -82,12 +85,9 @@ namespace State_Machine_Scripts.States
                 return;
             }
 
-            if (currentPlayableAsset != null)
-            {
-                currentPlayableAsset.Events.OnEnd -= HandleOnEnd;
-            }
-
             currentSubState = subState;
+
+            currentPlayableAsset?.Pause();
 
             switch (subState)
             {
@@ -100,17 +100,12 @@ namespace State_Machine_Scripts.States
                 case MoveSubStates.Airborne:
                     currentPlayableAsset = airPlayableAsset;
                     break;
+                default:
+                    Debug.LogError("Invalid MoveSubState");
+                    break;
             }
 
-            Anim.Play(currentPlayableAsset);
-            currentPlayableAsset.Events.OnEnd += HandleOnEnd;
-        }
-
-        private void HandleOnEnd()
-        {
-            // Only way to loop timelines
-            // https://discussions.unity.com/t/animancer-less-animator-controller-more-animator-control/717489/868?page=44
-            Anim.Play(currentPlayableAsset).Time = 0;
+            currentPlayableAsset.Play();
         }
     }
 }

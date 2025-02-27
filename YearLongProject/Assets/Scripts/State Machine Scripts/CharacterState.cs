@@ -1,4 +1,3 @@
-using Animancer;
 using Animancer.FSM;
 using UnityEngine;
 
@@ -10,8 +9,6 @@ namespace State_Machine_Scripts
 
         [SerializeField]
         private StateNameSO stateNameSO;
-
-        public AnimancerComponent Anim => ActionManager.Anim;
 
         public string StateName => StateNameSO;
 
