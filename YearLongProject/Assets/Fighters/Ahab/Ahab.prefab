@@ -941,6 +941,10 @@ PrefabInstance:
       propertyPath: 'states.Array.data[4]'
       value: 
       objectReference: {fileID: 4410214796524957275}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8583743358405194245}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
       value: 
