@@ -3,10 +3,13 @@ using Animancer;
 
 namespace State_Machine_Scripts.States
 {
-    public class AhabSpecialState : SimpleTimelineState
+    public class AhabSpecialState : CharacterState
     {
         [SerializeField]
         private StateNameSO heavyAttack;
+
+        [SerializeField]
+        private StateNameSO specialAttack;
 
         [SerializeField]
         private AhabSharkson sharkson;
@@ -17,23 +20,68 @@ namespace State_Machine_Scripts.States
         [SerializeField]
         private float throwForce;
 
-        public void OnEnterState()
+        [Header("Config")]
+
+        [SerializeField]
+        protected SimpleMovementController movementController;
+
+        [SerializeField]
+        protected PlayableAssetTransition lightAttackPlayableAsset;
+
+        [SerializeField]
+        protected bool useDefaultMovement;
+
+        [Tooltip("Which states can you not cancel into from this state?")]
+        [SerializeField]
+        protected StateNameSO[] blockedStates;
+
+        private void Update()
         {
-            base.OnEnterState();
+            if (useDefaultMovement)
+            {
+                Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
+                movementController.SetCharacterMove(moveInput.x);
+            }
+            else
+            {
+                movementController.SetCharacterMove(0);
+            }
         }
 
-        protected override void HandleOnEnd()
+        public override void OnEnterState()
         {
-            //ActionManager.SetActionTypeAllowed(heavyAttack, false);
-            //sharkson.gameObject.transform.SetPositionAndRotation(throwTransform.position, throwTransform.rotation);
-            //sharkson.Throw(throwForce);
-            Debug.Log("end");
+            Debug.Log("enterState");
+            if (lightAttackPlayableAsset.State != null)
+            {
+                lightAttackPlayableAsset.State.Destroy();
+            }
+
+            Anim.Play(lightAttackPlayableAsset);
+            lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
+            foreach (StateNameSO state in blockedStates)
+            {
+                ActionManager.SetActionTypeAllowed(state, false);
+            }
+        }
+
+        protected virtual void HandleOnEnd()
+        {
+            ActionManager.SetActionTypeAllowed(heavyAttack, false);
+            ActionManager.SetActionTypeAllowed(specialAttack, false);
+            sharkson.gameObject.transform.SetPositionAndRotation(throwTransform.position, throwTransform.rotation);
+            sharkson.Throw(throwForce);
+            Debug.Log("handleOnEnd");
             ActionManager.StateMachine.TrySetDefaultState();
         }
 
-        public void OnExitState()
+        public override void OnExitState()
         {
-            base.OnExitState();
+            Debug.Log("exitState");
+            lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
+            foreach (StateNameSO state in blockedStates)
+            {
+                ActionManager.SetActionTypeAllowed(state, true);
+            }
         }
     }
 }

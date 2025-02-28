@@ -64,5 +64,6 @@ public class AhabSharkson : MonoBehaviour
         {
             rb.simulated = false;
         }
+        //else if(other.gameObject.layer == )
     }
 }
