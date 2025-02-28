@@ -20,14 +20,9 @@ namespace DevTools.Editor
             HitboxSystemSo.ShowHitboxAreas = EditorGUILayout.Toggle(
                 "Toggle Hitbox System Debug", HitboxSystemSo.ShowHitboxAreas);
 
-            if (GUILayout.Button("Reset Scene"))
+            if (GUILayout.Button("Reset Scene (Shift + R)"))
             {
-                if (!Application.isPlaying)
-                {
-                    return;
-                }
-
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                ReloadScene();
             }
         }
 
@@ -37,6 +32,17 @@ namespace DevTools.Editor
             {
                 Time.timeScale = timeScale;
             }
+        }
+
+        [MenuItem("GDAC YLP/Reset Scene #r")]
+        private static void ReloadScene()
+        {
+            if (!Application.isPlaying)
+            {
+                return;
+            }
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         [MenuItem("GDAC YLP/DebugMenu")]
