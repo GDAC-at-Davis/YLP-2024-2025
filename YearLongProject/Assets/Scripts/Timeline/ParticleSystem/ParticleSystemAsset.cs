@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
-public class ParticleSystemAsset : MonoBehaviour
+namespace Timeline.ParticleSystemTimeline
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public class ParticleSystemAsset : PlayableAsset 
+	{	
+		public ParticleSystemBehaviour template;
+		
+		public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+		{
+			return ScriptPlayable<ParticleSystemBehaviour>.Create(graph, template);
+		}
+
+	}
+
 }

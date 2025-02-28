@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
-public class ParticleSystemTrack : MonoBehaviour
+namespace Timeline.ParticleSystemTimeline
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[TrackClipType(typeof(ParticleSystemAsset))]
+	[TrackBindingType(typeof(ParticleSystem))]
+	public class ParticleSystemTrack : TrackAsset 
+	{
+		public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+		{
+			return ScriptPlayable<ParticleSystemMixer>.Create(graph, inputCount);
+		}
+	    
+	}
 }
