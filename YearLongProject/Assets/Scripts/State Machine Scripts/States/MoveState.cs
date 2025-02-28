@@ -54,6 +54,7 @@ namespace State_Machine_Scripts.States
 
         protected override void OnEnable()
         {
+            Debug.Log("move");
             currentPlayableAsset = null;
             currentSubState = (MoveSubStates)(-1);
             SelectMoveState(Vector2.zero);
