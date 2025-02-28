@@ -2,6 +2,7 @@ using Animancer;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
+using Movement;
 using State_Machine_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
@@ -68,12 +69,11 @@ namespace GameEntities
             // TODO: move this logic into a function in movement controller?
             Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
-            movementController.Knockback = knockback;
             movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
-            TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
+            movementController.ApplyImpulseForce(knockback);
 
-            ActionManager.SetState("AhabHitstun");
+            TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
 
             OnHitByAttackEvent?.Invoke(hitboxInstance, hitImpact);
         }

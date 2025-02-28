@@ -30,7 +30,10 @@ namespace Input_Scripts
 
             playerInputSo.TryGetPlayerInputEvents(id);
 
-            DontDestroyOnLoad(gameObject);
+            if (!quickLoad)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
 
             if (quickLoad)
             {
@@ -46,7 +49,9 @@ namespace Input_Scripts
         private void QuickLinkToExistingCharacter()
         {
             CharacterEntity character =
-                FindObjectsByType<CharacterEntity>(FindObjectsSortMode.None).First(c => !c.Initialized);
+                FindObjectsByType<CharacterEntity>(FindObjectsSortMode.None)
+                    .OrderBy(a => a.transform.GetSiblingIndex())
+                    .First(c => !c.Initialized);
 
             if (character == null)
             {

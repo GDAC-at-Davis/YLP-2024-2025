@@ -23,6 +23,10 @@ namespace Input_Scripts
 
         public UnityEvent OnDashPressed;
 
+        public UnityEvent OnHeavyAttackPassed;
+
+        public UnityEvent OnSpecialAttackPassed;
+
         // Properties
         public Vector2 MoveInput => moveInput;
         public bool JumpHeld => jumpInputActive;
@@ -70,17 +74,28 @@ namespace Input_Scripts
             moveInput = move;
         }
 
-        private void HandleOnSpecialAttack(bool arg0)
+        private void HandleOnSpecialAttack(bool val)
         {
+            if (val)
+            {
+                OnSpecialAttackPassed.Invoke();
+            }
         }
 
-        private void HandleOnHeavyAttack(bool arg0)
+        private void HandleOnHeavyAttack(bool val)
         {
+            if (val)
+            {
+                OnHeavyAttackPassed.Invoke();
+            }
         }
 
-        private void HandleOnLightAttack(bool arg0)
+        private void HandleOnLightAttack(bool pressed)
         {
-            OnLightAttackPressed.Invoke();
+            if (pressed)
+            {
+                OnLightAttackPressed.Invoke();
+            }
         }
 
         private void HandleOnJump(bool value)
@@ -95,7 +110,10 @@ namespace Input_Scripts
 
         private void HandleOnDash(bool state)
         {
-            OnDashPressed.Invoke();
+            if (state)
+            {
+                OnDashPressed.Invoke();
+            }
         }
     }
 }
