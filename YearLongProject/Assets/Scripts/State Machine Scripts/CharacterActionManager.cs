@@ -27,7 +27,10 @@ namespace State_Machine_Scripts
 
         public readonly StateMachine<CharacterState>.WithDefault StateMachine = new();
 
-        private readonly float inputTimeOut = 0.5f;
+        /// <summary>
+        ///     How long to buffer input for, in frames (50 fps)
+        /// </summary>
+        private readonly int inputBufferDuration = 5;
 
         /// <summary>
         ///     Dict controlling if a state is allowed to be entered
@@ -109,7 +112,7 @@ namespace State_Machine_Scripts
 
             if (!StateMachine.TrySetState(state))
             {
-                stateInputBuffer.Buffer(state, inputTimeOut);
+                stateInputBuffer.Buffer(state, inputBufferDuration * Time.fixedDeltaTime);
             }
         }
 
