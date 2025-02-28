@@ -20,9 +20,6 @@ namespace GameEntities
         private CharacterActionInput actionInput;
 
         [SerializeField]
-        private AnimancerComponent animancerComponent;
-
-        [SerializeField]
         private SimpleMovementController movementController;
 
         public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;

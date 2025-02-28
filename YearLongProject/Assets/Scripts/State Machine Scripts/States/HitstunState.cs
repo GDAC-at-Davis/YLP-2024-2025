@@ -1,4 +1,4 @@
-using Animancer;
+using Timeline;
 using UnityEngine;
 
 namespace State_Machine_Scripts.States
@@ -11,7 +11,7 @@ namespace State_Machine_Scripts.States
         private SimpleMovementController movementController;
 
         [SerializeField]
-        private PlayableAssetTransitionExt hitstunPlayableAsset;
+        private ManualTimelinePlayer hitstunPlayableAsset;
 
         [SerializeField]
         private StateNameSO jumpState;
@@ -25,13 +25,18 @@ namespace State_Machine_Scripts.States
 
             ActionManager.SetAllActionTypeAllowed(true);
             ActionManager.StateMachine.TrySetDefaultState();
+            HandleOnEnd();
             ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
+        }
+
+        private void FixedUpdate()
+        {
+            hitstunPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
         }
 
         protected override void OnEnable()
         {
-            Anim.Play(hitstunPlayableAsset);
-            hitstunPlayableAsset.Events.OnEnd += HandleOnEnd;
+            hitstunPlayableAsset.Play();
 
             movementController.ApplyImpulseForce(movementController.Knockback);
             ActionManager.SetAllActionTypeAllowed(false);
@@ -40,12 +45,12 @@ namespace State_Machine_Scripts.States
 
         protected override void OnDisable()
         {
-            hitstunPlayableAsset.Events.OnEnd -= HandleOnEnd;
             movementController.enabled = true;
         }
 
         private void HandleOnEnd()
         {
+            hitstunPlayableAsset.Stop();
         }
     }
 }

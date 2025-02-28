@@ -32,6 +32,11 @@ namespace Timeline.SetTransitionStates
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
+            if (ActionManager == null)
+            {
+                return;
+            }
+
             ActionManager.SetAllActionTypeAllowed(true);
         }
     }

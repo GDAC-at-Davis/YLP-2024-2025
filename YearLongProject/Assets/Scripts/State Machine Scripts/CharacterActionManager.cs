@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Animancer;
 using Animancer.FSM;
 using Base;
 using Input_Scripts;
@@ -11,10 +10,8 @@ namespace State_Machine_Scripts
 {
     public class CharacterActionManager : DescriptionMono
     {
-        [Header("Depends")]
-
         [SerializeField]
-        public AnimancerComponent Anim;
+        private Transform _body;
 
         [Header("States")]
 
@@ -23,6 +20,10 @@ namespace State_Machine_Scripts
         private List<CharacterState> states;
 
         public CharacterActionInput CharacterActionInput => characterActionInput;
+
+        public float FixedDeltaTime => Time.fixedDeltaTime * InternalFixedTimeScale;
+
+        public float InternalFixedTimeScale { get; set; } = 1f;
 
         public readonly StateMachine<CharacterState>.WithDefault StateMachine = new();
 
@@ -52,17 +53,10 @@ namespace State_Machine_Scripts
 #if UNITY_EDITOR
             if (Application.isPlaying && StateMachine?.CurrentState != null)
             {
-                Handles.Label(transform.position + Vector3.up * 10, StateMachine.CurrentState.StateName);
+                Handles.Label(_body.position + Vector3.up * 3, StateMachine.CurrentState.StateName);
             }
 #endif
         }
-
-#if UNITY_EDITOR
-        protected virtual void OnValidate()
-        {
-            gameObject.GetComponentInParentOrChildren(ref Anim);
-        }
-#endif
 
         public void Initialize(CharacterActionInput input)
         {

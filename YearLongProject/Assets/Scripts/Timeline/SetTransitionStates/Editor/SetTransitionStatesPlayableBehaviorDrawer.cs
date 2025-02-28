@@ -18,12 +18,22 @@ namespace Timeline.SetTransitionStates.Editor
 
             if (behavior.ActionManager == null)
             {
-                EditorGUILayout.HelpBox("No CharacterActionManager bound to this track", MessageType.Warning);
-                return;
+                EditorGUILayout.HelpBox("No CharacterActionManager bound to this track, using existing values. " +
+                                        "Please inspect this through a director component to get all the states listed.",
+                    MessageType.Warning);
             }
 
-            StateNameSO[] currentStates = behavior.ActionManager.GetStates();
+            // If we're inspecting without a director, we can't get the action manager, so just assume the existing listed states
+            StateNameSO[] currentStates = behavior.ActionManager == null
+                ? behavior.AllowedStates
+                : behavior.ActionManager.GetStates();
             StateNameSO[] behaviorStates = behavior.AllowedStates;
+
+            // Mask field can't draw empty lists, so just exit early
+            if (currentStates.Length == 0)
+            {
+                return;
+            }
 
             // Convert into integer mask
             var flags = 0;
@@ -58,6 +68,29 @@ namespace Timeline.SetTransitionStates.Editor
                 allowedStates.Add(currentStates[i]);
             }
 
+            // Compare old and new to set dirty and record undo if needed
+            var shouldSetDirty = false;
+            if (behavior.AllowedStates.Length == allowedStates.Count)
+            {
+                for (var i = 0; i < behavior.AllowedStates.Length; i++)
+                {
+                    if (behaviorStates[i] != behavior.AllowedStates[i])
+                    {
+                        shouldSetDirty = true;
+                    }
+                }
+            }
+            else
+            {
+                shouldSetDirty = true;
+            }
+
+            if (shouldSetDirty)
+            {
+                Undo.RecordObject(TimelineEditor.selectedClip.asset, "Edited Allowed State");
+                EditorUtility.SetDirty(TimelineEditor.inspectedAsset);
+            }
+
             behavior.AllowedStates = allowedStates.ToArray();
         }
     }
@@ -67,6 +100,11 @@ namespace Timeline.SetTransitionStates.Editor
     {
         public override void OnClipChanged(TimelineClip clip)
         {
+            if (TimelineEditor.inspectedDirector == null)
+            {
+                return;
+            }
+
             // Only way to get a reference to the action manager for the editor drawer
             var manager =
                 TimelineEditor.inspectedDirector.GetGenericBinding(clip.GetParentTrack()) as CharacterActionManager;

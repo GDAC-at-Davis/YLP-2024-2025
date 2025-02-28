@@ -1,4 +1,4 @@
-using Animancer;
+using Timeline;
 using UnityEngine;
 
 namespace State_Machine_Scripts.States
@@ -14,7 +14,7 @@ namespace State_Machine_Scripts.States
         private SimpleMovementController movementController;
 
         [SerializeField]
-        private PlayableAssetTransition lightAttackPlayableAsset;
+        private ManualTimelinePlayer timelinePlayer;
 
         [SerializeField]
         private bool useDefaultMovement;
@@ -32,15 +32,16 @@ namespace State_Machine_Scripts.States
             }
         }
 
+        private void FixedUpdate()
+        {
+            timelinePlayer.Evaluate(ActionManager.FixedDeltaTime);
+        }
+
         public override void OnEnterState()
         {
-            if (lightAttackPlayableAsset.State != null)
-            {
-                lightAttackPlayableAsset.State.Destroy();
-            }
-            
-            Anim.Play(lightAttackPlayableAsset);
-            lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
+            base.OnEnterState();
+            timelinePlayer.OnFinished += HandleOnEnd;
+            timelinePlayer.Play();
         }
 
         private void HandleOnEnd()
@@ -50,7 +51,11 @@ namespace State_Machine_Scripts.States
 
         public override void OnExitState()
         {
-            lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
+            base.OnExitState();
+
+            timelinePlayer.OnFinished -= HandleOnEnd;
+            timelinePlayer.Stop();
+
             ActionManager.SetAllActionTypeAllowed(true);
         }
     }

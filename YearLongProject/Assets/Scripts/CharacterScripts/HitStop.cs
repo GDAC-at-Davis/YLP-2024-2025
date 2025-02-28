@@ -1,8 +1,8 @@
-using Animancer;
 using Base;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Movement;
+using State_Machine_Scripts;
 using UnityEngine;
 
 namespace CharacterScripts
@@ -15,10 +15,7 @@ namespace CharacterScripts
         [Header("Depends")]
 
         [SerializeField]
-        private AnimancerComponent animancerComponent;
-
-        [SerializeField]
-        private Animator animator;
+        private CharacterActionManager actionManager;
 
         [SerializeField]
         private CharacterRigidbody2D rb;
@@ -84,14 +81,9 @@ namespace CharacterScripts
 
         private void StartHitstop()
         {
-            if (animancerComponent)
+            if (actionManager)
             {
-                animancerComponent.Graph.Speed = 0;
-            }
-
-            if (animator)
-            {
-                animator.speed = 0;
+                actionManager.InternalFixedTimeScale = 0;
             }
 
             if (rb)
@@ -102,14 +94,9 @@ namespace CharacterScripts
 
         private void StopHitStop()
         {
-            if (animancerComponent)
+            if (actionManager)
             {
-                animancerComponent.Graph.Speed = 1;
-            }
-
-            if (animator)
-            {
-                animator.speed = 1;
+                actionManager.InternalFixedTimeScale = 1;
             }
 
             if (rb)

@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     AllowedStates:
+    - {fileID: 11400000, guid: 0e10f278ea9823445b9ecac3cd38e2e5, type: 2}
     - {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-5721703254909560488
@@ -392,7 +393,8 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
   template:
-    AllowedStates: []
+    AllowedStates:
+    - {fileID: 11400000, guid: 0e10f278ea9823445b9ecac3cd38e2e5, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-5342227573576078668
 MonoBehaviour:
@@ -407,7 +409,7 @@ MonoBehaviour:
   m_Name: VelocityTweenPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    StartVelocity: {x: 20, y: 0}
+    StartVelocity: {x: 25, y: 0}
     EndVelocity: {x: 5, y: 0}
     Curve:
       serializedVersion: 2

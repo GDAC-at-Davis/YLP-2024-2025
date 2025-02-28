@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3710255461146798217}
   - component: {fileID: 4491335647793880029}
   - component: {fileID: 3443485117927734770}
+  - component: {fileID: 7889796343242106868}
   m_Layer: 7
   m_Name: Punching Bag
   m_TagString: Untagged
@@ -122,6 +123,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &7889796343242106868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825020890591617384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797e9d450a920bd4587451f0ae64de4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: 
 --- !u!1 &2394498218367251416
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,8 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devDescription: 
-  animancerComponent: {fileID: 0}
-  animator: {fileID: 0}
+  actionManager: {fileID: 0}
   rb: {fileID: 4491335647793880029}
 --- !u!1 &3676486719565506616
 GameObject:
