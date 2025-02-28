@@ -110,7 +110,13 @@ namespace Movement
 
         public void AddForce(Vector2 force, ForceMode2D forceMode)
         {
-            rb2D.AddForce(force, forceMode);
+            Vector2 velocityDelta = force;
+            if (forceMode == ForceMode2D.Force)
+            {
+                velocityDelta *= Time.fixedDeltaTime;
+            }
+
+            LinearVelocity += velocityDelta;
         }
     }
 }

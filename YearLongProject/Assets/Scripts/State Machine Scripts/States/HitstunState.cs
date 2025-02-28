@@ -38,7 +38,6 @@ namespace State_Machine_Scripts.States
         {
             hitstunPlayableAsset.Play();
 
-            movementController.ApplyImpulseForce(movementController.Knockback);
             ActionManager.SetAllActionTypeAllowed(false);
             movementController.enabled = false;
         }
