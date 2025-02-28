@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 3
-      <Knockback>k__BackingField: {x: 4, y: 4}
-      <Hitstun>k__BackingField: 0.4
-      <HitStopDuration>k__BackingField: 0.1
+      <Damage>k__BackingField: 10
+      <Knockback>k__BackingField: {x: 10, y: 1}
+      <Hitstun>k__BackingField: 0.5
+      <HitStopDuration>k__BackingField: 0.5
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
       <ScreenShakeEffect>k__BackingField:
@@ -70,14 +70,14 @@ MonoBehaviour:
           Data3: 1711216276
           Data4: -439583530
         Path: event:/Splat
-    ScreenShakeSO: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
+    ScreenShakeSO: {fileID: 11400000, guid: 6e9554aa511402d4d874eb766e30db82, type: 2}
     EndHitboxGroup: 1
-    HitboxGroupId: LightPrimary
+    HitboxGroupId: HeavyPrimary
     RaycastArea: []
     BoxArea:
-    - center: {x: 0, y: -0.3}
+    - center: {x: 2, y: -0.3}
       rotation: 0
-      size: {x: 1.6, y: 0.9}
+      size: {x: 3.1, y: 0.9}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +200,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88146430b8076074e8eea8ab310933c5, type: 3}
   m_Name: LockFlipXPlayableAsset
   m_EditorClassIdentifier: 
+--- !u!114 &-2722781993546970394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eadfad4faf5de3d4193bfb5cca6f148d, type: 3}
+  m_Name: Rb Tween Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.35
+    m_ClipIn: 0
+    m_Asset: {fileID: 36413333657410787}
+    m_Duration: 0.15000000000000002
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -2722781993546970394}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: PositionTween
+  m_Markers:
+    m_Objects: []
 --- !u!114 &-1209871114849055902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,6 +354,7 @@ MonoBehaviour:
   - {fileID: -3630007790177556980}
   - {fileID: 1138394045340534529}
   - {fileID: 805959939788455700}
+  - {fileID: -2722781993546970394}
   - {fileID: 8829339449843730414}
   - {fileID: 727510962836346268}
   - {fileID: 134961741509081110}
@@ -271,6 +364,45 @@ MonoBehaviour:
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: -290852710103159946}
+--- !u!114 &36413333657410787
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffd24096feffdd48a2e8cce1d21fde1, type: 3}
+  m_Name: RbTweenPlayableAsset(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    StartPosition: {x: 0, y: 0}
+    EndPosition: {x: 1.5300455, y: 0}
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!114 &134961741509081110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,7 +428,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 3860187452455979252}
-    m_Duration: 0.38333333333333336
+    m_Duration: 1
     m_TimeScale: 1
     m_ParentTrack: {fileID: 134961741509081110}
     m_EaseInDuration: 0
@@ -388,7 +520,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -2936464226458931067}
-    m_Duration: 0.38333333333333336
+    m_Duration: 1
     m_TimeScale: 1
     m_ParentTrack: {fileID: 727510962836346268}
     m_EaseInDuration: 0
@@ -477,10 +609,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.2085645814736684
+    m_Start: 0.4752312481403351
     m_ClipIn: 0
     m_Asset: {fileID: 3690644467178157319}
-    m_Duration: 0.1247687518596649
+    m_Duration: 0.1914354185263315
     m_TimeScale: 1
     m_ParentTrack: {fileID: 805959939788455700}
     m_EaseInDuration: 0
@@ -571,7 +703,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.13333333333333333
+    m_Start: 0.5166666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -8683478057089185305}
     m_Duration: 0.08333333333333336
@@ -638,7 +770,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Light Primary
+    m_DisplayName: Heavy Primary
   m_Markers:
     m_Objects: []
 --- !u!114 &3690644467178157319

@@ -70,7 +70,7 @@ MonoBehaviour:
           Data3: 1711216276
           Data4: -439583530
         Path: event:/Splat
-    ScreenShakeSO: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
+    ScreenShakeSO: {fileID: 11400000, guid: 6e9554aa511402d4d874eb766e30db82, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
     RaycastArea: []

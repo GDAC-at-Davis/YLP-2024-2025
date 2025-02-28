@@ -751,6 +751,8 @@ PlayableDirector:
     value: {fileID: 1510922958757828136}
   - key: {fileID: 134961741509081110, guid: 20af52e2d30af0548b1ac707b02d03d7, type: 2}
     value: {fileID: 3105801480486927495}
+  - key: {fileID: -2722781993546970394, guid: 20af52e2d30af0548b1ac707b02d03d7, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &8646585484509999927
@@ -901,6 +903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube Character
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: a0b53348c9c73bf47b920b8f4e9346b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c2e40fa84d53ccd428f640eac126b1fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
