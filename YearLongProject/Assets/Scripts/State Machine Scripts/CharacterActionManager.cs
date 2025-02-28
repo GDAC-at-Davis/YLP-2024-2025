@@ -30,7 +30,7 @@ namespace State_Machine_Scripts
         /// <summary>
         ///     How long to buffer input for, in frames (50 fps)
         /// </summary>
-        private readonly int inputBufferDuration = 5;
+        private readonly int inputBufferDuration = 7;
 
         /// <summary>
         ///     Dict controlling if a state is allowed to be entered
