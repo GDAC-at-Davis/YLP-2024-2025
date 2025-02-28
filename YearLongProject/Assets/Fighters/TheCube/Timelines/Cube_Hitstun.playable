@@ -89,7 +89,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 0
-    m_DisplayName: Armature|Idle
+    m_DisplayName: Armature|Hit
   m_Markers:
     m_Objects: []
   m_InfiniteClipPreExtrapolation: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: -8945691123924629249, guid: a0b53348c9c73bf47b920b8f4e9346b2, type: 3}
+  m_Clip: {fileID: -5578746458225771231, guid: a0b53348c9c73bf47b920b8f4e9346b2, type: 3}
   m_Position: {x: 0, y: 0, z: 0}
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_UseTrackMatchFields: 1
