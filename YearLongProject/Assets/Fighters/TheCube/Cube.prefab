@@ -1041,6 +1041,38 @@ PrefabInstance:
       propertyPath: movementController
       value: 
       objectReference: {fileID: 1278654112016437739}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3105801480486927495}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetState
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a224fc76f476d545b3f1c7b9e3176aa, type: 2}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: State_Machine_Scripts.StateNameSO, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5764878026857287626, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnDashPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
@@ -1097,6 +1129,18 @@ PrefabInstance:
       propertyPath: 'states.Array.data[4]'
       value: 
       objectReference: {fileID: 4410214796524957275}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 9177548035641677201}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetFlipX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: CharacterScripts.FlipX3D, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animator
       value: 
@@ -1148,7 +1192,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4783867218396614651, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4452003482636051002}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3193871950307689153, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9177548035641677201}
   m_SourcePrefab: {fileID: 100100000, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
 --- !u!4 &639948414992868120 stripped
 Transform:
@@ -1219,6 +1266,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2324917260605002194, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
   m_PrefabInstance: {fileID: 8071256034438834651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6651874942664633114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3193871950307689153, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+  m_PrefabInstance: {fileID: 8071256034438834651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9177548035641677201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651874942664633114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc992e7674d72b4096b743b96baafbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: 
+  visualObject: {fileID: 3630298747526637088}
 --- !u!114 &6972243527925525426 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1207173700868113001, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}

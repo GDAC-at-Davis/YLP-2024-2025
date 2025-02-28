@@ -30,7 +30,10 @@ namespace Input_Scripts
 
             playerInputSo.TryGetPlayerInputEvents(id);
 
-            DontDestroyOnLoad(gameObject);
+            if (!quickLoad)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
 
             if (quickLoad)
             {

@@ -22,8 +22,6 @@ namespace State_Machine_Scripts
 
         public float stunTime;
 
-        public Vector2 Knockback { get; set; }
-
         private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
 
         private bool inJump;
