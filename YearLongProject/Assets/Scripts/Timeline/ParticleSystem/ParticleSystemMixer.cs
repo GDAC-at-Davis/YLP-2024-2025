@@ -58,6 +58,7 @@ namespace Timeline.ParticleSystemTimeline
 			uint currentSeed = ps.randomSeed;
 			ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 			ps.randomSeed = currentSeed;
+			ps.Play();
 
 			// get the current time of this clip on the timeline 
 			double currentTime = playable.GetTime();
@@ -95,7 +96,7 @@ namespace Timeline.ParticleSystemTimeline
 				else if (currentTime < currClipEnd) // Simulate part of a clip until the current time 
 				{
 					em.enabled = true;
-					ps.Simulate((float)(currentTime - currClipBegin));
+					ps.Simulate((float)(currentTime - currClipBegin), true, false);
 					
 					//Debug.Log("mid clip: " + currentTime + " _ " + currClipEnd);
 					
@@ -104,11 +105,11 @@ namespace Timeline.ParticleSystemTimeline
 				else 
 				{
 					em.enabled = true; 
-					ps.Simulate((float)(currClipEnd - currClipBegin)); // simulate full clip 
+					ps.Simulate((float)(currClipEnd - currClipBegin), true, false); // simulate full clip 
 				
 					em.enabled = false;
-					// simulate time between clips
-					
+
+					// simulate time between clips	
 					if (i + 1 < numberOfClips)
 					{
 						Playable nextClip = clips[i + 1];
@@ -116,12 +117,12 @@ namespace Timeline.ParticleSystemTimeline
 						double nextClipBegin = psb2.startTime;
 						if (currentTime > nextClipBegin)
 						{
-							ps.Simulate((float)(nextClipBegin - currClipEnd));
+							ps.Simulate((float)(nextClipBegin - currClipEnd), true, false);
 							continue; 
 						}
 					}
 
-					ps.Simulate((float)(currentTime - currClipEnd));
+					ps.Simulate((float)(currentTime - currClipEnd), true, false);
 					break;
 				}
 			}
