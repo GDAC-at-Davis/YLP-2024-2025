@@ -17,12 +17,8 @@ namespace Timeline.CubeSpecial
 
             cubeSpecial = info.output.GetUserData() as CubeSpecialHandler;
 
-            if (cubeSpecial.IsTrapSet == false)
-            {
-                cubeSpecial.gameObject.SetActive(true);
-                cubeSpecial.SetTrap();
-            }
-            else
+
+            if (cubeSpecial.canSetTrap == false)
             {
                 cubeSpecial.TriggerTrap((float)(playable.GetDuration()));
             }
@@ -35,7 +31,12 @@ namespace Timeline.CubeSpecial
                 return;
             }
 
-            if (cubeSpecial.IsTrapActive)
+            if (cubeSpecial.canSetTrap == true)
+            {
+                cubeSpecial.gameObject.SetActive(true);
+                cubeSpecial.SetTrap();
+            }
+            else if (cubeSpecial.IsTrapActive)
             {
                 cubeSpecial.EndTrap();
                 cubeSpecial.gameObject.SetActive(false);
