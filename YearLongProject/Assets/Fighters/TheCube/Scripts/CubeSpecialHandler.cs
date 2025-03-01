@@ -16,7 +16,7 @@ namespace CharacterScripts
 
         public UnityEvent<bool> OnTrapSetChange;
 
-        public bool IsTrapSet = false;
+        public bool canSetTrap = true;
         public bool IsTrapActive = false;
 
         private Vector3 startPos;
@@ -62,12 +62,11 @@ namespace CharacterScripts
 
             
             
-            IsTrapSet = true;
+            canSetTrap = false;
         }
 
         public void TriggerTrap(float duration)
         {
-            IsTrapSet = false;
             IsTrapActive = true;
 
             elapsedDuration = 0;
@@ -82,7 +81,9 @@ namespace CharacterScripts
 
         public void EndTrap()
         {
+            canSetTrap = true;
             IsTrapActive = false;
+
         }
 
     }
