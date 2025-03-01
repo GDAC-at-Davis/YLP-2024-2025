@@ -46,7 +46,7 @@ namespace CharacterScripts
 
                 if (trapProgress < 1)
                 {
-                    transform.position = Vector3.Lerp(startPos, endPos, trapProgress);
+                    transform.position = Vector3.Lerp(startPos, endPos, Mathf.Pow(trapProgress, 2));
                 }
                 
             }
@@ -58,7 +58,7 @@ namespace CharacterScripts
         {
             gameObject.transform.position = playerRigidbody.transform.position + Vector3.up * 0.5f;
 
-            startPos = transform.position + Vector3.up * 0.5f;
+            startPos = transform.position;
 
             
             
