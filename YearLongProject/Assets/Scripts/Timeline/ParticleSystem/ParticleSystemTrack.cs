@@ -12,6 +12,17 @@ namespace Timeline.ParticleSystemTimeline
 		{
 			return ScriptPlayable<ParticleSystemMixer>.Create(graph, inputCount);
 		}
+
+		protected override void OnCreateClip(TimelineClip clip)
+		{
+			base.OnCreateClip(clip);
+
+			ParticleSystemAsset asset = (ParticleSystemAsset)(clip.asset);
+			if (asset != null)
+			{
+				asset.owningClip = clip;
+			}
+		}
 	    
 	}
 }

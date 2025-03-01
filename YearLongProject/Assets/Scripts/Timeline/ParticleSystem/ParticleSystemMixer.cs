@@ -19,13 +19,21 @@ namespace Timeline.ParticleSystemTimeline
 		// even if the ParticleSystem isn't emmitting. 
 		//private bool isEmitting = false;
 		
+		// The sorting algorithm for clips 
+		// This sort them from earliest start time to latest start time
 		private int SortClips(Playable a, Playable b)
 		{
-			if (a.GetTime() < b.GetTime())
+			ParticleSystemBehaviour psb_a = ((ScriptPlayable<ParticleSystemBehaviour>)a).GetBehaviour();	
+			double aStart = psb_a.startTime;
+
+			ParticleSystemBehaviour psb_b = ((ScriptPlayable<ParticleSystemBehaviour>)b).GetBehaviour();	
+			double bStart = psb_b.startTime;	
+			
+			if (aStart < bStart)
 			{
 				return -1;
 			}
-			else if (a.GetTime() > b.GetTime())
+			else if (aStart > bStart)
 			{
 				return 1;
 			}
@@ -68,44 +76,53 @@ namespace Timeline.ParticleSystemTimeline
 				clips.Add(curr); //clipQueue.Enqueue(curr, curr.GetTime());
 			}
 			clips.Sort(SortClips);
+			
 
 			// go through all the clip that proceed the current time on the timeline.
 			// Simulate the particles based on the time that passes
 			for (int i = 0; i < numberOfClips; i++)
 			{
 				Playable currClip = clips[i];
-				double currClipEnd = currClip.GetTime() + currClip.GetDuration();
+				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClip).GetBehaviour();	
+				double currClipBegin = psb.startTime;
+				double currClipEnd = psb.endTime;
 
-				if (currentTime < currClip.GetTime()) // don't do anything if clip is after current time on timeline
+				if (currentTime < currClipBegin) // don't do anything if clip is after current time on timeline
 				{
+					//Debug.Log("before clip " + i + " : " + currentTime + " " + currClipBegin );
 					break;
 				}
 				else if (currentTime < currClipEnd) // Simulate part of a clip until the current time 
 				{
 					em.enabled = true;
-					ps.Simulate((float)(currentTime - currClip.GetTime()));
+					ps.Simulate((float)(currentTime - currClipBegin));
 					
-					Debug.Log("" + currentTime + " _ " + currClip.GetTime());
+					//Debug.Log("mid clip: " + currentTime + " _ " + currClipEnd);
 					
 					break;
 				}
 				else 
 				{
 					em.enabled = true; 
-					ps.Simulate((float)(currClip.GetDuration())); // simulate full clip 
+					ps.Simulate((float)(currClipEnd - currClipBegin)); // simulate full clip 
 				
 					em.enabled = false;
-					// simulate time between clips 
-					if ((i + 1 < numberOfClips) && (currentTime > clips[i + 1].GetTime()))
+					// simulate time between clips
+					
+					if (i + 1 < numberOfClips)
 					{
-						ps.Simulate((float)(clips[i + 1].GetTime() - currClipEnd));
+						Playable nextClip = clips[i + 1];
+						ParticleSystemBehaviour psb2 = ((ScriptPlayable<ParticleSystemBehaviour>)nextClip).GetBehaviour();	
+						double nextClipBegin = psb2.startTime;
+						if (currentTime > nextClipBegin)
+						{
+							ps.Simulate((float)(nextClipBegin - currClipEnd));
+							continue; 
+						}
 					}
-					// simulate until current time  
-					else 
-					{
-						ps.Simulate((float)(currentTime - currClipEnd));
-						break;
-					}
+
+					ps.Simulate((float)(currentTime - currClipEnd));
+					break;
 				}
 			}
 
