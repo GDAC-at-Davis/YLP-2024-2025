@@ -6,7 +6,7 @@ using UnityEngine.Timeline;
 namespace Timeline.LockFlipX
 {
     // A track that allows timed restriction of changing directions
-    [TrackBindingType(typeof(FlipXHandler))]
+    [TrackBindingType(typeof(CharacterFacingDirection))]
     [TrackClipType(typeof(LockFlipXPlayableAsset))]
     public class LockFlipXTrack : TrackAsset
     {

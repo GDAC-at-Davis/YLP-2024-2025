@@ -1,11 +1,16 @@
 using Animancer.FSM;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace State_Machine_Scripts
 {
     public class CharacterState : StateBehaviour
     {
-        [Header("Base State Config")]
+        [BoldHeader("Character State")]
+        [InfoBox(
+            "A character state. \n Make sure to add the state to the CharacterActionManager, and to define some way this state can be entered.")]
+        [Header("State Info")]
 
         [SerializeField]
         private StateNameSO stateNameSO;

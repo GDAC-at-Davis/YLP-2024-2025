@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using EditorUtils.Editor;
 using State_Machine_Scripts;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -16,10 +17,14 @@ namespace Timeline.SetTransitionStates.Editor
             SetTransitionStatesPlayableBehavior behavior =
                 ((SetTransitionStatesPlayableAsset)property.serializedObject.targetObject).template;
 
+            YLPEditorGUI.ComponentDescription(position, "Set Allowed States",
+                "Set which states the character can transition to during this clip." +
+                " All other states cannot be transitioned to.");
+
             if (behavior.ActionManager == null)
             {
-                EditorGUILayout.HelpBox("No CharacterActionManager bound to this track, using existing values. " +
-                                        "Please inspect this through a director component to get all the states listed.",
+                EditorGUILayout.HelpBox(
+                    "Inspect through a PlayableDirector on a gameobject to list all states.",
                     MessageType.Warning);
             }
 

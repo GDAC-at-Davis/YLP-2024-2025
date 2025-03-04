@@ -1,6 +1,7 @@
-using Base;
 using CharacterScripts;
+using EditorUtils.BoldHeader;
 using Hitbox.System;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Camera
@@ -8,10 +9,14 @@ namespace Camera
     /// <summary>
     ///     Script for emitting screen shake events on an entity
     /// </summary>
-    public class EntityScreenShakeEmitter : DescriptionMono
+    public class EntityScreenShakeEmitter : MonoBehaviour
     {
+        [BoldHeader("Screen Shake Emitter")]
+        [InfoBox("Handles emitting screen shake effects. Don't remove!", EInfoBoxType.Warning)]
+        [Header("Dependencies")]
+
         [SerializeField]
-        private FlipXHandler flipXHandler;
+        private CharacterFacingDirection characterFacingDirection;
 
         public void ShakeOnLandHit(HitboxInstantiateResult hitboxInstantiateResult)
         {
@@ -20,9 +25,9 @@ namespace Camera
             Vector2 velocity = effect.Velocity;
 
             // Flip the X velocity if the effect is set to do so and a FlipXHandler is provided
-            if (effect.FlipXVelocity && flipXHandler != null)
+            if (effect.FlipXVelocity && characterFacingDirection != null)
             {
-                velocity.x *= flipXHandler.CurrentFlipX ? -1 : 1;
+                velocity.x *= characterFacingDirection.CurrentFlipX ? -1 : 1;
             }
 
             // Use the main camera's position as the source to avoid any falloff from distance; this keeps things simple

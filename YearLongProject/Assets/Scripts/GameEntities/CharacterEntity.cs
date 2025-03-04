@@ -1,8 +1,9 @@
 using Animancer;
+using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
-using Movement;
+using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,7 +13,9 @@ namespace GameEntities
 {
     public class CharacterEntity : Entity
     {
-        [Header("Depends")]
+        [BoldHeader("Character Entity Script")]
+        [InfoBox("The top-level script representing a character entity. Don't remove!", EInfoBoxType.Warning)]
+        [Header("Dependencies")]
 
         [SerializeField]
         public CharacterActionManager ActionManager;
@@ -23,6 +26,10 @@ namespace GameEntities
         [SerializeField]
         private SimpleMovementController movementController;
 
+        [Header("Events")]
+
+        [InfoBox(
+            "Add listeners to these UnityEvents to define custom behavior when the character is hit by an attack.")]
         public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;
 
         [SerializeField]

@@ -1,12 +1,14 @@
+using System;
 using CharacterScripts;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace Timeline.LockFlipX
 {
+    [Serializable]
     public class LockFlipXPlayableBehavior : PlayableBehaviour
     {
-        private FlipXHandler flipX;
+        private CharacterFacingDirection flipX;
 
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
@@ -15,7 +17,7 @@ namespace Timeline.LockFlipX
                 return;
             }
 
-            flipX = info.output.GetUserData() as FlipXHandler;
+            flipX = info.output.GetUserData() as CharacterFacingDirection;
 
             if (flipX == null)
             {

@@ -1,4 +1,5 @@
-using Base;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Movement
@@ -7,11 +8,22 @@ namespace Movement
     ///     Managed wrapper around Rigidbody2D
     /// </summary>
     [DefaultExecutionOrder(1000)]
-    public class CharacterRigidbody2D : DescriptionMono
+    public class CharacterRigidbody2D : MonoBehaviour
     {
+        [BoldHeader("Character Custom Rigidbody2D")]
+        [InfoBox(
+            "A helper script that deals with the Rigidbody2D. " +
+            "Control character physics through this script, instead of the Rigidbody2D directly. " +
+            "Don't remove!",
+            EInfoBoxType.Warning)]
+        [Header("Dependencies")]
+
         [SerializeField]
         private Rigidbody2D rb2D;
 
+        [Header("Physics Settings")]
+
+        [InfoBox("Modify these settings as desired")]
         [SerializeField]
         private Vector2 gravityAcceleration;
 

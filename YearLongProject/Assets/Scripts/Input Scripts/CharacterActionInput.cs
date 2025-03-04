@@ -1,5 +1,6 @@
 using System;
-using Base;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,15 +9,18 @@ namespace Input_Scripts
     /// <summary>
     ///     Interface exposing input actions for a character instance
     /// </summary>
-    public class CharacterActionInput : DescriptionMono
+    public class CharacterActionInput : MonoBehaviour
     {
-        [Header("Depends")]
+        [BoldHeader("Character Input Script")]
+        [InfoBox("Provides User Input information for this character. Don't remove!", EInfoBoxType.Warning)]
+        [Header("Dependencies")]
 
         [SerializeField]
         private PlayerInputSo playerInputSo;
 
         [Header("Input Events")]
 
+        [InfoBox("Add listeners to these UnityEvents to define custom behavior when the input is received.")]
         public UnityEvent OnJumpPressed;
 
         public UnityEvent OnLightAttackPressed;
