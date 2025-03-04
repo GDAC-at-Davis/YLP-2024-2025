@@ -14,12 +14,13 @@ namespace Timeline.ParticleSystemTimeline
 		{
 			var playable = ScriptPlayable<ParticleSystemBehaviour>.Create(graph, template);
 
+			// use the assets clip to assign end and start time to the behavior
 			ParticleSystemBehaviour behaviour = playable.GetBehaviour();
-
 			if (owningClip != null)
 			{
-				behaviour.startTime = owningClip.start;
-				behaviour.endTime = owningClip.end; 
+				behaviour.owningClip = owningClip;
+				//behaviour.startTime = owningClip.start;
+				//behaviour.endTime = owningClip.end; 
 			}
 
 			return playable; 

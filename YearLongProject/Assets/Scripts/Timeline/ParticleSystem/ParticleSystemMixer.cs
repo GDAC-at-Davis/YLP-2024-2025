@@ -10,24 +10,16 @@ namespace Timeline.ParticleSystemTimeline
 
 	public class ParticleSystemMixer : PlayableBehaviour 
 	{
-		// this variable keep track of if the particle system is emitting particle. 
-		// This means that the bool is:
-		// 	false when Stop is called on the particle system
-		// 	true when Play is called on the particle system
-		// This boolean is independent from ParticleSystem.isPlaying.
-		// This is because ParticleSystem.isPlaying is true if particle are still active 
-		// even if the ParticleSystem isn't emmitting. 
-		//private bool isEmitting = false;
-		
+	
 		// The sorting algorithm for clips 
 		// This sort them from earliest start time to latest start time
 		private int SortClips(Playable a, Playable b)
 		{
 			ParticleSystemBehaviour psb_a = ((ScriptPlayable<ParticleSystemBehaviour>)a).GetBehaviour();	
-			double aStart = psb_a.startTime;
+			double aStart = psb_a.owningClip.start;//psb_a.startTime;
 
 			ParticleSystemBehaviour psb_b = ((ScriptPlayable<ParticleSystemBehaviour>)b).GetBehaviour();	
-			double bStart = psb_b.startTime;	
+			double bStart = psb_b.owningClip.start;//psb_b.startTime;	
 			
 			if (aStart < bStart)
 			{
@@ -85,8 +77,8 @@ namespace Timeline.ParticleSystemTimeline
 			{
 				Playable currClip = clips[i];
 				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClip).GetBehaviour();	
-				double currClipBegin = psb.startTime;
-				double currClipEnd = psb.endTime;
+				double currClipBegin = psb.owningClip.start; //psb.startTime;
+				double currClipEnd = psb.owningClip.end; // psb.endTime;
 
 				if (currentTime < currClipBegin) // don't do anything if clip is after current time on timeline
 				{
@@ -114,7 +106,7 @@ namespace Timeline.ParticleSystemTimeline
 					{
 						Playable nextClip = clips[i + 1];
 						ParticleSystemBehaviour psb2 = ((ScriptPlayable<ParticleSystemBehaviour>)nextClip).GetBehaviour();	
-						double nextClipBegin = psb2.startTime;
+						double nextClipBegin = psb2.owningClip.start;//psb2.startTime;
 						if (currentTime > nextClipBegin)
 						{
 							ps.Simulate((float)(nextClipBegin - currClipEnd), true, false);
@@ -126,97 +118,6 @@ namespace Timeline.ParticleSystemTimeline
 					break;
 				}
 			}
-
-			/*Playable currClip; <== R.I.P priority queue code
-			 //bool stillHasClips = clipQueue.TryDequeue(out currClip, out _);
-			Playable nextClip;
-
-			while (stillHasClips)
-			{
-				double currClipEnd = currClip.GetTime() + currClip.GetDuration();
-
-				if (currentTime < currClip.GetTime())
-				{
-					break; 
-				}
-				else if (currentTime < currClipEnd)
-				{
-					em.enabled = true; 
-					ps.Simulate((float)(currentTime - currClip.GetTime()));
-				}
-				else 
-					em.enabled = true; 
-					ps.Simulate((float)(currClip.GetDuration()));
-					
-					//stillHasClips = clipQueue.Dequeue(out nextClip, out _);
-					em.enabled = false;
-					if (stillHasClips && (currentTime > nextClip.GetTime()))
-					{
-						ps.Simulate((float)(nextClip.GetTime() - currClipEnd));
-						currClip = nextClip;
-					}
-					else 
-					{
-						ps.Simulate((float)(currentTime - currClipEnd));
-						break;
-					}
-			}*/
-
 		}
-
-		/*
-		public override void ProcessFrame(Playable playable, FrameData info, object playerData)
-		{
-			// retrieve Particle System that is associated with the track 
-			ParticleSystem ps = (ParticleSystem)playerData;
-		
-			// do not preform process frame is Particle System doesn't exist 
-			if (ps == null) { return; }
-		
-			// find all the clips currently on the track
-			int numberOfClips = playable.GetInputCount();
-			float totalClipWeight = 0.0f;
-
-			// Process the information about all these clips, related to the current frame
-			for (int i = 0; i < numberOfClips; i++)
-			{
-				float clipWeight = playable.GetInputWeight(i);
-				totalClipWeight += clipWeight;
-
-				// for now I'm going to assume there is no overlap between playable clips
-				// if the playable clip has a significant weight i.e it is at the current frame of the timeline,
-				// find it's starting point and use that to determine the time of the ParticleSystem
-				if (clipWeight >= 0.9)
-				{
-					Playable clipPlayableObject = playable.GetInput(i);
-					float clipLocalTime = (float)clipPlayableObject.GetTime();
-					uint currentSeed = ps.randomSeed;
-
-					ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-					ps.randomSeed = currentSeed;
-					ps.Simulate(clipLocalTime); // <= this current method is hella jank
-
-					//ps.time = (float)clipPlayableObject.GetTime();
-					//Debug.Log(ps.time);
-				}
-			}
-
-			// Only have the particle system active if a clip exist on the current frame of the timeline.
-			// The clips will define when the particle system plays
-			if (totalClipWeight <= 0.01 && isEmitting)
-			{
-				Debug.Log("Particle System Disactivated " + totalClipWeight);
-				ps.Stop();
-				isEmitting = false;
-			}
-			else if (totalClipWeight > 0.01 && !isEmitting) 
-			{
-				Debug.Log("Particle System Activated " + totalClipWeight);
-				ps.Play();
-				isEmitting = true;
-			}
-
-		}
-		*/
 	}
 }
