@@ -1,5 +1,6 @@
 using System;
 using Camera;
+using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.Emitters;
 using Hitbox.HitboxAreas;
@@ -16,17 +17,13 @@ namespace Timeline.Hitboxes
     [Serializable]
     public class HitboxPlayableBehavior : PlayableBehaviour
     {
-        [Header("Hitbox Effects")]
-
-        [HorizontalLine(color: EColor.White)]
+        [BoldHeader("Hitbox Effects")]
         public HitboxEffect HitEffect;
 
         [FormerlySerializedAs("ScreenShakeEffect")]
         public ScreenShakeEffectSO ScreenShakeSO;
 
-        [Header("Hitbox Group")]
-
-        [HorizontalLine(color: EColor.White)]
+        [BoldHeader("Hitbox Group")]
         public bool EndHitboxGroup;
 
         [InfoBox(
@@ -34,16 +31,14 @@ namespace Timeline.Hitboxes
             "Hitboxes from the same hitbox group cannot hit an Entity more than once")]
         public string HitboxGroupId;
 
-        [Header("Hitbox Areas")]
-
-        [HorizontalLine(color: EColor.White)]
+        [BoldHeader("Hitbox Areas")]
         public RaycastArea[] RaycastArea;
 
         public BoxArea[] BoxArea;
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            var hitboxEmitter = playerData as HitboxEmitter;
+            var hitboxEmitter = playerData as BasicHitboxEmitter;
 
             if (hitboxEmitter == null)
             {
@@ -114,7 +109,7 @@ namespace Timeline.Hitboxes
 
             if (EndHitboxGroup)
             {
-                var hitboxEmitter = info.output.GetUserData() as HitboxEmitter;
+                var hitboxEmitter = info.output.GetUserData() as BasicHitboxEmitter;
 
                 if (hitboxEmitter != null)
                 {

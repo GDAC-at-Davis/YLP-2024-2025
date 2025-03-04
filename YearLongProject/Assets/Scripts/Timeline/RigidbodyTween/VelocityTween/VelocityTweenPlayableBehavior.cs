@@ -1,4 +1,5 @@
 using System;
+using EditorUtils.BoldHeader;
 using Movement;
 using NaughtyAttributes;
 using UnityEngine;
@@ -12,9 +13,7 @@ namespace Timeline.RigidbodyTween.VelocityTween
     [Serializable]
     public class VelocityTweenPlayableBehavior : PlayableBehaviour
     {
-        [Header("Velocity Tween")]
-
-        [HorizontalLine(color: EColor.White)]
+        [BoldHeader("Velocity Tween")]
         [InfoBox(
             "Velocity tween from start to end velocity over the duration of the clip.\n" +
             "Curve controls interpolation.")]

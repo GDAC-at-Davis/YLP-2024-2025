@@ -1,7 +1,8 @@
-using Base;
+using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Movement;
+using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
 
@@ -10,9 +11,12 @@ namespace CharacterScripts
     /// <summary>
     ///     Script that handles all hit stop logic
     /// </summary>
-    public class HitStop : DescriptionMono
+    public class HitStop : MonoBehaviour
     {
-        [Header("Depends")]
+        [BoldHeader("Hit-Stop Script")]
+        [InfoBox("Handles the hit-stop effect by freezing animation and the rigidbody. Don't remove!",
+            EInfoBoxType.Warning)]
+        [Header("Dependencies")]
 
         [SerializeField]
         private CharacterActionManager actionManager;

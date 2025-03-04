@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Base;
+using EditorUtils.BoldHeader;
 using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
@@ -12,9 +12,9 @@ using UnityEngine.Events;
 namespace Hitbox.Emitters
 {
     /// <summary>
-    ///     Emits hitboxes
+    ///     Basic hitbox emitter
     /// </summary>
-    public class HitboxEmitter : DescriptionMono
+    public class BasicHitboxEmitter : MonoBehaviour
     {
         [Serializable]
         public class HitboxLandEvent : UnityEvent<HitboxInstantiateResult>
@@ -29,7 +29,9 @@ namespace Hitbox.Emitters
             public List<Entity> HitEntities;
         }
 
-        [Header("Depends")]
+        [BoldHeader("Basic Hitbox Emitter")]
+        [InfoBox("Attaches context to hitboxes and instantiates them. Basic variant with no special behavior.")]
+        [Header("Dependencies")]
 
         [SerializeField]
         private HitboxSystemSo hitboxSystemSo;
@@ -40,9 +42,14 @@ namespace Hitbox.Emitters
         [SerializeField]
         private Transform hitboxSourceTransform;
 
+        [Header("Configuration")]
+
         [SerializeField]
         private LayerMask hitboxLayerMask;
 
+        [Header("Events")]
+
+        [InfoBox("Add listeners to this UnityEvent to define custom behavior when a hitbox lands.")]
         public HitboxLandEvent OnLandHit;
 
         public Entity Entity => entity;

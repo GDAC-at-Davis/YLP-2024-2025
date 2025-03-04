@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Editor;
+using EditorUtils.Editor;
 using State_Machine_Scripts;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -17,7 +17,7 @@ namespace Timeline.SetTransitionStates.Editor
             SetTransitionStatesPlayableBehavior behavior =
                 ((SetTransitionStatesPlayableAsset)property.serializedObject.targetObject).template;
 
-            YLPEditorGUI.ComponentHeader(position, "Set Allowed States",
+            YLPEditorGUI.ComponentDescription(position, "Set Allowed States",
                 "Set which states the character can transition to during this clip." +
                 " All other states cannot be transitioned to.");
 

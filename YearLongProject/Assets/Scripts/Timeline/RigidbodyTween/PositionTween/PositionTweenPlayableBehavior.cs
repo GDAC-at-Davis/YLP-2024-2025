@@ -1,4 +1,5 @@
 using System;
+using EditorUtils.BoldHeader;
 using Movement;
 using NaughtyAttributes;
 using UnityEngine;
@@ -12,9 +13,7 @@ namespace Timeline.RigidbodyTween.PositionTween
     [Serializable]
     public class PositionTweenPlayableBehavior : PlayableBehaviour
     {
-        [Header("Position Tween")]
-
-        [HorizontalLine(color: EColor.White)]
+        [BoldHeader("Position Tween")]
         [InfoBox(
             "Tween from start position to end position over the duration of the clip.\n" +
             "Doesn't affect or disable velocity.\n" +

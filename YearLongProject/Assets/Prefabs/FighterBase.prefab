@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b429a303f4ae5f24ba45cbb39cbf4112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IgnoreThis: 0
 --- !u!1 &313377914903637060
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c5db837500fc4cb8aec7429732351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Wrapper around Rigidbody2D to automatically handle hitstop and
-    flip X
   rb2D: {fileID: 6857426949256817108}
   gravityAcceleration: {x: 0, y: -30}
 --- !u!50 &6857426949256817108
@@ -319,7 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Manages the character state machine
   _body: {fileID: 2324917260605002194}
   states:
   - {fileID: 0}
@@ -337,7 +335,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3525838291768555810}
   - component: {fileID: 5002924662183864281}
-  - component: {fileID: 5764878026857287626}
   m_Layer: 3
   m_Name: FighterBase
   m_TagString: Untagged
@@ -358,6 +355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2320740152148522607}
   - {fileID: 6563531690612296775}
   - {fileID: 1873382894876132279}
   - {fileID: 9035290719337463328}
@@ -377,10 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bddb0724ce706469667dd3f0ded86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Top level representation of a 'Character'
-  entityID: 0
   ActionManager: {fileID: 6564235481833952604}
-  actionInput: {fileID: 5764878026857287626}
+  actionInput: {fileID: 3779965043621737290}
   movementController: {fileID: 0}
   OnHitByAttackEvent:
     m_PersistentCalls:
@@ -398,65 +394,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   health: 50
---- !u!114 &5764878026857287626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784295652820237144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47710bd74423ae844b911d35bcd4e522, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  devDescription: Provides input specific to the character instance and player ID
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  OnJumpPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6564235481833952604}
-        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
-        m_MethodName: SetState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
-          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.StateNameSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Cheeses
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnLightAttackPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6564235481833952604}
-        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
-        m_MethodName: SetState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
-          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.StateNameSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDashPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6564235481833952604}
-        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
-        m_MethodName: SetState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.StateNameSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4783867218396614651}
+  - component: {fileID: 3601061854454896113}
   m_Layer: 3
   m_Name: VisualObject
   m_TagString: Untagged
@@ -488,6 +426,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2324917260605002194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3601061854454896113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193871950307689153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5fa771b89783d408188bfc967ffb74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devDescription: 'Don''t remove this gameobject!
+
+    All "Visual" elements of the
+    character''s main body (Sprites, 3D models), should go under here.'
 --- !u!1 &3920403092381251609
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797e9d450a920bd4587451f0ae64de4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Framing target for the Fighter's body
   <IsTargeted>k__BackingField: 1
 --- !u!1 &4767597276864030955
 GameObject:
@@ -578,7 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78820d47945630c49a2cb0836f5ed459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Handles the hit-stop effect by freezing animation and the rigidbody
   actionManager: {fileID: 6564235481833952604}
   rb: {fileID: 5352263243400969421}
 --- !u!1 &5723345165969120124
@@ -727,11 +679,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bae9f3f0baf74188e889b1702dd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Simple hitbox emitter for use with Timeline hitbox tracks
   hitboxSystemSo: {fileID: 11400000, guid: b8bd2922bb9d7614d802536c1009f261, type: 2}
   entity: {fileID: 5002924662183864281}
   hitboxSourceTransform: {fileID: 8682635075572259813}
-  flipX: 0
   hitboxLayerMask:
     serializedVersion: 2
     m_Bits: 136
@@ -785,7 +735,7 @@ GameObject:
   - component: {fileID: 6563531690612296775}
   - component: {fileID: 7274787797801271283}
   m_Layer: 0
-  m_Name: FlipX
+  m_Name: CharacterFacingDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,8 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a3bc5cb93a0c4486b5b12b519748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Handles character flipping horizontally based on facing direction
-  characterActionInput: {fileID: 5764878026857287626}
+  characterActionInput: {fileID: 3779965043621737290}
   OnFlipXChange:
     m_PersistentCalls:
       m_Calls:
@@ -903,5 +852,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd63c16bb2f84047b6bbf9d06185b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: Handles emitting screen shakes
-  flipXHandler: {fileID: 7274787797801271283}
+  characterFacingDirection: {fileID: 7274787797801271283}
+--- !u!1 &8560896207416441871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2320740152148522607}
+  - component: {fileID: 3779965043621737290}
+  m_Layer: 3
+  m_Name: UserInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2320740152148522607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560896207416441871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3525838291768555810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3779965043621737290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560896207416441871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47710bd74423ae844b911d35bcd4e522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  OnJumpPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLightAttackPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDashPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeavyAttackPassed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSpecialAttackPassed:
+    m_PersistentCalls:
+      m_Calls: []

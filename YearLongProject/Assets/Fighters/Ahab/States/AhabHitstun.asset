@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d323e4d1f07d9d24a9287354d8478553, type: 3}
   m_Name: AhabHitstun
   m_EditorClassIdentifier: 
-  devDescription: 
+  StateDescription: 

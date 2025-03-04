@@ -1,25 +1,20 @@
-using Base;
 using Hitbox.DataStructures;
 using Hitbox.System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace GameEntities
 {
-    public abstract class Entity : DescriptionMono
+    public abstract class Entity : MonoBehaviour
     {
-        [SerializeField]
-        private int entityID;
-
         public int EntityID
         {
             get => entityID;
             set => entityID = value;
         }
 
-        public UnityAction<bool> InvincibleChanged;
-        private bool isInvincible = false;
-        public virtual bool IsInvincible 
+        public virtual bool IsInvincible
         {
             get => isInvincible;
             set
@@ -28,7 +23,13 @@ namespace GameEntities
                 InvincibleChanged.Invoke(value);
             }
         }
-        
+
+        public UnityAction<bool> InvincibleChanged;
+
+        [ShowNonSerializedField]
+        private int entityID;
+
+        private bool isInvincible;
 
         public virtual void Init(int id)
         {
