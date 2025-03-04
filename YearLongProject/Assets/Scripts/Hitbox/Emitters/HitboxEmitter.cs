@@ -5,6 +5,7 @@ using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
 using Hitbox.System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -40,9 +41,6 @@ namespace Hitbox.Emitters
         private Transform hitboxSourceTransform;
 
         [SerializeField]
-        private bool flipX;
-
-        [SerializeField]
         private LayerMask hitboxLayerMask;
 
         public HitboxLandEvent OnLandHit;
@@ -54,6 +52,9 @@ namespace Hitbox.Emitters
         ///     This is to prevent multiple hits occuring on the same Entity by one instance of the hitbox group
         /// </summary>
         private readonly Dictionary<string, HitboxGroupContext> hitEntities = new();
+
+        [ShowNonSerializedField]
+        private bool flipX;
 
         public void EmitHitbox(IHitboxArea hitboxArea, HitboxEffect hitboxEffect, string hitboxGroupId)
         {

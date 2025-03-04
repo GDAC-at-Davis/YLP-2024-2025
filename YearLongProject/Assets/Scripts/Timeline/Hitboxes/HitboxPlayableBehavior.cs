@@ -3,6 +3,7 @@ using Camera;
 using Hitbox.DataStructures;
 using Hitbox.Emitters;
 using Hitbox.HitboxAreas;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -15,18 +16,29 @@ namespace Timeline.Hitboxes
     [Serializable]
     public class HitboxPlayableBehavior : PlayableBehaviour
     {
+        [Header("Hitbox Effects")]
+
+        [HorizontalLine(color: EColor.White)]
         public HitboxEffect HitEffect;
 
         [FormerlySerializedAs("ScreenShakeEffect")]
         public ScreenShakeEffectSO ScreenShakeSO;
 
+        [Header("Hitbox Group")]
+
+        [HorizontalLine(color: EColor.White)]
         public bool EndHitboxGroup;
 
-        [Tooltip(
-            "ID of the hitboxgroup these hitboxes belong to. Hitboxes from the same hitbox group cannot hit an Entity more than once")]
+        [InfoBox(
+            "ID of the hitboxgroup these hitboxes belong to. " +
+            "Hitboxes from the same hitbox group cannot hit an Entity more than once")]
         public string HitboxGroupId;
 
+        [Header("Hitbox Areas")]
+
+        [HorizontalLine(color: EColor.White)]
         public RaycastArea[] RaycastArea;
+
         public BoxArea[] BoxArea;
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)

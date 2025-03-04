@@ -1,9 +1,11 @@
+using System;
 using CharacterScripts;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace Timeline.LockFlipX
 {
+    [Serializable]
     public class LockFlipXPlayableBehavior : PlayableBehaviour
     {
         private FlipXHandler flipX;

@@ -1,5 +1,6 @@
 using System;
 using Movement;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -11,7 +12,15 @@ namespace Timeline.RigidbodyTween.PositionTween
     [Serializable]
     public class PositionTweenPlayableBehavior : PlayableBehaviour
     {
+        [Header("Position Tween")]
+
+        [HorizontalLine(color: EColor.White)]
+        [InfoBox(
+            "Tween from start position to end position over the duration of the clip.\n" +
+            "Doesn't affect or disable velocity.\n" +
+            "Curve controls interpolation.")]
         public Vector2 StartPosition;
+
         public Vector2 EndPosition;
         public AnimationCurve Curve;
 
