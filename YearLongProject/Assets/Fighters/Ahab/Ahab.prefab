@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8517331382780978993}
+  - component: {fileID: 2917941976895185366}
   m_Layer: 3
-  m_Name: SharksonThrowPoint
+  m_Name: SharksonAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +30,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7229092619367288627}
+  - {fileID: 8522935093789492991}
   m_Father: {fileID: 5782937995392677897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2917941976895185366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345762558177502503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0686d1af406e11c4b8614a1c5d5d8bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharkson: {fileID: 1998330122680826535}
+  throwTransform: {fileID: 8517331382780978993}
+  throwPointOffset: {x: 0.68, y: 0}
+  throwForce: 20
 --- !u!1 &620133673588379672
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +188,6 @@ GameObject:
   - component: {fileID: 8602359182931059401}
   - component: {fileID: 6060422285692121876}
   - component: {fileID: 7913370506681429333}
-  - component: {fileID: 673974928077152268}
   m_Layer: 3
   m_Name: SpecialAttackState
   m_TagString: Untagged
@@ -214,7 +230,7 @@ MonoBehaviour:
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 673974928077152268}
+        - m_Target: {fileID: 2917941976895185366}
           m_TargetAssemblyTypeName: Fighters.Ahab.Scripts.AhabSpecialMove, Assembly-CSharp
           m_MethodName: ThrowSharkSon
           m_Mode: 1
@@ -276,21 +292,6 @@ PlayableDirector:
     value: {fileID: 1510922958757828136}
   m_ExposedReferences:
     m_References: []
---- !u!114 &673974928077152268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2427054820357063529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0686d1af406e11c4b8614a1c5d5d8bf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharkson: {fileID: 1998330122680826535}
-  throwTransform: {fileID: 8517331382780978993}
-  throwForce: 10
 --- !u!1 &2630769317524410894
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +689,74 @@ PlayableDirector:
     value: {fileID: 6572194888787973522}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &4481977474524217939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8522935093789492991}
+  - component: {fileID: 1454930394985963045}
+  m_Layer: 3
+  m_Name: PickupCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8522935093789492991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481977474524217939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.532, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8517331382780978993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1454930394985963045
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481977474524217939}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 255
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &5440691533417352194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,15 +1181,27 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8517331382780978993}
+    m_TransformParent: {fileID: 4678280858386419961}
     m_Modifications:
+    - target: {fileID: 39928509964950985, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: ahabActionManager
       value: 
       objectReference: {fileID: 3105801480486927495}
+    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: ahabPhysicsCollider
+      value: 
+      objectReference: {fileID: 6810935469208528042}
     - target: {fileID: 7457438098314336491, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_Name
       value: SHARKSON
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457438098314336491, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,7 +1209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1140,15 +1221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1160,6 +1241,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585628359024421756, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949333655704592257, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1492,9 +1577,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4934061554269146212}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 8583743358405194245}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 2917941976895185366}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetFacing
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: Fighters.Ahab.Scripts.AhabSpecialMove, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
       value: 
@@ -1521,6 +1634,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3525838291768555810, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1163182088359507798}
+    - targetCorrespondingSourceObject: {fileID: 3525838291768555810, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7229092619367288627}
     - targetCorrespondingSourceObject: {fileID: 8710895339890870979, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4101122284215365208}

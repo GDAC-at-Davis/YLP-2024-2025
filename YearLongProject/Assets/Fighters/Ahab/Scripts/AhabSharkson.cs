@@ -1,3 +1,5 @@
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
 
@@ -5,6 +7,9 @@ namespace Fighters.Ahab.Scripts
 {
     public class AhabSharkson : MonoBehaviour
     {
+        [BoldHeader("SHARKSON Script")]
+        [Header("Dependencies")]
+
         [SerializeField]
         private Rigidbody2D rb;
 
@@ -14,13 +19,27 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private CharacterActionManager ahabActionManager;
 
+        [Header("Colliders")]
+
+        [InfoBox("Colliders that need to ignore each other, so SHARKSON doesn't hit Ahab")]
+        [SerializeField]
+        private Collider2D physicsCollider;
+
+        [SerializeField]
+        private Collider2D ahabPhysicsCollider;
+
+        [Header("Config")]
+
         [SerializeField]
         private float dashVelocity;
 
+        private bool thrown;
+        private bool onGround;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        private void Start()
+        private void Awake()
         {
-            //this.gameObject.SetActive(false);
+            Physics2D.IgnoreCollision(physicsCollider, ahabPhysicsCollider);
         }
 
         // Update is called once per frame
@@ -40,31 +59,41 @@ namespace Fighters.Ahab.Scripts
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.gameObject.name);
             if (other.gameObject.layer == 6)
             {
                 Debug.Log("hit ground");
+                onGround = true;
             }
             else if (other.gameObject.layer == 3)
             {
-                Debug.Log("Pickup Sharkson");
-                var special = other.gameObject.GetComponentInChildren<AhabSpecialMove>();
-                if (special != null)
+                var special = other.gameObject.GetComponentInParent<AhabSpecialMove>();
+                if (special == null)
                 {
-                    if (special.sharkson == this)
-                    {
-                        PickUp(special.throwTransform.gameObject);
-                    }
+                    return;
+                }
+
+                if (special.sharkson == this)
+                {
+                    PickUp();
                 }
             }
         }
 
-        public void Throw(float throwForce)
+        public void Throw(Vector2 position, Quaternion rotation, float throwForce)
         {
+            if (thrown)
+            {
+                return;
+            }
+
+            transform.SetPositionAndRotation(position, rotation);
+
+            thrown = true;
+            onGround = false;
+
             gameObject.SetActive(true);
-            gameObject.transform.parent = null;
             rb.simulated = true;
             rb.AddForce(transform.right * throwForce, ForceMode2D.Impulse);
         }
@@ -75,11 +104,16 @@ namespace Fighters.Ahab.Scripts
             rb.AddForce(transform.right * dashVelocity, ForceMode2D.Impulse);
         }
 
-        public void PickUp(GameObject parent)
+        public void PickUp()
         {
+            if (!onGround || !thrown)
+            {
+                return;
+            }
+
+            thrown = false;
             gameObject.SetActive(false);
             rb.simulated = false;
-            gameObject.transform.parent = parent.transform;
         }
     }
 }
