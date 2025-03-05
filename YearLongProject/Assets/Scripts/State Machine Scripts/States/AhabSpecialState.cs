@@ -12,10 +12,10 @@ namespace State_Machine_Scripts.States
         private StateNameSO specialAttack;
 
         [SerializeField]
-        private AhabSharkson sharkson;
+        public AhabSharkson sharkson;
 
         [SerializeField]
-        private Transform throwTransform;
+        public Transform throwTransform;
 
         [SerializeField]
         private float throwForce;
@@ -50,7 +50,6 @@ namespace State_Machine_Scripts.States
 
         public override void OnEnterState()
         {
-            Debug.Log("enterState");
             if (lightAttackPlayableAsset.State != null)
             {
                 lightAttackPlayableAsset.State.Destroy();
@@ -70,13 +69,11 @@ namespace State_Machine_Scripts.States
             ActionManager.SetActionTypeAllowed(specialAttack, false);
             sharkson.gameObject.transform.SetPositionAndRotation(throwTransform.position, throwTransform.rotation);
             sharkson.Throw(throwForce);
-            Debug.Log("handleOnEnd");
             ActionManager.StateMachine.TrySetDefaultState();
         }
 
         public override void OnExitState()
         {
-            Debug.Log("exitState");
             lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
             foreach (StateNameSO state in blockedStates)
             {
