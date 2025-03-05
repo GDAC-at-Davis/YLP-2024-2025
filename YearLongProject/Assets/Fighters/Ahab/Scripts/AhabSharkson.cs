@@ -1,33 +1,34 @@
-using UnityEngine;
 using State_Machine_Scripts;
+using UnityEngine;
 
-namespace State_Machine_Scripts.States {
+namespace Fighters.Ahab.Scripts
+{
     public class AhabSharkson : MonoBehaviour
     {
         [SerializeField]
-        Rigidbody2D rb;
+        private Rigidbody2D rb;
 
         [SerializeField]
-        SpriteRenderer sprite;
+        private SpriteRenderer sprite;
 
         [SerializeField]
-        CharacterActionManager ahabActionManager;
+        private CharacterActionManager ahabActionManager;
 
         [SerializeField]
-        float dashVelocity;
+        private float dashVelocity;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private void Start()
         {
             //this.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (rb.simulated)
             {
-                this.transform.right = rb.linearVelocity;
+                transform.right = rb.linearVelocity;
                 if (rb.linearVelocityX >= 0)
                 {
                     sprite.flipX = false;
@@ -37,27 +38,6 @@ namespace State_Machine_Scripts.States {
                     sprite.flipX = true;
                 }
             }
-        }
-
-        public void Throw(float throwForce)
-        {
-            this.gameObject.SetActive(true);
-            this.gameObject.transform.parent = null;
-            rb.simulated = true;
-            rb.AddForce(this.transform.right * throwForce, ForceMode2D.Impulse);
-        }
-
-        public void SharkDash()
-        {
-            rb.simulated = true;
-            rb.AddForce(this.transform.right * dashVelocity, ForceMode2D.Impulse);
-        }
-
-        public void PickUp(GameObject parent)
-        {
-            this.gameObject.SetActive(false);
-            rb.simulated = false;
-            this.gameObject.transform.parent = parent.transform;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -70,15 +50,36 @@ namespace State_Machine_Scripts.States {
             else if (other.gameObject.layer == 3)
             {
                 Debug.Log("Pickup Sharkson");
-                AhabSpecialState special = other.gameObject.GetComponentInChildren<AhabSpecialState>();
+                var special = other.gameObject.GetComponentInChildren<AhabSpecialMove>();
                 if (special != null)
                 {
-                    if(special.sharkson == this)
+                    if (special.sharkson == this)
                     {
                         PickUp(special.throwTransform.gameObject);
                     }
                 }
+            }
         }
+
+        public void Throw(float throwForce)
+        {
+            gameObject.SetActive(true);
+            gameObject.transform.parent = null;
+            rb.simulated = true;
+            rb.AddForce(transform.right * throwForce, ForceMode2D.Impulse);
+        }
+
+        public void SharkDash()
+        {
+            rb.simulated = true;
+            rb.AddForce(transform.right * dashVelocity, ForceMode2D.Impulse);
+        }
+
+        public void PickUp(GameObject parent)
+        {
+            gameObject.SetActive(false);
+            rb.simulated = false;
+            gameObject.transform.parent = parent.transform;
         }
     }
 }

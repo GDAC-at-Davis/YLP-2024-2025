@@ -47,6 +47,13 @@ namespace GameEntities
 
         private int playerId = -1;
 
+        private void Awake()
+        {
+            // Initialize the action manager in Awake, so we don't need input yet
+            // This is useful for the quick testing scene for taking damage without an extra input device
+            ActionManager.Initialize(actionInput);
+        }
+
         public void OnDestroy()
         {
             actionInput.Cleanup();
@@ -65,7 +72,6 @@ namespace GameEntities
             transform.parent = null;
 
             actionInput.Initialize(id);
-            ActionManager.Initialize(actionInput);
         }
 
         // Callback for this Character being hit by an attack
