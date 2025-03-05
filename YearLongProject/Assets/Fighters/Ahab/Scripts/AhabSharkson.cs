@@ -68,16 +68,16 @@ namespace Fighters.Ahab.Scripts
             }
             else if (other.gameObject.layer == 3)
             {
-                var special = other.gameObject.GetComponentInParent<AhabSpecialMove>();
+                var special = other.gameObject.GetComponentInParent<AhabSharkson>();
+
                 if (special == null)
                 {
                     return;
                 }
-
-                if (special.sharkson == this)
+                /*if (special.sharkson == this)
                 {
                     PickUp();
-                }
+                }*/
             }
         }
 
@@ -98,6 +98,8 @@ namespace Fighters.Ahab.Scripts
             rb.AddForce(transform.right * throwForce, ForceMode2D.Impulse);
         }
 
+
+        // Comment
         public void SharkDash()
         {
             rb.simulated = true;
