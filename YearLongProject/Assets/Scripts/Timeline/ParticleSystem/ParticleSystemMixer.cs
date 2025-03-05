@@ -79,6 +79,12 @@ namespace Timeline.ParticleSystemTimeline
 				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClip).GetBehaviour();	
 				double currClipBegin = psb.owningClip.start; //psb.startTime;
 				double currClipEnd = psb.owningClip.end; // psb.endTime;
+				
+				if (ps.main.loop == false)
+				{
+					ps.Stop();
+					ps.Play();
+				}
 
 				if (currentTime < currClipBegin) // don't do anything if clip is after current time on timeline
 				{
