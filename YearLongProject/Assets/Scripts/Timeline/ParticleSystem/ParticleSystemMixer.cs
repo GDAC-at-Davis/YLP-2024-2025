@@ -72,19 +72,30 @@ namespace Timeline.ParticleSystemTimeline
 			
 
 			// go through all the clip that proceed the current time on the timeline.
-			// Simulate the particles based on the time that passes
+			// Simulate the particles based on the time that pass
+			//
+			// Each loop handles both a clip and the empty space that comes after it
 			for (int i = 0; i < numberOfClips; i++)
 			{
 				Playable currClip = clips[i];
 				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClip).GetBehaviour();	
 				double currClipBegin = psb.owningClip.start; //psb.startTime;
 				double currClipEnd = psb.owningClip.end; // psb.endTime;
+				Debug.Log(" " + currClipBegin + " " + currClipEnd);
 				
+				// This if statement allow a non-loop particle system to run again 
 				if (ps.main.loop == false)
 				{
 					ps.Stop();
 					ps.Play();
 				}
+
+				// if the current clip too early to have particles that persist until current time than don't simulate it
+				if (currClipEnd + ps.main.duration < currentTime)
+				{
+					continue;
+				}
+
 
 				if (currentTime < currClipBegin) // don't do anything if clip is after current time on timeline
 				{
