@@ -5,7 +5,7 @@ using UnityEngine.Timeline;
 namespace Timeline.ParticleSystemTimeline
 {
 
-	public class ParticleSystemAsset : PlayableAsset 
+	public class ParticleSystemAsset : PlayableAsset, ITimelineClipAsset
 	{	
 		public ParticleSystemBehaviour template;
 		public TimelineClip owningClip;
@@ -25,6 +25,9 @@ namespace Timeline.ParticleSystemTimeline
 
 			return playable; 
 		}
+
+
+		public ClipCaps clipCaps => ClipCaps.None; 
 
 	}
 
