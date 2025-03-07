@@ -20,11 +20,15 @@ public class PlayerReadyController : MonoBehaviour
 
     int playerID;
     Vector3 input;
+    bool selected;
+
+    TextMeshProUGUI text;
 
     public void Initialize(int id)
     {
         playerID = id;
-        GetComponentInChildren<TextMeshProUGUI>().text = (id + 1).ToString();
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        text.text = (id + 1).ToString();
 
         events = playerInputSO.TryGetPlayerInputEvents(id);
         events.LightAttackEvent += TrySelectCharacter;
@@ -37,7 +41,7 @@ public class PlayerReadyController : MonoBehaviour
 
     private void Update()
     {
-        if (input == Vector3.zero) return;
+        if (selected || input == Vector3.zero) return;
 
         transform.position += input * Time.deltaTime * speed;
     }
@@ -55,20 +59,36 @@ public class PlayerReadyController : MonoBehaviour
         CharacterSelect.Instance.AllPlayersReady -= LockIn;
     }
 
-    void TrySelectCharacter(bool pressed)
+    private void TrySelectCharacter(bool pressed)
     {
         if (!pressed) return;
-        CharacterSO character = Physics2D.OverlapPoint(transform.position).GetComponent<CharacterSelectButton>().Character;
+        Collider2D button = Physics2D.OverlapPoint(transform.position);
+
+        if (button == null)
+        {
+            return;
+        }
+
+        transform.position = button.transform.position;
+        text.text = "";
+        CharacterSO character = button.GetComponent<CharacterSelectButton>().Character;
+        QueueCharacter(character);
+    }
+
+    private void UnselectCharacter(bool pressed)
+    {
+        if (!pressed) return;
+        text.text = (playerID + 1).ToString();
+        QueueCharacter(null);
+    }
+
+    private void QueueCharacter(CharacterSO character)
+    {
+        selected = character != null;
         CharacterSelect.Instance.ReadyUp(playerID, character);
     }
 
-    void UnselectCharacter(bool pressed)
-    {
-        if (!pressed) return;
-        CharacterSelect.Instance.ReadyUp(playerID, null);
-    }
-
-    void LockIn()
+    private void LockIn()
     {
         this.enabled = false;
     }

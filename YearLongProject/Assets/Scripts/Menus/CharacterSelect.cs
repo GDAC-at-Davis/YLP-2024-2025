@@ -14,11 +14,6 @@ public class CharacterSelect : MonoBehaviour
 {
     public static CharacterSelect Instance;
 
-    /// <summary>
-    ///     Character to spawn
-    ///     When more characters are added will need to implement feature to spawn different characters
-    /// </summary>
-
     public UnityAction AllPlayersReady;
 
     [SerializeField]
