@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CharacterScripts;
 using GameEntities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,13 +18,11 @@ public class CharacterSelect : MonoBehaviour
     ///     Character to spawn
     ///     When more characters are added will need to implement feature to spawn different characters
     /// </summary>
-    [SerializeField]
-    private GameObject character;
 
     public UnityAction AllPlayersReady;
 
     [SerializeField]
-    private readonly Dictionary<int, bool> playerReady = new();
+    private readonly Dictionary<int, CharacterSO> playerReady = new();
 
     private void Awake()
     {
@@ -45,20 +44,20 @@ public class CharacterSelect : MonoBehaviour
         SceneManager.sceneLoaded -= GameStarted;
     }
 
-    public void ReadyUp(int id, bool ready)
+    public void ReadyUp(int id, CharacterSO character)
     {
         if (!playerReady.TryGetValue(id, out _))
         {
-            playerReady.Add(id, ready);
+            playerReady.Add(id, character);
         }
 
-        playerReady[id] = ready;
+        playerReady[id] = character;
         TryStartGame();
     }
 
     public void TryStartGame()
     {
-        if (playerReady.ContainsValue(false))
+        if (playerReady.ContainsValue(null))
         {
             return;
         }
@@ -77,7 +76,7 @@ public class CharacterSelect : MonoBehaviour
     {
         foreach (int id in playerReady.Keys)
         {
-            Instantiate(character, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
+            Instantiate(playerReady[id].CharacterPrefab, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
         }
     }
 }

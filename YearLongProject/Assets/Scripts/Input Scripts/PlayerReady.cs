@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 ///     Temporary character select UI component
-///     Spawns playerreadybutton when a controller is conencted
+///     Spawns PlayerReadyController when a controller is conencted
 /// </summary>
 public class PlayerReady : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class PlayerReady : MonoBehaviour
     private void OnInputAdded(int id)
     {
         Debug.Log($"Player {id} connected");
-        var button = Instantiate(playerReady, transform).GetComponent<PlayerReadyButton>();
+        var button = Instantiate(playerReady, transform).GetComponent<PlayerReadyController>();
         button.Initialize(id);
     }
 }
