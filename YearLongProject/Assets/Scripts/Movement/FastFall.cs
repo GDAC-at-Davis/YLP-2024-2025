@@ -7,7 +7,7 @@ namespace Movement
     public class FastFall : MonoBehaviour
     {
         [BoldHeader("Fast-Fall Script")]
-        [InfoBox("Handles fast-fall logic when pressing down. ")]
+        [InfoBox("Handles fast-fall logic when pressing down. \n Modify the Fast Fall stats here.")]
         [Header("Dependencies")]
 
         [SerializeField]

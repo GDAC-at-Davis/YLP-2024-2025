@@ -3,6 +3,7 @@ using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
+using Movement;
 using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;

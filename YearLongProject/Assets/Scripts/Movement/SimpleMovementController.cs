@@ -1,10 +1,13 @@
-using Movement;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
-namespace State_Machine_Scripts
+namespace Movement
 {
     public class SimpleMovementController : MonoBehaviour
     {
+        [BoldHeader("Simple Movement")]
+        [InfoBox("Modify the character's basic movement stats here")]
         [SerializeField]
         private float speed = 5;
 

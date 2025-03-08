@@ -12,8 +12,7 @@ namespace State_Machine_Scripts
     public class CharacterActionManager : MonoBehaviour
     {
         [BoldHeader("Action Manager")]
-        [InfoBox("Manages the character's state machine and set the character's state. Don't remove!",
-            EInfoBoxType.Warning)]
+        [InfoBox("Manages the character's state machine and set the character's state. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]
