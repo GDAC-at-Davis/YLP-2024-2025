@@ -133,6 +133,9 @@ namespace Timeline.ParticleSystemTimeline
 					break;
 				}
 			}
+
+			// if the frame is close
+			ps.Play();
 		}
 	}
 }
