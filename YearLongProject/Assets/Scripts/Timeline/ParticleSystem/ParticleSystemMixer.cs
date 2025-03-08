@@ -10,7 +10,15 @@ namespace Timeline.ParticleSystemTimeline
 
 	public class ParticleSystemMixer : PlayableBehaviour 
 	{
-	
+
+		// This variable stores the playable of the last clip that the timeline is on 
+		// It is only used in the ProgressivelySimulate function
+		//private Playable previousClipPlayable = null;   
+
+		// stores last time point of the timeline used for the progressive simulate function 
+		// note the time between two frame on timeline could be different than time.deltaTime which is why I am not using it
+		private double previousTime = 0.0f; 
+
 		// The sorting algorithm for clips 
 		// This sort them from earliest start time to latest start time
 		private int SortClips(Playable a, Playable b)
@@ -42,7 +50,55 @@ namespace Timeline.ParticleSystemTimeline
 
 			// do not preform process frame is Particle System doesn't exist 
 			if (ps == null) { return; }
-	
+			
+			double timeChange = playable.GetTime() - previousTime;
+			previousTime = playable.GetTime();
+
+			if (Application.isPlaying)
+			{
+				ProgressivelySimulate(playable, info, ps, timeChange);
+			}
+			else 
+			{
+				HandleScrubbing(playable, ps);
+			}
+
+		}
+		
+		// This is called on process frame 
+		// It progressively changes the state of the Particle System 
+		// This means that the previous state of the Particle System isn't cleared  
+		private void ProgressivelySimulate(Playable playable, FrameData info, ParticleSystem ps, double timeChange)
+		{
+			int numberOfClips = playable.GetInputCount();
+			var em = ps.emission; 
+
+			for (int i = 0; i < numberOfClips; i++)
+			{
+				// if there is currently a clip playing
+				if (playable.GetInputWeight(i) > 0.2)
+				{
+					em.enabled = true;
+				}
+				else 
+				{
+					em.enabled = false;
+				}
+				//ps.Simulate(Time.deltaTime, true, false);
+				ps.Simulate((float)timeChange, true, false);
+			}
+			em.enabled = false;
+			ps.Play();
+		}
+
+		// this method is called on process frame 
+		// It sets the state of the Particle System using it's Simulate function. 
+		// This function allows the particle system to manually simulate all the particle emitted. 
+		// This is necessary when going backward on scrub because Simulate can't simulatee backward 
+		// This means everytime you scrub backwards you need to clear the particles and re simulate everything
+		private void HandleScrubbing(Playable playable, ParticleSystem ps)
+		{
+
 			// clear previous particles emitted by system
 			var em = ps.emission; 
 			em.enabled = false;	
@@ -81,7 +137,7 @@ namespace Timeline.ParticleSystemTimeline
 				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClip).GetBehaviour();	
 				double currClipBegin = psb.owningClip.start; //psb.startTime;
 				double currClipEnd = psb.owningClip.end; // psb.endTime;
-				Debug.Log(" " + currClipBegin + " " + currClipEnd);
+				//Debug.Log(" " + currClipBegin + " " + currClipEnd);
 				
 				// This if statement allow a non-loop particle system to run again 
 				if (ps.main.loop == false)
