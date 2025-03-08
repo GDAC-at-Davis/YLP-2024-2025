@@ -136,6 +136,7 @@ namespace Timeline.ParticleSystemTimeline
 
 			// if the frame is close
 			ps.Play();
+			ps.Stop();
 		}
 	}
 }
