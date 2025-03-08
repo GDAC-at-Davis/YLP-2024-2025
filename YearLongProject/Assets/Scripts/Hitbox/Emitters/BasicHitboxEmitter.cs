@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
-using Base;
+using EditorUtils.BoldHeader;
 using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.HitboxAreas;
 using Hitbox.System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Hitbox.Emitters
 {
     /// <summary>
-    ///     Emits hitboxes
+    ///     Basic hitbox emitter
     /// </summary>
-    public class HitboxEmitter : DescriptionMono
+    public class BasicHitboxEmitter : MonoBehaviour
     {
         [Serializable]
         public class HitboxLandEvent : UnityEvent<HitboxInstantiateResult>
@@ -28,7 +29,9 @@ namespace Hitbox.Emitters
             public List<Entity> HitEntities;
         }
 
-        [Header("Depends")]
+        [BoldHeader("Basic Hitbox Emitter")]
+        [InfoBox("Attaches context to hitboxes and instantiates them. Basic variant with no special behavior.")]
+        [Header("Dependencies")]
 
         [SerializeField]
         private HitboxSystemSo hitboxSystemSo;
@@ -39,12 +42,14 @@ namespace Hitbox.Emitters
         [SerializeField]
         private Transform hitboxSourceTransform;
 
-        [SerializeField]
-        private bool flipX;
+        [Header("Configuration")]
 
         [SerializeField]
         private LayerMask hitboxLayerMask;
 
+        [Header("Events")]
+
+        [InfoBox("Add listeners to this UnityEvent to define custom behavior when a hitbox lands.")]
         public HitboxLandEvent OnLandHit;
 
         public Entity Entity => entity;
@@ -54,6 +59,9 @@ namespace Hitbox.Emitters
         ///     This is to prevent multiple hits occuring on the same Entity by one instance of the hitbox group
         /// </summary>
         private readonly Dictionary<string, HitboxGroupContext> hitEntities = new();
+
+        [ShowNonSerializedField]
+        private bool flipX;
 
         public void EmitHitbox(IHitboxArea hitboxArea, HitboxEffect hitboxEffect, string hitboxGroupId)
         {
@@ -82,6 +90,7 @@ namespace Hitbox.Emitters
             if (instantiateResult.HitImpacts.Count > 0)
             {
                 OnLandHit?.Invoke(instantiateResult);
+                Debug.Log("ASDF");
                 // Add hit entities to hitbox group context
                 hitEntities[hitboxGroupId].HitEntities
                     .AddRange(instantiateResult.HitImpacts.ConvertAll(hitImpact => hitImpact.HitEntity));

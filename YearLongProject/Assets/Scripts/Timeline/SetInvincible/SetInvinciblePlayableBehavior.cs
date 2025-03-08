@@ -4,6 +4,7 @@ using UnityEngine.Playables;
 
 namespace Timeline.SetInvincible
 {
+    [System.Serializable]
     public class SetInvinciblePlayableBehavior : PlayableBehaviour
     {
         private Entity entity;

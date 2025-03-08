@@ -1,3 +1,5 @@
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using Timeline;
 using UnityEngine;
 
@@ -8,10 +10,15 @@ namespace State_Machine_Scripts.States
     /// </summary>
     public class SimpleTimelineState : CharacterState
     {
-        [Header("Config")]
+        [BoldHeader("Simple Timeline State")]
+        [InfoBox(
+            "A state that simply plays a Timeline when entered, and returns to the default state when the Timeline ends.")]
+        [Header("Dependencies")]
 
         [SerializeField]
         private SimpleMovementController movementController;
+
+        [Header("Config")]
 
         [SerializeField]
         private ManualTimelinePlayer timelinePlayer;

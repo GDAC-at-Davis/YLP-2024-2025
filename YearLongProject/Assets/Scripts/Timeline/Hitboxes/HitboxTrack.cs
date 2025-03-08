@@ -10,7 +10,7 @@ namespace Timeline.Hitboxes
     /// </summary>
     [TrackColor(1f, 0f, 0f)]
     [TrackClipType(typeof(HitboxPlayableAsset))]
-    [TrackBindingType(typeof(HitboxEmitter))]
+    [TrackBindingType(typeof(BasicHitboxEmitter))]
     public class HitboxTrack : TrackAsset
     {
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)

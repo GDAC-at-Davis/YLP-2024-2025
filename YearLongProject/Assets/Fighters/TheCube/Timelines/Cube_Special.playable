@@ -17,7 +17,7 @@ MonoBehaviour:
       <Damage>k__BackingField: 3
       <Knockback>k__BackingField: {x: 8, y: 8}
       <Hitstun>k__BackingField: 0.5
-      <HitStopDuration>k__BackingField: 0
+      <HitStopDuration>k__BackingField: 0.1
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
       <ScreenShakeEffect>k__BackingField:
@@ -736,7 +736,6 @@ MonoBehaviour:
   template:
     StartGravity: {x: 0, y: 0}
     EndGravity: {x: 0, y: -15}
-    ReturnToStartGravity: 1
     Curve:
       serializedVersion: 2
       m_Curve:
@@ -761,6 +760,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    ReturnToStartGravity: 1
 --- !u!114 &8829339449843730414
 MonoBehaviour:
   m_ObjectHideFlags: 1

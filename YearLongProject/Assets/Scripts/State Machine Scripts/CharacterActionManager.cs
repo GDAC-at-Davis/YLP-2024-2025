@@ -1,21 +1,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using Animancer.FSM;
-using Base;
+using EditorUtils.BoldHeader;
 using Input_Scripts;
+using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 
 namespace State_Machine_Scripts
 {
-    public class CharacterActionManager : DescriptionMono
+    public class CharacterActionManager : MonoBehaviour
     {
+        [BoldHeader("Action Manager")]
+        [InfoBox("Manages the character's state machine and set the character's state. Don't remove!",
+            EInfoBoxType.Warning)]
+        [Header("Dependencies")]
+
         [SerializeField]
+        [Tooltip("Transform representing the body of the character, i.e. the part that moves")]
         private Transform _body;
 
         [Header("States")]
 
-        [Tooltip("All the states in the state machine")]
+        [InfoBox("All the states used should be added here. The first state is the default state.")]
         [SerializeField]
         private List<CharacterState> states;
 
@@ -166,6 +173,19 @@ namespace State_Machine_Scripts
         public StateNameSO[] GetStates()
         {
             return states.Select(item => item.StateNameSO).ToArray();
+        }
+
+        [Button("Autofill States")]
+        private void GetStatesButton()
+        {
+            CharacterState[] foundStates = GetComponentsInChildren<CharacterState>();
+            foreach (CharacterState state in foundStates)
+            {
+                if (!states.Contains(state))
+                {
+                    states.Add(state);
+                }
+            }
         }
     }
 }

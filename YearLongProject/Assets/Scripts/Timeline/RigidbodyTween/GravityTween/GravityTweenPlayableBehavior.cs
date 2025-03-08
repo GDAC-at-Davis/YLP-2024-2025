@@ -1,5 +1,7 @@
 using System;
+using EditorUtils.BoldHeader;
 using Movement;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -11,10 +13,17 @@ namespace Timeline.RigidbodyTween.GravityTween
     [Serializable]
     public class GravityTweenPlayableBehavior : PlayableBehaviour
     {
+        [BoldHeader("Gravity Tween")]
+        [InfoBox(
+            "Tween the character's Gravity from start to end Gravity over the duration of the clip.\n" +
+            "Curve controls interpolation.")]
         public Vector2 StartGravity;
+
         public Vector2 EndGravity;
-        public bool ReturnToStartGravity;
         public AnimationCurve Curve;
+
+        [Tooltip("If true, the gravity will return to the initial gravity when the clip ends.")]
+        public bool ReturnToStartGravity;
 
         private CharacterRigidbody2D rigidbody;
 
