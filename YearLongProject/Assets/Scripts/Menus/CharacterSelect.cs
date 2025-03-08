@@ -5,73 +5,77 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-///     Temporary Character Select system
-///     When all players are ready, load game scene and characters
-///     Opting for singleton rather than SO here since we'll only need this in the characterselect scene
-/// </summary>
-public class CharacterSelect : MonoBehaviour
+namespace Menus
 {
-    public static CharacterSelect Instance;
-
-    public UnityAction AllPlayersReady;
-
-    [SerializeField]
-    private readonly Dictionary<int, CharacterSO> playerReady = new();
-
-    private void Awake()
+    /// <summary>
+    ///     Temporary Character Select system
+    ///     When all players are ready, load game scene and characters
+    ///     Opting for singleton rather than SO here since we'll only need this in the characterselect scene
+    /// </summary>
+    public class CharacterSelect : MonoBehaviour
     {
-        if (Instance == null)
+        public static CharacterSelect Instance;
+
+        public UnityAction AllPlayersReady;
+
+        [SerializeField]
+        private readonly Dictionary<int, CharacterSO> playerReady = new();
+
+        private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += GameStarted;
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+                SceneManager.sceneLoaded += GameStarted;
+            }
+
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
-        else
+        private void OnDestroy()
         {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= GameStarted;
-    }
-
-    public void ReadyUp(int id, CharacterSO character)
-    {
-        if (!playerReady.TryGetValue(id, out _))
-        {
-            playerReady.Add(id, character);
+            SceneManager.sceneLoaded -= GameStarted;
         }
 
-        playerReady[id] = character;
-        TryStartGame();
-    }
-
-    public void TryStartGame()
-    {
-        if (playerReady.ContainsValue(null))
+        public void ReadyUp(int id, CharacterSO character)
         {
-            return;
+            if (!playerReady.TryGetValue(id, out _))
+            {
+                playerReady.Add(id, character);
+            }
+
+            playerReady[id] = character;
+            TryStartGame();
         }
 
-        AllPlayersReady.Invoke();
-        Invoke("StartGame", 1);
-    }
-
-    private void StartGame()
-    {
-        // TODO move this logic to an SO
-        SceneManager.LoadScene("PrototypeA");
-    }
-
-    private void GameStarted(Scene scene, LoadSceneMode sceneMode)
-    {
-        foreach (int id in playerReady.Keys)
+        public void TryStartGame()
         {
-            Instantiate(playerReady[id].CharacterPrefab, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
+            if (playerReady.ContainsValue(null))
+            {
+                return;
+            }
+
+            AllPlayersReady.Invoke();
+            Invoke("StartGame", 1);
+        }
+
+        private void StartGame()
+        {
+            // TODO move this logic to an SO
+            SceneManager.LoadScene("PrototypeA");
+        }
+
+        private void GameStarted(Scene scene, LoadSceneMode sceneMode)
+        {
+            foreach (int id in playerReady.Keys)
+            {
+                Instantiate(playerReady[id].CharacterPrefab).GetComponent<CharacterEntity>()
+                    .Initialize(id);
+            }
         }
     }
 }

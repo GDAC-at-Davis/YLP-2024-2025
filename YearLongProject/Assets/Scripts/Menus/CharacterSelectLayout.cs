@@ -1,25 +1,32 @@
-using CharacterScripts;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// populates character select menu with characters based on characterSO's in characterList
-/// </summary>
-public class CharacterSelectLayout : MonoBehaviour
+namespace Menus
 {
-    [SerializeField]
-    private List<CharacterSO> characterList;
-
-    [SerializeField]
-    private GameObject buttonTemplate;
-
-    private void Start()
+    /// <summary>
+    ///     populates character select menu with characters based on characterSO's in characterList
+    /// </summary>
+    public class CharacterSelectLayout : MonoBehaviour
     {
-        GridLayoutGroup gridLayout = GetComponent<GridLayoutGroup>();
-        foreach (CharacterSO character in characterList)
+        [SerializeField]
+        private CharacterSelectRoster characterList;
+
+        [SerializeField]
+        private GameObject buttonTemplate;
+
+        private void Start()
         {
-            Instantiate(buttonTemplate, gridLayout.transform).GetComponent<CharacterSelectButton>().Init(character);
+            var gridLayout = GetComponent<GridLayoutGroup>();
+            foreach (CharacterSelectRoster.CharacterSelectData character in characterList.Characters)
+            {
+                if (character.IsHidden)
+                {
+                    continue;
+                }
+
+                Instantiate(buttonTemplate, gridLayout.transform).GetComponent<CharacterSelectButton>()
+                    .Init(character.Character);
+            }
         }
-    }   
+    }
 }
