@@ -25,10 +25,15 @@ namespace Movement
 
         private bool inFastFall;
 
+        [ShowNonSerializedField]
+        private bool fastFallEnabled;
+
         private void FixedUpdate()
         {
-            if (inFastFall)
+            if (inFastFall && fastFallEnabled)
             {
+                // Don't set the velocity directly, as it will override the gravity
+                // Fastfall is just an additional acceleration
                 float cVelY = characterRigidbody2D.LinearVelocity.y;
                 if (cVelY > -fastFallTerminalVelocity)
                 {
@@ -48,6 +53,11 @@ namespace Movement
             {
                 inFastFall = false;
             }
+        }
+
+        public void SetFastFallEnabled(bool enabled)
+        {
+            fastFallEnabled = enabled;
         }
     }
 }

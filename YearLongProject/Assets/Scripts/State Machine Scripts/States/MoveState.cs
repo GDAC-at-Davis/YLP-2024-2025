@@ -39,7 +39,7 @@ namespace State_Machine_Scripts.States
         private void Update()
         {
             Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
-            movementController.SetCharacterMove(moveInput.x);
+            movementController.SetHorizontalInput(moveInput.x);
             SelectMoveState(moveInput);
             ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
         }

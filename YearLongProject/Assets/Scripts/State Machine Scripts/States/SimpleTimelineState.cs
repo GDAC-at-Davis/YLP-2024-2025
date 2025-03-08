@@ -31,11 +31,11 @@ namespace State_Machine_Scripts.States
             if (useDefaultMovement)
             {
                 Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
-                movementController.SetCharacterMove(moveInput.x);
+                movementController.SetHorizontalInput(moveInput.x);
             }
             else
             {
-                movementController.SetCharacterMove(0);
+                movementController.SetHorizontalInput(0);
             }
         }
 

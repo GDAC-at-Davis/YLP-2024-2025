@@ -31,7 +31,15 @@ namespace Movement
 
         public Vector2 LinearVelocity
         {
-            get => rb2D.linearVelocity;
+            get
+            {
+                if (isFrozen)
+                {
+                    return cachedVelocity;
+                }
+
+                return rb2D.linearVelocity;
+            }
             set
             {
                 if (isFrozen)

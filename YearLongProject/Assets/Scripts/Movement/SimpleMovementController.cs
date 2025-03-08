@@ -26,14 +26,14 @@ namespace State_Machine_Scripts
 
         private bool inJump;
         private bool isGrounded;
-        private float playerMove;
+        private float horizontalInput;
         private float jumpVelocity;
 
         private void FixedUpdate()
         {
             isGrounded = Physics2D.Raycast(Position, -Vector2.up, groundCheckDistance, groundLayer);
 
-            float playerIntendedMove = playerMove * speed;
+            float playerIntendedMove = horizontalInput * speed;
             float newVelocity = Mathf.Lerp(characterRigidbody.LinearVelocity.x, playerIntendedMove,
                 acceleration * Time.fixedDeltaTime);
             SetHorizontalVelocity(newVelocity);
@@ -50,14 +50,21 @@ namespace State_Machine_Scripts
             Gizmos.DrawLine(Position, Position - Vector2.up * groundCheckDistance);
         }
 
-        public void SetCharacterMove(float playerMove)
+        public void SetHorizontalInput(float desiredMove)
         {
-            this.playerMove = playerMove;
+            if (desiredMove == 0)
+            {
+                horizontalInput = 0;
+            }
+            else
+            {
+                horizontalInput = desiredMove > 0 ? 1 : -1;
+            }
         }
 
-        public void SetJumpVelocity(float jumpVelocity)
+        public void SetJumpVelocity(float desiredJumpVelocity)
         {
-            this.jumpVelocity = jumpVelocity;
+            jumpVelocity = desiredJumpVelocity;
         }
 
         public void StartJump()
