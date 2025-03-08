@@ -84,7 +84,7 @@ namespace GameEntities
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
             movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
-            movementController.ApplyImpulseForce(knockback);
+            movementController.SetVelocity(knockback);
 
             TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
 

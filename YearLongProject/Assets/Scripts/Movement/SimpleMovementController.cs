@@ -72,10 +72,12 @@ namespace State_Machine_Scripts
 
         public void AddVelocity(Vector2 velocity)
         {
+            characterRigidbody.LinearVelocity += velocity;
         }
 
         public void SetVelocity(Vector2 velocity)
         {
+            characterRigidbody.LinearVelocity = velocity;
         }
 
         public void SetHorizontalVelocity(float velocity)
