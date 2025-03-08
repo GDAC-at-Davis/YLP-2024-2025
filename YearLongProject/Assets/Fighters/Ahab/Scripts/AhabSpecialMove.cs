@@ -27,6 +27,9 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private float throwForce;
 
+        [SerializeField]
+        private float launchAngle;
+
         private int facingDirection = 1;
 
         private void OnDrawGizmos()
@@ -48,8 +51,8 @@ namespace Fighters.Ahab.Scripts
         {
             Vector2 offset = throwPointOffset;
             offset.x *= facingDirection;
-            sharkson.Throw((Vector2)throwTransform.position + offset,
-                throwTransform.rotation,
+            sharkson.Throw(facingDirection != 1, (Vector2)throwTransform.position + offset,
+                Quaternion.Euler(0, 0, launchAngle),
                 throwForce * facingDirection);
         }
     }
