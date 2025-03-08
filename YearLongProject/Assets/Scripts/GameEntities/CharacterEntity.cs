@@ -14,7 +14,7 @@ namespace GameEntities
     public class CharacterEntity : Entity
     {
         [BoldHeader("Character Entity Script")]
-        [InfoBox("The top-level script representing a character entity. Don't remove!", EInfoBoxType.Warning)]
+        [InfoBox("The top-level script representing a character entity. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]

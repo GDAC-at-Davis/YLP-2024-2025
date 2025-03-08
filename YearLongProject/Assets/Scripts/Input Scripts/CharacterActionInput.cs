@@ -12,7 +12,7 @@ namespace Input_Scripts
     public class CharacterActionInput : MonoBehaviour
     {
         [BoldHeader("Character Input Script")]
-        [InfoBox("Provides User Input information for this character. Don't remove!", EInfoBoxType.Warning)]
+        [InfoBox("Provides User Input information for this character. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]
@@ -30,6 +30,8 @@ namespace Input_Scripts
         public UnityEvent OnHeavyAttackPassed;
 
         public UnityEvent OnSpecialAttackPassed;
+
+        public UnityEvent<Vector2> OnMoveInputChanged;
 
         // Properties
         public Vector2 MoveInput => moveInput;
@@ -73,6 +75,7 @@ namespace Input_Scripts
             if (move != moveInput)
             {
                 MoveInputChanged?.Invoke(move);
+                OnMoveInputChanged.Invoke(move);
             }
 
             moveInput = move;

@@ -12,7 +12,7 @@ namespace Camera
     public class EntityScreenShakeEmitter : MonoBehaviour
     {
         [BoldHeader("Screen Shake Emitter")]
-        [InfoBox("Handles emitting screen shake effects. Don't remove!", EInfoBoxType.Warning)]
+        [InfoBox("Handles emitting screen shake effects. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]
