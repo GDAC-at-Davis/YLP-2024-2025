@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 5352263243400969421}
   - component: {fileID: 6857426949256817108}
   m_Layer: 3
-  m_Name: Body
+  m_Name: Main Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 8710895339890870979}
   - component: {fileID: 6564235481833952604}
   m_Layer: 3
-  m_Name: ActionManager
+  m_Name: Action Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 9035290719337463328}
   - component: {fileID: 4109345664132030364}
   m_Layer: 0
-  m_Name: ScreenShake
+  m_Name: Screen Shake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 4404914555981974339}
   - component: {fileID: 1297400868120738962}
   m_Layer: 3
-  m_Name: FastFall
+  m_Name: Fast Fall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 2320740152148522607}
   - component: {fileID: 3779965043621737290}
   m_Layer: 3
-  m_Name: UserInput
+  m_Name: User Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

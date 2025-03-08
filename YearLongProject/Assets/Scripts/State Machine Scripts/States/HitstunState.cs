@@ -1,4 +1,6 @@
+using EditorUtils.BoldHeader;
 using Movement;
+using NaughtyAttributes;
 using Timeline;
 using UnityEngine;
 
@@ -6,6 +8,8 @@ namespace State_Machine_Scripts.States
 {
     public class HitstunState : CharacterState
     {
+        [BoldHeader("Hitstun State")]
+        [InfoBox("State for when the character is hit and stunned.")]
         [Header("HitstunState Config")]
 
         [SerializeField]

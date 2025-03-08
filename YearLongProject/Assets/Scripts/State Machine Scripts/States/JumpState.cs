@@ -1,4 +1,6 @@
+using EditorUtils.BoldHeader;
 using Movement;
+using NaughtyAttributes;
 using Timeline;
 using UnityEngine;
 
@@ -6,17 +8,24 @@ namespace State_Machine_Scripts.States
 {
     public class JumpState : CharacterState
     {
+        [BoldHeader("Jump State")]
+        [InfoBox("State that handles jump physics")]
+        [Header("Dependencies")]
+
+        [SerializeField]
+        private SimpleMovementController movementController;
+
+        [Header("Config")]
+
+        [InfoBox("Modify the jump stats here.")]
+        [SerializeField]
+        private AnimationCurve jumpMultCurve;
+
         [SerializeField]
         private float jumpVelocity = 10;
 
         [SerializeField]
         private float maxJumpDuration = 2;
-
-        [SerializeField]
-        private SimpleMovementController movementController;
-
-        [SerializeField]
-        private AnimationCurve jumpMultCurve;
 
         [SerializeField]
         private ManualTimelinePlayer jumpPlayableAsset;
