@@ -99,7 +99,6 @@ namespace Timeline.ParticleSystemTimeline
 
 				if (currentTime < currClipBegin) // don't do anything if clip is after current time on timeline
 				{
-					//Debug.Log("before clip " + i + " : " + currentTime + " " + currClipBegin );
 					break;
 				}
 				else if (currentTime < currClipEnd) // Simulate part of a clip until the current time 
@@ -107,7 +106,6 @@ namespace Timeline.ParticleSystemTimeline
 					em.enabled = true;
 					ps.Simulate((float)(currentTime - currClipBegin), true, false);
 					
-					//Debug.Log("mid clip: " + currentTime + " _ " + currClipEnd);
 					
 					break;
 				}
