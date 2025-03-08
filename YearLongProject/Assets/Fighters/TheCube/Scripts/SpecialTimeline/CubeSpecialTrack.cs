@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-namespace Timeline.CubeSpecial
+namespace Fighters.TheCube.Scripts.SpecialTimeline
 {
     // A track that allows timed restriction of changing directions
     [TrackClipType(typeof(CubeSpecialPlayableAsset))]

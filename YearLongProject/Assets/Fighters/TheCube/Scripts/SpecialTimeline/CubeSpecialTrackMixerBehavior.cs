@@ -1,6 +1,6 @@
 using UnityEngine.Playables;
 
-namespace Timeline.CubeSpecial
+namespace Fighters.TheCube.Scripts.SpecialTimeline
 {
     /// <summary>
     ///     Mixer behavior for hitbox track. Empty since hitboxes don't blend.

@@ -2,7 +2,7 @@ using CharacterScripts;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace Timeline.CubeSpecial
+namespace Fighters.TheCube.Scripts.SpecialTimeline
 {
     public class CubeSpecialPlayableBehavior : PlayableBehaviour
     {
@@ -17,10 +17,15 @@ namespace Timeline.CubeSpecial
 
             cubeSpecial = info.output.GetUserData() as CubeSpecialHandler;
 
+            if (cubeSpecial == null)
+            {
+                Debug.LogError("No CubeSpecialHandler found on the track");
+                return;
+            }
 
             if (cubeSpecial.canSetTrap == false)
             {
-                cubeSpecial.TriggerTrap((float)(playable.GetDuration()));
+                cubeSpecial.TriggerTrap((float)playable.GetDuration());
             }
         }
 
@@ -31,7 +36,13 @@ namespace Timeline.CubeSpecial
                 return;
             }
 
-            if (cubeSpecial.canSetTrap == true)
+            if (cubeSpecial == null)
+            {
+                Debug.LogError("No CubeSpecialHandler found on the track");
+                return;
+            }
+
+            if (cubeSpecial.canSetTrap)
             {
                 cubeSpecial.gameObject.SetActive(true);
                 cubeSpecial.SetTrap();

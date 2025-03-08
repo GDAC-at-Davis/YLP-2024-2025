@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-namespace Timeline.CubeSpecial
+namespace Fighters.TheCube.Scripts.SpecialTimeline
 {
     public class CubeSpecialPlayableAsset : PlayableAsset, ITimelineClipAsset
     {
