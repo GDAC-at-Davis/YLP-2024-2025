@@ -15,6 +15,10 @@ namespace Timeline.ParticleSystemTimeline
 		private double previousClipStart;
 		private double previousClipEnd;
 
+		// This list is use in the handle scrub function 
+		// It stores all the playables of the clips on the timeline
+		private List<Playable> clips = new List<Playable>();
+
 		// The sorting algorithm for clips 
 		// This sort them from earliest start time to latest start time
 		private int SortClips(Playable a, Playable b)
@@ -39,6 +43,20 @@ namespace Timeline.ParticleSystemTimeline
 			}
 		}
 		
+		public override void OnBehaviourPlay(Playable playable, FrameData info)
+		{
+			// create a priority queue that sorts all the playable clips by their start time 
+			// This means the clips with the earliest start time can be accessed first
+			int numberOfClips = playable.GetInputCount();
+			for (int i = 0; i < numberOfClips; i++)
+			{
+				Playable curr = playable.GetInput(i);
+				clips.Add(curr);
+			}
+			clips.Sort(SortClips);
+			
+		}
+
 		public override void ProcessFrame(Playable playable, FrameData info, object playerData)
 		{
 			// retrieve Particle System that is associated with the track 
@@ -121,6 +139,8 @@ namespace Timeline.ParticleSystemTimeline
 			var em = ps.emission; 
 			em.enabled = false;	
 			
+			// reload particle system, so previous frame don't interfere
+			// This is important for scrub as you can go backwards on the particle system
 			uint currentSeed = ps.randomSeed;
 			ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 			ps.randomSeed = currentSeed;
@@ -132,18 +152,6 @@ namespace Timeline.ParticleSystemTimeline
 			// find all the clips currently on the track
 			int numberOfClips = playable.GetInputCount();
 
-			// create a priority queue that sorts all the playable clips by their start time 
-			// This means the clips with the earliest start time can be accessed first
-			
-			//var clipQueue = new PriorityQueue< Playable, double >();
-			List<Playable> clips = new List<Playable>();
-			for (int i = 0; i < numberOfClips; i++)
-			{
-				Playable curr = playable.GetInput(i);
-				clips.Add(curr); //clipQueue.Enqueue(curr, curr.GetTime());
-			}
-			clips.Sort(SortClips);
-			
 
 			// go through all the clip that proceed the current time on the timeline.
 			// Simulate the particles based on the time that pass
