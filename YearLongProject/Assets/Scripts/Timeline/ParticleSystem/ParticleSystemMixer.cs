@@ -10,14 +10,10 @@ namespace Timeline.ParticleSystemTimeline
 
 	public class ParticleSystemMixer : PlayableBehaviour 
 	{
-
-		// This variable stores the playable of the last clip that the timeline is on 
-		// It is only used in the ProgressivelySimulate function
-		//private Playable previousClipPlayable = null;   
-
-		// stores last time point of the timeline used for the progressive simulate function 
-		// note the time between two frame on timeline could be different than time.deltaTime which is why I am not using it
-		private double previousTime = 0.0f; 
+		// store the start and end times for previous clip 
+		// This is only used for the Progessive simulate function
+		private double previousClipStart;
+		private double previousClipEnd;
 
 		// The sorting algorithm for clips 
 		// This sort them from earliest start time to latest start time
@@ -51,12 +47,9 @@ namespace Timeline.ParticleSystemTimeline
 			// do not preform process frame is Particle System doesn't exist 
 			if (ps == null) { return; }
 			
-			double timeChange = playable.GetTime() - previousTime;
-			previousTime = playable.GetTime();
-
 			if (Application.isPlaying)
 			{
-				ProgressivelySimulate(playable, info, ps, timeChange);
+				ProgressivelySimulate(playable, info, ps);
 			}
 			else 
 			{
@@ -68,25 +61,50 @@ namespace Timeline.ParticleSystemTimeline
 		// This is called on process frame 
 		// It progressively changes the state of the Particle System 
 		// This means that the previous state of the Particle System isn't cleared  
-		private void ProgressivelySimulate(Playable playable, FrameData info, ParticleSystem ps, double timeChange)
+		private void ProgressivelySimulate(Playable playable, FrameData info, ParticleSystem ps)
 		{
 			int numberOfClips = playable.GetInputCount();
 			var em = ps.emission; 
+			
+			bool clipIsPlaying = false;
+			Playable currClipPlayable = Playable.Null;
 
 			for (int i = 0; i < numberOfClips; i++)
 			{
 				// if there is currently a clip playing
 				if (playable.GetInputWeight(i) > 0.2)
 				{
-					em.enabled = true;
+					clipIsPlaying = true;
+					currClipPlayable = playable.GetInput(i);
+					break;
 				}
-				else 
-				{
-					em.enabled = false;
-				}
-				//ps.Simulate(Time.deltaTime, true, false);
-				ps.Simulate((float)timeChange, true, false);
 			}
+			
+			// if the clip changed then reset particle system
+			if (playable.GetTime() < previousClipStart || playable.GetTime() > previousClipEnd)
+			{
+				//Debug.Log("This shiz played " + previousClipStart + " " + playable.GetTime() + " " + previousClipEnd);
+				ps.Stop();
+				ps.Play();
+			}
+			else 
+			{
+				//Debug.Log("NO " + playable.GetTime());
+			}
+
+			if (clipIsPlaying)
+			{
+				em.enabled = true;
+				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClipPlayable).GetBehaviour();	
+				previousClipStart = psb.owningClip.start;
+				previousClipEnd = psb.owningClip.end;
+			}
+			else
+			{
+				em.enabled = false;
+			}
+
+			ps.Simulate(Time.deltaTime, true, false);
 			em.enabled = false;
 			ps.Play();
 		}
@@ -135,9 +153,8 @@ namespace Timeline.ParticleSystemTimeline
 			{
 				Playable currClip = clips[i];
 				ParticleSystemBehaviour psb = ((ScriptPlayable<ParticleSystemBehaviour>)currClip).GetBehaviour();	
-				double currClipBegin = psb.owningClip.start; //psb.startTime;
-				double currClipEnd = psb.owningClip.end; // psb.endTime;
-				//Debug.Log(" " + currClipBegin + " " + currClipEnd);
+				double currClipBegin = psb.owningClip.start; 
+				double currClipEnd = psb.owningClip.end; 
 				
 				// This if statement allow a non-loop particle system to run again 
 				if (ps.main.loop == false)
