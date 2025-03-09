@@ -15,6 +15,8 @@ namespace Timeline.ParticleSystemTimeline
 		private double previousClipStart;
 		private double previousClipEnd;
 
+		private bool timeLineReset;
+
 		// This list is use in the handle scrub function 
 		// It stores all the playables of the clips on the timeline
 		private List<Playable> clips = new List<Playable>();
@@ -55,6 +57,15 @@ namespace Timeline.ParticleSystemTimeline
 			}
 			clips.Sort(SortClips);
 			
+		}
+
+		public override void OnBehaviourPause(Playable playable, FrameData info)
+		{
+			// if application is playing indicate that the timeline reset 
+			if (Application.isPlaying)
+			{
+				timeLineReset = true;
+			}
 		}
 
 		public override void ProcessFrame(Playable playable, FrameData info, object playerData)
@@ -99,15 +110,11 @@ namespace Timeline.ParticleSystemTimeline
 			}
 			
 			// if the clip changed then reset particle system
-			if (playable.GetTime() < previousClipStart || playable.GetTime() > previousClipEnd)
+			if (playable.GetTime() < previousClipStart || playable.GetTime() > previousClipEnd || timeLineReset == true)
 			{
-				//Debug.Log("This shiz played " + previousClipStart + " " + playable.GetTime() + " " + previousClipEnd);
 				ps.Stop();
 				ps.Play();
-			}
-			else 
-			{
-				//Debug.Log("NO " + playable.GetTime());
+				timeLineReset = false;
 			}
 
 			if (clipIsPlaying)
