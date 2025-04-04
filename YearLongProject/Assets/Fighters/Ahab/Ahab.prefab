@@ -343,8 +343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
-  jumpVelocity: 8
-  maxJumpDuration: 0.5
   movementController: {fileID: 1278654112016437739}
   jumpMultCurve:
     serializedVersion: 2
@@ -370,6 +368,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  jumpVelocity: 8
+  maxJumpDuration: 0.5
   jumpPlayableAsset:
     playableDirector: {fileID: 9144825239364771358}
     loop: 1
