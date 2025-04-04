@@ -2,38 +2,42 @@ using GameEntities;
 using TMPro;
 using UnityEngine;
 
-public class HealthDisplay : MonoBehaviour
+namespace CharacterScripts
 {
-    [SerializeField]
-    CharacterEntity entity;
-    TextMeshProUGUI text;
-
-    private void Start()
+    public class HealthDisplay : MonoBehaviour
     {
-        text = GetComponent<TextMeshProUGUI>();
+        [SerializeField]
+        CharacterEntity entity;
+        TextMeshProUGUI text;
 
-        text.text = entity.Health.ToString();
-    }
 
-    private void OnEnable()
-    {
-        entity.UpdateHealth += UpdateHealth;
-        entity.InvincibleChanged += UpdateInvincibilityStatus;
-    }
+        private void Start()
+        {
+            text = GetComponent<TextMeshProUGUI>();
 
-    private void OnDisable()
-    {
-        entity.UpdateHealth -= UpdateHealth;
-        entity.InvincibleChanged -= UpdateInvincibilityStatus;
-    }
+            text.text = entity.Health.ToString();
+        }
 
-    void UpdateHealth(int health)
-    {
-        text.text = health.ToString();
-    }
+        private void OnEnable()
+        {
+            entity.UpdateHealth += UpdateHealth;
+            entity.InvincibleChanged += UpdateInvincibilityStatus;
+        }
 
-    void UpdateInvincibilityStatus(bool isInvuln)
-    {
-        text.color = isInvuln ? Color.blue : Color.white;
+        private void OnDisable()
+        {
+            entity.UpdateHealth -= UpdateHealth;
+            entity.InvincibleChanged -= UpdateInvincibilityStatus;
+        }
+
+        void UpdateHealth(int health)
+        {
+            text.text = health.ToString();
+        }
+
+        void UpdateInvincibilityStatus(bool isInvuln)
+        {
+            text.color = isInvuln ? Color.blue : Color.white;
+        }
     }
 }

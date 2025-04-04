@@ -1,4 +1,6 @@
 using System;
+using Animancer;
+using NaughtyAttributes;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -16,6 +18,12 @@ namespace Timeline
 
         [SerializeField]
         private bool loop;
+
+        [Header("Events")]
+
+        [InfoBox("Add listeners to define behavior when the timeline finishes playing.")]
+        [SerializeField]
+        private UnityEvent OnFinishedUnityEvent;
 
         public event Action OnFinished;
 
@@ -76,6 +84,7 @@ namespace Timeline
             if (playableDirector.time >= playableDirector.duration && !loop)
             {
                 OnFinished?.Invoke();
+                OnFinishedUnityEvent.Invoke();
                 Stop();
             }
         }

@@ -12,7 +12,7 @@ namespace EditorUtils.BoldHeader
         public readonly string header;
 
         /// <summary>
-        ///     <para>Add a header above some fields in the Inspector.</para>
+        ///     <para>Add a bold header and line above some fields in the Inspector.</para>
         /// </summary>
         /// <param name="header">The header text.</param>
         public BoldHeaderAttribute(string header)
