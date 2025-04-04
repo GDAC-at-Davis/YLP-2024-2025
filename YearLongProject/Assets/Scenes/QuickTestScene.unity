@@ -2670,7 +2670,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1251757769
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3363,6 +3362,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devDescription: 
   attachedEntity: {fileID: 371786996}
+--- !u!95 &1453317408 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 50666074915983101, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
+  m_PrefabInstance: {fileID: 1663872783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1596918946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,6 +3419,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 165188637647747919, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c2e40fa84d53ccd428f640eac126b1fb, type: 2}
     - target: {fileID: 4678280858386419961, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.45
@@ -4402,6 +4410,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3113391724351496076, guid: 30c9368bb81abc6428ca04e92d2bd480, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889796343242106868, guid: 30c9368bb81abc6428ca04e92d2bd480, type: 3}
+      propertyPath: <IsTargeted>k__BackingField
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
