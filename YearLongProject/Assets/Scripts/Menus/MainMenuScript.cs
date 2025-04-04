@@ -80,7 +80,7 @@ public class MainMenuScript : MonoBehaviour
                 break;
 
             case "live":
-                SceneManager.LoadScene("NewFighterSelect");
+                SceneManager.LoadScene("BootScene");
                 break;
 
             case "lore":
