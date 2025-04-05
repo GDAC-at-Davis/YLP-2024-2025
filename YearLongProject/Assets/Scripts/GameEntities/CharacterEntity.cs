@@ -27,6 +27,11 @@ namespace GameEntities
         [SerializeField]
         private SimpleMovementController movementController;
 
+        // TODO: Temp reset
+        [SerializeField]
+        [Scene]
+        private string endSceneName;
+
         [Header("Events")]
 
         [InfoBox(
@@ -99,7 +104,7 @@ namespace GameEntities
 
             if (health <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(endSceneName);
             }
         }
 

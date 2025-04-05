@@ -383,6 +383,7 @@ MonoBehaviour:
   ActionManager: {fileID: 6564235481833952604}
   actionInput: {fileID: 3779965043621737290}
   movementController: {fileID: 7042624565056469040}
+  endSceneName: FighterSelect
   OnHitByAttackEvent:
     m_PersistentCalls:
       m_Calls:
