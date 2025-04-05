@@ -106,7 +106,6 @@ namespace Hitbox.Emitters
             if (instantiateResult.HitImpacts.Count > 0)
             {
                 OnLandHit?.Invoke(instantiateResult);
-                Debug.Log("ASDF");
                 // Add hit entities to hitbox group context
                 hitEntities[hitboxGroupId].HitEntities
                     .AddRange(instantiateResult.HitImpacts.ConvertAll(hitImpact => hitImpact.HitEntity));
