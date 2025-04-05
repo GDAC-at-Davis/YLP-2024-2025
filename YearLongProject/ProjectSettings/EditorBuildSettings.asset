@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PrototypeA.unity
     guid: 24a5d88a98e07be4faf27d4bc2ee2ef2
   - enabled: 0
+    path: Assets/Scenes/NewFighterSelect.unity
+    guid: 6c59295ef0c952f4798798502e9454dc
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
