@@ -1,6 +1,8 @@
+using Animancer;
 using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Movement
 {
@@ -13,10 +15,11 @@ namespace Movement
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody2D;
 
+        [FormerlySerializedAs("fastFallddedAcceleration")]
         [Header("Configuration")]
 
         [SerializeField]
-        private float fastFallddedAcceleration;
+        private float fastFallAddedAcceleration;
 
         [SerializeField]
         private float fastFallTerminalVelocity;
@@ -29,17 +32,40 @@ namespace Movement
         [SerializeField]
         private float fastFallThresholdVelocity;
 
+        [Header("Events")]
+
+        [SerializeField]
+        private UnityEvent onFastFallStart;
+
+        [SerializeField]
+        private UnityEvent onFastFallEnd;
+
         private Vector2 originalGravity;
 
-        private bool inFastFall;
+        private bool fastFallInput;
 
         [ShowNonSerializedField]
         private bool fastFallEnabled;
 
+        private bool isFastFalling;
+
         private void FixedUpdate()
         {
             bool isFalling = characterRigidbody2D.LinearVelocity.y < fastFallThresholdVelocity;
-            if (inFastFall && fastFallEnabled && isFalling)
+            bool shouldFastFall = fastFallInput && fastFallEnabled && isFalling;
+
+            if (!isFastFalling && shouldFastFall)
+            {
+                onFastFallStart?.Invoke();
+            }
+            else if (isFastFalling && !shouldFastFall)
+            {
+                onFastFallEnd?.Invoke();
+            }
+
+            isFastFalling = shouldFastFall;
+
+            if (shouldFastFall)
             {
                 // Don't set the velocity directly, as it will override the gravity
                 // Fastfall is just an additional acceleration
@@ -47,21 +73,21 @@ namespace Movement
                 if (cVelY > -fastFallTerminalVelocity)
                 {
                     characterRigidbody2D.LinearVelocity +=
-                        Vector2.down * fastFallddedAcceleration * Time.fixedDeltaTime;
+                        Vector2.down * fastFallAddedAcceleration * Time.fixedDeltaTime;
                 }
             }
         }
 
         public void HandleMoveInput(Vector2 input)
         {
-            float angle = Vector2.SignedAngle(Vector2.down, input);
+            float angle = Vector2.Angle(Vector2.down, input);
             if (angle < fastFallInputAngle)
             {
-                inFastFall = true;
+                fastFallInput = true;
             }
             else
             {
-                inFastFall = false;
+                fastFallInput = false;
             }
         }
 
