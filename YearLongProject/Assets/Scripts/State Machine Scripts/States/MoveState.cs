@@ -1,4 +1,6 @@
+using EditorUtils.BoldHeader;
 using Movement;
+using NaughtyAttributes;
 using Timeline;
 using UnityEngine;
 
@@ -13,6 +15,8 @@ namespace State_Machine_Scripts.States
             Airborne
         }
 
+        [BoldHeader("Basic Movement State")]
+        [InfoBox("Basic movement state for running, jumping, and air.")]
         [Header("MoveState Config")]
 
         [SerializeField]
@@ -39,7 +43,7 @@ namespace State_Machine_Scripts.States
         private void Update()
         {
             Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
-            movementController.SetCharacterMove(moveInput.x);
+            movementController.SetHorizontalInput(moveInput.x);
             SelectMoveState(moveInput);
             ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
         }

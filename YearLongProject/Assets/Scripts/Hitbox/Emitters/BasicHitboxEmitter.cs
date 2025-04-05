@@ -63,18 +63,34 @@ namespace Hitbox.Emitters
         [ShowNonSerializedField]
         private bool flipX;
 
+        /// <summary>
+        ///     Emit a hitbox with the given area and effect.
+        ///     The context is automatically attached to the hitbox based on the gameObject this script is attached to.
+        /// </summary>
+        /// <param name="hitboxArea"></param>
+        /// <param name="hitboxEffect"></param>
+        /// <param name="hitboxGroupId"></param>
         public void EmitHitbox(IHitboxArea hitboxArea, HitboxEffect hitboxEffect, string hitboxGroupId)
         {
-            // Create a new hitbox group context if it doesn't exist
-            if (!hitEntities.ContainsKey(hitboxGroupId))
-            {
-                hitEntities.Add(hitboxGroupId, new HitboxGroupContext
-                {
-                    HitEntities = new List<Entity>()
-                });
-            }
+            CreateGroupIfNotExists(hitboxGroupId);
 
             HitboxContext context = GetContext(hitboxGroupId);
+
+            EmitHitbox(hitboxArea, hitboxEffect, context, hitboxGroupId);
+        }
+
+        /// <summary>
+        ///     Emit a hitbox with the given area, effect, and context
+        ///     The context is automatically attached to the hitbox based on the gameObject this script is attached to.
+        /// </summary>
+        /// <param name="hitboxArea"></param>
+        /// <param name="hitboxEffect"></param>
+        /// <param name="context"></param>
+        /// <param name="hitboxGroupId"></param>
+        public void EmitHitbox(IHitboxArea hitboxArea, HitboxEffect hitboxEffect, HitboxContext context,
+            string hitboxGroupId)
+        {
+            CreateGroupIfNotExists(hitboxGroupId);
 
             var hitboxInstance = new HitboxInstance
             {
@@ -90,10 +106,20 @@ namespace Hitbox.Emitters
             if (instantiateResult.HitImpacts.Count > 0)
             {
                 OnLandHit?.Invoke(instantiateResult);
-                Debug.Log("ASDF");
                 // Add hit entities to hitbox group context
                 hitEntities[hitboxGroupId].HitEntities
                     .AddRange(instantiateResult.HitImpacts.ConvertAll(hitImpact => hitImpact.HitEntity));
+            }
+        }
+
+        private void CreateGroupIfNotExists(string hitboxGroupId)
+        {
+            if (!hitEntities.ContainsKey(hitboxGroupId))
+            {
+                hitEntities.Add(hitboxGroupId, new HitboxGroupContext
+                {
+                    HitEntities = new List<Entity>()
+                });
             }
         }
 
@@ -121,9 +147,9 @@ namespace Hitbox.Emitters
             hitEntities.Remove(hitboxGroupId);
         }
 
-        public void SetFlipX(bool flipX)
+        public void SetFlipX(bool desiredFlipX)
         {
-            this.flipX = flipX;
+            flipX = desiredFlipX;
         }
     }
 }

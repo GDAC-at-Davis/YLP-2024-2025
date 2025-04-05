@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4491335647793880029}
   - component: {fileID: 3443485117927734770}
   - component: {fileID: 7889796343242106868}
+  - component: {fileID: 1675599962793734849}
   m_Layer: 7
   m_Name: Punching Bag
   m_TagString: Untagged
@@ -50,9 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754b0360ee5c5b84e90e8a46667a9f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: 
-  entityID: 0
-  rb: {fileID: 3443485117927734770}
+  rb: {fileID: 4491335647793880029}
   spriteRenderer: {fileID: 3650042859553981856}
   OnHitEvent:
     m_PersistentCalls:
@@ -93,9 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c5db837500fc4cb8aec7429732351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: 
   rb2D: {fileID: 3443485117927734770}
-  gravityAcceleration: {x: 0, y: -10}
+  gravityAcceleration: {x: 0, y: -12}
+  terminalVelocity: 15
 --- !u!50 &3443485117927734770
 Rigidbody2D:
   serializedVersion: 5
@@ -135,8 +134,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797e9d450a920bd4587451f0ae64de4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: 
   <IsTargeted>k__BackingField: 0
+--- !u!114 &1675599962793734849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825020890591617384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8136a643cad4aa84b8c2f1ce46ef9abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  acceleration: 1
+  characterRigidbody: {fileID: 4491335647793880029}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckDistance: 0
+  stunTime: 0
 --- !u!1 &2394498218367251416
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78820d47945630c49a2cb0836f5ed459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devDescription: 
   actionManager: {fileID: 0}
   rb: {fileID: 4491335647793880029}
 --- !u!1 &3676486719565506616

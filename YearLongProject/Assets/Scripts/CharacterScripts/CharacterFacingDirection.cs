@@ -12,7 +12,7 @@ namespace CharacterScripts
     public class CharacterFacingDirection : MonoBehaviour
     {
         [BoldHeader("Character Facing Direction Script")]
-        [InfoBox("Handles information about the character's facing direction. Don't remove!", EInfoBoxType.Warning)]
+        [InfoBox("Handles information about the character's facing direction. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]

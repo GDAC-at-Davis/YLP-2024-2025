@@ -1,5 +1,6 @@
 using Hitbox.DataStructures;
 using Hitbox.System;
+using Movement;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,7 @@ namespace GameEntities
     public class PunchingBagEntity : Entity
     {
         [SerializeField]
-        private Rigidbody2D rb;
+        private CharacterRigidbody2D rb;
 
         [SerializeField]
         private SpriteRenderer spriteRenderer;
@@ -26,7 +27,7 @@ namespace GameEntities
 
             Vector2 kb = hitboxInstance.HitboxEffect.Knockback;
             kb.x *= dir;
-            rb.linearVelocity = kb;
+            rb.LinearVelocity = kb;
 
             OnHitEvent.Invoke(hitboxInstance, hitImpact);
         }

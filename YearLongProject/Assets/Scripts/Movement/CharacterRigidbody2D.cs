@@ -14,8 +14,7 @@ namespace Movement
         [InfoBox(
             "A helper script that deals with the Rigidbody2D. " +
             "Control character physics through this script, instead of the Rigidbody2D directly. " +
-            "Don't remove!",
-            EInfoBoxType.Warning)]
+            "Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]
@@ -27,9 +26,20 @@ namespace Movement
         [SerializeField]
         private Vector2 gravityAcceleration;
 
+        [SerializeField]
+        private float terminalVelocity;
+
         public Vector2 LinearVelocity
         {
-            get => rb2D.linearVelocity;
+            get
+            {
+                if (isFrozen)
+                {
+                    return cachedVelocity;
+                }
+
+                return rb2D.linearVelocity;
+            }
             set
             {
                 if (isFrozen)
@@ -55,6 +65,12 @@ namespace Movement
             set => gravityAcceleration = value;
         }
 
+        public float TerminalVelocity
+        {
+            get => terminalVelocity;
+            set => terminalVelocity = value;
+        }
+
         private Vector2 movePositionAccumulator;
 
         private int xFlipTransform = 1;
@@ -63,7 +79,11 @@ namespace Movement
 
         private void FixedUpdate()
         {
-            rb2D.linearVelocity += gravityAcceleration * Time.fixedDeltaTime;
+            if (rb2D.linearVelocity.y > -Mathf.Abs(terminalVelocity))
+            {
+                rb2D.linearVelocity += gravityAcceleration * Time.fixedDeltaTime;
+            }
+
             if (movePositionAccumulator != Vector2.zero)
             {
                 // We need to use an accumulator since multiple MovePositions in a single physics update overwrite each other

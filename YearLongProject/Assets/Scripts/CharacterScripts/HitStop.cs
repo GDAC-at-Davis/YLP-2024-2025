@@ -14,8 +14,7 @@ namespace CharacterScripts
     public class HitStop : MonoBehaviour
     {
         [BoldHeader("Hit-Stop Script")]
-        [InfoBox("Handles the hit-stop effect by freezing animation and the rigidbody. Don't remove!",
-            EInfoBoxType.Warning)]
+        [InfoBox("Handles the hit-stop effect by freezing animation and the rigidbody. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]

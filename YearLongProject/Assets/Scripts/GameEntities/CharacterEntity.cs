@@ -3,6 +3,7 @@ using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
+using Movement;
 using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace GameEntities
     public class CharacterEntity : Entity
     {
         [BoldHeader("Character Entity Script")]
-        [InfoBox("The top-level script representing a character entity. Don't remove!", EInfoBoxType.Warning)]
+        [InfoBox("The top-level script representing a character entity. Don't remove!")]
         [Header("Dependencies")]
 
         [SerializeField]
@@ -84,7 +85,7 @@ namespace GameEntities
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
             movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
-            movementController.ApplyImpulseForce(knockback);
+            movementController.SetVelocity(knockback);
 
             TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
 
