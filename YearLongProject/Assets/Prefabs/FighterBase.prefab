@@ -716,14 +716,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8136a643cad4aa84b8c2f1ce46ef9abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5.5
-  acceleration: 10
   characterRigidbody: {fileID: 5352263243400969421}
+  groundMaxSpeed: 7
+  groundAcceleration: 11
+  airMaxSpeed: 7
+  airAcceleration: 7
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheckDistance: 0.11
-  stunTime: 0
+  onTouchGround:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeaveGround:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6386388433225497487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,10 +1025,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRigidbody2D: {fileID: 5352263243400969421}
-  fastFallddedAcceleration: 100
+  fastFallAddedAcceleration: 100
   fastFallTerminalVelocity: 6
   fastFallInputAngle: 15
   fastFallThresholdVelocity: 0
+  onFastFallStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onFastFallEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8560896207416441871
 GameObject:
   m_ObjectHideFlags: 0

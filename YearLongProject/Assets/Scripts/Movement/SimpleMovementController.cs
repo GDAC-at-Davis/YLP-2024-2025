@@ -1,3 +1,4 @@
+using Animancer;
 using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
@@ -8,14 +9,28 @@ namespace Movement
     {
         [BoldHeader("Simple Movement")]
         [InfoBox("Modify the character's basic movement stats here")]
-        [SerializeField]
-        private float speed = 5;
-
-        [SerializeField]
-        private float acceleration;
+        [Header("Depends")]
 
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody;
+
+        [Header("Ground")]
+
+        [SerializeField]
+        private float groundMaxSpeed;
+
+        [SerializeField]
+        private float groundAcceleration;
+
+        [Header("Air")]
+
+        [SerializeField]
+        private float airMaxSpeed;
+
+        [SerializeField]
+        private float airAcceleration;
+
+        [Header("Detection")]
 
         [SerializeField]
         private LayerMask groundLayer;
@@ -23,24 +38,48 @@ namespace Movement
         [SerializeField]
         private float groundCheckDistance;
 
-        public float stunTime;
+        [Header("Events")]
+
+        [SerializeField]
+        private UnityEvent onTouchGround;
+
+        [SerializeField]
+        private UnityEvent onLeaveGround;
 
         private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
 
         private bool inJump;
         private bool isGrounded;
+        private bool wasGrounded;
         private float horizontalInput;
         private float jumpVelocity;
 
         private void FixedUpdate()
         {
+            // Grounded logic
             isGrounded = Physics2D.Raycast(Position, -Vector2.up, groundCheckDistance, groundLayer);
+
+            if (isGrounded && !wasGrounded)
+            {
+                onTouchGround?.Invoke();
+            }
+            else if (!isGrounded && wasGrounded)
+            {
+                onLeaveGround?.Invoke();
+            }
+
+            wasGrounded = isGrounded;
+
+            // Horizontal Movement logic
+            float speed = isGrounded ? groundMaxSpeed : airMaxSpeed;
+            float acceleration = isGrounded ? groundAcceleration : airAcceleration;
 
             float playerIntendedMove = horizontalInput * speed;
             float newVelocity = Mathf.Lerp(characterRigidbody.LinearVelocity.x, playerIntendedMove,
                 acceleration * Time.fixedDeltaTime);
             SetHorizontalVelocity(newVelocity);
 
+            // Jump logic
             if (inJump)
             {
                 SetVerticalVelocity(jumpVelocity);
