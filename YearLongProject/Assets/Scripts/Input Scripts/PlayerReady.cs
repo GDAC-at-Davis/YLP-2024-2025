@@ -15,6 +15,9 @@ namespace Input_Scripts
         private PlayerInputSo playerInputSO;
 
         [SerializeField]
+        private RectTransform container;
+
+        [SerializeField]
         private RectTransform cursorBottomLeft;
 
         [SerializeField]
@@ -34,7 +37,7 @@ namespace Input_Scripts
         private void OnInputAdded(int id)
         {
             Debug.Log($"Player {id} connected");
-            var button = Instantiate(playerReady, transform).GetComponent<PlayerReadyCursorController>();
+            var button = Instantiate(playerReady, container).GetComponent<PlayerReadyCursorController>();
             button.Initialize(id, cursorBottomLeft, cursorTopRight);
         }
     }

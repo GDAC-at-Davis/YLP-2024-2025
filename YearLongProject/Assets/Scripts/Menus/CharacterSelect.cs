@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CharacterScripts;
 using GameEntities;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,10 @@ namespace Menus
     public class CharacterSelect : MonoBehaviour
     {
         public static CharacterSelect Instance;
+
+        [SerializeField]
+        [Scene]
+        private string gameSceneName;
 
         public UnityAction AllPlayersReady;
 
@@ -66,7 +71,7 @@ namespace Menus
         private void StartGame()
         {
             // TODO move this logic to an SO
-            SceneManager.LoadScene("PrototypeA");
+            SceneManager.LoadScene(gameSceneName);
         }
 
         private void GameStarted(Scene scene, LoadSceneMode sceneMode)
