@@ -1020,6 +1020,8 @@ MonoBehaviour:
   characterRigidbody2D: {fileID: 5352263243400969421}
   fastFallddedAcceleration: 100
   fastFallTerminalVelocity: 6
+  fastFallInputAngle: 15
+  fastFallThresholdVelocity: 0
 --- !u!1 &8560896207416441871
 GameObject:
   m_ObjectHideFlags: 0

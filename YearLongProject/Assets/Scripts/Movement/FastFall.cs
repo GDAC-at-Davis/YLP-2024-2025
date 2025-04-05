@@ -21,6 +21,14 @@ namespace Movement
         [SerializeField]
         private float fastFallTerminalVelocity;
 
+        [InfoBox("Angle range from completely vertical down input where fastfall is triggered")]
+        [SerializeField]
+        private float fastFallInputAngle;
+
+        [InfoBox("Fastfall is only triggered when the player's Y velocity is already below this value")]
+        [SerializeField]
+        private float fastFallThresholdVelocity;
+
         private Vector2 originalGravity;
 
         private bool inFastFall;
@@ -30,7 +38,8 @@ namespace Movement
 
         private void FixedUpdate()
         {
-            if (inFastFall && fastFallEnabled)
+            bool isFalling = characterRigidbody2D.LinearVelocity.y < fastFallThresholdVelocity;
+            if (inFastFall && fastFallEnabled && isFalling)
             {
                 // Don't set the velocity directly, as it will override the gravity
                 // Fastfall is just an additional acceleration
@@ -45,7 +54,8 @@ namespace Movement
 
         public void HandleMoveInput(Vector2 input)
         {
-            if (input.y < 0)
+            float angle = Vector2.SignedAngle(Vector2.down, input);
+            if (angle < fastFallInputAngle)
             {
                 inFastFall = true;
             }
