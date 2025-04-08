@@ -80,6 +80,12 @@ namespace Movement
 
         public void HandleMoveInput(Vector2 input)
         {
+            if (input.magnitude < 0.01f)
+            {
+                fastFallInput = false;
+                return;
+            }
+
             float angle = Vector2.Angle(Vector2.down, input);
             if (angle < fastFallInputAngle)
             {

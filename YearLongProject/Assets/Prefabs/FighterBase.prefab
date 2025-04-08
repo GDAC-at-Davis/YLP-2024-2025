@@ -1026,8 +1026,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRigidbody2D: {fileID: 5352263243400969421}
   fastFallAddedAcceleration: 100
-  fastFallTerminalVelocity: 6
-  fastFallInputAngle: 15
+  fastFallTerminalVelocity: 8
+  fastFallInputAngle: 46
   fastFallThresholdVelocity: 0
   onFastFallStart:
     m_PersistentCalls:
