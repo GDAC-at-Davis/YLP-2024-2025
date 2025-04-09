@@ -40,19 +40,24 @@ namespace Movement
         [SerializeField]
         private UnityEvent onFastFallEnd;
 
+        private bool CanEnterFastFall => fastFallEnabled && isFalling;
+
         private Vector2 originalGravity;
 
-        private bool fastFallInput;
+        private bool fastFallInputDown;
+        private bool fastFallInputHeld;
 
         [ShowNonSerializedField]
         private bool fastFallEnabled;
+
+        private bool isFalling;
 
         private bool isFastFalling;
 
         private void FixedUpdate()
         {
-            bool isFalling = characterRigidbody2D.LinearVelocity.y < fastFallThresholdVelocity;
-            bool shouldFastFall = fastFallInput && fastFallEnabled && isFalling;
+            isFalling = characterRigidbody2D.LinearVelocity.y < fastFallThresholdVelocity;
+            bool shouldFastFall = fastFallInputDown && CanEnterFastFall;
 
             if (!isFastFalling && shouldFastFall)
             {
@@ -82,18 +87,32 @@ namespace Movement
         {
             if (input.magnitude < 0.01f)
             {
-                fastFallInput = false;
+                fastFallInputDown = false;
+                fastFallInputHeld = false;
                 return;
             }
 
             float angle = Vector2.Angle(Vector2.down, input);
             if (angle < fastFallInputAngle)
             {
-                fastFallInput = true;
+                // To enter fastfall, the input must be pressed when fastfall is allowed
+                // i.e you cannot always hold down to enter fastfall the moment it becomes allowed
+                if (fastFallInputHeld == false && CanEnterFastFall)
+                {
+                    fastFallInputDown = true;
+                }
+
+                fastFallInputHeld = true;
             }
             else
             {
-                fastFallInput = false;
+                fastFallInputDown = false;
+                fastFallInputHeld = false;
+            }
+
+            if (!CanEnterFastFall)
+            {
+                fastFallInputDown = false;
             }
         }
 
