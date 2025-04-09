@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using CharacterScripts;
 
 public class CharacterCreatorWizard : EditorWindow
 {
@@ -59,6 +60,8 @@ public class CharacterCreatorWizard : EditorWindow
 		    Directory.CreateDirectory(rootpath + "/Models");
 	    }
 
+	    // create blank CharacterSO and place in directory 
+	    AssetDatabase.CreateAsset(ScriptableObject.CreateInstance("CharacterSO"),"Assets/" + characterName + "/" + characterName + "SO.asset");
 
 	    //File.Create(rootpath + "/");
     }
