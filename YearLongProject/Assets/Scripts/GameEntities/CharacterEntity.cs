@@ -49,9 +49,13 @@ namespace GameEntities
         public int PlayerId => playerId;
 
         public int Health => health;
+
+        public float StunTime => stunTime;
         public UnityAction<int> UpdateHealth;
 
         private int playerId = -1;
+
+        private float stunTime;
 
         private void Awake()
         {
@@ -88,7 +92,7 @@ namespace GameEntities
             // TODO: move this logic into a function in movement controller?
             Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
-            movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
+            stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
             movementController.SetVelocity(knockback);
 

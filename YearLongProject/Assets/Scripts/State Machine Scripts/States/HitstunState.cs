@@ -1,4 +1,5 @@
 using EditorUtils.BoldHeader;
+using GameEntities;
 using Movement;
 using NaughtyAttributes;
 using Timeline;
@@ -13,6 +14,9 @@ namespace State_Machine_Scripts.States
         [Header("HitstunState Config")]
 
         [SerializeField]
+        private CharacterEntity characterEntity;
+
+        [SerializeField]
         private SimpleMovementController movementController;
 
         [SerializeField]
@@ -23,7 +27,7 @@ namespace State_Machine_Scripts.States
 
         private void Update()
         {
-            if (Time.time < movementController.stunTime)
+            if (Time.time < characterEntity.StunTime)
             {
                 return;
             }

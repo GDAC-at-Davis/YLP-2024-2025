@@ -1,6 +1,8 @@
+using Animancer;
 using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Movement
 {
@@ -13,24 +15,62 @@ namespace Movement
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody2D;
 
+        [FormerlySerializedAs("fastFallddedAcceleration")]
         [Header("Configuration")]
 
         [SerializeField]
-        private float fastFallddedAcceleration;
+        private float fastFallAddedAcceleration;
 
         [SerializeField]
         private float fastFallTerminalVelocity;
 
+        [InfoBox("Angle range from completely vertical down input where fastfall is triggered")]
+        [SerializeField]
+        private float fastFallInputAngle;
+
+        [InfoBox("Fastfall is only triggered when the player's Y velocity is already below this value")]
+        [SerializeField]
+        private float fastFallThresholdVelocity;
+
+        [Header("Events")]
+
+        [SerializeField]
+        private UnityEvent onFastFallStart;
+
+        [SerializeField]
+        private UnityEvent onFastFallEnd;
+
+        private bool CanEnterFastFall => fastFallEnabled && isFalling;
+
         private Vector2 originalGravity;
 
-        private bool inFastFall;
+        private bool fastFallInputDown;
+        private bool fastFallInputHeld;
 
         [ShowNonSerializedField]
         private bool fastFallEnabled;
 
+        private bool isFalling;
+
+        private bool isFastFalling;
+
         private void FixedUpdate()
         {
-            if (inFastFall && fastFallEnabled)
+            isFalling = characterRigidbody2D.LinearVelocity.y < fastFallThresholdVelocity;
+            bool shouldFastFall = fastFallInputDown && CanEnterFastFall;
+
+            if (!isFastFalling && shouldFastFall)
+            {
+                onFastFallStart?.Invoke();
+            }
+            else if (isFastFalling && !shouldFastFall)
+            {
+                onFastFallEnd?.Invoke();
+            }
+
+            isFastFalling = shouldFastFall;
+
+            if (shouldFastFall)
             {
                 // Don't set the velocity directly, as it will override the gravity
                 // Fastfall is just an additional acceleration
@@ -38,20 +78,41 @@ namespace Movement
                 if (cVelY > -fastFallTerminalVelocity)
                 {
                     characterRigidbody2D.LinearVelocity +=
-                        Vector2.down * fastFallddedAcceleration * Time.fixedDeltaTime;
+                        Vector2.down * fastFallAddedAcceleration * Time.fixedDeltaTime;
                 }
             }
         }
 
         public void HandleMoveInput(Vector2 input)
         {
-            if (input.y < 0)
+            if (input.magnitude < 0.01f)
             {
-                inFastFall = true;
+                fastFallInputDown = false;
+                fastFallInputHeld = false;
+                return;
+            }
+
+            float angle = Vector2.Angle(Vector2.down, input);
+            if (angle < fastFallInputAngle)
+            {
+                // To enter fastfall, the input must be pressed when fastfall is allowed
+                // i.e you cannot always hold down to enter fastfall the moment it becomes allowed
+                if (fastFallInputHeld == false && CanEnterFastFall)
+                {
+                    fastFallInputDown = true;
+                }
+
+                fastFallInputHeld = true;
             }
             else
             {
-                inFastFall = false;
+                fastFallInputDown = false;
+                fastFallInputHeld = false;
+            }
+
+            if (!CanEnterFastFall)
+            {
+                fastFallInputDown = false;
             }
         }
 
