@@ -60,10 +60,12 @@ public class CharacterCreatorWizard : EditorWindow
 		    Directory.CreateDirectory(rootpath + "/Models");
 	    }
 
-	    // create blank CharacterSO and place in directory 
-	    AssetDatabase.CreateAsset(ScriptableObject.CreateInstance("CharacterSO"),"Assets/" + characterName + "/" + characterName + "SO.asset");
-
-	    //File.Create(rootpath + "/");
+	    // create blank CharacterSO and place in directory
+	    //File.Create(rootpath + "/" + characterName + "SO.asset");
+	    //AssetDatabase.CreateAsset(ScriptableObject.CreateInstance("CharacterSO"), "Assets/" + characterName + "/" + characterName + "SO.asset");
+	    
+	    // copy prefab template
+	    File.Copy(Application.dataPath + "/Prefabs/FighterBase.prefab", rootpath + "/" + characterName + ".prefab");
     }
 
 }
