@@ -1,4 +1,5 @@
 using CharacterScripts;
+using LevelScripts;
 using Menus;
 using TMPro;
 using UnityEngine;
@@ -47,10 +48,12 @@ namespace Input_Scripts
             ClampPositionToCanvas();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             events.LightAttackEvent -= TrySelectCharacter;
             events.HeavyAttackEvent -= UnselectCharacter;
+            events.LightAttackEvent -= TrySelectLevel;
+            events.HeavyAttackEvent -= UnselectLevel;
             events.MoveEvent -= MoveCursor;
             CharacterSelect.Instance.AllPlayersReady -= LockIn;
         }
@@ -122,15 +125,84 @@ namespace Input_Scripts
             QueueCharacter(null);
         }
 
+        private void TrySelectLevel(bool pressed)
+        {
+            if (!pressed)
+            {
+                return;
+            }
+
+            Collider2D button = Physics2D.OverlapPoint(transform.position);
+
+            if(button == null)
+            {
+                return;
+            }
+
+            transform.position = button.transform.position;
+            text.text = "";
+            LevelSO level = button.GetComponent<LevelSelectButton>().Level;
+            QueueLevel(level);
+        }
+
+        private void UnselectLevel(bool pressed)
+        {
+            if (!pressed)
+            {
+                return;
+            }
+
+            QueueLevel(null);
+        }
+
         private void QueueCharacter(CharacterSO character)
         {
             selected = character != null;
             CharacterSelect.Instance.ReadyUp(playerID, character);
         }
 
-        private void LockIn()
+        private void QueueLevel(LevelSO level)
         {
-            enabled = false;
+            selected = level != null;
+            if (!level)
+            {
+                CharacterSelect.Instance.ReturnToCharacterSelect();
+                return;
+            }
+
+            CharacterSelect.Instance.TryStartGame(level);
+        }
+
+        // This is a mess and I should not have done it like this I'm sorry
+        private void LockIn(bool toggle)
+        {
+            if (toggle)
+            {
+                if (playerID == 0)
+                {
+                    events.LightAttackEvent += TrySelectLevel;
+                    events.HeavyAttackEvent += UnselectLevel;
+
+                    text.text = (playerID + 1).ToString();
+                    selected = false;
+                }
+                    events.HeavyAttackEvent -= UnselectCharacter;
+                    events.LightAttackEvent -= TrySelectCharacter;
+            }
+            else
+            {
+                if (playerID == 0)
+                {
+                    events.LightAttackEvent -= TrySelectLevel;
+                    events.HeavyAttackEvent -= UnselectLevel;
+                }
+
+                events.LightAttackEvent += TrySelectCharacter;
+                events.HeavyAttackEvent += UnselectCharacter;
+
+                text.text = (playerID + 1).ToString();
+                selected = false;
+            }
         }
     }
 }
