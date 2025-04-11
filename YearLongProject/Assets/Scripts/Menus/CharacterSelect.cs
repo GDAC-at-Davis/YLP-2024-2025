@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CharacterScripts;
+using LevelScripts;
 using GameEntities;
 using NaughtyAttributes;
 using UnityEngine;
@@ -21,10 +22,17 @@ namespace Menus
         [Scene]
         private string gameSceneName;
 
-        public UnityAction AllPlayersReady;
+        private LevelSO levelToLoad;
+
+        public UnityAction<bool> AllPlayersReady;
 
         [SerializeField]
-        private readonly Dictionary<int, CharacterSO> playerReady = new();
+        private GameObject characterSelectScreen;
+        [SerializeField]
+        private GameObject levelSelectScreen;
+
+        [SerializeField]
+        private Dictionary<int, CharacterSO> playerReady = new();
 
         private void Awake()
         {
@@ -54,17 +62,37 @@ namespace Menus
             }
 
             playerReady[id] = character;
-            TryStartGame();
+            TryLevelScreen();
         }
 
-        public void TryStartGame()
+        public void TryLevelScreen()
         {
             if (playerReady.ContainsValue(null))
             {
                 return;
             }
 
-            AllPlayersReady.Invoke();
+            characterSelectScreen.SetActive(false);
+            levelSelectScreen.SetActive(true);
+            AllPlayersReady.Invoke(true);
+        }
+
+        public void ReturnToCharacterSelect()
+        {
+            levelSelectScreen.SetActive(false);
+            characterSelectScreen.SetActive(true);
+
+            for (int i = 0; i < playerReady.Count; i++)
+            {
+                playerReady[i] = null;
+            }
+
+            AllPlayersReady.Invoke(false);
+        }
+
+        public void TryStartGame(LevelSO level)
+        {
+            levelToLoad = level;
             Invoke("StartGame", 1);
         }
 
@@ -76,6 +104,11 @@ namespace Menus
 
         private void GameStarted(Scene scene, LoadSceneMode sceneMode)
         {
+            if (scene.name != gameSceneName)
+            {
+                return;
+            }
+            Instantiate(levelToLoad.LevelPrefab);
             foreach (int id in playerReady.Keys)
             {
                 Instantiate(playerReady[id].CharacterPrefab).GetComponent<CharacterEntity>()

@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1be19fc3858e524fa17a5518e8c4d39, type: 3}
-  m_Name: Read Me v8.0.2
+  m_Script: {fileID: 11500000, guid: 768bd3565b6b8034e98a12be9e76839b, type: 3}
+  m_Name: LevelList
   m_EditorClassIdentifier: 
-  _DontShowOnStartup: 1
+  Levels:
+  - Level: {fileID: 11400000, guid: 7fe4f365584f2f343a7ea08da5f0f83a, type: 2}
+    IsHidden: 0
