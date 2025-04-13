@@ -394,6 +394,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -1755073353440819576, guid: b076554bfbf077444afd66ab69d48152, type: 2}
     value: {fileID: 6572194888787973522}
+  - key: {fileID: -5438996935550660551, guid: b076554bfbf077444afd66ab69d48152, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &3258685151373203990
@@ -1122,7 +1124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: caaabb174d231a64bbe7baa0b6d5d468, type: 3}
+  m_Sprite: {fileID: -1194690637, guid: d82e512a135b6d249a3e79f7add103f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,6 +1,7 @@
 using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
+using State_Machine_Scripts;
 
 namespace Fighters.Ahab.Scripts
 {
@@ -29,6 +30,9 @@ namespace Fighters.Ahab.Scripts
 
         [SerializeField]
         private float launchAngle;
+
+        [SerializeField]
+        private CharacterActionManager actionManager;
 
         private int facingDirection = 1;
 
