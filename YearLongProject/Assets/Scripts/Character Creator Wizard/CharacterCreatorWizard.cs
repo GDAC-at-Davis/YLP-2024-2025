@@ -8,7 +8,9 @@ public class CharacterCreatorWizard : EditorWindow
     // Important variable that user will select
     bool tog3D = false;
     string characterName = "";
-    
+
+    bool isComplete = false;
+
     [MenuItem("GDAC YLP/Character Creator Wizard")]
     public static void ShowWindow()
     {
@@ -19,23 +21,30 @@ public class CharacterCreatorWizard : EditorWindow
     
     private void OnGUI()
     {
-	    GUILayout.Label("This tool automatically creates the necessary template folder for a fighter");
-	    GUILayout.FlexibleSpace();
-	    characterName = EditorGUILayout.TextField("Character Name:", characterName);
-	    tog3D = EditorGUILayout.Toggle("3D:", tog3D);
-	    GUILayout.FlexibleSpace();
-	    if (GUILayout.Button("Complete"))
+	    if (isComplete)
 	    {
-		if (!string.IsNullOrWhiteSpace(characterName))
-		{
-			Debug.Log("All three steps have been completed");
-			CreateFiles();
-			Close();
-		}
-		else 
-		{
-			Debug.Log("character requires a name");
-		}
+		    GUILayout.Label("Files will take time to be created");
+	    }
+	    else 
+	    {
+		    GUILayout.Label("This tool automatically creates the necessary template folder for a fighter");
+		    GUILayout.FlexibleSpace();
+		    characterName = EditorGUILayout.TextField("Character Name:", characterName);
+		    tog3D = EditorGUILayout.Toggle("3D:", tog3D);
+		    GUILayout.FlexibleSpace();
+		    if (GUILayout.Button("Complete"))
+		    {
+			if (!string.IsNullOrWhiteSpace(characterName))
+			{
+				Debug.Log("All three steps have been completed");
+				isComplete = true;
+				CreateFiles();
+			}
+			else 
+			{
+				Debug.Log("character requires a name");
+			}
+		    }
 	    }
     }
 
@@ -61,9 +70,9 @@ public class CharacterCreatorWizard : EditorWindow
 	    }
 
 	    // create blank CharacterSO and place in directory
-	    //File.Create(rootpath + "/" + characterName + "SO.asset");
-	    //AssetDatabase.CreateAsset(ScriptableObject.CreateInstance("CharacterSO"), "Assets/" + characterName + "/" + characterName + "SO.asset");
-	    
+	    ScriptableObject newSO = ScriptableObject.CreateInstance("CharacterSO");
+	    AssetDatabase.CreateAsset(newSO, "Assets/Fighters/" + characterName + "/" + characterName + "SO.asset");
+
 	    // copy prefab template
 	    File.Copy(Application.dataPath + "/Prefabs/FighterBase.prefab", rootpath + "/" + characterName + ".prefab");
     }
