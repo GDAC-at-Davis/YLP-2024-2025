@@ -14,6 +14,9 @@ namespace Movement
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody;
 
+	[SerializeField] 
+	private float deadzoneValue = 0.1f;
+
         [Header("Ground")]
 
         [SerializeField]
@@ -94,7 +97,8 @@ namespace Movement
 
         public void SetHorizontalInput(float desiredMove)
         {
-            if (desiredMove == 0)
+            //if (desiredMove == 0)
+	    if (Mathf.Abs(desiredMove) <= deadzoneValue)
             {
                 horizontalInput = 0;
             }
