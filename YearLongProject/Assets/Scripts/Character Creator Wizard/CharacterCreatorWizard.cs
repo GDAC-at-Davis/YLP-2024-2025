@@ -2,42 +2,43 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using CharacterScripts;
+using System.Collections;
 
 public class CharacterCreatorWizard : EditorWindow
 {
     // Important variable that user will select
     bool tog3D = false;
     string characterName = "";
+    string rootpath;  
 
-    bool isComplete = false;
+    // used for loading UI and indicating the process is complete
+    enum WizardState {PROMPTING, CREATING, COMPLETE};
+
+    WizardState currState = WizardState.PROMPTING;
 
     [MenuItem("GDAC YLP/Character Creator Wizard")]
     public static void ShowWindow()
     {
 	    CharacterCreatorWizard c = (CharacterCreatorWizard)GetWindow(typeof(CharacterCreatorWizard));
 	    c.minSize = new Vector2(300, 200);
-	    c.maxSize = new Vector2(300, 300);
+	    c.maxSize = new Vector2(400, 300);
     }
     
     private void OnGUI()
     {
-	    if (isComplete)
-	    {
-		    GUILayout.Label("Files will take time to be created");
-	    }
-	    else 
+	    if (currState == WizardState.PROMPTING)
 	    {
 		    GUILayout.Label("This tool automatically creates the necessary template folder for a fighter");
 		    GUILayout.FlexibleSpace();
 		    characterName = EditorGUILayout.TextField("Character Name:", characterName);
 		    tog3D = EditorGUILayout.Toggle("3D:", tog3D);
 		    GUILayout.FlexibleSpace();
-		    if (GUILayout.Button("Complete"))
+		    if (GUILayout.Button("Create"))
 		    {
 			if (!string.IsNullOrWhiteSpace(characterName))
 			{
 				Debug.Log("All three steps have been completed");
-				isComplete = true;
+				currState = WizardState.CREATING;
 				CreateFiles();
 			}
 			else 
@@ -46,13 +47,70 @@ public class CharacterCreatorWizard : EditorWindow
 			}
 		    }
 	    }
+	    else if (currState == WizardState.CREATING)
+	    {
+		    GUILayout.Label("Files and folder will take a few second to be created");
+		    GUILayout.Label("This might require you to go in and out of Unity to prompt it to recompile");
+	    }
+	    else if (currState == WizardState.COMPLETE)
+	    {
+		    GUILayout.Label("Setup Complete!");
+		    GUILayout.FlexibleSpace();
+		    if (GUILayout.Button("Complete"))
+		    {
+	    		Close();
+		    }
+	    }
     }
 
-    // The functions that does the leg work of creating all of the files
+    // for this class update is used to track if the wizard's creation process was complete.
+    void Update()
+    {
+	    if (currState == WizardState.CREATING)
+	    {
+		    bool finished = true;
+
+		    // check if each needed file and folder exists
+		    finished = Directory.Exists(rootpath + "/Timelines");
+		    finished = File.Exists(rootpath + "/Timelines.meta");
+		    finished = Directory.Exists(rootpath + "/States");
+		    finished = File.Exists(rootpath + "/States.meta");
+		    finished = Directory.Exists(rootpath + "/Sprite");
+		    finished = File.Exists(rootpath + "/Sprite.meta");
+		    finished = Directory.Exists(rootpath + "/Animations");
+		    finished = File.Exists(rootpath + "/Animations.meta");
+		    finished = Directory.Exists(rootpath + "/Scripts");
+		    finished = File.Exists(rootpath + "/Scripts.meta");
+		    finished = Directory.Exists(rootpath + "/Prefabs");
+		    finished = File.Exists(rootpath + "/Prefabs.meta");
+		    finished = Directory.Exists(rootpath + "/Materials");
+		    finished = File.Exists(rootpath + "/Materials.meta");
+		    finished = Directory.Exists(rootpath + "/Shaders");
+		    finished = File.Exists(rootpath + "/Shaders.meta");
+		    if (tog3D)
+		    {
+		    	finished = Directory.Exists(rootpath + "/Models");
+			finished = File.Exists(rootpath + "/Models.meta");
+		    }
+
+		    finished = File.Exists(rootpath + "/" + characterName + "SO.asset");
+		    finished = File.Exists(rootpath + "/" + characterName + "SO.asset.meta");
+		    finished = File.Exists(rootpath + "/" + characterName + ".prefab");
+		    finished = File.Exists(rootpath + "/" + characterName + ".prefab.meta");
+
+		    if (finished)
+		    {
+		    	currState = WizardState.COMPLETE;
+		    }
+	    }
+    }
+
+
+    // This functions creates the file and folders necessary for an individual character 
     private void CreateFiles()
     {
 	    // create base file for character 
-	    string rootpath = Application.dataPath + "/Fighters/" + characterName;
+	    rootpath = Application.dataPath + "/Fighters/" + characterName;
 	    Directory.CreateDirectory(rootpath);
 
 	    // create subdirectory files for character.
