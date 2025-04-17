@@ -10,6 +10,9 @@ namespace Input_Scripts
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Scriptable Objects/PlayerInputSO")]
     public class PlayerInputSo : ScriptableObject
     {
+        /// <summary>
+        ///     Contains all the input events for a single player's inputs
+        /// </summary>
         public class PlayerInputEvents
         {
             public UnityAction<Vector2> MoveEvent;
