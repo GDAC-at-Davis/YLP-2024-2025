@@ -31,9 +31,12 @@ public class CharacterCreatorWizard : EditorWindow
     
     private void OnGUI()
     {
+	    GUIStyle wrappedText = new GUIStyle(GUI.skin.label);
+	    wrappedText.wordWrap = true;
+
 	    if (currState == WizardState.PROMPTING)
 	    {
-		    GUILayout.Label("This tool automatically creates the necessary template folder for a fighter");
+		    GUILayout.Label("This tool automatically creates the necessary base folders and files for a fighter", wrappedText);
 		    GUILayout.FlexibleSpace();
 		    characterName = EditorGUILayout.TextField("Character Name:", characterName);
 		    tog3D = EditorGUILayout.Toggle("3D:", tog3D);
@@ -42,7 +45,6 @@ public class CharacterCreatorWizard : EditorWindow
 		    {
 			if (!string.IsNullOrWhiteSpace(characterName))
 			{
-				Debug.Log("All three steps have been completed");
 				currState = WizardState.CREATING;
 				CreateFiles();
 			}
@@ -54,11 +56,11 @@ public class CharacterCreatorWizard : EditorWindow
 	    }
 	    else if (currState == WizardState.CREATING)
 	    {
-		    GUILayout.Label("Files and folder will take some time to be created");
+		    GUILayout.Label("Files and folder will take some time to be created", wrappedText);
 	    }
 	    else if (currState == WizardState.COMPLETE)
 	    {
-		    GUILayout.Label("Setup Complete!");
+		    GUILayout.Label("Setup Complete!", wrappedText);
 		    GUILayout.FlexibleSpace();
 		    if (GUILayout.Button("Complete"))
 		    {
