@@ -12,6 +12,11 @@ public class CharacterCreatorWizard : EditorWindow
     string rootpath;  
 
     // used for loading UI and indicating the process is complete
+    // 
+    // PROMPTING: This state is for when the users inputs information about the new character 
+    // CREATING: This state is for when the code is creating the files and folder for the characters. 
+    // 		 Usually the code is fasting enough that users won't see this states.
+    // COMPLETE: This state is for when all the files and folder are finished being created. 
     enum WizardState {PROMPTING, CREATING, COMPLETE};
 
     WizardState currState = WizardState.PROMPTING;
@@ -49,8 +54,7 @@ public class CharacterCreatorWizard : EditorWindow
 	    }
 	    else if (currState == WizardState.CREATING)
 	    {
-		    GUILayout.Label("Files and folder will take a few second to be created");
-		    GUILayout.Label("This might require you to go in and out of Unity to prompt it to recompile");
+		    GUILayout.Label("Files and folder will take some time to be created");
 	    }
 	    else if (currState == WizardState.COMPLETE)
 	    {
@@ -68,41 +72,49 @@ public class CharacterCreatorWizard : EditorWindow
     {
 	    if (currState == WizardState.CREATING)
 	    {
-		    bool finished = true;
-
-		    // check if each needed file and folder exists
-		    finished = Directory.Exists(rootpath + "/Timelines");
-		    finished = File.Exists(rootpath + "/Timelines.meta");
-		    finished = Directory.Exists(rootpath + "/States");
-		    finished = File.Exists(rootpath + "/States.meta");
-		    finished = Directory.Exists(rootpath + "/Sprite");
-		    finished = File.Exists(rootpath + "/Sprite.meta");
-		    finished = Directory.Exists(rootpath + "/Animations");
-		    finished = File.Exists(rootpath + "/Animations.meta");
-		    finished = Directory.Exists(rootpath + "/Scripts");
-		    finished = File.Exists(rootpath + "/Scripts.meta");
-		    finished = Directory.Exists(rootpath + "/Prefabs");
-		    finished = File.Exists(rootpath + "/Prefabs.meta");
-		    finished = Directory.Exists(rootpath + "/Materials");
-		    finished = File.Exists(rootpath + "/Materials.meta");
-		    finished = Directory.Exists(rootpath + "/Shaders");
-		    finished = File.Exists(rootpath + "/Shaders.meta");
-		    if (tog3D)
-		    {
-		    	finished = Directory.Exists(rootpath + "/Models");
-			finished = File.Exists(rootpath + "/Models.meta");
-		    }
-
-		    finished = File.Exists(rootpath + "/" + characterName + "SO.asset");
-		    finished = File.Exists(rootpath + "/" + characterName + "SO.asset.meta");
-		    finished = File.Exists(rootpath + "/" + characterName + ".prefab");
-		    finished = File.Exists(rootpath + "/" + characterName + ".prefab.meta");
-
+		    bool finished = CheckCompletion();
 		    if (finished)
 		    {
-		    	currState = WizardState.COMPLETE;
+			currState = WizardState.COMPLETE;
 		    }
 	    }
+    }
+
+    // This method check if every necessary file and folder exist at the specificed location
+    // This indicates that the wizard had already done it's job
+    bool CheckCompletion()
+    {
+	    bool finished = true;
+
+	    // check if each needed file and folder exists
+	    finished = Directory.Exists(rootpath + "/Timelines");
+	    finished = File.Exists(rootpath + "/Timelines.meta");
+	    finished = Directory.Exists(rootpath + "/States");
+	    finished = File.Exists(rootpath + "/States.meta");
+	    finished = Directory.Exists(rootpath + "/Sprite");
+	    finished = File.Exists(rootpath + "/Sprite.meta");
+	    finished = Directory.Exists(rootpath + "/Animations");
+	    finished = File.Exists(rootpath + "/Animations.meta");
+	    finished = Directory.Exists(rootpath + "/Scripts");
+	    finished = File.Exists(rootpath + "/Scripts.meta");
+	    finished = Directory.Exists(rootpath + "/Prefabs");
+	    finished = File.Exists(rootpath + "/Prefabs.meta");
+	    finished = Directory.Exists(rootpath + "/Materials");
+	    finished = File.Exists(rootpath + "/Materials.meta");
+	    finished = Directory.Exists(rootpath + "/Shaders");
+	    finished = File.Exists(rootpath + "/Shaders.meta");
+	    if (tog3D)
+	    {
+		finished = Directory.Exists(rootpath + "/Models");
+		finished = File.Exists(rootpath + "/Models.meta");
+	    }
+
+	    finished = File.Exists(rootpath + "/" + characterName + "SO.asset");
+	    finished = File.Exists(rootpath + "/" + characterName + "SO.asset.meta");
+	    finished = File.Exists(rootpath + "/" + characterName + ".prefab");
+	    finished = File.Exists(rootpath + "/" + characterName + ".prefab.meta");
+
+	    return finished;
     }
 
 
@@ -134,9 +146,17 @@ public class CharacterCreatorWizard : EditorWindow
 	    // copy prefab template
 	    File.Copy(Application.dataPath + "/Prefabs/FighterBase.prefab", rootpath + "/" + characterName + ".prefab");
 
-	    ((CharacterSO)newSO).CharacterDisplayName = characterName;
-
 	    AssetDatabase.Refresh();
+	   
+	    // edit scriptable object to include name and prefab
+	    ((CharacterSO)newSO).CharacterDisplayName = characterName;
+	    GameObject characterPrefab = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Fighters/" + characterName + "/" + characterName + ".prefab", typeof(GameObject));
+	    if (characterPrefab == null)
+	    {
+		    Debug.Log("aig4eioagaegeioageoagnaognaoghaoiefhaklecnaejokbvneoabg");
+	    }
+	    ((CharacterSO)newSO).CharacterPrefab = characterPrefab;
+
     }
 
 }
