@@ -725,6 +725,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckDistance: 0.11
+  deadzoneValue: 0.1
   onTouchGround:
     m_PersistentCalls:
       m_Calls: []

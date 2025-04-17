@@ -14,8 +14,6 @@ namespace Movement
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody;
 
-	[SerializeField] 
-	private float deadzoneValue = 0.1f;
 
         [Header("Ground")]
 
@@ -40,6 +38,10 @@ namespace Movement
 
         [SerializeField]
         private float groundCheckDistance;
+	
+	[Header("Horizontal Movement Deadzone")]
+	[SerializeField] 
+	private float deadzoneValue;
 
         [Header("Events")]
 
@@ -49,7 +51,8 @@ namespace Movement
         [SerializeField]
         private UnityEvent onLeaveGround;
 
-        private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
+        
+	private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
 
         private bool inJump;
         private bool isGrounded;
