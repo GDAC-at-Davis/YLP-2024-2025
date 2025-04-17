@@ -20,7 +20,8 @@ namespace Managers
     [CreateAssetMenu(fileName = "GameDataSO", menuName = "GameDataSO")]
     public class GameDataSO : ScriptableObject
     {
-        public delegate void OnPlayerDataChanged(int priorId, PlayerDataChange changeType, PlayerData postChangeData);
+        public delegate void PlayerDataChangedEvent(int priorId, PlayerDataChange changeType,
+            PlayerData postChangeData);
 
         /// <summary>
         ///     Represents a single player
@@ -44,17 +45,17 @@ namespace Managers
         [EnableIf("Hide")]
         private LevelSO selectedLevel;
 
+        [SerializeField]
+        [EnableIf("Hide")]
+        private List<PlayerData> players = new();
+
         public int PlayerCount => players.Count;
 
         public int MaxPlayers => maxPlayers;
 
         public LevelSO SelectedLevel => selectedLevel;
 
-        public event OnPlayerDataChanged PlayerDataChanged;
-
-        [SerializeField]
-        [EnableIf("Hide")]
-        private readonly List<PlayerData> players = new();
+        public event PlayerDataChangedEvent OnPlayerDataChanged;
 
         private bool Hide()
         {
@@ -73,10 +74,12 @@ namespace Managers
                 return -1;
             }
 
+            Debug.Log($"Adding player {players.Count} to the game");
+
             int id = players.Count;
             players.Add(new PlayerData { PlayerId = id });
 
-            PlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerAdded, players[id]);
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerAdded, players[id]);
 
             return id;
         }
@@ -97,10 +100,10 @@ namespace Managers
             for (int i = id; i < players.Count; i++)
             {
                 players[i].PlayerId--;
-                PlayerDataChanged?.Invoke(i, PlayerDataChange.IdChanged, players[i]);
+                OnPlayerDataChanged?.Invoke(i, PlayerDataChange.IdChanged, players[i]);
             }
 
-            PlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, null);
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, null);
         }
 
         /// <summary>
@@ -123,7 +126,7 @@ namespace Managers
         {
             for (var i = 0; i < players.Count; i++)
             {
-                PlayerDataChanged?.Invoke(i, PlayerDataChange.PlayerRemoved, players[i]);
+                OnPlayerDataChanged?.Invoke(i, PlayerDataChange.PlayerRemoved, players[i]);
             }
 
             players.Clear();

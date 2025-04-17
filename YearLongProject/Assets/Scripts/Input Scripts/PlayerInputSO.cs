@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace Input_Scripts
 {
     /// <summary>
-    ///     Usable input service that Characters interface with
+    ///     Input service that provides inputs for players through playerId/Events
     /// </summary>
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Scriptable Objects/PlayerInputSO")]
     public class PlayerInputSo : ScriptableObject
@@ -25,6 +25,10 @@ namespace Input_Scripts
 
         public UnityAction<int> PlayerInputAdded;
 
+        /// <summary>
+        ///     Key: PlayerId
+        ///     Value: Input events for that player
+        /// </summary>
         private readonly Dictionary<int, PlayerInputEvents> playerInputEvents = new();
 
         public ref UnityAction<Vector2> MoveEvent(int id)
