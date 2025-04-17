@@ -133,6 +133,10 @@ public class CharacterCreatorWizard : EditorWindow
 
 	    // copy prefab template
 	    File.Copy(Application.dataPath + "/Prefabs/FighterBase.prefab", rootpath + "/" + characterName + ".prefab");
+
+	    ((CharacterSO)newSO).CharacterDisplayName = characterName;
+
+	    AssetDatabase.Refresh();
     }
 
 }
