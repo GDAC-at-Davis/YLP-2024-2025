@@ -73,6 +73,7 @@ namespace Input_Scripts
 
         public void Initialize(int id, RectTransform bottomLeft, RectTransform topRight)
         {
+            Debug.Log($"Player {id} cursor initialized");
             cursorBottomLeft = bottomLeft;
             cursorTopRight = topRight;
 
@@ -134,7 +135,7 @@ namespace Input_Scripts
 
             Collider2D button = Physics2D.OverlapPoint(transform.position);
 
-            if(button == null)
+            if (button == null)
             {
                 return;
             }
@@ -186,8 +187,9 @@ namespace Input_Scripts
                     text.text = (playerID + 1).ToString();
                     selected = false;
                 }
-                    events.HeavyAttackEvent -= UnselectCharacter;
-                    events.LightAttackEvent -= TrySelectCharacter;
+
+                events.HeavyAttackEvent -= UnselectCharacter;
+                events.LightAttackEvent -= TrySelectCharacter;
             }
             else
             {

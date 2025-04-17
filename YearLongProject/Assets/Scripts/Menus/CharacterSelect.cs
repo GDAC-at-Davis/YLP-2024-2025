@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using CharacterScripts;
-using LevelScripts;
 using GameEntities;
+using LevelScripts;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,19 +22,20 @@ namespace Menus
         [Scene]
         private string gameSceneName;
 
-        private LevelSO levelToLoad;
-
-        public UnityAction<bool> AllPlayersReady;
-
         [SerializeField]
         private GameObject characterSelectScreen;
+
         [SerializeField]
         private GameObject levelSelectScreen;
 
         [SerializeField]
-        private Dictionary<int, CharacterSO> playerReady = new();
+        private readonly Dictionary<int, CharacterSO> playerReady = new();
 
-        private void Awake()
+        public UnityAction<bool> AllPlayersReady;
+
+        private LevelSO levelToLoad;
+
+        private void Start()
         {
             if (Instance == null)
             {
@@ -82,7 +83,7 @@ namespace Menus
             levelSelectScreen.SetActive(false);
             characterSelectScreen.SetActive(true);
 
-            for (int i = 0; i < playerReady.Count; i++)
+            for (var i = 0; i < playerReady.Count; i++)
             {
                 playerReady[i] = null;
             }
@@ -108,6 +109,7 @@ namespace Menus
             {
                 return;
             }
+
             Instantiate(levelToLoad.LevelPrefab);
             foreach (int id in playerReady.Keys)
             {
