@@ -211,5 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b017dbfc48d7d409db0c25734dd63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  devDescription: 
   playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  Character: {fileID: 6242291163348849283, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
+  gameDataSo: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
+  quickLoad: 0

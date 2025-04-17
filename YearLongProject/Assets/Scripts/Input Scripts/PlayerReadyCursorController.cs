@@ -50,9 +50,9 @@ namespace Input_Scripts
 
         private void OnDestroy()
         {
-            events.LightAttackEvent -= TrySelectCharacter;
+            events.JumpEvent -= TrySelectCharacter;
             events.HeavyAttackEvent -= UnselectCharacter;
-            events.LightAttackEvent -= TrySelectLevel;
+            events.JumpEvent -= TrySelectLevel;
             events.HeavyAttackEvent -= UnselectLevel;
             events.MoveEvent -= MoveCursor;
             CharacterSelect.Instance.AllPlayersReady -= LockIn;
@@ -82,7 +82,7 @@ namespace Input_Scripts
             text.text = (id + 1).ToString();
 
             events = playerInputSO.TryGetPlayerInputEvents(id);
-            events.LightAttackEvent += TrySelectCharacter;
+            events.JumpEvent += TrySelectCharacter;
             events.HeavyAttackEvent += UnselectCharacter;
             events.MoveEvent += MoveCursor;
 
@@ -181,7 +181,7 @@ namespace Input_Scripts
             {
                 if (playerID == 0)
                 {
-                    events.LightAttackEvent += TrySelectLevel;
+                    events.JumpEvent += TrySelectLevel;
                     events.HeavyAttackEvent += UnselectLevel;
 
                     text.text = (playerID + 1).ToString();
@@ -189,17 +189,17 @@ namespace Input_Scripts
                 }
 
                 events.HeavyAttackEvent -= UnselectCharacter;
-                events.LightAttackEvent -= TrySelectCharacter;
+                events.JumpEvent -= TrySelectCharacter;
             }
             else
             {
                 if (playerID == 0)
                 {
-                    events.LightAttackEvent -= TrySelectLevel;
+                    events.JumpEvent -= TrySelectLevel;
                     events.HeavyAttackEvent -= UnselectLevel;
                 }
 
-                events.LightAttackEvent += TrySelectCharacter;
+                events.JumpEvent += TrySelectCharacter;
                 events.HeavyAttackEvent += UnselectCharacter;
 
                 text.text = (playerID + 1).ToString();

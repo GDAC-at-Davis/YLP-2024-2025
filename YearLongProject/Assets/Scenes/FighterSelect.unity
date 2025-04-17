@@ -592,8 +592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c364f8451321a4343a7f956379d5fd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerReady: {fileID: 2396259952507966629, guid: ceaa291d97846774eb1c328afb7dc4b4, type: 3}
+  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
   playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  cursorPrefab: {fileID: 9138683288709446454, guid: ceaa291d97846774eb1c328afb7dc4b4, type: 3}
   container: {fileID: 725065625}
   cursorBottomLeft: {fileID: 1385804265}
   cursorTopRight: {fileID: 1842286168}

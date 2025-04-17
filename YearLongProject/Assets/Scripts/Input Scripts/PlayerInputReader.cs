@@ -1,6 +1,7 @@
 using System.Linq;
 using Base;
 using GameEntities;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,21 +15,26 @@ namespace Input_Scripts
         [SerializeField]
         private PlayerInputSo playerInputSo;
 
+        [SerializeField]
+        private GameDataSO gameDataSo;
+
         [Header("Dev Tool")]
 
         [SerializeField]
         [Tooltip("Search for an existing character in the scene and link to that")]
         private bool quickLoad;
 
-        private int id;
+        private int playerId;
+        private int inputId;
+
         private UnityEngine.InputSystem.PlayerInput playerInput;
 
         private void Start()
         {
             playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-            id = playerInput.playerIndex;
+            inputId = playerInput.playerIndex;
 
-            playerInputSo.TryGetPlayerInputEvents(id);
+            playerId = -1;
 
             if (!quickLoad)
             {
@@ -43,11 +49,19 @@ namespace Input_Scripts
 
         private void OnDestroy()
         {
-            playerInputSo.RemoveInputReader(id);
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            gameDataSo.RemovePlayer(playerId);
+            playerInputSo.RemoveInputReader(playerId);
         }
 
         private void QuickLinkToExistingCharacter()
         {
+            TryBindToPlayer();
+
             CharacterEntity character =
                 FindObjectsByType<CharacterEntity>(FindObjectsSortMode.None)
                     .OrderBy(a => a.transform.GetSiblingIndex())
@@ -59,37 +73,81 @@ namespace Input_Scripts
                 return;
             }
 
-            character.Initialize(id);
+            character.Initialize(playerId);
+        }
+
+        private void TryBindToPlayer()
+        {
+            int id = gameDataSo.TryAddPlayer();
+            if (id != -1)
+            {
+                playerId = id;
+            }
         }
 
         public void OnLightAttack(InputAction.CallbackContext context)
         {
-            playerInputSo.LightAttackEvent(id)?.Invoke(context.action.triggered);
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            playerInputSo.LightAttackEvent(playerId)?.Invoke(context.action.triggered);
         }
 
         public void OnHeavyAttack(InputAction.CallbackContext context)
         {
-            playerInputSo.HeavyAttackEvent(id)?.Invoke(context.action.triggered);
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            playerInputSo.HeavyAttackEvent(playerId)?.Invoke(context.action.triggered);
         }
 
         public void OnSpecialAttack(InputAction.CallbackContext context)
         {
-            playerInputSo.SpecialAttackEvent(id)?.Invoke(context.action.triggered);
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            playerInputSo.SpecialAttackEvent(playerId)?.Invoke(context.action.triggered);
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            playerInputSo.MoveEvent(id)?.Invoke(context.ReadValue<Vector2>());
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            playerInputSo.MoveEvent(playerId)?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            playerInputSo.JumpEvent(id)?.Invoke(context.action.triggered);
+            if (playerId == -1)
+            {
+                TryBindToPlayer();
+            }
+
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            playerInputSo.JumpEvent(playerId)?.Invoke(context.action.triggered);
         }
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            playerInputSo.DashEvent(id)?.Invoke(context.action.triggered);
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            playerInputSo.DashEvent(playerId)?.Invoke(context.action.triggered);
         }
     }
 }
