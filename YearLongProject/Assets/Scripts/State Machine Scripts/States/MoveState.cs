@@ -73,7 +73,7 @@ namespace State_Machine_Scripts.States
         {
             if (movementController.GetIsGrounded())
             {
-                if (Mathf.Abs(characterRigidbody.LinearVelocity.x) < 0.5f && moveInput == Vector2.zero)
+                if (Mathf.Abs(characterRigidbody.LinearVelocity.x) < 0.5f && moveInput.x == 0)
                 {
                     SetSubState(MoveSubStates.Idle);
                 }

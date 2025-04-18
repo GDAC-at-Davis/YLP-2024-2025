@@ -14,7 +14,6 @@ namespace Movement
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody;
 
-
         [Header("Ground")]
 
         [SerializeField]
@@ -38,10 +37,6 @@ namespace Movement
 
         [SerializeField]
         private float groundCheckDistance;
-	
-	[Header("Horizontal Movement Deadzone")]
-	[SerializeField] 
-	private float deadzoneValue;
 
         [Header("Events")]
 
@@ -51,8 +46,7 @@ namespace Movement
         [SerializeField]
         private UnityEvent onLeaveGround;
 
-        
-	private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
+        private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
 
         private bool inJump;
         private bool isGrounded;
@@ -100,8 +94,7 @@ namespace Movement
 
         public void SetHorizontalInput(float desiredMove)
         {
-            //if (desiredMove == 0)
-	    if (Mathf.Abs(desiredMove) <= deadzoneValue)
+            if (desiredMove == 0)
             {
                 horizontalInput = 0;
             }
