@@ -82,6 +82,30 @@ namespace Input_Scripts
             if (id != -1)
             {
                 playerId = id;
+                gameDataSo.OnPlayerDataChanged += HandlePlayerDataChanged;
+            }
+        }
+
+        private void HandlePlayerDataChanged(int priorId, PlayerDataChange changetype,
+            GameDataSO.PlayerData postchangedata)
+        {
+            if (playerId == -1)
+            {
+                return;
+            }
+
+            if (playerId == priorId)
+            {
+                if (changetype == PlayerDataChange.PlayerRemoved)
+                {
+                    gameDataSo.OnPlayerDataChanged -= HandlePlayerDataChanged;
+                    playerId = -1;
+                }
+                else if (changetype == PlayerDataChange.IdChanged)
+                {
+                    Debug.Log("Changed to " + postchangedata.PlayerId);
+                    playerId = postchangedata.PlayerId;
+                }
             }
         }
 

@@ -24,7 +24,7 @@ namespace Input_Scripts
         [Header("Cursor")]
 
         [SerializeField]
-        private PlayerReadyCursorController cursorPrefab;
+        private PlayerCursorController cursorPrefab;
 
         [SerializeField]
         private RectTransform container;
@@ -38,6 +38,7 @@ namespace Input_Scripts
         private void OnEnable()
         {
             playerInputSO.ClearAllInputReaders();
+            gameDataSO.ClearPlayerData();
             gameDataSO.OnPlayerDataChanged += OnPlayerDataChanged;
         }
 
@@ -50,14 +51,14 @@ namespace Input_Scripts
         {
             if (changeType == PlayerDataChange.PlayerAdded)
             {
-                OnInputAdded(postChangeData.PlayerId);
+                OnPlayerAdded(postChangeData.PlayerId);
             }
         }
 
-        private void OnInputAdded(int id)
+        private void OnPlayerAdded(int playerId)
         {
-            PlayerReadyCursorController cursor = Instantiate(cursorPrefab, container);
-            cursor.Initialize(id, cursorBottomLeft, cursorTopRight);
+            PlayerCursorController cursor = Instantiate(cursorPrefab, container);
+            cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight);
         }
     }
 }
