@@ -1,5 +1,7 @@
 using CharacterScripts;
+using EditorUtils.BoldHeader;
 using LevelScripts;
+using Managers;
 using Menus;
 using TMPro;
 using UnityEngine;
@@ -10,10 +12,18 @@ namespace Input_Scripts
     ///     Temporary Character Select cursor thing its 2:30 am and I can't figure out how to combine
     ///     the virtual mouse and multiplayer event system so we're gonna do whatever the fuck this is for now
     /// </summary>
-    public class PlayerReadyCursorController : MonoBehaviour
+    public class PlayerCursorController : MonoBehaviour
     {
+        [BoldHeader("Player Virtual Cursor")]
+        [Header("Depends")]
+
         [SerializeField]
         private PlayerInputSo playerInputSO;
+
+        [SerializeField]
+        private GameDataSO gameDataSO;
+
+        [Header("Config")]
 
         [SerializeField]
         private float speed = 500;
@@ -50,11 +60,8 @@ namespace Input_Scripts
 
         private void OnDestroy()
         {
-            events.JumpEvent -= TrySelectCharacter;
-            events.HeavyAttackEvent -= UnselectCharacter;
-            events.JumpEvent -= TrySelectLevel;
-            events.HeavyAttackEvent -= UnselectLevel;
-            events.MoveEvent -= MoveCursor;
+            UnsubscribeToInputEvents();
+            gameDataSO.OnPlayerDataChanged -= HandlePlayerDataChanged;
             CharacterSelect.Instance.AllPlayersReady -= LockIn;
         }
 
@@ -71,23 +78,62 @@ namespace Input_Scripts
             rectTransform.position = pos;
         }
 
-        public void Initialize(int id, RectTransform bottomLeft, RectTransform topRight)
+        public void Initialize(int playerId, RectTransform bottomLeft, RectTransform topRight)
         {
-            Debug.Log($"Player {id} cursor initialized");
+            Debug.Log($"Player {playerId} cursor initialized");
             cursorBottomLeft = bottomLeft;
             cursorTopRight = topRight;
 
-            playerID = id;
+            playerID = playerId;
             text = GetComponentInChildren<TextMeshProUGUI>();
-            text.text = (id + 1).ToString();
+            text.text = (playerId + 1).ToString();
 
-            events = playerInputSO.TryGetPlayerInputEvents(id);
-            events.JumpEvent += TrySelectCharacter;
-            events.HeavyAttackEvent += UnselectCharacter;
-            events.MoveEvent += MoveCursor;
+            events = playerInputSO.TryGetPlayerInputEvents(playerID);
+            SubscribeToInputEvents();
+
+            gameDataSO.OnPlayerDataChanged += HandlePlayerDataChanged;
 
             CharacterSelect.Instance.AllPlayersReady += LockIn;
             CharacterSelect.Instance.ReadyUp(playerID, null);
+        }
+
+        private void HandlePlayerDataChanged(int priorid, PlayerDataChange changeType,
+            GameDataSO.PlayerData postchangedata)
+        {
+            if (priorid == playerID)
+            {
+                if (changeType == PlayerDataChange.PlayerRemoved)
+                {
+                    playerID = -1;
+                    Destroy(gameObject);
+                }
+
+                if (changeType == PlayerDataChange.IdChanged)
+                {
+                    UnsubscribeToInputEvents();
+                    playerID = postchangedata.PlayerId;
+                    text.text = (playerID + 1).ToString();
+
+                    events = playerInputSO.TryGetPlayerInputEvents(playerID);
+                    SubscribeToInputEvents();
+                }
+            }
+        }
+
+        private void SubscribeToInputEvents()
+        {
+            events.JumpEvent += TrySelectCharacter;
+            events.HeavyAttackEvent += UnselectCharacter;
+            events.MoveEvent += MoveCursor;
+        }
+
+        private void UnsubscribeToInputEvents()
+        {
+            events.JumpEvent -= TrySelectCharacter;
+            events.HeavyAttackEvent -= UnselectCharacter;
+            events.JumpEvent -= TrySelectLevel;
+            events.HeavyAttackEvent -= UnselectLevel;
+            events.MoveEvent -= MoveCursor;
         }
 
         private void MoveCursor(Vector2 input)
@@ -121,6 +167,8 @@ namespace Input_Scripts
             {
                 return;
             }
+
+            gameDataSO.RemovePlayer(playerID);
 
             text.text = (playerID + 1).ToString();
             QueueCharacter(null);

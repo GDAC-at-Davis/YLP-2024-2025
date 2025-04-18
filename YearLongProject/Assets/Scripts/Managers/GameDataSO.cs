@@ -96,14 +96,16 @@ namespace Managers
                 return;
             }
 
+            Debug.Log($"Removing player {id}");
+
             players.RemoveAt(id);
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, null);
+
             for (int i = id; i < players.Count; i++)
             {
                 players[i].PlayerId--;
-                OnPlayerDataChanged?.Invoke(i, PlayerDataChange.IdChanged, players[i]);
+                OnPlayerDataChanged?.Invoke(i + 1, PlayerDataChange.IdChanged, players[i]);
             }
-
-            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, null);
         }
 
         /// <summary>
