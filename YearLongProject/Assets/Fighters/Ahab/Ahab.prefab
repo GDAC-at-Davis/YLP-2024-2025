@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 0e10f278ea9823445b9ecac3cd38e2e5, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   characterEntity: {fileID: 3850342251300834818}
   movementController: {fileID: 1278654112016437739}
   hitstunPlayableAsset:
@@ -226,6 +229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: c607c87951d8ce24bad01e9a64a1b436, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 7913370506681429333}
@@ -347,6 +353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   jumpMultCurve:
     serializedVersion: 2
@@ -401,6 +410,52 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &2740929583371879041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7895175165974704511}
+  - component: {fileID: 5490322947002279507}
+  m_Layer: 3
+  m_Name: Cooldown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7895175165974704511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740929583371879041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3446146135286005417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5490322947002279507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740929583371879041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9971b2f5696621144adb90aee844a14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 5515866176446940285}
+  staticCooldown: 1
 --- !u!1 &3258685151373203990
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: f86f9ecb37655bc4c8c0fce8c52c866c, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 3726650428927876446}
@@ -853,6 +911,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: e3d4ef80ceaa17f4cb83b0fb58591a48, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   characterRigidbody: {fileID: 4198994870414546198}
   movingPlayableAsset:
@@ -920,6 +981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: c2c725f4959b4bc479e50b67d8d8351f, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 5143816317544813401}
@@ -1172,7 +1236,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7895175165974704511}
   m_Father: {fileID: 639948414992868120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5515866176446940285
@@ -1188,6 +1253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: f6837fefa04b2d8419be3778bbd9b15d, type: 2}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 39645586189757451}

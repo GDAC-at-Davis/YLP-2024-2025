@@ -58,6 +58,8 @@ namespace State_Machine_Scripts.States
 
         protected override void OnEnable()
         {
+            base.OnEnable();
+
             currentPlayableAsset = null;
             currentSubState = (MoveSubStates)(-1);
             SelectMoveState(Vector2.zero);
@@ -65,6 +67,8 @@ namespace State_Machine_Scripts.States
 
         protected override void OnDisable()
         {
+            base.OnDisable();
+
             currentPlayableAsset?.Stop();
             currentPlayableAsset = null;
         }
