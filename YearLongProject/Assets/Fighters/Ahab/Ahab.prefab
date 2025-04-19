@@ -50,6 +50,7 @@ MonoBehaviour:
   throwPointOffset: {x: 0.68, y: 0}
   throwForce: 10
   launchAngle: 45
+  actionManager: {fileID: 3105801480486927495}
 --- !u!1 &620133673588379672
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +297,8 @@ PlayableDirector:
     value: {fileID: 4349180769013242161}
   - key: {fileID: 9171480928502430982, guid: 5a88f87dddbc98d4f9843292e99463aa, type: 2}
     value: {fileID: 4292277057147306820}
+  - key: {fileID: -5763307137688502784, guid: 5a88f87dddbc98d4f9843292e99463aa, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2657891517437868586
@@ -394,6 +397,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -1755073353440819576, guid: b076554bfbf077444afd66ab69d48152, type: 2}
     value: {fileID: 6572194888787973522}
+  - key: {fileID: -5438996935550660551, guid: b076554bfbf077444afd66ab69d48152, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &3258685151373203990
@@ -497,6 +502,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 727510962836346268, guid: 5a88f87dddbc98d4f9843292e99463aa, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -904859117501056423, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4044685141698899916
@@ -968,6 +975,8 @@ PlayableDirector:
     value: {fileID: 4198994870414546198}
   - key: {fileID: 727510962836346268, guid: 0dd4579918037f04791c622d9f5fa0af, type: 2}
     value: {fileID: 1510922958757828136}
+  - key: {fileID: -7500514140640883419, guid: 0dd4579918037f04791c622d9f5fa0af, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &6627629930600814027
@@ -1122,7 +1131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: caaabb174d231a64bbe7baa0b6d5d468, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6b9dcd522759884692a3c485863152c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1254,6 +1263,10 @@ PrefabInstance:
       propertyPath: dashVelocity
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: actionManager
+      value: 
+      objectReference: {fileID: 3105801480486927495}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: hitboxEmitter
       value: 
