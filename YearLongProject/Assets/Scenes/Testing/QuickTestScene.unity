@@ -3421,17 +3421,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
---- !u!114 &1712769409 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3105801480486927495, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-  m_PrefabInstance: {fileID: 1864841606}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1722840113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,26 +3794,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1998330122680826535, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: actionManager
-      value: 
-      objectReference: {fileID: 1712769409}
-    - target: {fileID: 2917941976895185366, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: actionManager
-      value: 
-      objectReference: {fileID: 1712769409}
-    - target: {fileID: 3726650428927876446, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 3726650428927876446, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.data[16].key
-      value: 
-      objectReference: {fileID: -904859117501056423, guid: ddce01fcdee7e994d8f068e12da9a6c4, type: 2}
-    - target: {fileID: 3726650428927876446, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.data[16].value
-      value: 
-      objectReference: {fileID: 1712769409}
     - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3865,38 +3834,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5143816317544813401, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5143816317544813401, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.data[16].key
-      value: 
-      objectReference: {fileID: -7500514140640883419, guid: 0dd4579918037f04791c622d9f5fa0af, type: 2}
-    - target: {fileID: 5143816317544813401, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.data[16].value
-      value: 
-      objectReference: {fileID: 1712769409}
     - target: {fileID: 6242291163348849283, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
       propertyPath: m_Name
       value: Ahab
       objectReference: {fileID: 0}
-    - target: {fileID: 7913370506681429333, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 7913370506681429333, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.data[18].key
-      value: 
-      objectReference: {fileID: -5763307137688502784, guid: 5a88f87dddbc98d4f9843292e99463aa, type: 2}
-    - target: {fileID: 7913370506681429333, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_SceneBindings.Array.data[18].value
-      value: 
-      objectReference: {fileID: 1712769409}
-    - target: {fileID: 8583743358405194245, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d6b9dcd522759884692a3c485863152c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
