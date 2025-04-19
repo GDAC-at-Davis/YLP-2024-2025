@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
@@ -9,6 +11,15 @@ namespace State_Machine_Scripts.Modifiers
     /// </summary>
     public class StateCooldown : MonoBehaviour
     {
+        /// <summary>
+        ///     A tier of cooldown, for scaling cooldown
+        /// </summary>
+        [Serializable]
+        public struct CooldownTier
+        {
+            public float CooldownTime;
+        }
+
         [BoldHeader("State Cooldown")]
         [InfoBox("Adds a cooldown lockout to a state")]
         [Header("Depends")]
@@ -19,7 +30,10 @@ namespace State_Machine_Scripts.Modifiers
         [Header("Config")]
 
         [SerializeField]
-        public float staticCooldown;
+        private float lockoutDuration;
+
+        [SerializeField]
+        public List<CooldownTier> cooldownTiers;
 
         /// <summary>
         ///     How much timer is left on the cooldown
@@ -37,7 +51,13 @@ namespace State_Machine_Scripts.Modifiers
         private float cooldownTimer;
 
         [ShowNonSerializedField]
+        private float timeSinceOffCooldown;
+
+        [ShowNonSerializedField]
         private float currentCooldown;
+
+        [ShowNonSerializedField]
+        private int cooldownTier;
 
         private void Update()
         {
@@ -50,6 +70,10 @@ namespace State_Machine_Scripts.Modifiers
                     state.RemoveLockout();
                     cooldownTimer = 0;
                 }
+            }
+            else
+            {
+                timeSinceOffCooldown += Time.deltaTime;
             }
         }
 
@@ -66,8 +90,25 @@ namespace State_Machine_Scripts.Modifiers
         private void HandleOnStateEntered()
         {
             state.AddLockout();
-            cooldownTimer = staticCooldown;
-            currentCooldown = staticCooldown;
+
+            // Used too early, increase tier
+            if (timeSinceOffCooldown <= lockoutDuration)
+            {
+                cooldownTier = Mathf.Clamp(cooldownTier + 1, 0, cooldownTiers.Count - 1);
+            }
+            else
+            {
+                cooldownTier = 0;
+            }
+
+            timeSinceOffCooldown = 0;
+            currentCooldown = cooldownTiers[cooldownTier].CooldownTime;
+            cooldownTimer = currentCooldown;
+
+            if (cooldownTimer == 0)
+            {
+                cooldownTimer = Time.fixedDeltaTime;
+            }
         }
     }
 }
