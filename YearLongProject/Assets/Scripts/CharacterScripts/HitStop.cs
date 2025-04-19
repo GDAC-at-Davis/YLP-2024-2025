@@ -1,8 +1,9 @@
-using Animancer;
-using Base;
+using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Movement;
+using NaughtyAttributes;
+using State_Machine_Scripts;
 using UnityEngine;
 
 namespace CharacterScripts
@@ -10,15 +11,14 @@ namespace CharacterScripts
     /// <summary>
     ///     Script that handles all hit stop logic
     /// </summary>
-    public class HitStop : DescriptionMono
+    public class HitStop : MonoBehaviour
     {
-        [Header("Depends")]
+        [BoldHeader("Hit-Stop Script")]
+        [InfoBox("Handles the hit-stop effect by freezing animation and the rigidbody. Don't remove!")]
+        [Header("Dependencies")]
 
         [SerializeField]
-        private AnimancerComponent animancerComponent;
-
-        [SerializeField]
-        private Animator animator;
+        private CharacterActionManager actionManager;
 
         [SerializeField]
         private CharacterRigidbody2D rb;
@@ -84,14 +84,9 @@ namespace CharacterScripts
 
         private void StartHitstop()
         {
-            if (animancerComponent)
+            if (actionManager)
             {
-                animancerComponent.Graph.Speed = 0;
-            }
-
-            if (animator)
-            {
-                animator.speed = 0;
+                actionManager.InternalFixedTimeScale = 0;
             }
 
             if (rb)
@@ -102,14 +97,9 @@ namespace CharacterScripts
 
         private void StopHitStop()
         {
-            if (animancerComponent)
+            if (actionManager)
             {
-                animancerComponent.Graph.Speed = 1;
-            }
-
-            if (animator)
-            {
-                animator.speed = 1;
+                actionManager.InternalFixedTimeScale = 1;
             }
 
             if (rb)

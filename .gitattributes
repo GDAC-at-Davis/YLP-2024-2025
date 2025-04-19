@@ -1,0 +1,4 @@
+# FMOD "Fix Line Endings" Fix
+# From https://qa.fmod.com/t/repair-fmod-libraries-warning-still-keeps-showing-after-click-repair-button/18213/11
+*.bundle text eol=lf
+*.plist text eol=lf

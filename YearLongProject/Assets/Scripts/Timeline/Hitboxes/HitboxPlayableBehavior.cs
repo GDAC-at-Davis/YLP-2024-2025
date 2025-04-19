@@ -1,8 +1,10 @@
 using System;
 using Camera;
+using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.Emitters;
 using Hitbox.HitboxAreas;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -15,23 +17,28 @@ namespace Timeline.Hitboxes
     [Serializable]
     public class HitboxPlayableBehavior : PlayableBehaviour
     {
+        [BoldHeader("Hitbox Effects")]
         public HitboxEffect HitEffect;
 
         [FormerlySerializedAs("ScreenShakeEffect")]
         public ScreenShakeEffectSO ScreenShakeSO;
 
+        [BoldHeader("Hitbox Group")]
         public bool EndHitboxGroup;
 
-        [Tooltip(
-            "ID of the hitboxgroup these hitboxes belong to. Hitboxes from the same hitbox group cannot hit an Entity more than once")]
+        [InfoBox(
+            "ID of the hitboxgroup these hitboxes belong to. " +
+            "Hitboxes from the same hitbox group cannot hit an Entity more than once")]
         public string HitboxGroupId;
 
+        [BoldHeader("Hitbox Areas")]
         public RaycastArea[] RaycastArea;
+
         public BoxArea[] BoxArea;
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            var hitboxEmitter = playerData as HitboxEmitter;
+            var hitboxEmitter = playerData as BasicHitboxEmitter;
 
             if (hitboxEmitter == null)
             {
@@ -102,7 +109,7 @@ namespace Timeline.Hitboxes
 
             if (EndHitboxGroup)
             {
-                var hitboxEmitter = info.output.GetUserData() as HitboxEmitter;
+                var hitboxEmitter = info.output.GetUserData() as BasicHitboxEmitter;
 
                 if (hitboxEmitter != null)
                 {

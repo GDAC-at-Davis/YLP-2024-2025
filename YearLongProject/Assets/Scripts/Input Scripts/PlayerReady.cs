@@ -1,33 +1,44 @@
-using Input_Scripts;
 using UnityEngine;
 
-/// <summary>
-///     Temporary character select UI component
-///     Spawns playerreadybutton when a controller is conencted
-/// </summary>
-public class PlayerReady : MonoBehaviour
+namespace Input_Scripts
 {
-    [SerializeField]
-    private GameObject playerReady;
-
-    [SerializeField]
-    private PlayerInputSo playerInputSO;
-
-    private void OnEnable()
+    /// <summary>
+    ///     Temporary character select UI component
+    ///     Spawns PlayerReadyController when a controller is conencted
+    /// </summary>
+    public class PlayerReady : MonoBehaviour
     {
-        playerInputSO.ClearAllInputReaders();
-        playerInputSO.PlayerInputAdded += OnInputAdded;
-    }
+        [SerializeField]
+        private GameObject playerReady;
 
-    private void OnDisable()
-    {
-        playerInputSO.PlayerInputAdded -= OnInputAdded;
-    }
+        [SerializeField]
+        private PlayerInputSo playerInputSO;
 
-    private void OnInputAdded(int id)
-    {
-        Debug.Log($"Player {id} connected");
-        var button = Instantiate(playerReady, transform).GetComponent<PlayerReadyButton>();
-        button.Initialize(id);
+        [SerializeField]
+        private RectTransform container;
+
+        [SerializeField]
+        private RectTransform cursorBottomLeft;
+
+        [SerializeField]
+        private RectTransform cursorTopRight;
+
+        private void OnEnable()
+        {
+            playerInputSO.ClearAllInputReaders();
+            playerInputSO.PlayerInputAdded += OnInputAdded;
+        }
+
+        private void OnDisable()
+        {
+            playerInputSO.PlayerInputAdded -= OnInputAdded;
+        }
+
+        private void OnInputAdded(int id)
+        {
+            Debug.Log($"Player {id} connected");
+            var button = Instantiate(playerReady, container).GetComponent<PlayerReadyCursorController>();
+            button.Initialize(id, cursorBottomLeft, cursorTopRight);
+        }
     }
 }

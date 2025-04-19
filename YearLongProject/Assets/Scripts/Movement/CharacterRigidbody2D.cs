@@ -1,4 +1,5 @@
-using Base;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Movement
@@ -7,17 +8,38 @@ namespace Movement
     ///     Managed wrapper around Rigidbody2D
     /// </summary>
     [DefaultExecutionOrder(1000)]
-    public class CharacterRigidbody2D : DescriptionMono
+    public class CharacterRigidbody2D : MonoBehaviour
     {
+        [BoldHeader("Character Custom Rigidbody2D")]
+        [InfoBox(
+            "A helper script that deals with the Rigidbody2D. " +
+            "Control character physics through this script, instead of the Rigidbody2D directly. " +
+            "Don't remove!")]
+        [Header("Dependencies")]
+
         [SerializeField]
         private Rigidbody2D rb2D;
 
+        [Header("Physics Settings")]
+
+        [InfoBox("Modify these settings as desired")]
         [SerializeField]
         private Vector2 gravityAcceleration;
 
+        [SerializeField]
+        private float terminalVelocity;
+
         public Vector2 LinearVelocity
         {
-            get => rb2D.linearVelocity;
+            get
+            {
+                if (isFrozen)
+                {
+                    return cachedVelocity;
+                }
+
+                return rb2D.linearVelocity;
+            }
             set
             {
                 if (isFrozen)
@@ -43,6 +65,12 @@ namespace Movement
             set => gravityAcceleration = value;
         }
 
+        public float TerminalVelocity
+        {
+            get => terminalVelocity;
+            set => terminalVelocity = value;
+        }
+
         private Vector2 movePositionAccumulator;
 
         private int xFlipTransform = 1;
@@ -51,7 +79,11 @@ namespace Movement
 
         private void FixedUpdate()
         {
-            rb2D.linearVelocity += gravityAcceleration * Time.fixedDeltaTime;
+            if (rb2D.linearVelocity.y > -Mathf.Abs(terminalVelocity))
+            {
+                rb2D.linearVelocity += gravityAcceleration * Time.fixedDeltaTime;
+            }
+
             if (movePositionAccumulator != Vector2.zero)
             {
                 // We need to use an accumulator since multiple MovePositions in a single physics update overwrite each other
@@ -110,7 +142,13 @@ namespace Movement
 
         public void AddForce(Vector2 force, ForceMode2D forceMode)
         {
-            rb2D.AddForce(force, forceMode);
+            Vector2 velocityDelta = force;
+            if (forceMode == ForceMode2D.Force)
+            {
+                velocityDelta *= Time.fixedDeltaTime;
+            }
+
+            LinearVelocity += velocityDelta;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Hitbox.Testing
         private AreaTypes areaType;
 
         [SerializeField]
-        private HitboxEmitter hitboxEmitter;
+        private BasicHitboxEmitter hitboxEmitter;
 
         [Header("Box Area")]
 

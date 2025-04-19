@@ -1,5 +1,6 @@
 using System;
-using Base;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,20 +9,34 @@ namespace Input_Scripts
     /// <summary>
     ///     Interface exposing input actions for a character instance
     /// </summary>
-    public class CharacterActionInput : DescriptionMono
+    public class CharacterActionInput : MonoBehaviour
     {
-        [Header("Depends")]
+        [BoldHeader("Character Input Script")]
+        [InfoBox("Provides User Input information for this character. Don't remove!")]
+        [Header("Dependencies")]
 
         [SerializeField]
         private PlayerInputSo playerInputSo;
 
+        [Header("Horizontal Input Deadzone")]
+
+        [SerializeField]
+        private float deadzoneValue;
+
         [Header("Input Events")]
 
+        [InfoBox("Add listeners to these UnityEvents to define custom behavior when the input is received.")]
         public UnityEvent OnJumpPressed;
 
         public UnityEvent OnLightAttackPressed;
 
         public UnityEvent OnDashPressed;
+
+        public UnityEvent OnHeavyAttackPassed;
+
+        public UnityEvent OnSpecialAttackPassed;
+
+        public UnityEvent<Vector2> OnMoveInputChanged;
 
         // Properties
         public Vector2 MoveInput => moveInput;
@@ -62,25 +77,42 @@ namespace Input_Scripts
 
         private void HandleOnMove(Vector2 move)
         {
+            if (Mathf.Abs(move.x) <= deadzoneValue)
+            {
+                move.x = 0;
+            }
+
             if (move != moveInput)
             {
                 MoveInputChanged?.Invoke(move);
+                OnMoveInputChanged.Invoke(move);
             }
 
             moveInput = move;
         }
 
-        private void HandleOnSpecialAttack(bool arg0)
+        private void HandleOnSpecialAttack(bool val)
         {
+            if (val)
+            {
+                OnSpecialAttackPassed.Invoke();
+            }
         }
 
-        private void HandleOnHeavyAttack(bool arg0)
+        private void HandleOnHeavyAttack(bool val)
         {
+            if (val)
+            {
+                OnHeavyAttackPassed.Invoke();
+            }
         }
 
-        private void HandleOnLightAttack(bool arg0)
+        private void HandleOnLightAttack(bool pressed)
         {
-            OnLightAttackPressed.Invoke();
+            if (pressed)
+            {
+                OnLightAttackPressed.Invoke();
+            }
         }
 
         private void HandleOnJump(bool value)
@@ -95,7 +127,10 @@ namespace Input_Scripts
 
         private void HandleOnDash(bool state)
         {
-            OnDashPressed.Invoke();
+            if (state)
+            {
+                OnDashPressed.Invoke();
+            }
         }
     }
 }

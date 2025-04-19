@@ -1,31 +1,42 @@
 using System.Collections.Generic;
-using Animancer;
+using System.Linq;
 using Animancer.FSM;
-using Base;
+using EditorUtils.BoldHeader;
 using Input_Scripts;
+using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 
 namespace State_Machine_Scripts
 {
-    public class CharacterActionManager : DescriptionMono
+    public class CharacterActionManager : MonoBehaviour
     {
-        [Header("Depends")]
+        [BoldHeader("Action Manager")]
+        [InfoBox("Manages the character's state machine and set the character's state. Don't remove!")]
+        [Header("Dependencies")]
 
         [SerializeField]
-        public AnimancerComponent Anim;
+        [Tooltip("Transform representing the body of the character, i.e. the part that moves")]
+        private Transform _body;
 
         [Header("States")]
 
-        [Tooltip("All the states in the state machine")]
+        [InfoBox("All the states used should be added here. The first state is the default state.")]
         [SerializeField]
         private List<CharacterState> states;
 
         public CharacterActionInput CharacterActionInput => characterActionInput;
 
+        public float FixedDeltaTime => Time.fixedDeltaTime * InternalFixedTimeScale;
+
+        public float InternalFixedTimeScale { get; set; } = 1f;
+
         public readonly StateMachine<CharacterState>.WithDefault StateMachine = new();
 
-        private readonly float inputTimeOut = 0.5f;
+        /// <summary>
+        ///     How long to buffer input for, in frames (50 fps)
+        /// </summary>
+        private readonly int inputBufferDuration = 7;
 
         /// <summary>
         ///     Dict controlling if a state is allowed to be entered
@@ -51,17 +62,10 @@ namespace State_Machine_Scripts
 #if UNITY_EDITOR
             if (Application.isPlaying && StateMachine?.CurrentState != null)
             {
-                Handles.Label(transform.position + Vector3.up * 10, StateMachine.CurrentState.StateName);
+                Handles.Label(_body.position + Vector3.up * 3, StateMachine.CurrentState.StateName);
             }
 #endif
         }
-
-#if UNITY_EDITOR
-        protected virtual void OnValidate()
-        {
-            gameObject.GetComponentInParentOrChildren(ref Anim);
-        }
-#endif
 
         public void Initialize(CharacterActionInput input)
         {
@@ -114,7 +118,7 @@ namespace State_Machine_Scripts
 
             if (!StateMachine.TrySetState(state))
             {
-                stateInputBuffer.Buffer(state, inputTimeOut);
+                stateInputBuffer.Buffer(state, inputBufferDuration * Time.fixedDeltaTime);
             }
         }
 
@@ -129,6 +133,29 @@ namespace State_Machine_Scripts
             allowedStatesToEnter[action] = isAllowed;
         }
 
+        // more user friendly than setting action types one at a time
+        /// <summary>
+        ///     Set whether listed actions are available for transition or not
+        /// </summary>
+        /// <param name="isAllowed">can the listed actions be transitioned to?</param>
+        /// <param name="actions">list of actions to change</param>
+        public virtual void SetActionTypesAllowed(bool isAllowed, params string[] actions)
+        {
+            foreach (string action in actions)
+            {
+                allowedStatesToEnter[action] = isAllowed;
+            }
+        }
+
+        /// <inheritdoc cref="SetActionTypesAllowed(bool, string[])" />
+        public virtual void SetActionTypesAllowed(bool isAllowed, params StateNameSO[] actions)
+        {
+            foreach (StateNameSO action in actions)
+            {
+                allowedStatesToEnter[action.Value] = isAllowed;
+            }
+        }
+
         public virtual bool GetActionTypeAllowed(string action)
         {
             return allowedStatesToEnter[action];
@@ -139,6 +166,24 @@ namespace State_Machine_Scripts
             foreach (string key in new List<string>(allowedStatesToEnter.Keys))
             {
                 allowedStatesToEnter[key] = b;
+            }
+        }
+
+        public StateNameSO[] GetStates()
+        {
+            return states.Select(item => item.StateNameSO).ToArray();
+        }
+
+        [Button("Autofill States")]
+        private void GetStatesButton()
+        {
+            CharacterState[] foundStates = GetComponentsInChildren<CharacterState>();
+            foreach (CharacterState state in foundStates)
+            {
+                if (!states.Contains(state))
+                {
+                    states.Add(state);
+                }
             }
         }
     }

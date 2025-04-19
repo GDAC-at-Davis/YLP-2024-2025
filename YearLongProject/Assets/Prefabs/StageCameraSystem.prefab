@@ -291,9 +291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   padding: {x: 3, y: 4}
-  offset: {x: 0, y: 1}
-  lerpingRate: 0.99
-  cameraVelocityAnticipation: 1
+  offset: {x: 0, y: 2}
+  lerpingRate: 0.9
+  cameraVelocityAnticipation: 0.5
 --- !u!114 &938757672274340590
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,7 @@
-using Animancer;
+using EditorUtils.BoldHeader;
+using Movement;
+using NaughtyAttributes;
+using Timeline;
 using UnityEngine;
 
 namespace State_Machine_Scripts.States
@@ -8,47 +11,45 @@ namespace State_Machine_Scripts.States
     /// </summary>
     public class SimpleTimelineState : CharacterState
     {
-        [Header("Config")]
+        [BoldHeader("Simple Timeline State")]
+        [InfoBox(
+            "A state that simply plays a Timeline when entered, and returns to the default state when the Timeline ends.")]
+        [Header("Dependencies")]
 
         [SerializeField]
         private SimpleMovementController movementController;
 
+        [Header("Config")]
+
         [SerializeField]
-        private PlayableAssetTransition lightAttackPlayableAsset;
+        private ManualTimelinePlayer timelinePlayer;
 
         [SerializeField]
         private bool useDefaultMovement;
-
-        [Tooltip("Which states can you not cancel into from this state?")]
-        [SerializeField]
-        private StateNameSO[] blockedStates;
 
         private void Update()
         {
             if (useDefaultMovement)
             {
                 Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
-                movementController.SetCharacterMove(moveInput.x);
+                movementController.SetHorizontalInput(moveInput.x);
             }
             else
             {
-                movementController.SetCharacterMove(0);
+                movementController.SetHorizontalInput(0);
             }
+        }
+
+        private void FixedUpdate()
+        {
+            timelinePlayer.Evaluate(ActionManager.FixedDeltaTime);
         }
 
         public override void OnEnterState()
         {
-            if (lightAttackPlayableAsset.State != null)
-            {
-                lightAttackPlayableAsset.State.Destroy();
-            }
-            
-            Anim.Play(lightAttackPlayableAsset);
-            lightAttackPlayableAsset.Events.OnEnd += HandleOnEnd;
-            foreach( StateNameSO state in blockedStates)
-            {
-                ActionManager.SetActionTypeAllowed(state, false);
-            }
+            base.OnEnterState();
+            timelinePlayer.OnFinished += HandleOnEnd;
+            timelinePlayer.Play();
         }
 
         private void HandleOnEnd()
@@ -58,11 +59,12 @@ namespace State_Machine_Scripts.States
 
         public override void OnExitState()
         {
-            lightAttackPlayableAsset.Events.OnEnd -= HandleOnEnd;
-            foreach (StateNameSO state in blockedStates)
-            {
-                ActionManager.SetActionTypeAllowed(state, true);
-            }
+            base.OnExitState();
+
+            timelinePlayer.OnFinished -= HandleOnEnd;
+            timelinePlayer.Stop();
+
+            ActionManager.SetAllActionTypeAllowed(true);
         }
     }
 }

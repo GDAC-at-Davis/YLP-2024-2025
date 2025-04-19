@@ -1,7 +1,10 @@
 using Animancer;
+using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
+using Movement;
+using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +14,9 @@ namespace GameEntities
 {
     public class CharacterEntity : Entity
     {
-        [Header("Depends")]
+        [BoldHeader("Character Entity Script")]
+        [InfoBox("The top-level script representing a character entity. Don't remove!")]
+        [Header("Dependencies")]
 
         [SerializeField]
         public CharacterActionManager ActionManager;
@@ -20,11 +25,17 @@ namespace GameEntities
         private CharacterActionInput actionInput;
 
         [SerializeField]
-        private AnimancerComponent animancerComponent;
-
-        [SerializeField]
         private SimpleMovementController movementController;
 
+        // TODO: Temp reset
+        [SerializeField]
+        [Scene]
+        private string endSceneName;
+
+        [Header("Events")]
+
+        [InfoBox(
+            "Add listeners to these UnityEvents to define custom behavior when the character is hit by an attack.")]
         public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;
 
         [SerializeField]
@@ -38,9 +49,20 @@ namespace GameEntities
         public int PlayerId => playerId;
 
         public int Health => health;
+
+        public float StunTime => stunTime;
         public UnityAction<int> UpdateHealth;
 
         private int playerId = -1;
+
+        private float stunTime;
+
+        private void Awake()
+        {
+            // Initialize the action manager in Awake, so we don't need input yet
+            // This is useful for the quick testing scene for taking damage without an extra input device
+            ActionManager.Initialize(actionInput);
+        }
 
         public void OnDestroy()
         {
@@ -60,7 +82,6 @@ namespace GameEntities
             transform.parent = null;
 
             actionInput.Initialize(id);
-            ActionManager.Initialize(actionInput);
         }
 
         // Callback for this Character being hit by an attack
@@ -71,12 +92,11 @@ namespace GameEntities
             // TODO: move this logic into a function in movement controller?
             Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
             knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
-            movementController.Knockback = knockback;
-            movementController.stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
+            stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
+
+            movementController.SetVelocity(knockback);
 
             TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
-
-            ActionManager.SetState("AhabHitstun");
 
             OnHitByAttackEvent?.Invoke(hitboxInstance, hitImpact);
         }
@@ -88,7 +108,7 @@ namespace GameEntities
 
             if (health <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(endSceneName);
             }
         }
 

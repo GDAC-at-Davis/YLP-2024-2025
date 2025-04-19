@@ -9,17 +9,28 @@ namespace Camera
         [SerializeField]
         private FightingCamera fightingCamera;
 
+        private void Start()
+        {
+            Gather();
+        }
+
         private void Update()
         {
-            // TODO: Move to using events instead of polling every second
             if (Time.frameCount % 60 == 0)
             {
-                IEnumerable<GameObject> targets = FindObjectsByType<CameraFramingTarget>(FindObjectsSortMode.None)
-                    .ToList()
-                    .Where(a => a.IsTargeted)
-                    .Select(a => a.gameObject);
-                fightingCamera.SetTargets(targets);
+                Gather();
             }
+        }
+
+        private void Gather()
+        {
+            // TODO: Move to using events instead of polling every second
+
+            IEnumerable<GameObject> targets = FindObjectsByType<CameraFramingTarget>(FindObjectsSortMode.None)
+                .ToList()
+                .Where(a => a.IsTargeted)
+                .Select(a => a.gameObject);
+            fightingCamera.SetTargets(targets);
         }
     }
 }

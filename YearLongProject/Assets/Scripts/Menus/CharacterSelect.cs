@@ -1,83 +1,86 @@
 using System.Collections.Generic;
+using CharacterScripts;
 using GameEntities;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-///     Temporary Character Select system
-///     When all players are ready, load game scene and characters
-///     Opting for singleton rather than SO here since we'll only need this in the characterselect scene
-/// </summary>
-public class CharacterSelect : MonoBehaviour
+namespace Menus
 {
-    public static CharacterSelect Instance;
-
     /// <summary>
-    ///     Character to spawn
-    ///     When more characters are added will need to implement feature to spawn different characters
+    ///     Temporary Character Select system
+    ///     When all players are ready, load game scene and characters
+    ///     Opting for singleton rather than SO here since we'll only need this in the characterselect scene
     /// </summary>
-    [SerializeField]
-    private GameObject character;
-
-    public UnityAction AllPlayersReady;
-
-    [SerializeField]
-    private readonly Dictionary<int, bool> playerReady = new();
-
-    private void Awake()
+    public class CharacterSelect : MonoBehaviour
     {
-        if (Instance == null)
+        public static CharacterSelect Instance;
+
+        [SerializeField]
+        [Scene]
+        private string gameSceneName;
+
+        public UnityAction AllPlayersReady;
+
+        [SerializeField]
+        private readonly Dictionary<int, CharacterSO> playerReady = new();
+
+        private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += GameStarted;
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+                SceneManager.sceneLoaded += GameStarted;
+            }
+
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
-        else
+        private void OnDestroy()
         {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= GameStarted;
-    }
-
-    public void ReadyUp(int id, bool ready)
-    {
-        if (!playerReady.TryGetValue(id, out _))
-        {
-            playerReady.Add(id, ready);
+            SceneManager.sceneLoaded -= GameStarted;
         }
 
-        playerReady[id] = ready;
-        TryStartGame();
-    }
-
-    public void TryStartGame()
-    {
-        if (playerReady.ContainsValue(false))
+        public void ReadyUp(int id, CharacterSO character)
         {
-            return;
+            if (!playerReady.TryGetValue(id, out _))
+            {
+                playerReady.Add(id, character);
+            }
+
+            playerReady[id] = character;
+            TryStartGame();
         }
 
-        AllPlayersReady.Invoke();
-        Invoke("StartGame", 1);
-    }
-
-    private void StartGame()
-    {
-        // TODO move this logic to an SO
-        SceneManager.LoadScene("PrototypeA");
-    }
-
-    private void GameStarted(Scene scene, LoadSceneMode sceneMode)
-    {
-        foreach (int id in playerReady.Keys)
+        public void TryStartGame()
         {
-            Instantiate(character, Vector3.zero, Quaternion.identity).GetComponent<CharacterEntity>().Initialize(id);
+            if (playerReady.ContainsValue(null))
+            {
+                return;
+            }
+
+            AllPlayersReady.Invoke();
+            Invoke("StartGame", 1);
+        }
+
+        private void StartGame()
+        {
+            // TODO move this logic to an SO
+            SceneManager.LoadScene(gameSceneName);
+        }
+
+        private void GameStarted(Scene scene, LoadSceneMode sceneMode)
+        {
+            foreach (int id in playerReady.Keys)
+            {
+                Instantiate(playerReady[id].CharacterPrefab).GetComponent<CharacterEntity>()
+                    .Initialize(id);
+            }
         }
     }
 }
