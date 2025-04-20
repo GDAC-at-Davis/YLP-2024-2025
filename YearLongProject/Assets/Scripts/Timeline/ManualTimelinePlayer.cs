@@ -1,9 +1,11 @@
 using System;
 using Animancer;
 using NaughtyAttributes;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
+#if UNITY_EDITOR
+using UnityEditor.Timeline;
+#endif
 
 namespace Timeline
 {
