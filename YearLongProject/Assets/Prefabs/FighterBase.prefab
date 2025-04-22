@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 2324917260605002194}
   - component: {fileID: 5352263243400969421}
   - component: {fileID: 6857426949256817108}
+  - component: {fileID: 6989034348001656684}
   m_Layer: 3
   m_Name: Main Body
   m_TagString: Untagged
@@ -275,6 +276,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6989034348001656684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559988325042132921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9287fbaaa5c8894fba92f27a45fc822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPhysicsCollider: {fileID: 0}
+  platformDropIgnoredLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  dropBufferTime: 0.25
 --- !u!1 &1968648881426466404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1119,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1297400868120738962}
         m_TargetAssemblyTypeName: Movement.FastFall, Assembly-CSharp
+        m_MethodName: HandleMoveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6989034348001656684}
+        m_TargetAssemblyTypeName: Movement.PlatformDrop, Assembly-CSharp
         m_MethodName: HandleMoveInput
         m_Mode: 0
         m_Arguments:

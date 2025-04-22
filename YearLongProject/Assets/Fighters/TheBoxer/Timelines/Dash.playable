@@ -817,7 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     StartPosition: {x: 0, y: 0}
-    EndPosition: {x: 2, y: 0}
+    EndPosition: {x: 1.5, y: 0}
     Curve:
       serializedVersion: 2
       m_Curve:
