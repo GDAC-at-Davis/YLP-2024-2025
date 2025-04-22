@@ -57,7 +57,6 @@ MonoBehaviour:
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
-  jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
 --- !u!320 &4278781545753096181
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -690,7 +689,7 @@ MonoBehaviour:
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
-  jumpState: {fileID: 11400000, guid: 7f7c9c780149508419dd1feac51df5c8, type: 2}
+  jumpState: {fileID: 4410214796524957275}
 --- !u!1 &6276305116148654308
 GameObject:
   m_ObjectHideFlags: 0
