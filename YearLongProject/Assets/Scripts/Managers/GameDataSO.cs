@@ -22,7 +22,7 @@ namespace Managers
     {
         public delegate void PlayerDataChangedEvent(int priorId, PlayerDataChange changeType,
             PlayerData postChangeData);
-        
+
         /// <summary>
         ///     Represents a single player
         /// </summary>

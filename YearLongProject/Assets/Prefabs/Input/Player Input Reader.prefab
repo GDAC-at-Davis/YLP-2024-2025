@@ -62,7 +62,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnMoveP1
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnLightAttackP1
+        m_MethodName: OnLightAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnJumpP1
+        m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnHeavyAttackP1
+        m_MethodName: OnHeavyAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnSpecialAttackP1
+        m_MethodName: OnSpecialAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
         m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnDashP1
+        m_MethodName: OnDash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -194,102 +194,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 67bee1f4-659b-42a2-8e4c-3738be1488c1
     m_ActionName: 'Player/Dash[/Keyboard/leftShift]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6086632988783990073}
-        m_TargetAssemblyTypeName: Input_Scripts.PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnMoveP2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7e201839-910a-421f-9ffc-235326504a4a
-    m_ActionName: 'Player2/Move[/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6086632988783990073}
-        m_TargetAssemblyTypeName: Input_Scripts.PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnLightAttackP2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d79a877e-8b6c-4d9c-9243-b1197c12f812
-    m_ActionName: 'Player2/LightAttack[/Keyboard/p]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6086632988783990073}
-        m_TargetAssemblyTypeName: Input_Scripts.PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnHeavyAttackP2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 10f073f9-a8a8-447b-a60b-c83753cfeadd
-    m_ActionName: 'Player2/HeavyAttack[/Keyboard/leftBracket]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6086632988783990073}
-        m_TargetAssemblyTypeName: Input_Scripts.PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnSpecialAttackP2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 374c9ba1-0194-4d67-91af-10d36c65d245
-    m_ActionName: 'Player2/SpecialAttack[/Keyboard/rightBracket]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6086632988783990073}
-        m_TargetAssemblyTypeName: Input_Scripts.PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnDashP2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2d709999-c195-48db-a507-5b7b04ff01c4
-    m_ActionName: 'Player2/Dash[/Keyboard/n]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6086632988783990073}
-        m_TargetAssemblyTypeName: Input_Scripts.PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnJumpP2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 58b1253c-8229-4b52-ab38-c7c21ed40fc4
-    m_ActionName: 'Player2/Jump[/Keyboard/leftArrow]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -308,6 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devDescription: 
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
   gameDataSo: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
   quickLoad: 0
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}

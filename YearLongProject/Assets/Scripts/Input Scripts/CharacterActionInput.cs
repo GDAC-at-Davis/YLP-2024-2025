@@ -18,11 +18,6 @@ namespace Input_Scripts
         [SerializeField]
         private PlayerInputSo playerInputSo;
 
-        [Header("Horizontal Input Deadzone")]
-
-        [SerializeField]
-        private float deadzoneValue;
-
         [Header("Input Events")]
 
         [InfoBox("Add listeners to these UnityEvents to define custom behavior when the input is received.")]
@@ -77,11 +72,6 @@ namespace Input_Scripts
 
         private void HandleOnMove(Vector2 move)
         {
-            if (Mathf.Abs(move.x) <= deadzoneValue)
-            {
-                move.x = 0;
-            }
-
             if (move != moveInput)
             {
                 MoveInputChanged?.Invoke(move);

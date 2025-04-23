@@ -46,9 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 3a224fc76f476d545b3f1c7b9e3176aa, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   characterEntity: {fileID: 3850342251300834818}
   movementController: {fileID: 1278654112016437739}
   hitstunPlayableAsset:
@@ -184,9 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 319f22603cc6cb14da9c3969a64482e2, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 440420555375411993}
@@ -306,9 +300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 5f80bcc3b2703894792c1424366c16b7, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   jumpMultCurve:
     serializedVersion: 2
@@ -667,9 +658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: d4efb3da0c903a445a9045c05f7a048d, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   characterRigidbody: {fileID: 4198994870414546198}
   movingPlayableAsset:
@@ -737,9 +725,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 65f38a27db4fd4c46b5260492ddac914, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 5143816317544813401}
@@ -900,9 +885,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: a2a2e9105eca7974d8c208bbaeebea32, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 6142686231447053304}
@@ -1006,8 +988,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7771890673151452829}
+  m_Children: []
   m_Father: {fileID: 639948414992868120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5515866176446940285
@@ -1023,9 +1004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: c1abe3b0784290c4bab18bd5f5438794, type: 2}
-  OnStateEntered:
-    m_PersistentCalls:
-      m_Calls: []
   movementController: {fileID: 1278654112016437739}
   timelinePlayer:
     playableDirector: {fileID: 39645586189757451}
@@ -1310,72 +1288,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &4285248393901879250
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3446146135286005417}
-    m_Modifications:
-    - target: {fileID: 1962435577691077297, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_Name
-      value: DefaultDashFast
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8143580752154451555, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-      propertyPath: state
-      value: 
-      objectReference: {fileID: 5515866176446940285}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
---- !u!4 &7771890673151452829 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5810505356346427727, guid: b7d1edce13428df4bba58232e1aca3b9, type: 3}
-  m_PrefabInstance: {fileID: 4285248393901879250}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8071256034438834651
 PrefabInstance:
   m_ObjectHideFlags: 0

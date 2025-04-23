@@ -45,8 +45,6 @@ namespace State_Machine_Scripts.States
 
         protected override void OnEnable()
         {
-            base.OnEnable();
-
             hitstunPlayableAsset.Play();
 
             ActionManager.SetAllActionTypeAllowed(false);
@@ -55,8 +53,6 @@ namespace State_Machine_Scripts.States
 
         protected override void OnDisable()
         {
-            base.OnDisable();
-
             movementController.enabled = true;
         }
 

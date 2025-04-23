@@ -75,9 +75,6 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private HitboxEffect dashAttackEffect;
 
-        [SerializeField]
-        private CharacterActionManager actionManager;
-
         private bool dashing;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Base;
 using GameEntities;
@@ -13,11 +12,8 @@ namespace Input_Scripts
     /// </summary>
     public class PlayerInputReader : DescriptionMono
     {
-        private class InputPlayerPairing
-        {
-            public int PairingId;
-            public int PlayerId;
-        }
+        [SerializeField]
+        private PlayerInputSo playerInputSo;
 
         [SerializeField]
         private GameDataSO gameDataSo;
@@ -28,19 +24,17 @@ namespace Input_Scripts
         [Tooltip("Search for an existing character in the scene and link to that")]
         private bool quickLoad;
 
-        [SerializeField]
-        private PlayerInputSo playerInputSo;
-
-        private readonly List<InputPlayerPairing> playerInputPairings = new();
-
-        private int inputDeviceId;
+        private int playerId;
+        private int inputId;
 
         private UnityEngine.InputSystem.PlayerInput playerInput;
 
         private void Start()
         {
             playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-            inputDeviceId = playerInput.playerIndex;
+            inputId = playerInput.playerIndex;
+
+            playerId = -1;
 
             if (!quickLoad)
             {
@@ -55,43 +49,18 @@ namespace Input_Scripts
 
         private void OnDestroy()
         {
-            if (playerInputPairings.Count == 0)
+            if (playerId == -1)
             {
                 return;
             }
 
-            InputPlayerPairing[] pairings = playerInputPairings.ToArray();
-            foreach (InputPlayerPairing pairing in pairings)
-            {
-                gameDataSo.RemovePlayer(pairing.PlayerId);
-            }
-        }
-
-        private int PairingIndexToPlayerId(int pairingIndex)
-        {
-            if (pairingIndex >= playerInputPairings.Count)
-            {
-                return -1;
-            }
-
-            InputPlayerPairing pairing = playerInputPairings.FirstOrDefault(a => a.PairingId == pairingIndex);
-
-            if (pairing == null)
-            {
-                return -1;
-            }
-
-            return pairing.PlayerId;
-        }
-
-        private bool IsValidPairing(int pairingIndex)
-        {
-            return playerInputPairings.FirstOrDefault(a => a.PairingId == pairingIndex) != null;
+            gameDataSo.RemovePlayer(playerId);
+            playerInputSo.RemoveInputReader(playerId);
         }
 
         private void QuickLinkToExistingCharacter()
         {
-            TryAddNewPlayer(0);
+            TryBindToPlayer();
 
             CharacterEntity character =
                 FindObjectsByType<CharacterEntity>(FindObjectsSortMode.None)
@@ -104,27 +73,15 @@ namespace Input_Scripts
                 return;
             }
 
-            character.Initialize(playerInputPairings[0].PlayerId);
+            character.Initialize(playerId);
         }
 
-        private void TryAddNewPlayer(int pairingId)
+        private void TryBindToPlayer()
         {
-            // See if the pairing already exists
-            if (playerInputPairings.FirstOrDefault(a => a.PairingId == pairingId) != null)
-            {
-                return;
-            }
-
-            // Create a new player and pair to it
             int id = gameDataSo.TryAddPlayer();
             if (id != -1)
             {
-                // Pairing ID is so an input reader can have multiple players (e.g split keyboard)
-                playerInputPairings.Add(new InputPlayerPairing
-                {
-                    PairingId = pairingId,
-                    PlayerId = id
-                });
+                playerId = id;
                 gameDataSo.OnPlayerDataChanged += HandlePlayerDataChanged;
             }
         }
@@ -132,160 +89,89 @@ namespace Input_Scripts
         private void HandlePlayerDataChanged(int priorId, PlayerDataChange changetype,
             GameDataSO.PlayerData postchangedata)
         {
-            for (var i = 0; i < playerInputPairings.Count; i++)
+            if (playerId == -1)
             {
-                InputPlayerPairing pairing = playerInputPairings[i];
-                int playerId = pairing.PlayerId;
+                return;
+            }
 
-                if (playerId != priorId)
-                {
-                    continue;
-                }
-
+            if (playerId == priorId)
+            {
                 if (changetype == PlayerDataChange.PlayerRemoved)
                 {
-                    // The player was removed, so remove the pairing here
-                    Debug.Log("Removing player " + playerId);
                     gameDataSo.OnPlayerDataChanged -= HandlePlayerDataChanged;
-                    playerInputPairings.Remove(pairing);
-                    i--;
+                    playerId = -1;
                 }
                 else if (changetype == PlayerDataChange.IdChanged)
                 {
                     Debug.Log("Changed to " + postchangedata.PlayerId);
-                    pairing.PlayerId = postchangedata.PlayerId;
+                    playerId = postchangedata.PlayerId;
                 }
             }
         }
 
-        private void DoLightAttack(int pairingIndex)
+        public void OnLightAttack(InputAction.CallbackContext context)
         {
-            if (IsValidPairing(pairingIndex) == false)
+            if (playerId == -1)
             {
                 return;
             }
 
-            int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.LightAttackEvent(playerId)?.Invoke(true);
+            playerInputSo.LightAttackEvent(playerId)?.Invoke(context.action.triggered);
         }
 
-        public void OnLightAttackP1(InputAction.CallbackContext context)
+        public void OnHeavyAttack(InputAction.CallbackContext context)
         {
-            DoLightAttack(0);
-        }
-
-        public void OnLightAttackP2(InputAction.CallbackContext context)
-        {
-            DoLightAttack(1);
-        }
-
-        private void DoHeavyAttack(int pairingIndex)
-        {
-            if (IsValidPairing(pairingIndex) == false)
+            if (playerId == -1)
             {
                 return;
             }
 
-            int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.HeavyAttackEvent(playerId)?.Invoke(true);
+            playerInputSo.HeavyAttackEvent(playerId)?.Invoke(context.action.triggered);
         }
 
-        public void OnHeavyAttackP1(InputAction.CallbackContext context)
+        public void OnSpecialAttack(InputAction.CallbackContext context)
         {
-            DoHeavyAttack(0);
-        }
-
-        public void OnHeavyAttackP2(InputAction.CallbackContext context)
-        {
-            DoHeavyAttack(1);
-        }
-
-        private void DoSpecialAttack(int pairingIndex)
-        {
-            if (IsValidPairing(pairingIndex) == false)
+            if (playerId == -1)
             {
                 return;
             }
 
-            int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.SpecialAttackEvent(playerId)?.Invoke(true);
+            playerInputSo.SpecialAttackEvent(playerId)?.Invoke(context.action.triggered);
         }
 
-        public void OnSpecialAttackP1(InputAction.CallbackContext context)
+        public void OnMove(InputAction.CallbackContext context)
         {
-            DoSpecialAttack(0);
-        }
-
-        public void OnSpecialAttackP2(InputAction.CallbackContext context)
-        {
-            DoSpecialAttack(1);
-        }
-
-        private void DoMove(int pairingIndex, Vector2 move)
-        {
-            if (IsValidPairing(pairingIndex) == false)
+            if (playerId == -1)
             {
                 return;
             }
 
-            int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.MoveEvent(playerId)?.Invoke(move);
+            playerInputSo.MoveEvent(playerId)?.Invoke(context.ReadValue<Vector2>());
         }
 
-        public void OnMoveP1(InputAction.CallbackContext context)
+        public void OnJump(InputAction.CallbackContext context)
         {
-            DoMove(0, context.ReadValue<Vector2>());
-        }
+            if (playerId == -1)
+            {
+                TryBindToPlayer();
+            }
 
-        public void OnMoveP2(InputAction.CallbackContext context)
-        {
-            DoMove(1, context.ReadValue<Vector2>());
-        }
-
-        private void DoJump(int pairingIndex)
-        {
-            if (IsValidPairing(pairingIndex) == false)
+            if (playerId == -1)
             {
                 return;
             }
 
-            int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.JumpEvent(playerId)?.Invoke(true);
+            playerInputSo.JumpEvent(playerId)?.Invoke(context.action.triggered);
         }
 
-        public void OnJumpP1(InputAction.CallbackContext context)
+        public void OnDash(InputAction.CallbackContext context)
         {
-            TryAddNewPlayer(0);
-
-            DoJump(0);
-        }
-
-        public void OnJumpP2(InputAction.CallbackContext context)
-        {
-            TryAddNewPlayer(1);
-
-            DoJump(1);
-        }
-
-        private void DoDash(int pairingIndex)
-        {
-            if (IsValidPairing(pairingIndex) == false)
+            if (playerId == -1)
             {
                 return;
             }
 
-            int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.DashEvent(playerId)?.Invoke(true);
-        }
-
-        public void OnDashP1(InputAction.CallbackContext context)
-        {
-            DoDash(0);
-        }
-
-        public void OnDashP2(InputAction.CallbackContext context)
-        {
-            DoDash(1);
+            playerInputSo.DashEvent(playerId)?.Invoke(context.action.triggered);
         }
     }
 }

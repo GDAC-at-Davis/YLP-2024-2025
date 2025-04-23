@@ -58,8 +58,6 @@ namespace State_Machine_Scripts.States
 
         protected override void OnEnable()
         {
-            base.OnEnable();
-
             movementController.StartJump();
             jumpTimer = 0;
             jumpPlayableAsset.Play();
@@ -67,8 +65,6 @@ namespace State_Machine_Scripts.States
 
         protected override void OnDisable()
         {
-            base.OnDisable();
-
             jumpPlayableAsset.Stop();
             movementController.StopJump();
         }

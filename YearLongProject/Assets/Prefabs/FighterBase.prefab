@@ -1080,7 +1080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
-  deadzoneValue: 0.2
   OnJumpPressed:
     m_PersistentCalls:
       m_Calls: []

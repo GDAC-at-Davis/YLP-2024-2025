@@ -58,8 +58,6 @@ namespace State_Machine_Scripts.States
 
         protected override void OnEnable()
         {
-            base.OnEnable();
-
             currentPlayableAsset = null;
             currentSubState = (MoveSubStates)(-1);
             SelectMoveState(Vector2.zero);
@@ -67,8 +65,6 @@ namespace State_Machine_Scripts.States
 
         protected override void OnDisable()
         {
-            base.OnDisable();
-
             currentPlayableAsset?.Stop();
             currentPlayableAsset = null;
         }
@@ -77,7 +73,7 @@ namespace State_Machine_Scripts.States
         {
             if (movementController.GetIsGrounded())
             {
-                if (Mathf.Abs(characterRigidbody.LinearVelocity.x) < 0.5f && moveInput.x == 0)
+                if (Mathf.Abs(characterRigidbody.LinearVelocity.x) < 0.5f && moveInput == Vector2.zero)
                 {
                     SetSubState(MoveSubStates.Idle);
                 }
