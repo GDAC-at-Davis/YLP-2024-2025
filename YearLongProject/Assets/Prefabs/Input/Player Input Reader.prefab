@@ -208,8 +208,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 7e201839-910a-421f-9ffc-235326504a4a
-    m_ActionName: 'Player2/Move[/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]'
+    m_ActionId: f3691d24-9512-4fd1-8497-9ecf5cd3835c
+    m_ActionName: 'Player/Move1[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
@@ -224,8 +224,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: d79a877e-8b6c-4d9c-9243-b1197c12f812
-    m_ActionName: 'Player2/LightAttack[/Keyboard/p]'
+    m_ActionId: 315fa4af-2386-474a-b2c4-6329d0cebe74
+    m_ActionName: 'Player/LightAttack1[/Keyboard/j]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
@@ -240,8 +240,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 10f073f9-a8a8-447b-a60b-c83753cfeadd
-    m_ActionName: 'Player2/HeavyAttack[/Keyboard/leftBracket]'
+    m_ActionId: 563a9062-cfd6-41e2-bb27-5f428e0cf746
+    m_ActionName: 'Player/HeavyAttack1[/Keyboard/k]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
@@ -256,8 +256,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 374c9ba1-0194-4d67-91af-10d36c65d245
-    m_ActionName: 'Player2/SpecialAttack[/Keyboard/rightBracket]'
+    m_ActionId: 42ef2904-cf09-448b-a5ba-ca6021e3e428
+    m_ActionName: 'Player/SpecialAttack1[/Keyboard/l]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
@@ -272,8 +272,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 2d709999-c195-48db-a507-5b7b04ff01c4
-    m_ActionName: 'Player2/Dash[/Keyboard/n]'
+    m_ActionId: e59c4bac-1736-4916-b698-13af54fe2e41
+    m_ActionName: 'Player/Dash1[/Keyboard/h]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6086632988783990073}
@@ -288,8 +288,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 58b1253c-8229-4b52-ab38-c7c21ed40fc4
-    m_ActionName: 'Player2/Jump[/Keyboard/leftArrow]'
+    m_ActionId: cadc27c4-9b36-45db-aedb-148f6779a42f
+    m_ActionName: 'Player/Jump1[/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
