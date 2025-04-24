@@ -61,7 +61,7 @@ namespace Movement
 
         public void HandleMoveInput(Vector2 input)
         {
-            if (input.y < 0)
+            if (input.y < -0.4)
             {
                 droppingThroughPlatform = true;
             }

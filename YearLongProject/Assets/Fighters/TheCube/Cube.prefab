@@ -1775,6 +1775,10 @@ PrefabInstance:
       propertyPath: 'states.Array.data[6]'
       value: 
       objectReference: {fileID: 1489467071663888848}
+    - target: {fileID: 6989034348001656684, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: characterPhysicsCollider
+      value: 
+      objectReference: {fileID: 6810935469208528042}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
