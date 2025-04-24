@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CharacterScripts;
 using EditorUtils.BoldHeader;
 using LevelScripts;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -26,6 +28,8 @@ namespace Managers
         public delegate void PlayerDataChangedEvent(int priorId, PlayerDataChange changeType,
             PlayerData postChangeData);
 
+        public delegate void AllPlayersReadyEvent();
+
         /// <summary>
         ///     Represents a single player
         /// </summary>
@@ -33,6 +37,7 @@ namespace Managers
         public class PlayerData
         {
             public int PlayerId;
+            public CharacterSO SelectedCharacter;
         }
 
         [BoldHeader("Global Game Data")]
@@ -60,6 +65,8 @@ namespace Managers
         ///     Event that is called when any player data changes
         /// </summary>
         public event PlayerDataChangedEvent OnPlayerDataChanged;
+
+        public event AllPlayersReadyEvent OnAllPlayersReady;
 
         private bool Hide()
         {
@@ -124,9 +131,25 @@ namespace Managers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Mutable player data object</returns>
-        private PlayerData GetPlayerData(int id)
+        public PlayerData GetPlayerData(int id)
         {
             return players.FirstOrDefault(x => x.PlayerId == id);
+        }
+
+        /// <summary>
+        ///     Sets the selected character for a given ID.
+        ///     If all players have a character selected, proceed to stage select
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="character"></param>
+        public void SetPlayerSelectedCharacter(int id, CharacterSO character)
+        {
+            players.FirstOrDefault(item => item.PlayerId == id).SelectedCharacter = character;
+
+            if (players.Where(item => item.SelectedCharacter == null).Count() > 0) return;
+
+            OnAllPlayersReady?.Invoke();
+            LoadScene("LevelSelect");
         }
 
         /// <summary>
@@ -140,6 +163,16 @@ namespace Managers
             }
 
             players.Clear();
+        }
+
+        public void SetSelectedLevel(LevelSO level)
+        {
+            selectedLevel = level;
+        }
+
+        public void LoadScene(string scene)
+        {
+            SceneManager.LoadScene(scene);
         }
     }
 }

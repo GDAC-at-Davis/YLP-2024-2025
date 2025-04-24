@@ -62,7 +62,7 @@ namespace Input_Scripts
         {
             UnsubscribeToInputEvents();
             gameDataSO.OnPlayerDataChanged -= HandlePlayerDataChanged;
-            CharacterSelect.Instance.AllPlayersReady -= LockIn;
+            gameDataSO.OnAllPlayersReady -= LockIn;
         }
 
         private void ClampPositionToCanvas()
@@ -92,9 +92,6 @@ namespace Input_Scripts
             SubscribeToInputEvents();
 
             gameDataSO.OnPlayerDataChanged += HandlePlayerDataChanged;
-
-            CharacterSelect.Instance.AllPlayersReady += LockIn;
-            CharacterSelect.Instance.ReadyUp(playerID, null);
         }
 
         private void HandlePlayerDataChanged(int priorid, PlayerDataChange changeType,
@@ -117,15 +114,29 @@ namespace Input_Scripts
             events.JumpEvent += TrySelectCharacter;
             events.HeavyAttackEvent += UnselectCharacter;
             events.MoveEvent += MoveCursor;
+
+            if (playerID != 0)
+            {
+                return;
+            }
+
+            events.JumpEvent += TrySelectLevel;
+            events.HeavyAttackEvent += UnselectLevel;
         }
 
         private void UnsubscribeToInputEvents()
         {
             events.JumpEvent -= TrySelectCharacter;
             events.HeavyAttackEvent -= UnselectCharacter;
+            events.MoveEvent -= MoveCursor;
+
+            if (playerID != 0)
+            {
+                return;
+            }
+
             events.JumpEvent -= TrySelectLevel;
             events.HeavyAttackEvent -= UnselectLevel;
-            events.MoveEvent -= MoveCursor;
         }
 
         private void MoveCursor(Vector2 input)
@@ -141,15 +152,19 @@ namespace Input_Scripts
             }
 
             Collider2D button = Physics2D.OverlapPoint(transform.position);
-
             if (button == null)
+            {
+                return;
+            }
+
+            CharacterSO character = button.GetComponent<CharacterSelectButton>()?.Character;
+            if (character == null)
             {
                 return;
             }
 
             transform.position = button.transform.position;
             text.text = "";
-            CharacterSO character = button.GetComponent<CharacterSelectButton>().Character;
             QueueCharacter(character);
         }
 
@@ -159,8 +174,12 @@ namespace Input_Scripts
             {
                 return;
             }
-
-            gameDataSO.RemovePlayer(playerID);
+            Debug.Log(gameDataSO.GetPlayerData(playerID).SelectedCharacter);
+            if (gameDataSO.GetPlayerData(playerID).SelectedCharacter == null)
+            {
+                gameDataSO.RemovePlayer(playerID);
+                return;
+            }
 
             text.text = (playerID + 1).ToString();
             QueueCharacter(null);
@@ -174,15 +193,19 @@ namespace Input_Scripts
             }
 
             Collider2D button = Physics2D.OverlapPoint(transform.position);
-
             if (button == null)
+            {
+                return;
+            }
+
+            LevelSO level = button.GetComponent<LevelSelectButton>()?.Level;
+            if (level == null)
             {
                 return;
             }
 
             transform.position = button.transform.position;
             text.text = "";
-            LevelSO level = button.GetComponent<LevelSelectButton>().Level;
             QueueLevel(level);
         }
 
@@ -199,7 +222,7 @@ namespace Input_Scripts
         private void QueueCharacter(CharacterSO character)
         {
             selected = character != null;
-            CharacterSelect.Instance.ReadyUp(playerID, character);
+            gameDataSO.SetPlayerSelectedCharacter(playerID, character);
         }
 
         private void QueueLevel(LevelSO level)
@@ -207,44 +230,17 @@ namespace Input_Scripts
             selected = level != null;
             if (!level)
             {
-                CharacterSelect.Instance.ReturnToCharacterSelect();
+                gameDataSO.LoadScene("FighterSelect");
                 return;
             }
 
-            CharacterSelect.Instance.TryStartGame(level);
+            gameDataSO.SetSelectedLevel(level);
+            gameDataSO.LoadScene("FightingScene");
         }
 
-        // This is a mess and I should not have done it like this I'm sorry
-        private void LockIn(bool toggle)
+        private void LockIn()
         {
-            if (toggle)
-            {
-                if (playerID == 0)
-                {
-                    events.JumpEvent += TrySelectLevel;
-                    events.HeavyAttackEvent += UnselectLevel;
-
-                    text.text = (playerID + 1).ToString();
-                    selected = false;
-                }
-
-                events.HeavyAttackEvent -= UnselectCharacter;
-                events.JumpEvent -= TrySelectCharacter;
-            }
-            else
-            {
-                if (playerID == 0)
-                {
-                    events.JumpEvent -= TrySelectLevel;
-                    events.HeavyAttackEvent -= UnselectLevel;
-                }
-
-                events.JumpEvent += TrySelectCharacter;
-                events.HeavyAttackEvent += UnselectCharacter;
-
-                text.text = (playerID + 1).ToString();
-                selected = false;
-            }
+            gameObject.SetActive(false);
         }
     }
 }

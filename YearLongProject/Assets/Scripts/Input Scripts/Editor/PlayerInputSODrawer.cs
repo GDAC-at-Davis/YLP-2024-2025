@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
+using UnityEngine;
 
 namespace Input_Scripts.Editor
 {
@@ -32,6 +33,12 @@ namespace Input_Scripts.Editor
             foreach (KeyValuePair<int, PlayerInputSo.PlayerInputEvents> kvp in playerInputEvents)
             {
                 EditorGUILayout.LabelField($"ID: {kvp.Key}");
+            }
+
+            if (GUILayout.Button("Reset"))
+            {
+                playerInputEvents = new();
+                playerInputSo.ClearAllInputReaders();
             }
         }
     }
