@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Managers
 {
+    /// <summary>
+    ///     Different types of player data changes
+    /// </summary>
     public enum PlayerDataChange
     {
         PlayerAdded,
@@ -65,9 +68,9 @@ namespace Managers
         }
 
         /// <summary>
-        ///     Try to create a new "player"
+        ///     Try to create a new player and associated data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the playerID of the new player</returns>
         public int TryAddPlayer()
         {
             if (players.Count >= MaxPlayers)
@@ -96,9 +99,9 @@ namespace Managers
         }
 
         /// <summary>
-        ///     Remove a player from the list
+        ///     Remove a player and their data
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID of the removed player</param>
         public void RemovePlayer(int id)
         {
             // Find the player data to remove
@@ -121,11 +124,14 @@ namespace Managers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Mutable player data object</returns>
-        public PlayerData GetPlayerData(int id)
+        private PlayerData GetPlayerData(int id)
         {
             return players.FirstOrDefault(x => x.PlayerId == id);
         }
 
+        /// <summary>
+        ///     Removes all players and their data
+        /// </summary>
         public void ClearPlayerData()
         {
             for (var i = 0; i < players.Count; i++)

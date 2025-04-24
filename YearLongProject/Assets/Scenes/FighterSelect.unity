@@ -655,9 +655,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b9446a8820b6f4783f24abba01eb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: FightingScene
+  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
+  playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
   characterSelectScreen: {fileID: 1432791078}
   levelSelectScreen: {fileID: 533057068}
+  gameSceneName: FightingScene
 --- !u!4 &1341897490
 Transform:
   m_ObjectHideFlags: 0
@@ -686,7 +688,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
-  playerInputSO: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
   cursorPrefab: {fileID: 9138683288709446454, guid: ceaa291d97846774eb1c328afb7dc4b4, type: 3}
   container: {fileID: 725065625}
   cursorBottomLeft: {fileID: 1385804265}

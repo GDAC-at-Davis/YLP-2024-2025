@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using CharacterScripts;
+using EditorUtils.BoldHeader;
 using GameEntities;
+using Input_Scripts;
 using LevelScripts;
+using Managers;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,9 +21,15 @@ namespace Menus
     {
         public static CharacterSelect Instance;
 
+        [BoldHeader("Character Select")]
+        [InfoBox("Handles character selection screen logic")]
+        [Header("Depends")]
+
         [SerializeField]
-        [Scene]
-        private string gameSceneName;
+        private GameDataSO gameDataSO;
+
+        [SerializeField]
+        private PlayerInputSo playerInputSO;
 
         [SerializeField]
         private GameObject characterSelectScreen;
@@ -28,22 +37,30 @@ namespace Menus
         [SerializeField]
         private GameObject levelSelectScreen;
 
+        [Header("Config")]
+
         [SerializeField]
-        private readonly Dictionary<int, CharacterSO> playerReady = new();
+        [Scene]
+        private string gameSceneName;
 
         public UnityAction<bool> AllPlayersReady;
+
+        private readonly Dictionary<int, CharacterSO> playerReady = new();
 
         private LevelSO levelToLoad;
 
         private void Start()
         {
+            // Reset SO data on start
+            playerInputSO.ClearAllInputReaders();
+            gameDataSO.ClearPlayerData();
+
             if (Instance == null)
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += GameStarted;
             }
-
             else
             {
                 Destroy(gameObject);

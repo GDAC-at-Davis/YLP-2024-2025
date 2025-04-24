@@ -9,7 +9,7 @@ namespace Input_Scripts
     ///     Temporary character select UI component
     ///     Spawns PlayerReadyController when a controller is conencted
     /// </summary>
-    public class PlayerJoinUI : MonoBehaviour
+    public class CharacterSelectCursorSpawner : MonoBehaviour
     {
         [BoldHeader("Player Join UI")]
         [InfoBox("Handles menu stuff when a player joins")]
@@ -17,9 +17,6 @@ namespace Input_Scripts
 
         [SerializeField]
         private GameDataSO gameDataSO;
-
-        [SerializeField]
-        private PlayerInputSo playerInputSO;
 
         [Header("Cursor")]
 
@@ -37,8 +34,6 @@ namespace Input_Scripts
 
         private void OnEnable()
         {
-            playerInputSO.ClearAllInputReaders();
-            gameDataSO.ClearPlayerData();
             gameDataSO.OnPlayerDataChanged += OnPlayerDataChanged;
         }
 
