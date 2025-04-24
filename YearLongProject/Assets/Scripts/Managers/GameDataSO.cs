@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EditorUtils.BoldHeader;
 using LevelScripts;
 using NaughtyAttributes;
@@ -9,7 +10,6 @@ namespace Managers
 {
     public enum PlayerDataChange
     {
-        IdChanged,
         PlayerAdded,
         PlayerRemoved
     }
@@ -22,7 +22,7 @@ namespace Managers
     {
         public delegate void PlayerDataChangedEvent(int priorId, PlayerDataChange changeType,
             PlayerData postChangeData);
-        
+
         /// <summary>
         ///     Represents a single player
         /// </summary>
@@ -42,11 +42,9 @@ namespace Managers
         [Header("Data (Debug)")]
 
         [SerializeField]
-        [EnableIf("Hide")]
         private LevelSO selectedLevel;
 
         [SerializeField]
-        [EnableIf("Hide")]
         private List<PlayerData> players = new();
 
         public int PlayerCount => players.Count;
@@ -55,10 +53,14 @@ namespace Managers
 
         public LevelSO SelectedLevel => selectedLevel;
 
+        /// <summary>
+        ///     Event that is called when any player data changes
+        /// </summary>
         public event PlayerDataChangedEvent OnPlayerDataChanged;
 
         private bool Hide()
         {
+            // Hack to gray out the field in the inspector
             return false;
         }
 
@@ -70,18 +72,27 @@ namespace Managers
         {
             if (players.Count >= MaxPlayers)
             {
-                Debug.LogError("Max players reached");
+                Debug.LogWarning("Max players reached");
                 return -1;
             }
 
-            Debug.Log($"Adding player {players.Count} to the game");
+            // Find the first empty "slot"
+            int openPlayerId = players.Count;
+            for (var i = 0; i < players.Count; i++)
+            {
+                if (players[i].PlayerId != i)
+                {
+                    openPlayerId = i;
+                }
+            }
 
-            int id = players.Count;
-            players.Add(new PlayerData { PlayerId = id });
+            Debug.Log($"Adding player {openPlayerId} to the game");
 
-            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerAdded, players[id]);
+            players.Insert(openPlayerId, new PlayerData { PlayerId = openPlayerId });
 
-            return id;
+            OnPlayerDataChanged?.Invoke(openPlayerId, PlayerDataChange.PlayerAdded, players[openPlayerId]);
+
+            return openPlayerId;
         }
 
         /// <summary>
@@ -90,22 +101,19 @@ namespace Managers
         /// <param name="id"></param>
         public void RemovePlayer(int id)
         {
-            if (id < 0 || id >= players.Count)
+            // Find the player data to remove
+            PlayerData playerToRemove = players.FirstOrDefault(x => x.PlayerId == id);
+
+            if (playerToRemove == null)
             {
-                Debug.LogError($"Player ID {id} is out of range");
+                Debug.LogError($"Player ID {id} doesn't exist");
                 return;
             }
 
             Debug.Log($"Removing player {id}");
 
-            players.RemoveAt(id);
+            players.Remove(playerToRemove);
             OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, null);
-
-            for (int i = id; i < players.Count; i++)
-            {
-                players[i].PlayerId--;
-                OnPlayerDataChanged?.Invoke(i + 1, PlayerDataChange.IdChanged, players[i]);
-            }
         }
 
         /// <summary>
@@ -115,13 +123,7 @@ namespace Managers
         /// <returns>Mutable player data object</returns>
         public PlayerData GetPlayerData(int id)
         {
-            if (id < 0 || id >= players.Count)
-            {
-                Debug.LogError($"Player ID {id} doesn't exist");
-                return null;
-            }
-
-            return players[id];
+            return players.FirstOrDefault(x => x.PlayerId == id);
         }
 
         public void ClearPlayerData()

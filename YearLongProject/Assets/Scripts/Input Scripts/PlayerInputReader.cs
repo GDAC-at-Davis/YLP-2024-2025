@@ -51,6 +51,8 @@ namespace Input_Scripts
             {
                 QuickLinkToExistingCharacter();
             }
+
+            gameDataSo.OnPlayerDataChanged += HandlePlayerDataChanged;
         }
 
         private void OnDestroy()
@@ -69,11 +71,6 @@ namespace Input_Scripts
 
         private int PairingIndexToPlayerId(int pairingIndex)
         {
-            if (pairingIndex >= playerInputPairings.Count)
-            {
-                return -1;
-            }
-
             InputPlayerPairing pairing = playerInputPairings.FirstOrDefault(a => a.PairingId == pairingIndex);
 
             if (pairing == null)
@@ -125,7 +122,6 @@ namespace Input_Scripts
                     PairingId = pairingId,
                     PlayerId = id
                 });
-                gameDataSo.OnPlayerDataChanged += HandlePlayerDataChanged;
             }
         }
 
@@ -146,14 +142,8 @@ namespace Input_Scripts
                 {
                     // The player was removed, so remove the pairing here
                     Debug.Log("Removing player " + playerId);
-                    gameDataSo.OnPlayerDataChanged -= HandlePlayerDataChanged;
                     playerInputPairings.Remove(pairing);
                     i--;
-                }
-                else if (changetype == PlayerDataChange.IdChanged)
-                {
-                    Debug.Log("Changed to " + postchangedata.PlayerId);
-                    pairing.PlayerId = postchangedata.PlayerId;
                 }
             }
         }

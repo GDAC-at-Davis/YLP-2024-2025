@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayers: 4
   selectedLevel: {fileID: 0}
+  players: []

@@ -100,23 +100,15 @@ namespace Input_Scripts
         private void HandlePlayerDataChanged(int priorid, PlayerDataChange changeType,
             GameDataSO.PlayerData postchangedata)
         {
-            if (priorid == playerID)
+            if (priorid != playerID)
             {
-                if (changeType == PlayerDataChange.PlayerRemoved)
-                {
-                    playerID = -1;
-                    Destroy(gameObject);
-                }
+                return;
+            }
 
-                if (changeType == PlayerDataChange.IdChanged)
-                {
-                    UnsubscribeToInputEvents();
-                    playerID = postchangedata.PlayerId;
-                    text.text = (playerID + 1).ToString();
-
-                    events = playerInputSO.TryGetPlayerInputEvents(playerID);
-                    SubscribeToInputEvents();
-                }
+            if (changeType == PlayerDataChange.PlayerRemoved)
+            {
+                playerID = -1;
+                Destroy(gameObject);
             }
         }
 
