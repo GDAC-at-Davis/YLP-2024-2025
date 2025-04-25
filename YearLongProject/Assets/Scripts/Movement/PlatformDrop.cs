@@ -74,7 +74,10 @@ namespace Movement
         public void HandleMoveInput(Vector2 input)
         {
             float angleFromVertical = Vector2.Angle(Vector2.down, input);
-            if (angleFromVertical < dropInputAngleFromVertical && input.y < 0f)
+            bool controllerInputDown = angleFromVertical < dropInputAngleFromVertical;
+            bool keyboardInputDown = input.y == -1f;
+            bool isInputDown = (controllerInputDown || keyboardInputDown) && input.y < 0f;
+            if (isInputDown && input.y < 0f)
             {
                 droppingThroughPlatform = true;
             }
@@ -82,6 +85,7 @@ namespace Movement
             {
                 droppingThroughPlatform = false;
 
+                // Stop ignoring collisions
                 if (dropLockInTimer <= 0f)
                 {
                     foreach (Collider2D ignoredCollider in ignoredColliders)
