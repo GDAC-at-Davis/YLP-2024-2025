@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   maxPlayers: 4
-  minPlayers: 2
+  minPlayers: 1
   levelSelectScene: LevelSelect
-  selectedLevel: {fileID: 11400000, guid: 7fe4f365584f2f343a7ea08da5f0f83a, type: 2}
+  selectedLevel: {fileID: 11400000, guid: 33e014b41d0548245a12590ef5fe4e60, type: 2}
   players: []

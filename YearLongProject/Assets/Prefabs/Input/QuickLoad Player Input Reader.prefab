@@ -194,6 +194,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 67bee1f4-659b-42a2-8e4c-3738be1488c1
     m_ActionName: 'Player/Dash[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3691d24-9512-4fd1-8497-9ecf5cd3835c
+    m_ActionName: 'Player/Move2[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 315fa4af-2386-474a-b2c4-6329d0cebe74
+    m_ActionName: 'Player/LightAttack2[/Keyboard/j]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 563a9062-cfd6-41e2-bb27-5f428e0cf746
+    m_ActionName: 'Player/HeavyAttack2[/Keyboard/k]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 42ef2904-cf09-448b-a5ba-ca6021e3e428
+    m_ActionName: 'Player/SpecialAttack2[/Keyboard/l]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e59c4bac-1736-4916-b698-13af54fe2e41
+    m_ActionName: 'Player/Dash2[/Keyboard/h]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cadc27c4-9b36-45db-aedb-148f6779a42f
+    m_ActionName: 'Player/Jump2[/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -212,5 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devDescription: 
-  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}
+  gameDataSo: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
   quickLoad: 1
+  playerInputSo: {fileID: 11400000, guid: 941052bfc24ab4a45b5355e092c617c0, type: 2}

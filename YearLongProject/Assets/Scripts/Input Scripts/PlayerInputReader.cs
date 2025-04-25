@@ -148,7 +148,7 @@ namespace Input_Scripts
             }
         }
 
-        private void DoLightAttack(int pairingIndex)
+        private void DoLightAttack(int pairingIndex, bool value)
         {
             if (IsValidPairing(pairingIndex) == false)
             {
@@ -156,30 +156,20 @@ namespace Input_Scripts
             }
 
             int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.LightAttackEvent(playerId)?.Invoke(true);
+            playerInputSo.LightAttackEvent(playerId)?.Invoke(value);
         }
 
         public void OnLightAttackP1(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoLightAttack(0);
+            DoLightAttack(0, context.ReadValueAsButton());
         }
 
         public void OnLightAttackP2(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoLightAttack(1);
+            DoLightAttack(1, context.ReadValueAsButton());
         }
 
-        private void DoHeavyAttack(int pairingIndex)
+        private void DoHeavyAttack(int pairingIndex, bool value)
         {
             if (IsValidPairing(pairingIndex) == false)
             {
@@ -187,30 +177,20 @@ namespace Input_Scripts
             }
 
             int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.HeavyAttackEvent(playerId)?.Invoke(true);
+            playerInputSo.HeavyAttackEvent(playerId)?.Invoke(value);
         }
 
         public void OnHeavyAttackP1(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoHeavyAttack(0);
+            DoHeavyAttack(0, context.ReadValueAsButton());
         }
 
         public void OnHeavyAttackP2(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoHeavyAttack(1);
+            DoHeavyAttack(1, context.ReadValueAsButton());
         }
 
-        private void DoSpecialAttack(int pairingIndex)
+        private void DoSpecialAttack(int pairingIndex, bool value)
         {
             if (IsValidPairing(pairingIndex) == false)
             {
@@ -218,27 +198,17 @@ namespace Input_Scripts
             }
 
             int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.SpecialAttackEvent(playerId)?.Invoke(true);
+            playerInputSo.SpecialAttackEvent(playerId)?.Invoke(value);
         }
 
         public void OnSpecialAttackP1(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoSpecialAttack(0);
+            DoSpecialAttack(0, context.ReadValueAsButton());
         }
 
         public void OnSpecialAttackP2(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoSpecialAttack(1);
+            DoSpecialAttack(1, context.ReadValueAsButton());
         }
 
         private void DoMove(int pairingIndex, Vector2 move)
@@ -246,6 +216,20 @@ namespace Input_Scripts
             if (IsValidPairing(pairingIndex) == false)
             {
                 return;
+            }
+
+            if (playerInput.devices[0] == Keyboard.current)
+            {
+                // Input map normalizes automatically for some reason, un-normalize here
+                if (move.x != 0)
+                {
+                    move.x = Mathf.Sign(move.x);
+                }
+
+                if (move.y != 0)
+                {
+                    move.y = Mathf.Sign(move.y);
+                }
             }
 
             int playerId = PairingIndexToPlayerId(pairingIndex);
@@ -262,7 +246,7 @@ namespace Input_Scripts
             DoMove(1, context.ReadValue<Vector2>());
         }
 
-        private void DoJump(int pairingIndex)
+        private void DoJump(int pairingIndex, bool value)
         {
             if (IsValidPairing(pairingIndex) == false)
             {
@@ -270,34 +254,34 @@ namespace Input_Scripts
             }
 
             int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.JumpEvent(playerId)?.Invoke(true);
+            playerInputSo.JumpEvent(playerId)?.Invoke(value);
         }
 
         public void OnJumpP1(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
             {
-                return;
+                TryAddNewPlayer(0);
             }
-
-            TryAddNewPlayer(0);
-
-            DoJump(0);
+            else
+            {
+                DoJump(0, context.ReadValueAsButton());
+            }
         }
 
         public void OnJumpP2(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
             {
-                return;
+                TryAddNewPlayer(1);
             }
-
-            TryAddNewPlayer(1);
-
-            DoJump(1);
+            else
+            {
+                DoJump(1, context.ReadValueAsButton());
+            }
         }
 
-        private void DoDash(int pairingIndex)
+        private void DoDash(int pairingIndex, bool val)
         {
             if (IsValidPairing(pairingIndex) == false)
             {
@@ -305,27 +289,17 @@ namespace Input_Scripts
             }
 
             int playerId = PairingIndexToPlayerId(pairingIndex);
-            playerInputSo.DashEvent(playerId)?.Invoke(true);
+            playerInputSo.DashEvent(playerId)?.Invoke(val);
         }
 
         public void OnDashP1(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoDash(0);
+            DoDash(0, context.ReadValueAsButton());
         }
 
         public void OnDashP2(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-            {
-                return;
-            }
-
-            DoDash(1);
+            DoDash(1, context.ReadValueAsButton());
         }
     }
 }
