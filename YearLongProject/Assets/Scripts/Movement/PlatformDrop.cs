@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -6,8 +7,14 @@ namespace Movement
 {
     public class PlatformDrop : MonoBehaviour
     {
+        [BoldHeader("Platform Dropdown")]
+        [InfoBox("Dropping down through platforms logic")]
+        [Header("Depends")]
+
         [SerializeField]
         private Collider2D characterPhysicsCollider;
+
+        [Header("Config")]
 
         [SerializeField]
         private LayerMask platformDropIgnoredLayer;
@@ -15,7 +22,12 @@ namespace Movement
         [SerializeField]
         private float dropBufferTime;
 
+        [SerializeField]
+        private float dropInputAngleFromVertical;
+
         private readonly List<Collider2D> ignoredColliders = new();
+
+        [Header("Debug")]
 
         [ShowNonSerializedField]
         private bool droppingThroughPlatform;
@@ -61,7 +73,8 @@ namespace Movement
 
         public void HandleMoveInput(Vector2 input)
         {
-            if (input.y < -0.4)
+            float angleFromVertical = Vector2.Angle(Vector2.down, input);
+            if (angleFromVertical < dropInputAngleFromVertical && input.y < 0f)
             {
                 droppingThroughPlatform = true;
             }
