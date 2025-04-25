@@ -70,7 +70,7 @@ namespace Input_Scripts
                 return;
             }
 
-            transform.position += input * Time.deltaTime * speed;
+            transform.position += input.normalized * (Time.deltaTime * speed);
 
             ClampPositionToCanvas();
         }
@@ -180,6 +180,8 @@ namespace Input_Scripts
 
             transform.position = button.transform.position;
             text.text = "";
+
+            Debug.Log($"player {playerID} selected character {character.name}");
             QueueCharacter(character);
         }
 

@@ -293,8 +293,8 @@ MonoBehaviour:
   platformDropIgnoredLayer:
     serializedVersion: 2
     m_Bits: 512
-  dropBufferTime: 0.25
-  dropInputAngleFromVertical: 46
+  dropBufferTime: 0.3
+  dropInputAngleFromVertical: 45
 --- !u!1 &1968648881426466404
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
   airAcceleration: 7
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   groundCheckDistance: 0.11
   onTouchGround:
     m_PersistentCalls:

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d48b67e2e59544db227a9ed00f32f1, type: 3}
-  m_Name: Default
+  m_Name: PracticeStage
   m_EditorClassIdentifier: 
-  LevelDisplayName: Stage
+  LevelDisplayName: Practice
   LevelPrefab: {fileID: 5683301234302444992, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
-  LevelPortrait: {fileID: 21300000, guid: e03285c02f8dce341b7ec3379bc80ffb, type: 3}
+  LevelPortrait: {fileID: 21300000, guid: ffc58b5d1d8a6ed489be30f7a1291b1e, type: 3}
