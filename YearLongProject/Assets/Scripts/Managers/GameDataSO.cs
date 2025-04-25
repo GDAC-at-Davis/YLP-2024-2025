@@ -47,6 +47,13 @@ namespace Managers
         [SerializeField]
         private int maxPlayers;
 
+        [SerializeField]
+        private int minPlayers;
+
+        [SerializeField]
+        [Scene]
+        private string levelSelectScene;
+
         [Header("Data (Debug)")]
 
         [SerializeField]
@@ -146,10 +153,18 @@ namespace Managers
         {
             players.FirstOrDefault(item => item.PlayerId == id).SelectedCharacter = character;
 
-            if (players.Where(item => item.SelectedCharacter == null).Count() > 0) return;
+            if (players.Where(item => item.SelectedCharacter == null).Count() > 0)
+            {
+                return;
+            }
+
+            if (players.Count < minPlayers)
+            {
+                return;
+            }
 
             OnAllPlayersReady?.Invoke();
-            LoadScene("LevelSelect");
+            LoadScene(levelSelectScene);
         }
 
         /// <summary>
@@ -172,6 +187,7 @@ namespace Managers
 
         public void LoadScene(string scene)
         {
+            Debug.Log($"Loading scene {scene}");
             SceneManager.LoadScene(scene);
         }
     }

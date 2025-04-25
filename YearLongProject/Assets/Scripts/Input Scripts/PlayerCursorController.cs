@@ -2,12 +2,18 @@ using CharacterScripts;
 using EditorUtils.BoldHeader;
 using LevelScripts;
 using Managers;
-using Menus;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
 namespace Input_Scripts
 {
+    internal enum CursorType
+    {
+        CharacterSelect,
+        StageSelect
+    }
+
     /// <summary>
     ///     Temporary Character Select cursor thing its 2:30 am and I can't figure out how to combine
     ///     the virtual mouse and multiplayer event system so we're gonna do whatever the fuck this is for now
@@ -27,6 +33,17 @@ namespace Input_Scripts
 
         [SerializeField]
         private float speed = 500;
+
+        [SerializeField]
+        private CursorType cursorType;
+
+        [SerializeField]
+        [Scene]
+        private string gameplayScene;
+
+        [SerializeField]
+        [Scene]
+        private string charSelectScene;
 
         private PlayerInputSo.PlayerInputEvents events;
 
@@ -112,14 +129,8 @@ namespace Input_Scripts
         private void SubscribeToInputEvents()
         {
             events.JumpEvent += TrySelectCharacter;
-            events.HeavyAttackEvent += UnselectCharacter;
+            events.HeavyAttackEvent += RemovePlayer;
             events.MoveEvent += MoveCursor;
-
-            if (playerID != 0)
-            {
-                return;
-            }
-
             events.JumpEvent += TrySelectLevel;
             events.HeavyAttackEvent += UnselectLevel;
         }
@@ -127,14 +138,8 @@ namespace Input_Scripts
         private void UnsubscribeToInputEvents()
         {
             events.JumpEvent -= TrySelectCharacter;
-            events.HeavyAttackEvent -= UnselectCharacter;
+            events.HeavyAttackEvent -= RemovePlayer;
             events.MoveEvent -= MoveCursor;
-
-            if (playerID != 0)
-            {
-                return;
-            }
-
             events.JumpEvent -= TrySelectLevel;
             events.HeavyAttackEvent -= UnselectLevel;
         }
@@ -146,8 +151,18 @@ namespace Input_Scripts
 
         private void TrySelectCharacter(bool pressed)
         {
-            if (!pressed)
+            if (!pressed || cursorType != CursorType.CharacterSelect)
             {
+                return;
+            }
+
+            // Unselect if pressed again
+            if (gameDataSO.GetPlayerData(playerID).SelectedCharacter != null)
+            {
+                Debug.Log($"player {playerID} unselected character");
+
+                text.text = (playerID + 1).ToString();
+                QueueCharacter(null);
                 return;
             }
 
@@ -168,26 +183,19 @@ namespace Input_Scripts
             QueueCharacter(character);
         }
 
-        private void UnselectCharacter(bool pressed)
+        private void RemovePlayer(bool pressed)
         {
-            if (!pressed)
+            if (!pressed || cursorType != CursorType.CharacterSelect)
             {
-                return;
-            }
-            Debug.Log(gameDataSO.GetPlayerData(playerID).SelectedCharacter);
-            if (gameDataSO.GetPlayerData(playerID).SelectedCharacter == null)
-            {
-                gameDataSO.RemovePlayer(playerID);
                 return;
             }
 
-            text.text = (playerID + 1).ToString();
-            QueueCharacter(null);
+            gameDataSO.RemovePlayer(playerID);
         }
 
         private void TrySelectLevel(bool pressed)
         {
-            if (!pressed)
+            if (!pressed || playerID != 0 || cursorType != CursorType.StageSelect)
             {
                 return;
             }
@@ -211,7 +219,7 @@ namespace Input_Scripts
 
         private void UnselectLevel(bool pressed)
         {
-            if (!pressed)
+            if (!pressed || playerID != 0 || cursorType != CursorType.StageSelect)
             {
                 return;
             }
@@ -230,12 +238,12 @@ namespace Input_Scripts
             selected = level != null;
             if (!level)
             {
-                gameDataSO.LoadScene("FighterSelect");
+                gameDataSO.LoadScene(charSelectScene);
                 return;
             }
 
             gameDataSO.SetSelectedLevel(level);
-            gameDataSO.LoadScene("FightingScene");
+            gameDataSO.LoadScene(gameplayScene);
         }
 
         private void LockIn()

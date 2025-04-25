@@ -161,11 +161,21 @@ namespace Input_Scripts
 
         public void OnLightAttackP1(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoLightAttack(0);
         }
 
         public void OnLightAttackP2(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoLightAttack(1);
         }
 
@@ -182,11 +192,21 @@ namespace Input_Scripts
 
         public void OnHeavyAttackP1(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoHeavyAttack(0);
         }
 
         public void OnHeavyAttackP2(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoHeavyAttack(1);
         }
 
@@ -203,11 +223,21 @@ namespace Input_Scripts
 
         public void OnSpecialAttackP1(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoSpecialAttack(0);
         }
 
         public void OnSpecialAttackP2(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoSpecialAttack(1);
         }
 
@@ -245,6 +275,11 @@ namespace Input_Scripts
 
         public void OnJumpP1(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             TryAddNewPlayer(0);
 
             DoJump(0);
@@ -252,6 +287,11 @@ namespace Input_Scripts
 
         public void OnJumpP2(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             TryAddNewPlayer(1);
 
             DoJump(1);
@@ -270,11 +310,21 @@ namespace Input_Scripts
 
         public void OnDashP1(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoDash(0);
         }
 
         public void OnDashP2(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             DoDash(1);
         }
     }

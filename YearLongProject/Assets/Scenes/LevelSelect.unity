@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c7ff9d4f54d42962af66aa407357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorPrefab: {fileID: 9138683288709446454, guid: ceaa291d97846774eb1c328afb7dc4b4, type: 3}
+  cursorPrefab: {fileID: 7708332391457664863, guid: b514df0761cbb4b4f929828d24772b94, type: 3}
   container: {fileID: 725065625}
   cursorBottomLeft: {fileID: 1385804265}
   cursorTopRight: {fileID: 1842286168}
