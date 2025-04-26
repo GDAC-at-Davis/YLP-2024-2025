@@ -294,7 +294,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   dropBufferTime: 0.3
-  dropInputAngleFromVertical: 45
+  dropInputAngleFromVertical: 30
+  dropInputMinY: -0.7
 --- !u!1 &1968648881426466404
 GameObject:
   m_ObjectHideFlags: 0

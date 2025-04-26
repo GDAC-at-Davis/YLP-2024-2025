@@ -25,6 +25,9 @@ namespace Movement
         [SerializeField]
         private float dropInputAngleFromVertical;
 
+        [SerializeField]
+        private float dropInputMinY;
+
         private readonly List<Collider2D> ignoredColliders = new();
 
         [Header("Debug")]
@@ -76,8 +79,8 @@ namespace Movement
             float angleFromVertical = Vector2.Angle(Vector2.down, input);
             bool controllerInputDown = angleFromVertical < dropInputAngleFromVertical;
             bool keyboardInputDown = input.y == -1f;
-            bool isInputDown = (controllerInputDown || keyboardInputDown) && input.y < 0f;
-            if (isInputDown && input.y < 0f)
+            bool isInputDown = (controllerInputDown || keyboardInputDown) && input.y < dropInputMinY;
+            if (isInputDown)
             {
                 droppingThroughPlatform = true;
             }
