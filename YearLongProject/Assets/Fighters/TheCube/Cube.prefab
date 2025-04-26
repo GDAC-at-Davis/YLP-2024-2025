@@ -703,6 +703,8 @@ PlayableDirector:
     value: {fileID: 3105801480486927495}
   - key: {fileID: 805959939788455700, guid: 86d2512a16e30cf429ce27e51d247f9b, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 1870346102612253819, guid: 86d2512a16e30cf429ce27e51d247f9b, type: 2}
+    value: {fileID: 7062655416985638217}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &6627629930600814027
@@ -1024,7 +1026,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8860025057001621189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9bae9f3f0baf74188e889b1702dd69, type: 3}
   m_Name: 
@@ -1300,7 +1302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3525838291768555810, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3525838291768555810, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1519,6 +1521,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002924662183864281, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnHitByAttackEvent.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1682,6 +1688,22 @@ PrefabInstance:
       propertyPath: 'states.Array.data[6]'
       value: 
       objectReference: {fileID: 1489467071663888848}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: airMaxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: groundMaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: airAcceleration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: groundAcceleration
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 

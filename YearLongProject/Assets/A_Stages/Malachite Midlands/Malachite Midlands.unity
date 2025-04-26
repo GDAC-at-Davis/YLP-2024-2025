@@ -1084,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678280858386419961, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4678280858386419961, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1121,10 +1121,6 @@ PrefabInstance:
     - target: {fileID: 6242291163348849283, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
       propertyPath: m_Name
       value: Cube (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6242291163348849283, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1424,6 +1420,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3850342251300834818, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
+      propertyPath: health
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 4678280858386419961, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.45
@@ -1669,63 +1669,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1864841606
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280858386419961, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6242291163348849283, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
-      propertyPath: m_Name
-      value: Ahab
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
 --- !u!1 &1886744493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2071,5 @@ SceneRoots:
   - {fileID: 757118682}
   - {fileID: 957945620}
   - {fileID: 1094610781}
-  - {fileID: 1864841606}
-  - {fileID: 1663872783}
   - {fileID: 1251757769}
+  - {fileID: 1663872783}
