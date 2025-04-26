@@ -106,6 +106,12 @@ namespace Input_Scripts
 
         private void TryAddNewPlayer(int pairingId)
         {
+            // Only allow joining in character select
+            if (!CharacterSelectCursorSpawner.InCharacterSelect && !quickLoad)
+            {
+                return;
+            }
+
             // See if the pairing already exists
             if (playerInputPairings.FirstOrDefault(a => a.PairingId == pairingId) != null)
             {
