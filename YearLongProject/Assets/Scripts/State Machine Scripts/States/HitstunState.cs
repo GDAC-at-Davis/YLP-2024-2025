@@ -22,9 +22,6 @@ namespace State_Machine_Scripts.States
         [SerializeField]
         private ManualTimelinePlayer hitstunPlayableAsset;
 
-        [SerializeField]
-        private StateNameSO jumpState;
-
         private void Update()
         {
             if (Time.time < characterEntity.StunTime)
@@ -35,7 +32,6 @@ namespace State_Machine_Scripts.States
             ActionManager.SetAllActionTypeAllowed(true);
             ActionManager.StateMachine.TrySetDefaultState();
             HandleOnEnd();
-            ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
         }
 
         private void FixedUpdate()

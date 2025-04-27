@@ -35,7 +35,7 @@ namespace State_Machine_Scripts.States
         private ManualTimelinePlayer airPlayableAsset;
 
         [SerializeField]
-        private StateNameSO jumpState;
+        private CharacterState jumpState;
 
         private MoveSubStates currentSubState;
         private ManualTimelinePlayer currentPlayableAsset;
@@ -45,7 +45,7 @@ namespace State_Machine_Scripts.States
             Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
             movementController.SetHorizontalInput(moveInput.x);
             SelectMoveState(moveInput);
-            ActionManager.SetActionTypeAllowed(jumpState, movementController.GetIsGrounded());
+            ActionManager.SetActionTypeAllowed(jumpState.StateName, movementController.GetIsGrounded());
         }
 
         private void FixedUpdate()

@@ -128,6 +128,12 @@ namespace State_Machine_Scripts
             SetState(stateName.Value);
         }
 
+        /// <inheritdoc cref="SetState(string)" />
+        public void SetState(CharacterState state)
+        {
+            SetState(state.StateName);
+        }
+
         public virtual void SetActionTypeAllowed(string action, bool isAllowed)
         {
             allowedStatesToEnter[action] = isAllowed;

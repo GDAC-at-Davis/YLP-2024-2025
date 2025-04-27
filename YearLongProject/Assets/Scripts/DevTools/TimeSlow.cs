@@ -6,7 +6,7 @@ public class TimeSlow : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             slow = !slow;
             if (slow)

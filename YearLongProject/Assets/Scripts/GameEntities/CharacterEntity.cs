@@ -51,7 +51,7 @@ namespace GameEntities
         public int Health => health;
 
         public float StunTime => stunTime;
-        public UnityAction<int> UpdateHealth;
+        public UnityAction<int, int> UpdateHealth;
 
         private int playerId = -1;
 
@@ -103,13 +103,12 @@ namespace GameEntities
 
         public void TakeDamage(int damage)
         {
-            health -= damage;
-            UpdateHealth.Invoke(health);
-
-            if (health <= 0)
+            if (health < 0)
             {
-                SceneManager.LoadScene(endSceneName);
+                return;
             }
+            health -= damage;
+            UpdateHealth.Invoke(playerId, health);
         }
 
         // Callback for landing an attack on a Character

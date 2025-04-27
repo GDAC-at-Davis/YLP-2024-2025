@@ -29,7 +29,6 @@ namespace CharacterScripts
 
         private void Start()
         {
-
             playerRigidbody = transform.parent.gameObject.GetComponentInChildren<Rigidbody2D>();
         }
 
@@ -52,39 +51,35 @@ namespace CharacterScripts
             }
         }
 
-
-
         public void SetTrap()
         {
             gameObject.transform.position = playerRigidbody.transform.position + Vector3.up * 0.5f;
-
             startPos = transform.position;
-
-            
-            
             canSetTrap = false;
         }
 
         public void TriggerTrap(float duration)
         {
+            Vector3 tempPos = playerRigidbody.transform.position + Vector3.up * 0.5f;
+			playerRigidbody.transform.position = gameObject.transform.position;
+            gameObject.transform.position = tempPos;
+			/*
             IsTrapActive = true;
 
             elapsedDuration = 0;
             trapDuration = duration;
 
             endPos = playerRigidbody.transform.position + Vector3.up * 0.5f;
-
-
-
-        }
+            */
+		}
         
 
         public void EndTrap()
         {
             canSetTrap = true;
             IsTrapActive = false;
-
-        }
+			gameObject.SetActive(false);
+		}
 
     }
 }

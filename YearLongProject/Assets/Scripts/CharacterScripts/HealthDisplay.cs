@@ -30,7 +30,7 @@ namespace CharacterScripts
             entity.InvincibleChanged -= UpdateInvincibilityStatus;
         }
 
-        void UpdateHealth(int health)
+        void UpdateHealth(int id, int health)
         {
             text.text = health.ToString();
         }

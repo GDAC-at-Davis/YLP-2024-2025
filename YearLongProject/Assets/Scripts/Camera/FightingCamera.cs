@@ -33,6 +33,9 @@ namespace Camera
         [ShowNonSerializedField]
         private Vector3 cameraFocusPoint;
 
+        [ShowNonSerializedField]
+        private float cameraDistance;
+
         private void Start()
         {
             cam = gameObject.GetComponent<CinemachineCamera>();
@@ -41,11 +44,6 @@ namespace Camera
         private void Update()
         {
             //cam.transform.position += new Vector3(0.0f, 0, 0.1f);
-
-            if (targets.Count == 1)
-            {
-                cam.transform.position = targets[0].transform.position + new Vector3(0.0f, 0, -15f);
-            }
 
             FindCameraBounds();
 
@@ -128,7 +126,6 @@ namespace Camera
             float cameraDistanceHorizontal = width / 2 / horizontalHalfFovTangent;
 
             // Find the largest distance
-            float cameraDistance;
             if (cameraDistanceHorizontal > cameraDistanceVertical)
             {
                 cameraDistance = cameraDistanceHorizontal;
