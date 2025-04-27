@@ -897,7 +897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     StartGravity: {x: 0, y: 0}
-    EndGravity: {x: 0, y: -15}
+    EndGravity: {x: 0, y: 0}
     Curve:
       serializedVersion: 2
       m_Curve:

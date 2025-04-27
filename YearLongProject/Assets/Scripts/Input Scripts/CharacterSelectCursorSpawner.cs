@@ -11,6 +11,8 @@ namespace Input_Scripts
     /// </summary>
     public class CharacterSelectCursorSpawner : MonoBehaviour
     {
+        public static bool InCharacterSelect;
+
         [BoldHeader("Player Join UI")]
         [InfoBox("Handles menu stuff when a player joins")]
         [Header("Depends")]
@@ -35,11 +37,13 @@ namespace Input_Scripts
         private void OnEnable()
         {
             gameDataSO.OnPlayerDataChanged += OnPlayerDataChanged;
+            InCharacterSelect = true;
         }
 
         private void OnDisable()
         {
             gameDataSO.OnPlayerDataChanged -= OnPlayerDataChanged;
+            InCharacterSelect = false;
         }
 
         private void OnPlayerDataChanged(int priorId, PlayerDataChange changeType, GameDataSO.PlayerData postChangeData)

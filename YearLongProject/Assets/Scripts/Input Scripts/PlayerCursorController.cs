@@ -61,6 +61,13 @@ namespace Input_Scripts
         private void Start()
         {
             rectTransform = GetComponent<RectTransform>();
+
+            // Center
+
+            Vector2 bottomLeftPos = cursorBottomLeft.position;
+            Vector2 topRightPos = cursorTopRight.position;
+
+            rectTransform.position = (bottomLeftPos + topRightPos) / 2;
         }
 
         private void Update()
@@ -240,6 +247,7 @@ namespace Input_Scripts
             selected = level != null;
             if (!level)
             {
+                gameDataSO.ClearPlayerData();
                 gameDataSO.LoadScene(charSelectScene);
                 return;
             }

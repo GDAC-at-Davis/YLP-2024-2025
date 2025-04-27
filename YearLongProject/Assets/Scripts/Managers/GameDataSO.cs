@@ -54,14 +54,6 @@ namespace Managers
         [Scene]
         private string levelSelectScene;
 
-        [Header("Data (Debug)")]
-
-        [SerializeField]
-        private LevelSO selectedLevel;
-
-        [SerializeField]
-        private List<PlayerData> players = new();
-
         public int PlayerCount => players.Count;
 
         public int MaxPlayers => maxPlayers;
@@ -74,6 +66,13 @@ namespace Managers
         public event PlayerDataChangedEvent OnPlayerDataChanged;
 
         public event AllPlayersReadyEvent OnAllPlayersReady;
+
+        private readonly List<PlayerData> players = new();
+
+        [Header("Data (Debug)")]
+
+        [ShowNonSerializedField]
+        private LevelSO selectedLevel;
 
         private bool Hide()
         {
