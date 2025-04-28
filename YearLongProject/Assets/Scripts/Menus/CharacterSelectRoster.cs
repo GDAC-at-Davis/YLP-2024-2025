@@ -24,6 +24,11 @@ namespace Menus
         [NoFoldOut]
         public List<CharacterSelectData> Characters;
 
+	public void AddCharacter(CharacterSO character)
+	{
+		Characters.Add(new CharacterSelectData{Character = character, IsHidden = false});
+	}
+
 #if UNITY_EDITOR
         /// <summary>
         ///     Search assets for CharacterSOs and add them to the roster
