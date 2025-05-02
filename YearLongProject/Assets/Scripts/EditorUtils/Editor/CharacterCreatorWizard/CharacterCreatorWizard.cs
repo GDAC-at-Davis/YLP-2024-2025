@@ -155,7 +155,7 @@ public class CharacterCreatorWizard : EditorWindow
 	    FileUtil.CopyFileOrDirectory("Assets/Fighters/TheBoxer/TheBoxer.prefab", rootpathRelative + characterName + ".prefab");
 
 	    // Make copy of the fighter test scene 
-	    FileUtil.CopyFileOrDirectory("Assets/Scripts/EditorUtils/Editor/CharacterCreationWizard/DefaultTestScene.unity", rootpathRelative + characterName + "TestScene.unity");
+	    FileUtil.CopyFileOrDirectory("Assets/Scripts/EditorUtils/Editor/CharacterCreatorWizard/DefaultTestScene.unity", rootpathRelative + characterName + "TestScene.unity");
 	    
 	    // copy over Timeline and States Assets from boxer
 	    List<string> stateNames = new List<string> {"Move", "Jump", "Hitstun", "Light", "Dash", "Heavy", "Special"};
@@ -248,8 +248,14 @@ public class CharacterCreatorWizard : EditorWindow
 
 	    // Add Character to fighting stage file
 	    EditorSceneManager.OpenScene(rootpathRelative + characterName + "TestScene.unity");
-	    newFighter = PrefabUtility.LoadPrefabContents(rootpathRelative + characterName + ".prefab");
-	    PrefabUtility.InstantiatePrefab(newFighter);
+	    
+	    newFighter = AssetDatabase.LoadAssetAtPath<GameObject>(rootpathRelative + characterName + ".prefab");
+	    var newScene = SceneManager.GetSceneByName(characterName + "TestScene");
+	    Debug.Log("p " + newFighter + " : " + newScene);
+	    GameObject newFighterInstance = (GameObject)(PrefabUtility.InstantiatePrefab(newFighter));
+	    Debug.Log("k " + newFighterInstance);
+	    SceneManager.MoveGameObjectToScene(newFighterInstance, newScene);
+	    EditorSceneManager.MarkSceneDirty(newScene);
 
 
 	    // edit scriptable object to include name and prefab
