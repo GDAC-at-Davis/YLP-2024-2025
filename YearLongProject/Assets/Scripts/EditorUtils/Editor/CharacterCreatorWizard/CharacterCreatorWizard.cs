@@ -139,7 +139,7 @@ public class CharacterCreatorWizard : EditorWindow
 	    rootpathRelative = "Assets/Fighters/" + characterName + "/"; // relative to unity project folder, used for Unity library methods
 	    Directory.CreateDirectory(rootpathAbsolute);
 
-		string rpTemplateRelative = "Assets/Scripts/EditorUtils/Editor/CharacterCreatorWizard/";
+		string rpTemplateRelative = "Assets/Fighters/TheBoxer/";
 
 	    // create subdirectory files for character.
 	    List<string> folderNames = new List<string> {"Timelines", "States", "Sprite", "Animations", "Scripts", "Prefabs", "Materials", "Shaders"};
@@ -257,7 +257,8 @@ public class CharacterCreatorWizard : EditorWindow
 	    GameObject newFighterInstance = (GameObject)(PrefabUtility.InstantiatePrefab(newFighter));
 	    Debug.Log("k " + newFighterInstance);
 	    SceneManager.MoveGameObjectToScene(newFighterInstance, newScene);
-	    EditorSceneManager.MarkSceneDirty(newScene);
+	    //EditorSceneManager.MarkSceneDirty(newScene);
+		EditorSceneManager.SaveScene(newScene);
 
 
 	    // edit scriptable object to include name and prefab
