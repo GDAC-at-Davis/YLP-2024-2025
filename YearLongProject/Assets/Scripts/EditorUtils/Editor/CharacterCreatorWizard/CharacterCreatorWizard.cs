@@ -139,6 +139,8 @@ public class CharacterCreatorWizard : EditorWindow
 	    rootpathRelative = "Assets/Fighters/" + characterName + "/"; // relative to unity project folder, used for Unity library methods
 	    Directory.CreateDirectory(rootpathAbsolute);
 
+		string rpTemplateRelative = "Assets/Fighters/TheBoxer/";
+
 	    // create subdirectory files for character.
 	    List<string> folderNames = new List<string> {"Timelines", "States", "Sprite", "Animations", "Scripts", "Prefabs", "Materials", "Shaders"};
 	    if (tog3D)
@@ -152,7 +154,7 @@ public class CharacterCreatorWizard : EditorWindow
 
 
 	    // Make variant prefab for the character 
-	    FileUtil.CopyFileOrDirectory("Assets/Fighters/TheBoxer/TheBoxer.prefab", rootpathRelative + characterName + ".prefab");
+	    FileUtil.CopyFileOrDirectory(rpTemplateRelative + "TheBoxer.prefab", rootpathRelative + characterName + ".prefab");
 
 	    // Make copy of the fighter test scene 
 	    FileUtil.CopyFileOrDirectory("Assets/Scripts/EditorUtils/Editor/CharacterCreatorWizard/DefaultTestScene.unity", rootpathRelative + characterName + "TestScene.unity");
@@ -161,13 +163,13 @@ public class CharacterCreatorWizard : EditorWindow
 	    List<string> stateNames = new List<string> {"Move", "Jump", "Hitstun", "Light", "Dash", "Heavy", "Special"};
 	    foreach (string stateName in stateNames)
 	    {
-		    FileUtil.CopyFileOrDirectory("Assets/Fighters/TheBoxer/States/" + stateName + ".asset", rootpathRelative + "States/" + stateName + ".asset");
+		    FileUtil.CopyFileOrDirectory(rpTemplateRelative + "States/" + stateName + ".asset", rootpathRelative + "States/" + stateName + ".asset");
 	    }
 	    
 	    List<string> timelineNames = new List<string> {"Hitstun", "Light", "Dash", "Heavy", "Special", "Air", "Idle", "Run"};
 	    foreach (string tlName in timelineNames)
 	    {
-		    FileUtil.CopyFileOrDirectory("Assets/Fighters/TheBoxer/Timelines/" + tlName + ".playable", rootpathRelative + "Timelines/" + tlName + ".playable");
+		    FileUtil.CopyFileOrDirectory(rpTemplateRelative + "Timelines/" + tlName + ".playable", rootpathRelative + "Timelines/" + tlName + ".playable");
 	    }
 
 	    // Refresh Assets so Unity creates .meta files
