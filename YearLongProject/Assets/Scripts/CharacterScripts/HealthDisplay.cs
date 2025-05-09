@@ -1,4 +1,5 @@
 using GameEntities;
+using Managers;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ namespace CharacterScripts
         [SerializeField]
         CharacterEntity entity;
         TextMeshProUGUI text;
+        [SerializeField]
+        GameDataSO gameDataSO;
+
+        Color baseColor;
 
 
         private void Start()
@@ -16,6 +21,7 @@ namespace CharacterScripts
             text = GetComponent<TextMeshProUGUI>();
 
             text.text = entity.Health.ToString();
+            text.color = baseColor = gameDataSO.PlayerColors[entity.PlayerId];
         }
 
         private void OnEnable()
@@ -37,7 +43,7 @@ namespace CharacterScripts
 
         void UpdateInvincibilityStatus(bool isInvuln)
         {
-            text.color = isInvuln ? Color.blue : Color.white;
+            text.color = isInvuln ? Color.white : baseColor;
         }
     }
 }

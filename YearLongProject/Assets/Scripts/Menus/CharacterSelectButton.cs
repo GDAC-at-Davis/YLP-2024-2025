@@ -11,12 +11,14 @@ public class CharacterSelectButton : MonoBehaviour
     Button button;
 
     public CharacterSO Character;
+    public GridLayoutGroup LayoutGroup;
 
     public void Init(CharacterSO character)
     {
         GetComponentInChildren<TextMeshProUGUI>().text = character.CharacterDisplayName;
         GetComponent<Image>().sprite = character.CharacterPortrait;
 
+        LayoutGroup = GetComponentInChildren<GridLayoutGroup>();
         button = GetComponent<Button>();
         Character = character; 
     }

@@ -5,6 +5,7 @@ using Managers;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Input_Scripts
 {
@@ -52,11 +53,13 @@ namespace Input_Scripts
         private bool selected;
 
         private TextMeshProUGUI text;
+        private Image image;
 
         private RectTransform cursorBottomLeft;
         private RectTransform cursorTopRight;
 
         private RectTransform rectTransform;
+        private Transform container;
 
         private void Start()
         {
@@ -102,15 +105,19 @@ namespace Input_Scripts
             rectTransform.position = pos;
         }
 
-        public void Initialize(int playerId, RectTransform bottomLeft, RectTransform topRight)
+        public void Initialize(int playerId, RectTransform bottomLeft, RectTransform topRight, Transform container)
         {
             Debug.Log($"Player {playerId} cursor initialized");
             cursorBottomLeft = bottomLeft;
             cursorTopRight = topRight;
+            this.container = container;
 
             playerID = playerId;
             text = GetComponentInChildren<TextMeshProUGUI>();
+            image = GetComponentInChildren<Image>();
             text.text = (playerId + 1).ToString();
+            text.color = gameDataSO.PlayerColors[playerID];
+            image.color = gameDataSO.PlayerColors[playerID] * 0.8f;
 
             events = playerInputSO.TryGetPlayerInputEvents(playerID);
             SubscribeToInputEvents();
@@ -169,6 +176,7 @@ namespace Input_Scripts
                 Debug.Log($"player {playerID} unselected character");
 
                 text.text = (playerID + 1).ToString();
+                transform.parent = container;
                 QueueCharacter(null);
                 return;
             }
@@ -179,17 +187,18 @@ namespace Input_Scripts
                 return;
             }
 
-            CharacterSO character = button.GetComponent<CharacterSelectButton>()?.Character;
+            CharacterSelectButton character = button.GetComponent<CharacterSelectButton>();
             if (character == null)
             {
                 return;
             }
 
-            transform.position = button.transform.position;
+            //transform.position = button.transform.position;
+            transform.parent = character.LayoutGroup.transform;
             text.text = "";
 
-            Debug.Log($"player {playerID} selected character {character.name}");
-            QueueCharacter(character);
+            Debug.Log($"player {playerID} selected character {character.Character.name}");
+            QueueCharacter(character.Character);
         }
 
         private void RemovePlayer(bool pressed)

@@ -57,7 +57,7 @@ namespace Input_Scripts
         private void OnPlayerAdded(int playerId)
         {
             PlayerCursorController cursor = Instantiate(cursorPrefab, container);
-            cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight);
+            cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight, container);
         }
     }
 }
