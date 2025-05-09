@@ -41,8 +41,7 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private float dashVelocity;
 
-        [SerializeField]
-        private bool thrown = false;
+        public bool thrown = false;
         [SerializeField]
         private bool onGround = false;
 
@@ -199,14 +198,14 @@ namespace Fighters.Ahab.Scripts
             timeSinceStartDash = 0;
 
             rb.linearDamping = dashDamping;
-            rb.gravityScale = 0;
+            //rb.gravityScale = 0;
             characterRb.SetVelocityWithFlipX(ahabActionManager.CharacterActionInput.MoveInput * dashVelocity);
             Invoke("SharkDashEnd", dashDuration);
         }
 
         public void SharkDashEnd()
         {
-            rb.gravityScale = 0.5f;
+            //rb.gravityScale = 0.5f;
             rb.linearDamping = 0.5f;
             hitboxEmitter.EndHitboxGroup("sharkDash");
         }
