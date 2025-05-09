@@ -45,6 +45,9 @@ namespace Managers
         [Header("Config")]
 
         [SerializeField]
+        private List<Color> playerColors;
+
+        [SerializeField]
         private int maxPlayers;
 
         [SerializeField]
@@ -53,6 +56,8 @@ namespace Managers
         [SerializeField]
         [Scene]
         private string levelSelectScene;
+
+        public List<Color> PlayerColors => playerColors;
 
         public int PlayerCount => players.Count;
 

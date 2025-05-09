@@ -23,6 +23,6 @@ public class LevelSelectCursorSpawner : MonoBehaviour
     void Start()
     {
         PlayerCursorController cursor = Instantiate(cursorPrefab, container);
-        cursor.Initialize(0, cursorBottomLeft, cursorTopRight);
+        cursor.Initialize(0, cursorBottomLeft, cursorTopRight, container);
     }
 }

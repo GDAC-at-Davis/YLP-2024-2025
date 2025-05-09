@@ -56,6 +56,12 @@ public class MatchManager : MonoBehaviour
         {
             gameDataSO.RemovePlayer(entity.PlayerId);
         }
+
+        Invoke("NewGame", 3);
+    }
+
+    void NewGame()
+    {
         playerInputSO.ClearAllInputReaders();
         gameDataSO.LoadScene("FighterSelect");
     }
