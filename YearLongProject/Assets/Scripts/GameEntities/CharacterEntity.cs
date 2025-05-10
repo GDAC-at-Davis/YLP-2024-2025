@@ -3,12 +3,12 @@ using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
+using Managers;
 using Movement;
 using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace GameEntities
 {
@@ -17,6 +17,9 @@ namespace GameEntities
         [BoldHeader("Character Entity Script")]
         [InfoBox("The top-level script representing a character entity. Don't remove!")]
         [Header("Dependencies")]
+
+        [SerializeField]
+        private GameDataSO gameDataSO;
 
         [SerializeField]
         public CharacterActionManager ActionManager;
@@ -51,6 +54,8 @@ namespace GameEntities
         public int Health => health;
 
         public float StunTime => stunTime;
+        public int MaxHealth { get; private set; }
+
         public UnityAction<int, int> UpdateHealth;
 
         private int playerId = -1;
@@ -67,6 +72,7 @@ namespace GameEntities
         public void OnDestroy()
         {
             actionInput.Cleanup();
+            gameDataSO.SetCharacterEntity(playerId, null);
         }
 
 #if UNITY_EDITOR
@@ -82,6 +88,9 @@ namespace GameEntities
             transform.parent = null;
 
             actionInput.Initialize(id);
+            MaxHealth = health;
+
+            gameDataSO.SetCharacterEntity(playerId, this);
         }
 
         // Callback for this Character being hit by an attack
@@ -107,6 +116,7 @@ namespace GameEntities
             {
                 return;
             }
+
             health -= damage;
             UpdateHealth.Invoke(playerId, health);
         }
