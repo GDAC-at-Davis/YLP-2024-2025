@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CharacterScripts;
 using EditorUtils.BoldHeader;
+using GameEntities;
 using LevelScripts;
 using NaughtyAttributes;
 using UnityEngine;
@@ -16,7 +17,8 @@ namespace Managers
     public enum PlayerDataChange
     {
         PlayerAdded,
-        PlayerRemoved
+        PlayerRemoved,
+        CharacterEntityChanged
     }
 
     /// <summary>
@@ -38,6 +40,11 @@ namespace Managers
         {
             public int PlayerId;
             public CharacterSO SelectedCharacter;
+
+            /// <summary>
+            ///     If in gameplay, this is the actual character entity controlled by the player
+            /// </summary>
+            public CharacterEntity CharacterEntity;
         }
 
         [BoldHeader("Global Game Data")]
@@ -65,13 +72,21 @@ namespace Managers
 
         public LevelSO SelectedLevel => selectedLevel;
 
+        public IEnumerable<PlayerData> AllPlayerData => players;
+
         /// <summary>
         ///     Event that is called when any player data changes
         /// </summary>
         public event PlayerDataChangedEvent OnPlayerDataChanged;
 
+        /// <summary>
+        ///     Event that is called when all players are ready
+        /// </summary>
         public event AllPlayersReadyEvent OnAllPlayersReady;
 
+        /// <summary>
+        ///     List of players and their data
+        /// </summary>
         private readonly List<PlayerData> players = new();
 
         [Header("Data (Debug)")]
@@ -134,7 +149,7 @@ namespace Managers
             Debug.Log($"Removing player {id}");
 
             players.Remove(playerToRemove);
-            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, null);
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, playerToRemove);
         }
 
         /// <summary>
@@ -193,6 +208,19 @@ namespace Managers
         {
             Debug.Log($"Loading scene {scene}");
             SceneManager.LoadScene(scene);
+        }
+
+        public void SetCharacterEntity(int id, CharacterEntity character)
+        {
+            PlayerData player = players.FirstOrDefault(item => item.PlayerId == id);
+            if (player == null)
+            {
+                Debug.LogError($"Player ID {id} doesn't exist");
+                return;
+            }
+
+            player.CharacterEntity = character;
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.CharacterEntityChanged, player);
         }
     }
 }
