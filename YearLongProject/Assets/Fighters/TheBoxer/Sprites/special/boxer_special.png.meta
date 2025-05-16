@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9252271108f774746a6ba0f75b4a0569
+guid: 6195a85c78d563b4fb3ee1e8bab7ea64
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 656
+  spritePixelsToUnits: 425
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,111 +110,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boxer_light1
+      name: IMG_4837
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 2048
-        height: 2048
+        height: 1238
       alignment: 9
-      pivot: {x: 0.32, y: 0.16}
+      pivot: {x: 0.22, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da3c081dc914314448c68c9c7302c3de
-      internalID: 6459363530246390038
+      spriteID: b3dffd63b5ad4fd47be2e75827311dce
+      internalID: -7266650025072100155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_light2
+      name: IMG_4838
       rect:
         serializedVersion: 2
         x: 0
-        y: 2048
+        y: 1238
         width: 2048
-        height: 2048
+        height: 1238
       alignment: 9
-      pivot: {x: 0.32, y: 0.16}
+      pivot: {x: 0.22, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae25df23c7c487648aa11f08d4119878
-      internalID: -3782176418141272408
+      spriteID: 53bd4ad595ce61747afc8d82ce649a7f
+      internalID: -358797162918049046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_light3
+      name: IMG_4839
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2476
+        width: 2048
+        height: 1238
+      alignment: 9
+      pivot: {x: 0.22, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778832f55f5c95c47a8fe64afd3b03ba
+      internalID: 5286967033208948075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_4840
       rect:
         serializedVersion: 2
         x: 2048
         y: 0
         width: 2048
-        height: 2048
+        height: 1238
       alignment: 9
-      pivot: {x: 0.32, y: 0.16}
+      pivot: {x: 0.22, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d66ea033c2a14549ba81d622bd23693
-      internalID: -4640407457896804309
+      spriteID: 551054202a940a94e83191a7e00a400c
+      internalID: -5609754239965061581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_light4
+      name: IMG_4841
       rect:
         serializedVersion: 2
         x: 2048
-        y: 2048
+        y: 1238
         width: 2048
-        height: 2048
+        height: 1238
       alignment: 9
-      pivot: {x: 0.32, y: 0.16}
+      pivot: {x: 0.22, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a697ab24b29c6e40853d358111903c0
-      internalID: -3233931429636600954
+      spriteID: 91ba6d062a330264cb8953e0541f90e6
+      internalID: -4183369192952658184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_light5
+      name: IMG_4842
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2476
+        width: 2048
+        height: 1238
+      alignment: 9
+      pivot: {x: 0.22, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c189f6e8cb30c14080649b62835568f
+      internalID: -2612437521004494462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_4843
       rect:
         serializedVersion: 2
         x: 4096
         y: 0
         width: 2048
-        height: 2048
+        height: 1238
       alignment: 9
-      pivot: {x: 0.32, y: 0.16}
+      pivot: {x: 0.22, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35249d3c4964f846801d918a4bf6ded
-      internalID: 4959810750472316202
+      spriteID: 287c2b97ed9ffa445b071e33fa7f00bf
+      internalID: -2751809485083984942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_4844
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 0
+        width: 2048
+        height: 1238
+      alignment: 9
+      pivot: {x: 0.22, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3af3117bc509d34296ddb64562a9c24
+      internalID: 5730130071852672206
       vertices: []
       indices: 
       edges: []
@@ -223,7 +289,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4313882dad68f25419ab221072063099
+    spriteID: 93a924015c2710344bcc3e9273cff0da
     internalID: 0
     vertices: []
     indices: 
@@ -233,11 +299,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_4680: 6459363530246390038
-      IMG_4681: -3782176418141272408
-      IMG_4682: -4640407457896804309
-      IMG_4683: -3233931429636600954
-      IMG_4684: 4959810750472316202
+      IMG_4837: -7266650025072100155
+      IMG_4838: -358797162918049046
+      IMG_4839: 5286967033208948075
+      IMG_4840: -5609754239965061581
+      IMG_4841: -4183369192952658184
+      IMG_4842: -2612437521004494462
+      IMG_4843: -2751809485083984942
+      IMG_4844: 5730130071852672206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
