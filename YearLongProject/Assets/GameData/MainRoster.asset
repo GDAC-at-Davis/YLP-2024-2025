@@ -19,3 +19,5 @@ MonoBehaviour:
     IsHidden: 0
   - Character: {fileID: 11400000, guid: d9e21e1b0457ebe4dbe4b032288382eb, type: 2}
     IsHidden: 0
+  - Character: {fileID: 11400000, guid: 8133ae313758d59489e9e4492d857e24, type: 2}
+    IsHidden: 0
