@@ -31,6 +31,8 @@ namespace State_Machine_Scripts
 
         public float InternalFixedTimeScale { get; set; } = 1f;
 
+        public CharacterState CurrentState => StateMachine.CurrentState;
+
         public readonly StateMachine<CharacterState>.WithDefault StateMachine = new();
 
         /// <summary>

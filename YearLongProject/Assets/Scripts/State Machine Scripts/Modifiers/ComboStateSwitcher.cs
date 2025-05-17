@@ -36,6 +36,9 @@ namespace State_Machine_Scripts.Modifiers
         [ShowNonSerializedField]
         private float comboChainTimer;
 
+        private CharacterState lastQueuedState;
+        private float lastQueuedStateTime;
+
         private void FixedUpdate()
         {
             if (comboChainTimer > 0)
@@ -47,6 +50,14 @@ namespace State_Machine_Scripts.Modifiers
                 {
                     currentComboIndex = 0;
                 }
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (lastQueuedState != null)
+            {
+                lastQueuedState.OnStateEntered.RemoveListener(IncrementState);
             }
         }
 
@@ -64,10 +75,21 @@ namespace State_Machine_Scripts.Modifiers
                 currentComboIndex = 0;
             }
 
-            ComboEntry currentCombo = comboEntries[currentComboIndex];
-            actionManager.SetState(currentCombo.State);
+            if (lastQueuedState)
+            {
+                lastQueuedState.OnStateEntered.RemoveListener(IncrementState);
+            }
 
-            comboChainTimer = currentCombo.ComboChainTime;
+            ComboEntry currentCombo = comboEntries[currentComboIndex];
+            currentCombo.State.OnStateEntered.AddListener(IncrementState);
+            actionManager.SetState(currentCombo.State);
+            lastQueuedState = currentCombo.State;
+            lastQueuedStateTime = currentCombo.ComboChainTime;
+        }
+
+        private void IncrementState()
+        {
+            comboChainTimer = lastQueuedStateTime;
             currentComboIndex++;
         }
     }
