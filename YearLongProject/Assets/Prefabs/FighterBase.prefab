@@ -395,7 +395,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  health: 50
+  health: 100
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
