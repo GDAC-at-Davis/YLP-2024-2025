@@ -295,11 +295,6 @@ namespace Input_Scripts
 
         public void OnJumpP1(InputAction.CallbackContext context)
         {
-            if (!context.started)
-            {
-                return;
-            }
-
             if (context.performed)
             {
                 TryAddNewPlayer(0);
@@ -312,11 +307,6 @@ namespace Input_Scripts
 
         public void OnJumpP2(InputAction.CallbackContext context)
         {
-            if (!context.started)
-            {
-                return;
-            }
-
             if (context.performed)
             {
                 TryAddNewPlayer(1);
