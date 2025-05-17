@@ -41,6 +41,7 @@ namespace State_Machine_Scripts
         /// <summary>
         ///     Dict controlling if a state is allowed to be entered
         /// </summary>
+        [ShowNonSerializedField]
         private readonly Dictionary<string, bool> allowedStatesToEnter = new();
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace State_Machine_Scripts
 
         private CharacterActionInput characterActionInput;
 
-        private void Update()
+        private void FixedUpdate()
         {
             stateInputBuffer?.Update();
         }
