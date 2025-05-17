@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d7f1669357aa054380af8ddc2a8406e
+guid: b06da0200b29d79448e6afe622338dfc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 656
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boxer_heavy1
+      name: IMG_4823
       rect:
         serializedVersion: 2
         x: 0
@@ -118,21 +118,21 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f77d787e977e6a342ba1f998028f46da
-      internalID: -2215333726565112098
+      spriteID: 5e7ecae29d71e9e44bc55de82e79c4c5
+      internalID: -5234135599789873312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_heavy2
+      name: IMG_4824
       rect:
         serializedVersion: 2
         x: 0
@@ -140,21 +140,21 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7da30b60e8c0c894c8bcb55554da7da2
-      internalID: 4074833127627186496
+      spriteID: ee457e1c8728fa34faa50925508673ae
+      internalID: 7769083857545801689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_heavy3
+      name: IMG_4825
       rect:
         serializedVersion: 2
         x: 2048
@@ -162,21 +162,21 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da9d82fc8e7065f479ab23478a476c75
-      internalID: -6302761451485465313
+      spriteID: 2e18a46b899fcca488b6ff9116981efa
+      internalID: -6431330014722537788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_heavy4
+      name: IMG_4826
       rect:
         serializedVersion: 2
         x: 2048
@@ -184,21 +184,21 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0de21c8b6fc0a6409f53502cb9ee156
-      internalID: -5102046329196991045
+      spriteID: 36aa653f4be219548a3f14c7b8f4e157
+      internalID: -8281699218063609301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_heavy5
+      name: IMG_4827
       rect:
         serializedVersion: 2
         x: 4096
@@ -206,21 +206,21 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0f79658bb258ff4bb51f1cc700b316d
-      internalID: -468831921604070618
+      spriteID: 24070368e522ddd439cc628f1e457ef3
+      internalID: -4767726724828981954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_heavy6
+      name: IMG_4828
       rect:
         serializedVersion: 2
         x: 6144
@@ -228,21 +228,21 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d752534beac4d2849a61ad18152a20dd
-      internalID: -2101018139023380855
+      spriteID: 06700d1c8efd5154981c4eab7263d8fd
+      internalID: -7162998491692859583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxer_heavy7
+      name: IMG_4829
       rect:
         serializedVersion: 2
         x: 4096
@@ -250,37 +250,15 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.34, y: 0.16}
+      pivot: {x: 0.43, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47aecbf57ee309644b16f8cce2903f9d
-      internalID: 6098055923731675479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxer_heavy8
-      rect:
-        serializedVersion: 2
-        x: 6144
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.34, y: 0.16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4fc3a8bc06b606b4989333cc00758ea4
-      internalID: -2863409973946485110
+      spriteID: 1ab468bca9774ac42b804f80226936ca
+      internalID: 1095605611053340777
       vertices: []
       indices: 
       edges: []
@@ -289,7 +267,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 829cca34d4043b646bf0e2cf23062220
+    spriteID: 393d00cc5521ea5498d86ea122beb583
     internalID: 0
     vertices: []
     indices: 
@@ -299,14 +277,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_4672: -2215333726565112098
-      IMG_4673: 4074833127627186496
-      IMG_4674: -6302761451485465313
-      IMG_4675: -5102046329196991045
-      IMG_4676: -468831921604070618
-      IMG_4677: -2101018139023380855
-      IMG_4678: 6098055923731675479
-      IMG_4679: -2863409973946485110
+      IMG_4823: -5234135599789873312
+      IMG_4824: 7769083857545801689
+      IMG_4825: -6431330014722537788
+      IMG_4826: -8281699218063609301
+      IMG_4827: -4767726724828981954
+      IMG_4828: -7162998491692859583
+      IMG_4829: 1095605611053340777
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9252271108f774746a6ba0f75b4a0569
+guid: 6266f94af0f12ad4a9a1e38261c39868
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boxer_light1
+      name: boxer_dash_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,103 +118,15 @@ TextureImporter:
         width: 2048
         height: 2048
       alignment: 9
-      pivot: {x: 0.32, y: 0.16}
+      pivot: {x: 0.57504237, y: 0.15141608}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da3c081dc914314448c68c9c7302c3de
-      internalID: 6459363530246390038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxer_light2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.32, y: 0.16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae25df23c7c487648aa11f08d4119878
-      internalID: -3782176418141272408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxer_light3
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 2048
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.32, y: 0.16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d66ea033c2a14549ba81d622bd23693
-      internalID: -4640407457896804309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxer_light4
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.32, y: 0.16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a697ab24b29c6e40853d358111903c0
-      internalID: -3233931429636600954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxer_light5
-      rect:
-        serializedVersion: 2
-        x: 4096
-        y: 0
-        width: 2048
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.32, y: 0.16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d35249d3c4964f846801d918a4bf6ded
-      internalID: 4959810750472316202
+      spriteID: 58d88cc33e07b2946a8bd40a2be3e1c5
+      internalID: 779073886
       vertices: []
       indices: 
       edges: []
@@ -223,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4313882dad68f25419ab221072063099
+    spriteID: d625b00a80ae3d1488b6fef1fccbec88
     internalID: 0
     vertices: []
     indices: 
@@ -233,11 +145,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_4680: 6459363530246390038
-      IMG_4681: -3782176418141272408
-      IMG_4682: -4640407457896804309
-      IMG_4683: -3233931429636600954
-      IMG_4684: 4959810750472316202
+      boxer_dash_0: 779073886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

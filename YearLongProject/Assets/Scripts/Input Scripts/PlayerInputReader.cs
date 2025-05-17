@@ -167,11 +167,21 @@ namespace Input_Scripts
 
         public void OnLightAttackP1(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoLightAttack(0, context.ReadValueAsButton());
         }
 
         public void OnLightAttackP2(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoLightAttack(1, context.ReadValueAsButton());
         }
 
@@ -188,11 +198,21 @@ namespace Input_Scripts
 
         public void OnHeavyAttackP1(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoHeavyAttack(0, context.ReadValueAsButton());
         }
 
         public void OnHeavyAttackP2(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoHeavyAttack(1, context.ReadValueAsButton());
         }
 
@@ -209,11 +229,21 @@ namespace Input_Scripts
 
         public void OnSpecialAttackP1(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoSpecialAttack(0, context.ReadValueAsButton());
         }
 
         public void OnSpecialAttackP2(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoSpecialAttack(1, context.ReadValueAsButton());
         }
 
@@ -300,11 +330,21 @@ namespace Input_Scripts
 
         public void OnDashP1(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoDash(0, context.ReadValueAsButton());
         }
 
         public void OnDashP2(InputAction.CallbackContext context)
         {
+            if (!context.started)
+            {
+                return;
+            }
+
             DoDash(1, context.ReadValueAsButton());
         }
     }

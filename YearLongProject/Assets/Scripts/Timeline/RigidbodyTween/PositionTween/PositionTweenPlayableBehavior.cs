@@ -34,7 +34,7 @@ namespace Timeline.RigidbodyTween.PositionTween
             }
 
             var time = (float)playable.GetTime();
-            float t = time / (float)playable.GetDuration();
+            float t = Mathf.Clamp01(time / (float)playable.GetDuration());
             float curveValue = Curve.Evaluate(t);
             Vector2 newLocalPosition = Vector2.Lerp(StartPosition, EndPosition, curveValue);
 
@@ -71,7 +71,8 @@ namespace Timeline.RigidbodyTween.PositionTween
         {
             if (Application.isPlaying && rigidbody != null)
             {
-                Vector2 newLocalPosition = EndPosition;
+                float curveValue = Curve.Evaluate(1);
+                Vector2 newLocalPosition = Vector2.Lerp(StartPosition, EndPosition, curveValue);
                 Vector2 delta = newLocalPosition - initialLocalPosition;
                 initialLocalPosition = newLocalPosition;
                 rigidbody.MoveRelativeWithFlipX(delta);
