@@ -72,12 +72,15 @@ MonoBehaviour:
         Path: event:/Splat
     ScreenShakeSO: {fileID: 11400000, guid: 05dc650e5c16a864daa29c27bb0d1c00, type: 2}
     EndHitboxGroup: 1
-    HitboxGroupId: Special Spin 1
+    HitboxGroupId: Lancer Special
     RaycastArea: []
     BoxArea:
-    - center: {x: 0.78, y: 0.13}
-      rotation: 0
-      size: {x: 1, y: 0.61}
+    - center: {x: 1.4, y: 0.35}
+      rotation: 30
+      size: {x: 2.75, y: 0.75}
+    - center: {x: 3, y: 1.2}
+      rotation: 30
+      size: {x: 1, y: 1}
 --- !u!114 &-7771321841965871546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     StartPosition: {x: 0.01581633, y: 0.039540768}
-    EndPosition: {x: -1.4977269, y: 0.032057405}
+    EndPosition: {x: 0.5, y: 0.032057405}
     Curve:
       serializedVersion: 2
       m_Curve:
