@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593c44a66696d0446bf61ba434744c9e, type: 3}
   m_Name: LancerSO
   m_EditorClassIdentifier: 
-  CharacterDisplayName: 
-  CharacterPrefab: {fileID: 0}
-  CharacterPortrait: {fileID: 0}
+  CharacterDisplayName: Lancer
+  CharacterPrefab: {fileID: 6242291163348849283, guid: 86323130687063445a000e949fa6f85d, type: 3}
+  CharacterPortrait: {fileID: 1041260435, guid: 954d833355180e844a52583d63d45e34, type: 3}
