@@ -355,8 +355,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpVelocity: 8
-  maxJumpDuration: 0.5
+  jumpVelocity: 9
+  maxJumpDuration: 0.4
   jumpPlayableAsset:
     playableDirector: {fileID: 9144825239364771358}
     loop: 1
@@ -1497,6 +1497,22 @@ PrefabInstance:
       propertyPath: 'states.Array.data[6]'
       value: 
       objectReference: {fileID: 4934061554269146212}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: airMaxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: groundMaxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: airAcceleration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: groundAcceleration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.size
       value: 3
