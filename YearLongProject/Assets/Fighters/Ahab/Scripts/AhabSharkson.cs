@@ -1,12 +1,12 @@
 using EditorUtils.BoldHeader;
+using Hitbox.DataStructures;
+using Hitbox.Emitters;
+using Hitbox.HitboxAreas;
+using Movement;
 using NaughtyAttributes;
 using State_Machine_Scripts;
 using UnityEngine;
-using Movement;
-using Hitbox;
-using Hitbox.HitboxAreas;
-using Hitbox.Emitters;
-using Hitbox.DataStructures;
+using Utils;
 
 namespace Fighters.Ahab.Scripts
 {
@@ -27,6 +27,12 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private CharacterRigidbody2D characterRb;
 
+        [SerializeField]
+        private CharacterActionManager actionManager;
+
+        [SerializeField]
+        private BasicHitboxEmitter hitboxEmitter;
+
         [Header("Colliders")]
 
         [InfoBox("Colliders that need to ignore each other, so SHARKSON doesn't hit Ahab")]
@@ -41,11 +47,10 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private float dashVelocity;
 
-        public bool thrown = false;
-        [SerializeField]
-        private bool onGround = false;
+        public bool thrown;
 
-        private bool dashOnCooldown = false;
+        [SerializeField]
+        private bool onGround;
 
         [SerializeField]
         private bool throwing;
@@ -63,9 +68,6 @@ namespace Fighters.Ahab.Scripts
         private float dashCooldown = 2;
 
         [SerializeField]
-        private BasicHitboxEmitter hitboxEmitter;
-
-        [SerializeField]
         private BoxArea hitboxArea;
 
         [SerializeField]
@@ -75,20 +77,27 @@ namespace Fighters.Ahab.Scripts
         private HitboxEffect dashAttackEffect;
 
         [SerializeField]
-        private CharacterActionManager actionManager;
+        private LayerMask groundLayer;
+
+        [SerializeField]
+        private LayerMask playerPickupLayer;
+
+        private bool dashOnCooldown = false;
 
         private bool dashing;
+        private float initialLinearDamping;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
         {
             Physics2D.IgnoreCollision(physicsCollider, ahabPhysicsCollider);
+            initialLinearDamping = rb.linearDamping;
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if(!throwing && !thrown)
+            if (!throwing && !thrown)
             {
                 sprite.enabled = false;
             }
@@ -97,9 +106,9 @@ namespace Fighters.Ahab.Scripts
                 sprite.enabled = true;
             }
 
-            if(thrown)
+            if (thrown)
             {
-                if(dashing)
+                if (dashing)
                 {
                     hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, "sharkDash");
                 }
@@ -114,12 +123,12 @@ namespace Fighters.Ahab.Scripts
                 if (rb.linearVelocityX >= 0)
                 {
                     transform.right = rb.linearVelocity;
-                    sprite.flipX = false;
+                    AlignSharkToVel();
                 }
                 else
                 {
                     transform.right = -rb.linearVelocity;
-                    sprite.flipX = true;
+                    AlignSharkToVel();
                 }
             }
 
@@ -128,14 +137,16 @@ namespace Fighters.Ahab.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!thrown) return;
-
-            if (other.gameObject.layer == 6)
+            if (!thrown)
             {
-                Debug.Log("hit ground");
+                return;
+            }
+
+            if (groundLayer.IsInLayerMask(other))
+            {
                 onGround = true;
             }
-            else if (other.gameObject.layer == 3)
+            else if (playerPickupLayer.IsInLayerMask(other))
             {
                 var special = other.gameObject.GetComponentInParent<AhabSpecialMove>();
 
@@ -143,6 +154,7 @@ namespace Fighters.Ahab.Scripts
                 {
                     return;
                 }
+
                 if (special.sharkson == this)
                 {
                     PickUp();
@@ -152,7 +164,7 @@ namespace Fighters.Ahab.Scripts
 
         public void SpecialPressed()
         {
-            if(thrown)
+            if (thrown)
             {
                 SharkBiteGrab();
             }
@@ -172,7 +184,7 @@ namespace Fighters.Ahab.Scripts
 
             rb.simulated = true;
 
-            sprite.flipX = flipX;
+            AlignSharkToVel();
 
             if (!flipX)
             {
@@ -188,7 +200,7 @@ namespace Fighters.Ahab.Scripts
 
         public void SharkDash()
         {
-            if(!thrown || timeSinceStartDash < dashCooldown)
+            if (!thrown || timeSinceStartDash < dashCooldown)
             {
                 return;
             }
@@ -206,8 +218,14 @@ namespace Fighters.Ahab.Scripts
         public void SharkDashEnd()
         {
             //rb.gravityScale = 0.5f;
-            rb.linearDamping = 0.5f;
+            rb.linearDamping = initialLinearDamping;
             hitboxEmitter.EndHitboxGroup("sharkDash");
+        }
+
+        private void AlignSharkToVel()
+        {
+            bool flipX = rb.linearVelocity.x < 0;
+            sprite.transform.localScale = new Vector3(flipX ? -1 : 1, 1, 1);
         }
 
         public void SharkBiteGrab()

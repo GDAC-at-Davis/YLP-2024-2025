@@ -118,7 +118,7 @@ namespace GameEntities
             }
 
             health -= damage;
-            UpdateHealth.Invoke(playerId, health);
+            UpdateHealth?.Invoke(playerId, health);
         }
 
         // Callback for landing an attack on a Character
