@@ -75,9 +75,9 @@ MonoBehaviour:
     HitboxGroupId: LightPrimary
     RaycastArea: []
     BoxArea:
-    - center: {x: 1.13, y: 0.16}
+    - center: {x: 0.9, y: 0.16}
       rotation: 0
-      size: {x: 0.98, y: 1.18}
+      size: {x: 1.6, y: 1.18}
 --- !u!114 &-7500514140640883419
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     StartPosition: {x: 0, y: 0}
-    EndPosition: {x: 1.8, y: 0}
+    EndPosition: {x: 1.5, y: 0}
     Curve:
       serializedVersion: 2
       m_Curve:

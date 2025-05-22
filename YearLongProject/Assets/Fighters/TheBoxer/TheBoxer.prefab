@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3352808017341713777, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Size.x
-      value: 0.41
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3352808017341713777, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Size.y
@@ -1729,6 +1729,22 @@ PrefabInstance:
       propertyPath: 'states.Array.data[7]'
       value: 
       objectReference: {fileID: 4848535614823984721}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: airMaxSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: groundMaxSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: airAcceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: groundAcceleration
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
       value: 
