@@ -215,7 +215,7 @@ namespace Managers
             PlayerData player = players.FirstOrDefault(item => item.PlayerId == id);
             if (player == null)
             {
-                Debug.LogError($"Player ID {id} doesn't exist");
+                Debug.Log($"Player ID {id} doesn't exist");
                 return;
             }
 

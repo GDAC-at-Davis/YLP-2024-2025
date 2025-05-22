@@ -56,6 +56,20 @@ namespace GameEntities
         public float StunTime => stunTime;
         public int MaxHealth { get; private set; }
 
+        public Color PlayerColor
+        {
+            get
+            {
+                if (playerId == -1)
+                {
+                    Debug.Log("PlayerId is not set. Returning default color.");
+                    return Color.white;
+                }
+
+                return gameDataSO.PlayerColors[playerId];
+            }
+        }
+
         public UnityAction<int, int> UpdateHealth;
 
         private int playerId = -1;
@@ -118,7 +132,7 @@ namespace GameEntities
             }
 
             health -= damage;
-            UpdateHealth.Invoke(playerId, health);
+            UpdateHealth?.Invoke(playerId, health);
         }
 
         // Callback for landing an attack on a Character
