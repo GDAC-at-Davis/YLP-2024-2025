@@ -1,5 +1,6 @@
 using GameEntities;
 using Input_Scripts;
+using LevelScripts;
 using Managers;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,10 @@ public class MatchManager : MonoBehaviour
 
     private void Awake()
     {
-        Instantiate(gameDataSO.SelectedLevel.LevelPrefab);
+        Vector3[] spawns = Instantiate(gameDataSO.SelectedLevel.LevelPrefab).Spawnpoints;
         for (int i = 0; i < gameDataSO.PlayerCount; i++)
         {
-            CharacterEntity character = Instantiate(gameDataSO.GetPlayerData(i).SelectedCharacter.CharacterPrefab).GetComponent<CharacterEntity>();
+            CharacterEntity character = Instantiate(gameDataSO.GetPlayerData(i).SelectedCharacter.CharacterPrefab, spawns[i], Quaternion.identity).GetComponent<CharacterEntity>();
             character.Initialize(i);
             players.Add(character);
             players[i].UpdateHealth += CheckHealth;

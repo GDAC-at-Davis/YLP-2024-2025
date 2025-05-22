@@ -14,7 +14,7 @@ namespace LevelScripts
         public string LevelDisplayName;
 
         [Tooltip("Reference for level's gameobject")]
-        public GameObject LevelPrefab;
+        public MapMonoBehavior LevelPrefab;
 
         [ShowAssetPreview(128, 128)]
         [Tooltip("Level portrait for use in UI Elements")]

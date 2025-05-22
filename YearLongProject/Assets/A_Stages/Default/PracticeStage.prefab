@@ -1574,6 +1574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4272274497598724786}
   - component: {fileID: 4496598664918843483}
+  - component: {fileID: 1615303468472177271}
   m_Layer: 6
   m_Name: PracticeStage
   m_TagString: Untagged
@@ -1621,6 +1622,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518861c8abb09d04db433e9d8b6c023f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1615303468472177271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6906461375134028428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ee6b25c70fdeb41b7d38313af69af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnpoints:
+  - {x: -10, y: 7.5, z: 0}
+  - {x: 10, y: 7.5, z: 0}
+  - {x: -10, y: 3.5, z: 0}
+  - {x: 10, y: 3.5, z: 0}
+  markerSize: 0.5
+  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
 --- !u!1 &7987982862016877722
 GameObject:
   m_ObjectHideFlags: 0
