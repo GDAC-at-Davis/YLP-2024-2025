@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sprite3D
+  m_Name: Sprite3DMain
   m_Shader: {fileID: -6465566751694194690, guid: 18fc557986c6c3d4d98f265a6bcd01f4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,6 +42,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ColorAdjust: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
