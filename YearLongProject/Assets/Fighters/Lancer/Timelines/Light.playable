@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 8
+      <Damage>k__BackingField: 6
       <Knockback>k__BackingField: {x: 4, y: 2}
-      <Hitstun>k__BackingField: 0.5
+      <Hitstun>k__BackingField: 0.3
       <HitStopDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
@@ -75,9 +75,9 @@ MonoBehaviour:
     HitboxGroupId: LightPrimary
     RaycastArea: []
     BoxArea:
-    - center: {x: 0.45, y: 0.14}
+    - center: {x: 0.6, y: 0.17}
       rotation: 0
-      size: {x: 1, y: 0.9}
+      size: {x: 0.8, y: 1.3}
 --- !u!114 &-7500514140640883419
 MonoBehaviour:
   m_ObjectHideFlags: 1
