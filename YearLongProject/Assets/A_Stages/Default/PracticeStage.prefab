@@ -1147,7 +1147,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1157,7 +1157,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4, y: 15}
+  m_Size: {x: 4, y: 19}
   m_EdgeRadius: 0
 --- !u!114 &4474805226429532657
 MonoBehaviour:
@@ -1986,7 +1986,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1996,7 +1996,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4, y: 15}
+  m_Size: {x: 4, y: 18}
   m_EdgeRadius: 0
 --- !u!114 &7483719573296322406
 MonoBehaviour:
@@ -2779,6 +2779,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4272274497598724786}
     m_Modifications:
+    - target: {fileID: 2022323045406044355, guid: a50db394dce86c2459b25f21897ac9a0, type: 3}
+      propertyPath: attachedEntity
+      value: 
+      objectReference: {fileID: 4496598664918843483}
     - target: {fileID: 4704733336272482394, guid: a50db394dce86c2459b25f21897ac9a0, type: 3}
       propertyPath: m_Name
       value: Platform (3)
@@ -2907,6 +2911,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4272274497598724786}
     m_Modifications:
+    - target: {fileID: 2022323045406044355, guid: a50db394dce86c2459b25f21897ac9a0, type: 3}
+      propertyPath: attachedEntity
+      value: 
+      objectReference: {fileID: 4496598664918843483}
     - target: {fileID: 4704733336272482394, guid: a50db394dce86c2459b25f21897ac9a0, type: 3}
       propertyPath: m_Name
       value: Platform (4)
@@ -3039,6 +3047,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4272274497598724786}
     m_Modifications:
+    - target: {fileID: 2022323045406044355, guid: a50db394dce86c2459b25f21897ac9a0, type: 3}
+      propertyPath: attachedEntity
+      value: 
+      objectReference: {fileID: 4496598664918843483}
     - target: {fileID: 4704733336272482394, guid: a50db394dce86c2459b25f21897ac9a0, type: 3}
       propertyPath: m_Name
       value: Platform (1)
