@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboEntries:
   - State: {fileID: 2105862708615594874}
-    ComboChainTime: 1.2
+    ComboChainTime: 0.6
   - State: {fileID: 4848535614823984721}
     ComboChainTime: 0.6
   actionManager: {fileID: 3105801480486927495}
