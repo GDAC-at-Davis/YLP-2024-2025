@@ -58,7 +58,6 @@ namespace GameplayUI
             }
 
             CharacterEntity newCharEntity = gameDataSO.GetPlayerData(playerId).CharacterEntity;
-
             SetCharacterEntity(newCharEntity);
 
             gameDataSO.OnPlayerDataChanged += OnPlayerDataChanged;
@@ -103,8 +102,13 @@ namespace GameplayUI
 
         private void SetHealthText(int newHealth)
         {
+            if (newHealth < 0)
+            {
+                newHealth = 0;
+            }
+
             healthBar.value = Mathf.Clamp(newHealth / (float)maxHealth, 0, 1);
-            healthText.text = newHealth.ToString();
+            healthText.text = newHealth == 0 ? "" : newHealth.ToString();
         }
     }
 }

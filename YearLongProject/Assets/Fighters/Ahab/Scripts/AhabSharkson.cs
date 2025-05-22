@@ -135,14 +135,14 @@ namespace Fighters.Ahab.Scripts
             timeSinceStartDash += Time.deltaTime;
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
             if (!thrown)
             {
                 return;
             }
 
-            if (groundLayer.IsInLayerMask(other))
+            if (groundLayer.IsInLayerMask(other) && characterRb.LinearVelocity.y <= 0)
             {
                 onGround = true;
             }
@@ -224,6 +224,11 @@ namespace Fighters.Ahab.Scripts
 
         private void AlignSharkToVel()
         {
+            if (rb.linearVelocity.x == 0)
+            {
+                return;
+            }
+
             bool flipX = rb.linearVelocity.x < 0;
             sprite.transform.localScale = new Vector3(flipX ? -1 : 1, 1, 1);
         }
