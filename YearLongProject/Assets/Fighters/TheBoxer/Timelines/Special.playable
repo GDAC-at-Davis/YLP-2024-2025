@@ -75,9 +75,9 @@ MonoBehaviour:
     HitboxGroupId: Special Spin 1
     RaycastArea: []
     BoxArea:
-    - center: {x: 2, y: 0.25}
+    - center: {x: 2, y: 0.4}
       rotation: 0
-      size: {x: 3.4, y: 1.2}
+      size: {x: 3.4, y: 1}
 --- !u!114 &-7393832092995902472
 MonoBehaviour:
   m_ObjectHideFlags: 1
