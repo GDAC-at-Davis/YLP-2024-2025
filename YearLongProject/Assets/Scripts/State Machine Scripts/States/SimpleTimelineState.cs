@@ -25,7 +25,7 @@ namespace State_Machine_Scripts.States
         private ManualTimelinePlayer timelinePlayer;
 
         [SerializeField]
-        private bool useDefaultMovement;
+        public bool useDefaultMovement;
 
         private void Update()
         {
