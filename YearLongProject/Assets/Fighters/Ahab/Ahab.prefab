@@ -1104,6 +1104,10 @@ PrefabInstance:
       propertyPath: OnLandHit.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 5105533555293983522}
+    - target: {fileID: 5251339292392020784, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: characterEntity
+      value: 
+      objectReference: {fileID: 3850342251300834818}
     - target: {fileID: 7457438098314336491, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: m_Name
       value: SHARKSON
@@ -1642,6 +1646,10 @@ PrefabInstance:
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686544978533971043, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 8937021948173160725, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Size.x

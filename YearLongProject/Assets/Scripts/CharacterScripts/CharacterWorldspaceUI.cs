@@ -1,7 +1,5 @@
 using GameEntities;
-using Managers;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CharacterScripts
 {
@@ -11,18 +9,13 @@ namespace CharacterScripts
         private CharacterEntity entity;
 
         [SerializeField]
-        private GameDataSO gameDataSO;
+        private SpriteRenderer normalMarker;
 
         [SerializeField]
-        private Image normalMarker;
-
-        [SerializeField]
-        private Image dashMarker;
+        private SpriteRenderer dashMarker;
 
         private void Start()
         {
-            normalMarker.color = gameDataSO.PlayerColors[entity.PlayerId];
-            dashMarker.color = gameDataSO.PlayerColors[entity.PlayerId];
             UpdateInvincibilityStatus(false);
         }
 
