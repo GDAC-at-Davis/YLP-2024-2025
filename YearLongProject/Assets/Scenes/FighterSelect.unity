@@ -669,6 +669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c364f8451321a4343a7f956379d5fd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
+  cursorPrefab: {fileID: 7708332391457664863, guid: 832f067ad87573041bc8c368eedf7dda, type: 3}
+  container: {fileID: 725065625}
+  cursorBottomLeft: {fileID: 1385804265}
+  cursorTopRight: {fileID: 1842286168}
 --- !u!1 &1385804264
 GameObject:
   m_ObjectHideFlags: 0
