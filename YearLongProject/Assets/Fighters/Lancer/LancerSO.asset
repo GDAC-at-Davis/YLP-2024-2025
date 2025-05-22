@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterDisplayName: Lancer
   CharacterPrefab: {fileID: 6242291163348849283, guid: 86323130687063445a000e949fa6f85d, type: 3}
-  CharacterPortrait: {fileID: 1041260435, guid: 954d833355180e844a52583d63d45e34, type: 3}
+  CharacterPortrait: {fileID: -1439970193, guid: 7a5dd681568dac446ae8acf0e8b370cb, type: 3}
