@@ -224,6 +224,11 @@ namespace Fighters.Ahab.Scripts
 
         private void AlignSharkToVel()
         {
+            if (rb.linearVelocity.x == 0)
+            {
+                return;
+            }
+
             bool flipX = rb.linearVelocity.x < 0;
             sprite.transform.localScale = new Vector3(flipX ? -1 : 1, 1, 1);
         }
