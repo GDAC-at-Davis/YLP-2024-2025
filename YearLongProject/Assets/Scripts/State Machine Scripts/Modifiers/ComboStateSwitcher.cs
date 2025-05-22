@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EditorUtils.BoldHeader;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace State_Machine_Scripts.Modifiers
 {
@@ -30,6 +31,8 @@ namespace State_Machine_Scripts.Modifiers
         [SerializeField]
         private CharacterActionManager actionManager;
 
+        private readonly List<UnityAction> stateEnteredListeners = new();
+
         [ShowNonSerializedField]
         private int currentComboIndex;
 
@@ -37,7 +40,18 @@ namespace State_Machine_Scripts.Modifiers
         private float comboChainTimer;
 
         private CharacterState lastQueuedState;
-        private float lastQueuedStateTime;
+
+        private void Start()
+        {
+            for (var i = 0; i < comboEntries.Count; i++)
+            {
+                int index = i;
+                ComboEntry entry = comboEntries[i];
+                var stateEnteredListener = new UnityAction(() => HandleStateEntered(index));
+                stateEnteredListeners.Add(stateEnteredListener);
+                entry.State.OnStateEntered.AddListener(stateEnteredListener);
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -55,9 +69,16 @@ namespace State_Machine_Scripts.Modifiers
 
         private void OnDestroy()
         {
-            if (lastQueuedState != null)
+            if (actionManager == null)
             {
-                lastQueuedState.OnStateEntered.RemoveListener(IncrementState);
+                return;
+            }
+
+            for (var i = 0; i < comboEntries.Count; i++)
+            {
+                int index = i;
+                ComboEntry entry = comboEntries[i];
+                entry.State.OnStateEntered.RemoveListener(stateEnteredListeners[index]);
             }
         }
 
@@ -69,28 +90,21 @@ namespace State_Machine_Scripts.Modifiers
                 return;
             }
 
-            // Combos loop
+            ComboEntry currentCombo = comboEntries[currentComboIndex];
+            actionManager.SetState(currentCombo.State);
+        }
+
+        private void HandleStateEntered(int enteredIndex)
+        {
+            lastQueuedState = null;
+            ComboEntry currentCombo = comboEntries[enteredIndex];
+            comboChainTimer = currentCombo.ComboChainTime;
+
+            currentComboIndex = enteredIndex + 1;
             if (currentComboIndex >= comboEntries.Count)
             {
                 currentComboIndex = 0;
             }
-
-            if (lastQueuedState)
-            {
-                lastQueuedState.OnStateEntered.RemoveListener(IncrementState);
-            }
-
-            ComboEntry currentCombo = comboEntries[currentComboIndex];
-            currentCombo.State.OnStateEntered.AddListener(IncrementState);
-            actionManager.SetState(currentCombo.State);
-            lastQueuedState = currentCombo.State;
-            lastQueuedStateTime = currentCombo.ComboChainTime;
-        }
-
-        private void IncrementState()
-        {
-            comboChainTimer = lastQueuedStateTime;
-            currentComboIndex++;
         }
     }
 }
