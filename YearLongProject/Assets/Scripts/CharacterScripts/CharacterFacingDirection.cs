@@ -76,6 +76,9 @@ namespace CharacterScripts
             }
         }
 
+        /// <summary>
+        ///     Apply the target/desired flipX to the character
+        /// </summary>
         private void SyncFlipX()
         {
             if (currentFlipX == targetFlipX)
@@ -87,6 +90,11 @@ namespace CharacterScripts
             OnFlipXChange?.Invoke(currentFlipX);
         }
 
+        /// <summary>
+        ///     Handle being hit by flipping to face knockback
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="impact"></param>
         public void HandleOnHit(HitboxInstance instance, HitImpact impact)
         {
             Vector2 knockback = instance.CalculatedKnockback();
