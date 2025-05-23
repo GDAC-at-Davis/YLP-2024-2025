@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     AllowedStates:
-    - {fileID: 11400000, guid: 0e10f278ea9823445b9ecac3cd38e2e5, type: 2}
+    - {fileID: 11400000, guid: 18e29691a3be50e47b9d581dc9b8ce8e, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
