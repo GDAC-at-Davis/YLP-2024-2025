@@ -1,4 +1,6 @@
 using EditorUtils.BoldHeader;
+using Hitbox.DataStructures;
+using Hitbox.System;
 using Input_Scripts;
 using NaughtyAttributes;
 using UnityEngine;
@@ -83,6 +85,22 @@ namespace CharacterScripts
 
             currentFlipX = targetFlipX;
             OnFlipXChange?.Invoke(currentFlipX);
+        }
+
+        public void HandleOnHit(HitboxInstance instance, HitImpact impact)
+        {
+            Vector2 knockback = instance.CalculatedKnockback();
+
+            if (knockback.x < 0)
+            {
+                targetFlipX = false;
+            }
+            else if (knockback.x > 0)
+            {
+                targetFlipX = true;
+            }
+
+            SyncFlipX();
         }
     }
 }

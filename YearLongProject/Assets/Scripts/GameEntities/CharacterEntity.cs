@@ -113,8 +113,7 @@ namespace GameEntities
         public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
             // TODO: move this logic into a function in movement controller?
-            Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
-            knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
+            Vector2 knockback = hitboxInstance.CalculatedKnockback();
             stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
             movementController.SetVelocity(knockback);
