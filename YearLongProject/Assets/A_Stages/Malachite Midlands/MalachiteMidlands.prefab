@@ -3315,6 +3315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7886128481704795336}
   - component: {fileID: 2038265415732939095}
+  - component: {fileID: 5830028711373780819}
   m_Layer: 6
   m_Name: MalachiteMidlands
   m_TagString: Untagged
@@ -3365,6 +3366,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518861c8abb09d04db433e9d8b6c023f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5830028711373780819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991015853126471425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ee6b25c70fdeb41b7d38313af69af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnpoints:
+  - {x: 10, y: 3.5, z: 0}
+  - {x: -14, y: 3.5, z: 0}
+  - {x: 10, y: 0.5, z: 0}
+  - {x: -14, y: 0.5, z: 0}
+  markerSize: 0.5
+  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
 --- !u!1 &7890362273380806993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,6 +4348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicLighting
       objectReference: {fileID: 0}
+    - target: {fileID: 8005001056933098862, guid: 109f421a570b8594ab4cfb42278e6cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8085133862372254322, guid: 109f421a570b8594ab4cfb42278e6cad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4502,6 +4526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Malachite
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c86aea66783039419bfbca44dbb4d93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321514657177891973, guid: 7c86aea66783039419bfbca44dbb4d93, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -4604,6 +4632,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 07b87447123431e4abc361099bc57b52, type: 3}
       propertyPath: m_Name
       value: Malachite Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07b87447123431e4abc361099bc57b52, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
