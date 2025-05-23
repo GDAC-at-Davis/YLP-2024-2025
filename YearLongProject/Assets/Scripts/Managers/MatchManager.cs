@@ -1,29 +1,37 @@
-using GameEntities;
-using Input_Scripts;
-using LevelScripts;
-using Managers;
 using System.Collections.Generic;
 using System.Linq;
+using GameEntities;
+using Input_Scripts;
+using Managers;
 using UnityEngine;
 
 /// <summary>
-/// Instantiates stage and characters
+///     Instantiates stage and characters
 /// </summary>
 public class MatchManager : MonoBehaviour
 {
     [SerializeField]
     private GameDataSO gameDataSO;
+
     [SerializeField]
     private PlayerInputSo playerInputSO;
 
-    private List<CharacterEntity> players = new();
+    private readonly List<CharacterEntity> players = new();
 
     private void Awake()
     {
         Vector3[] spawns = Instantiate(gameDataSO.SelectedLevel.LevelPrefab).Spawnpoints;
-        for (int i = 0; i < gameDataSO.PlayerCount; i++)
+
+        if (spawns.Length != gameDataSO.PlayerCount)
         {
-            CharacterEntity character = Instantiate(gameDataSO.GetPlayerData(i).SelectedCharacter.CharacterPrefab, spawns[i], Quaternion.identity).GetComponent<CharacterEntity>();
+            Debug.LogError($"There should be at least {gameDataSO.PlayerCount} spawnpoints!");
+        }
+
+        for (var i = 0; i < gameDataSO.PlayerCount; i++)
+        {
+            var character =
+                Instantiate(gameDataSO.GetPlayerData(i).SelectedCharacter.CharacterPrefab, spawns[i],
+                    Quaternion.identity).GetComponent<CharacterEntity>();
             character.Initialize(i);
             players.Add(character);
             players[i].UpdateHealth += CheckHealth;
@@ -32,13 +40,13 @@ public class MatchManager : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach(CharacterEntity player in players)
+        foreach (CharacterEntity player in players)
         {
             player.UpdateHealth -= CheckHealth;
         }
     }
 
-    void CheckHealth(int id, int health)
+    private void CheckHealth(int id, int health)
     {
         if (health > 0)
         {
@@ -53,7 +61,7 @@ public class MatchManager : MonoBehaviour
             return;
         }
 
-        foreach(CharacterEntity entity in players)
+        foreach (CharacterEntity entity in players)
         {
             gameDataSO.RemovePlayer(entity.PlayerId);
         }
@@ -61,7 +69,7 @@ public class MatchManager : MonoBehaviour
         Invoke("NewGame", 3);
     }
 
-    void NewGame()
+    private void NewGame()
     {
         playerInputSO.ClearAllInputReaders();
         gameDataSO.LoadScene("FighterSelect");
