@@ -72,7 +72,7 @@ MonoBehaviour:
         Path: event:/Splat
     ScreenShakeSO: {fileID: 11400000, guid: 6e9554aa511402d4d874eb766e30db82, type: 2}
     EndHitboxGroup: 1
-    HitboxGroupId: NewHitbox
+    HitboxGroupId: HeavyPrimary
     RaycastArea: []
     BoxArea:
     - center: {x: 0.28, y: 0.82}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 15
+      <Damage>k__BackingField: 11
       <Knockback>k__BackingField: {x: 15, y: 4}
       <Hitstun>k__BackingField: 1
       <HitStopDuration>k__BackingField: 0.5
