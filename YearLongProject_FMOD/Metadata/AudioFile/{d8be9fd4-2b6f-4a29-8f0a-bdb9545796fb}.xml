@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{d8be9fd4-2b6f-4a29-8f0a-bdb9545796fb}">
 		<property name="assetPath">
-			<value>Test/SFX - FishMonger Weapon Hit - Light attack.ogg</value>
+			<value>Characters/Ahab/SFX - FishMonger Weapon Hit - Light attack.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
