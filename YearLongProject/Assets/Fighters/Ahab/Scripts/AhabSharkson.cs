@@ -115,13 +115,13 @@ namespace Fighters.Ahab.Scripts
                 {
                     HitboxContext context = hitboxEmitter.GetContext(dashHitboxGroupId);
                     context.FlipX = characterRb.LinearVelocity.x < 0;
-                    hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, dashHitboxGroupId);
+                    hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, context, dashHitboxGroupId);
                 }
                 else
                 {
                     HitboxContext context = hitboxEmitter.GetContext(neutralHitboxGroupId);
                     context.FlipX = characterRb.LinearVelocity.x < 0;
-                    hitboxEmitter.EmitHitbox(hitboxArea, neutralAttackEffect, neutralHitboxGroupId);
+                    hitboxEmitter.EmitHitbox(hitboxArea, neutralAttackEffect, context, neutralHitboxGroupId);
                 }
 
                 sprite.gameObject.SetActive(true);

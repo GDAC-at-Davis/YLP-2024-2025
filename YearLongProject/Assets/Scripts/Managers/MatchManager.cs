@@ -22,7 +22,7 @@ public class MatchManager : MonoBehaviour
     {
         Vector3[] spawns = Instantiate(gameDataSO.SelectedLevel.LevelPrefab).Spawnpoints;
 
-        if (spawns.Length != gameDataSO.PlayerCount)
+        if (spawns.Length < gameDataSO.PlayerCount)
         {
             Debug.LogError($"There should be at least {gameDataSO.PlayerCount} spawnpoints!");
         }
