@@ -616,6 +616,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5143816317544813401, guid: 171d9e6710a203a4ab37b1fcbecc941c, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 6242291163348849283, guid: 171d9e6710a203a4ab37b1fcbecc941c, type: 3}
       propertyPath: m_Name
       value: Pirate Lady
