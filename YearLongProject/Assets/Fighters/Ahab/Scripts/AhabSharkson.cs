@@ -12,6 +12,9 @@ namespace Fighters.Ahab.Scripts
 {
     public class AhabSharkson : MonoBehaviour
     {
+        private const string dashHitboxGroupId = "sharkDash";
+        private const string neutralHitboxGroupId = "sharkImpact";
+
         [BoldHeader("SHARKSON Script")]
         [Header("Dependencies")]
 
@@ -110,11 +113,15 @@ namespace Fighters.Ahab.Scripts
             {
                 if (dashing)
                 {
-                    hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, "sharkDash");
+                    HitboxContext context = hitboxEmitter.GetContext(dashHitboxGroupId);
+                    context.FlipX = characterRb.LinearVelocity.x < 0;
+                    hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, dashHitboxGroupId);
                 }
                 else
                 {
-                    hitboxEmitter.EmitHitbox(hitboxArea, neutralAttackEffect, "sharkImpact");
+                    HitboxContext context = hitboxEmitter.GetContext(neutralHitboxGroupId);
+                    context.FlipX = characterRb.LinearVelocity.x < 0;
+                    hitboxEmitter.EmitHitbox(hitboxArea, neutralAttackEffect, neutralHitboxGroupId);
                 }
 
                 sprite.gameObject.SetActive(true);
@@ -205,7 +212,7 @@ namespace Fighters.Ahab.Scripts
                 return;
             }
 
-            hitboxEmitter.EndHitboxGroup("sharkImpact");
+            hitboxEmitter.EndHitboxGroup(neutralHitboxGroupId);
 
             timeSinceStartDash = 0;
 
@@ -219,7 +226,7 @@ namespace Fighters.Ahab.Scripts
         {
             //rb.gravityScale = 0.5f;
             rb.linearDamping = initialLinearDamping;
-            hitboxEmitter.EndHitboxGroup("sharkDash");
+            hitboxEmitter.EndHitboxGroup(dashHitboxGroupId);
         }
 
         private void AlignSharkToVel()
