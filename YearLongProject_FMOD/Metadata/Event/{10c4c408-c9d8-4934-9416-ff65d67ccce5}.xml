@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{10c4c408-c9d8-4934-9416-ff65d67ccce5}">
 		<property name="name">
 			<value>Splat</value>
@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{5a7a84d4-9ed9-4a01-9f06-5852e31a0156}">
+		<property name="volume">
+			<value>2.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{03ceb28d-b8b9-4ea3-b010-2094ee72d817}</destination>
 		</relationship>
@@ -104,7 +107,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{e8961cab-fdbf-4333-a64c-d750cad10e87}">
 		<property name="volume">
-			<value>7</value>
+			<value>10</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
