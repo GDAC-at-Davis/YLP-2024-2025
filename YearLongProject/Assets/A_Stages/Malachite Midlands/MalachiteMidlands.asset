@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDisplayName: Malachite Midlands
   LevelPrefab: {fileID: 5830028711373780819, guid: a70d7560ca1faca448153a389076260c, type: 3}
-  LevelPortrait: {fileID: 21300000, guid: 257187f557f884847a3f92cffe35d73e, type: 3}
+  LevelPortrait: {fileID: 21300000, guid: 3870680609b3c7b43940db0c4add7d62, type: 3}
