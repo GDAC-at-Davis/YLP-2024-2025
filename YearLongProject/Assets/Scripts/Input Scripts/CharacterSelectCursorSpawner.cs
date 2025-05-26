@@ -58,6 +58,12 @@ namespace Input_Scripts
         {
             PlayerCursorController cursor = Instantiate(cursorPrefab, container);
             cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight, container);
+            cursor.BackAction = RemovePlayer;
+        }
+
+        void RemovePlayer(PlayerCursorController cursor)
+        {
+            gameDataSO.RemovePlayer(cursor.PlayerID);
         }
     }
 }
