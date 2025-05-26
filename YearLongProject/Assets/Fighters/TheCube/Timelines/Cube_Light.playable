@@ -69,7 +69,7 @@ MonoBehaviour:
           Data2: 1228196312
           Data3: 1711216276
           Data4: -439583530
-        Path: event:/Splat
+        Path: event:/Characters/Ahab/LightAttackHit
     ScreenShakeSO: {fileID: 11400000, guid: 6e9554aa511402d4d874eb766e30db82, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
@@ -794,7 +794,7 @@ MonoBehaviour:
       Data2: 1090710763
       Data3: 986670009
       Data4: -1886672769
-    Path: event:/Whoosh
+    Path: event:/Characters/Ahab/LightAttackUse
   StopType: 0
   Parameters: []
 --- !u!114 &3860187452455979252

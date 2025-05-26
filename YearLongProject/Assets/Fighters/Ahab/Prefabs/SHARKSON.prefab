@@ -241,7 +241,7 @@ MonoBehaviour:
         Data2: 1228196312
         Data3: 1711216276
         Data4: -439583530
-      Path: event:/Splat
+      Path: event:/Characters/Ahab/LightAttackHit
   dashAttackEffect:
     <Damage>k__BackingField: 5
     <Knockback>k__BackingField: {x: 10, y: 10}
@@ -298,7 +298,7 @@ MonoBehaviour:
         Data2: 1228196312
         Data3: 1711216276
         Data4: -439583530
-      Path: event:/Splat
+      Path: event:/Characters/Ahab/LightAttackHit
   groundLayer:
     serializedVersion: 2
     m_Bits: 576
