@@ -18,6 +18,8 @@ namespace Managers
     {
         PlayerAdded,
         PlayerRemoved,
+        SelectedCharacterChanged,
+        ProspectCharacterChanged,
         CharacterEntityChanged
     }
 
@@ -40,6 +42,7 @@ namespace Managers
         {
             public int PlayerId;
             public CharacterSO SelectedCharacter;
+            public CharacterSO ProspectCharacter;
 
             /// <summary>
             ///     If in gameplay, this is the actual character entity controlled by the player
@@ -170,7 +173,10 @@ namespace Managers
         /// <param name="character"></param>
         public void SetPlayerSelectedCharacter(int id, CharacterSO character)
         {
-            players.FirstOrDefault(item => item.PlayerId == id).SelectedCharacter = character;
+            PlayerData player = players.FirstOrDefault(item => item.PlayerId == id);
+            player.SelectedCharacter = character;
+
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.SelectedCharacterChanged, player);
 
             if (players.Where(item => item.SelectedCharacter == null).Count() > 0)
             {
@@ -184,6 +190,14 @@ namespace Managers
 
             OnAllPlayersReady?.Invoke();
             LoadScene(levelSelectScene);
+        }
+
+        public void SetPlayerProspectCharacter(int id, CharacterSO character)
+        {
+            PlayerData player = players.FirstOrDefault(item => item.PlayerId == id);
+            player.ProspectCharacter = character;
+
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.ProspectCharacterChanged, player);
         }
 
         /// <summary>
@@ -222,5 +236,6 @@ namespace Managers
             player.CharacterEntity = character;
             OnPlayerDataChanged?.Invoke(id, PlayerDataChange.CharacterEntityChanged, player);
         }
+
     }
 }

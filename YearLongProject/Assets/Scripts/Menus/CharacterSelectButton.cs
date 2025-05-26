@@ -58,11 +58,16 @@ public class CharacterSelectButton : ButtonBehavior
 
     public override void OnHoverEnter(PlayerCursorController cursor)
     {
-        throw new System.NotImplementedException();
+        if (gameDataSO.GetPlayerData(cursor.PlayerID).ProspectCharacter == Character)
+        {
+            return;
+        }
+
+        gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, Character);
     }
 
     public override void OnHoverExit(PlayerCursorController cursor)
     {
-        throw new System.NotImplementedException();
+        gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null);
     }
 }

@@ -36,6 +36,12 @@ namespace Input_Scripts
         private float speed = 500;
 
         [SerializeField]
+        [Tooltip("How often should cursor check for OnHover")]
+        private float onHoverRate = 0.5f;
+        private float lastOnHover = 0;
+        private ButtonBehavior currentHoveredButton = null;
+
+        [SerializeField]
         private CursorType cursorType;
 
         private PlayerInputSo.PlayerInputEvents events;
@@ -77,7 +83,32 @@ namespace Input_Scripts
 
         private void Update()
         {
-            if (selected || input == Vector3.zero)
+            if (selected)
+            {
+                return;
+            }
+
+            if (lastOnHover + onHoverRate < Time.time)
+            {
+                ButtonBehavior button = null;
+                button = Physics2D.OverlapPoint(transform.position)?.GetComponent<ButtonBehavior>();
+                if (button == null)
+                {
+                    if (currentHoveredButton != null)
+                    {
+                        currentHoveredButton.OnHoverExit(this);
+                        currentHoveredButton = null;
+                    }
+                }
+                else if (currentHoveredButton != button)
+                {
+                    button.OnHoverEnter(this);
+                    currentHoveredButton = button;
+                }
+                lastOnHover = Time.time;
+            }
+
+            if (input == Vector3.zero)
             {
                 return;
             }

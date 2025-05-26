@@ -41,11 +41,11 @@ public class LevelSelectButton : ButtonBehavior
 
     public override void OnHoverEnter(PlayerCursorController cursor)
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
     public override void OnHoverExit(PlayerCursorController cursor)
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

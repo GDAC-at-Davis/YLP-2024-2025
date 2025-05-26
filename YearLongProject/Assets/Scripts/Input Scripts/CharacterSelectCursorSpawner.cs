@@ -26,7 +26,12 @@ namespace Input_Scripts
         private PlayerCursorController cursorPrefab;
 
         [SerializeField]
-        private RectTransform container;
+        private CharacterSelectDisplay displayPrefab;
+
+        [SerializeField]
+        private RectTransform cursorContainer;
+        [SerializeField]
+        private RectTransform displayContainer;
 
         [SerializeField]
         private RectTransform cursorBottomLeft;
@@ -56,9 +61,11 @@ namespace Input_Scripts
 
         private void OnPlayerAdded(int playerId)
         {
-            PlayerCursorController cursor = Instantiate(cursorPrefab, container);
-            cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight, container);
+            PlayerCursorController cursor = Instantiate(cursorPrefab, cursorContainer);
+            cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight, cursorContainer);
             cursor.BackAction = RemovePlayer;
+
+            Instantiate(displayPrefab, displayContainer).Initialize(playerId);
         }
 
         void RemovePlayer(PlayerCursorController cursor)
