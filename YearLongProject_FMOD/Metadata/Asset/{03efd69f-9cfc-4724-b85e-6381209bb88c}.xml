@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{03efd69f-9cfc-4724-b85e-6381209bb88c}">
+		<property name="assetPath">
+			<value>Characters/Lancer/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{91809af5-d656-4fcd-81fa-52f4061d6beb}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightingCamera: {fileID: 2748817992342692744}
+  gathering: 1
 --- !u!1 &7798950107443839925
 GameObject:
   m_ObjectHideFlags: 0
