@@ -9,6 +9,9 @@ namespace Camera
         [SerializeField]
         private FightingCamera fightingCamera;
 
+        [SerializeField]
+        private bool gathering;
+
         private void Start()
         {
             Gather();
@@ -16,7 +19,7 @@ namespace Camera
 
         private void Update()
         {
-            if (Time.frameCount % 60 == 0)
+            if (Time.frameCount % 60 == 0 && gathering)
             {
                 Gather();
             }

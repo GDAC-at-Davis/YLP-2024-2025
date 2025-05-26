@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{b8db3d32-4cef-4800-9567-24d286ac1490}" />
 	<object class="GroupTrack" id="{7ea61c4d-5ad9-4033-8e22-3fc569d022b9}">
 		<relationship name="modules">
-			<destination>{261c5c1f-edf5-4a3c-8b37-042787411a5e}</destination>
+			<destination>{bd583172-26e5-4b87-b6ec-8f7b34c25971}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{9367c140-764d-4fa0-b86b-c9234950992f}</destination>
@@ -68,7 +68,7 @@
 	</object>
 	<object class="Timeline" id="{fe746a2f-42ff-4a0b-8c59-7781e75c91f6}">
 		<relationship name="modules">
-			<destination>{261c5c1f-edf5-4a3c-8b37-042787411a5e}</destination>
+			<destination>{bd583172-26e5-4b87-b6ec-8f7b34c25971}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{2aa892c3-1971-4cbf-be2b-b85ab2d6a4cc}</destination>
@@ -92,17 +92,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{78eda0b3-4d77-417f-a29b-77bc5b995d32}" />
-	<object class="SingleSound" id="{261c5c1f-edf5-4a3c-8b37-042787411a5e}">
+	<object class="SingleSound" id="{bd583172-26e5-4b87-b6ec-8f7b34c25971}">
 		<property name="length">
-			<value>223.72800000000001</value>
+			<value>185.59200000000001</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{16dda872-81e9-4da0-b4ef-7065409e8b9e}</destination>
+			<destination>{309441d9-4e79-47f8-b5b2-a88fa0f8c293}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9367c140-764d-4fa0-b86b-c9234950992f}">
 		<property name="volume">
-			<value>-13.5</value>
+			<value>-10</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -119,10 +119,10 @@
 	</object>
 	<object class="LoopRegion" id="{2aa892c3-1971-4cbf-be2b-b85ab2d6a4cc}">
 		<property name="position">
-			<value>0</value>
+			<value>1.8461458333333334</value>
 		</property>
 		<property name="length">
-			<value>221.81818749999999</value>
+			<value>177.23077083333337</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{fe746a2f-42ff-4a0b-8c59-7781e75c91f6}</destination>
@@ -136,7 +136,7 @@
 			<value>0</value>
 		</property>
 		<property name="tempo">
-			<value>132</value>
+			<value>130</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{fe746a2f-42ff-4a0b-8c59-7781e75c91f6}</destination>
