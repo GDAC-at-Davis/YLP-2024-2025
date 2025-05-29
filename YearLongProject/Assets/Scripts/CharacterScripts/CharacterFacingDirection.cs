@@ -90,13 +90,7 @@ namespace CharacterScripts
 
         public void ForceSetFlipX(bool flipX)
         {
-            if (currentFlipX == flipX)
-            {
-                return;
-            }
-
-            currentFlipX = flipX;
-
+            targetFlipX = flipX;
             SyncFlipX();
         }
     }
