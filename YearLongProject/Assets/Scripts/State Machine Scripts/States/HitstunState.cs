@@ -46,8 +46,9 @@ namespace State_Machine_Scripts.States
             }
 
             ActionManager.SetAllActionTypeAllowed(true);
-            ActionManager.StateMachine.TrySetDefaultState();
+            // Make sure to end the timeline before switching states
             HandleOnEnd();
+            ActionManager.StateMachine.TrySetDefaultState();
         }
 
         protected override void OnEnable()
