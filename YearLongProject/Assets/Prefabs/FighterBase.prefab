@@ -147,6 +147,92 @@ MonoBehaviour:
   dropBufferTime: 0.3
   dropInputAngleFromVertical: 46
   dropInputMinY: -0.7
+--- !u!1 &1585073998912036922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3680777043075497039}
+  - component: {fileID: 8862638755809675368}
+  - component: {fileID: 7700809820146746283}
+  m_Layer: 3
+  m_Name: HitstunState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3680777043075497039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585073998912036922}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8710895339890870979}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8862638755809675368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585073998912036922}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ebd53e44d16f549b9e5572fc135870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateNameSO: {fileID: 0}
+  OnStateEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  characterEntity: {fileID: 5002924662183864281}
+  movementController: {fileID: 7042624565056469040}
+  hitstunPlayableAsset:
+    playableDirector: {fileID: 7700809820146746283}
+    loop: 1
+    OnFinishedUnityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  characterFacingDirection: {fileID: 7274787797801271283}
+  invertFacingDirection: 0
+--- !u!320 &7700809820146746283
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585073998912036922}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -1755073353440819576, guid: ac0ce67a5aa8d7644b424aad797bbab3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7379511012254884165, guid: 50ccf3096063bee418c224e3c303610a, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3466524602175485907, guid: 50ccf3096063bee418c224e3c303610a, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7379511012254884165, guid: e1eee10043c0f904c9dfb214d6f003d9, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3466524602175485907, guid: e1eee10043c0f904c9dfb214d6f003d9, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1968648881426466404
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +262,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3680777043075497039}
   m_Father: {fileID: 3525838291768555810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6564235481833952604
@@ -193,11 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 2324917260605002194}
   states:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8862638755809675368}
 --- !u!1 &2653597404781178319
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +489,7 @@ MonoBehaviour:
   ActionManager: {fileID: 6564235481833952604}
   actionInput: {fileID: 3779965043621737290}
   movementController: {fileID: 7042624565056469040}
+  hitstunState: {fileID: 8862638755809675368}
   endSceneName: FighterSelect
   OnHitByAttackEvent:
     m_PersistentCalls:
@@ -422,13 +506,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7274787797801271283}
-        m_TargetAssemblyTypeName: CharacterScripts.CharacterFacingDirection, Assembly-CSharp
-        m_MethodName: HandleOnHit
-        m_Mode: 0
+      - m_Target: {fileID: 6564235481833952604}
+        m_TargetAssemblyTypeName: State_Machine_Scripts.CharacterActionManager, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8862638755809675368}
+          m_ObjectArgumentAssemblyTypeName: State_Machine_Scripts.CharacterState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
