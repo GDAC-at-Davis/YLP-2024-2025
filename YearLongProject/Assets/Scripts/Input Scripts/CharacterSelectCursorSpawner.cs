@@ -64,8 +64,6 @@ namespace Input_Scripts
             PlayerCursorController cursor = Instantiate(cursorPrefab, cursorContainer);
             cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight, cursorContainer);
             cursor.BackAction = RemovePlayer;
-
-            Instantiate(displayPrefab, displayContainer).Initialize(playerId);
         }
 
         void RemovePlayer(PlayerCursorController cursor)

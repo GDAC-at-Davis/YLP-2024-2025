@@ -19,6 +19,9 @@ namespace Input_Scripts
         public CharacterSO Character;
         public GridLayoutGroup LayoutGroup;
 
+        [SerializeField]
+        Image[] markers;
+
         public void Init(CharacterSO character)
         {
             GetComponentInChildren<TextMeshProUGUI>().text = character.CharacterDisplayName;
@@ -29,6 +32,11 @@ namespace Input_Scripts
 
             gameDataSO.OnAllPlayersReady += ReadyUp;
             gameDataSO.OnAllPlayersUnready += UnreadyUp;
+            
+            for (int i = 0; i < markers.Length; i++)
+            {
+                markers[i].color = gameDataSO.PlayerColors[i];
+            }
         }
 
         private void OnDisable()
@@ -65,6 +73,7 @@ namespace Input_Scripts
             cursor.Selected = true;
             cursor.BackAction = Unselect;
 
+            markers[cursor.PlayerID].gameObject.SetActive(true);
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, Character);
         }
 
@@ -77,6 +86,7 @@ namespace Input_Scripts
             cursor.Selected = false;
             cursor.BackAction = RemovePlayer;
 
+            markers[cursor.PlayerID].gameObject.SetActive(false);
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, null);
             gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null); // this is stupid I'm sorry
         }

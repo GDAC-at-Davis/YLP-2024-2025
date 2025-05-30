@@ -13,18 +13,16 @@ public class CharacterSelectDisplay : MonoBehaviour
     private Image displayImage;
     private TextMeshProUGUI text;
 
+    [SerializeField]
     private int playerID;
 
     private void Start()
     {
         displayImage = GetComponentInChildren<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
-    }
 
-    public void Initialize(int playerId)
-    {
-        playerID = playerId;
         gameDataSO.OnPlayerDataChanged += HandlePlayerDataChanged;
+        gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -40,10 +38,15 @@ public class CharacterSelectDisplay : MonoBehaviour
             return;
         }
 
+        if (changeType == PlayerDataChange.PlayerAdded)
+        {
+            gameObject.SetActive(true);
+            return;
+        }
         if (changeType == PlayerDataChange.PlayerRemoved)
         {
-            playerID = -1;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            return;
         }
         else if (changeType == PlayerDataChange.ProspectCharacterChanged)
         {
