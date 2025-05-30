@@ -83,11 +83,6 @@ namespace Input_Scripts
 
         private void Update()
         {
-            if (selected)
-            {
-                return;
-            }
-
             if (lastOnHover + onHoverRate < Time.time)
             {
                 ButtonBehavior button = null;
@@ -100,7 +95,7 @@ namespace Input_Scripts
                         currentHoveredButton = null;
                     }
                 }
-                else if (currentHoveredButton != button)
+                else
                 {
                     button.OnHoverEnter(this);
                     currentHoveredButton = button;

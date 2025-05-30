@@ -15,3 +15,4 @@ MonoBehaviour:
   LevelDisplayName: Raveyard
   LevelPrefab: {fileID: 1615303468472177271, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
   LevelPortrait: {fileID: 21300000, guid: 3367bce5cfcc61a4fac8163056a4f812, type: 3}
+  LevelPreview: {fileID: 21300000, guid: 3367bce5cfcc61a4fac8163056a4f812, type: 3}

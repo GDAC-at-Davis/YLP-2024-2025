@@ -4,70 +4,101 @@ using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Managers.GameDataSO;
 
 /// <summary>
 /// Button that holds characterSO for character selection
 /// </summary>
-public class CharacterSelectButton : ButtonBehavior
+namespace Input_Scripts
 {
-    [SerializeField]
-    GameDataSO gameDataSO;
-
-    public CharacterSO Character;
-    public GridLayoutGroup LayoutGroup;
-
-    public void Init(CharacterSO character)
+    public class CharacterSelectButton : ButtonBehavior
     {
-        GetComponentInChildren<TextMeshProUGUI>().text = character.CharacterDisplayName;
-        GetComponent<Image>().sprite = character.CharacterPortrait;
+        [SerializeField]
+        GameDataSO gameDataSO;
 
-        LayoutGroup = GetComponentInChildren<GridLayoutGroup>();
-        Character = character; 
-    }
+        public CharacterSO Character;
+        public GridLayoutGroup LayoutGroup;
 
-    public override void OnClick(PlayerCursorController cursor)
-    {
-        // Unselect if pressed again
-        if (gameDataSO.GetPlayerData(cursor.PlayerID).SelectedCharacter == Character)
+        public void Init(CharacterSO character)
         {
-            Unselect(cursor);
-            return;
+            GetComponentInChildren<TextMeshProUGUI>().text = character.CharacterDisplayName;
+            GetComponent<Image>().sprite = character.CharacterPortrait;
+
+            LayoutGroup = GetComponentInChildren<GridLayoutGroup>();
+            Character = character;
+
+            gameDataSO.OnAllPlayersReady += ReadyUp;
+            gameDataSO.OnAllPlayersUnready += UnreadyUp;
         }
 
-        cursor.transform.parent = LayoutGroup.transform;
-        cursor.SetText("");
-        cursor.Selected = true;
-        cursor.BackAction = Unselect;
-
-        gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, Character);
-    }
-
-    void RemovePlayer(PlayerCursorController cursor)
-    {
-        gameDataSO.RemovePlayer(cursor.PlayerID);
-    }
-    void Unselect(PlayerCursorController cursor)
-    {
-        cursor.SetText((cursor.PlayerID + 1).ToString());
-        cursor.transform.parent = cursor.Container;
-        cursor.Selected = false;
-        cursor.BackAction = RemovePlayer;
-
-        gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, null);
-    }
-
-    public override void OnHoverEnter(PlayerCursorController cursor)
-    {
-        if (gameDataSO.GetPlayerData(cursor.PlayerID).ProspectCharacter == Character)
+        private void OnDisable()
         {
-            return;
+            gameDataSO.OnAllPlayersReady -= ReadyUp;
+            gameDataSO.OnAllPlayersUnready -= UnreadyUp;
         }
 
-        gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, Character);
-    }
+        public void ReadyUp()
+        {
+            col.enabled = false;
+        }
+        public void UnreadyUp()
+        {
+            col.enabled = true;
+        }
 
-    public override void OnHoverExit(PlayerCursorController cursor)
-    {
-        gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null);
+        public override void OnClick(PlayerCursorController cursor)
+        {
+            CharacterSO character = gameDataSO.GetPlayerData(cursor.PlayerID).SelectedCharacter;
+
+            // Unselect if pressed again
+            if (character == Character)
+            {
+                Unselect(cursor);
+                return;
+            }
+
+            if (character != null)
+            {
+                return;
+            }
+
+            cursor.Selected = true;
+            cursor.BackAction = Unselect;
+
+            gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, Character);
+        }
+
+        void RemovePlayer(PlayerCursorController cursor)
+        {
+            gameDataSO.RemovePlayer(cursor.PlayerID);
+        }
+        void Unselect(PlayerCursorController cursor)
+        {
+            cursor.Selected = false;
+            cursor.BackAction = RemovePlayer;
+
+            gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, null);
+            gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null); // this is stupid I'm sorry
+        }
+
+        public override void OnHoverEnter(PlayerCursorController cursor)
+        {
+            PlayerData playerData = gameDataSO.GetPlayerData(cursor.PlayerID);
+            if (playerData.SelectedCharacter != null || playerData.ProspectCharacter == Character)
+            {
+                return;
+            }
+
+            gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, Character);
+        }
+
+        public override void OnHoverExit(PlayerCursorController cursor)
+        {
+            if (gameDataSO.GetPlayerData(cursor.PlayerID).SelectedCharacter != null)
+            {
+                return;
+            }
+            gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null);
+        }
     }
 }

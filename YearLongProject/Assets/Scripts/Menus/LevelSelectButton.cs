@@ -9,43 +9,46 @@ using UnityEngine.UI;
 /// <summary>
 /// Button that holds levelSO for level selection
 /// </summary>
-public class LevelSelectButton : ButtonBehavior
+namespace Input_Scripts
 {
-    [SerializeField]
-    GameDataSO gameDataSO;
-
-    [SerializeField]
-    [Scene]
-    private string gameplayScene;
-
-    public LevelSO Level;
-
-    public void Init(LevelSO level)
+    public class LevelSelectButton : ButtonBehavior
     {
-        GetComponentInChildren<TextMeshProUGUI>().text = level.LevelDisplayName;
-        GetComponent<Image>().sprite = level.LevelPortrait;
+        [SerializeField]
+        GameDataSO gameDataSO;
 
-        button = GetComponent<Button>();
-        Level = level;
-    }
+        [SerializeField]
+        [Scene]
+        private string gameplayScene;
 
-    public override void OnClick(PlayerCursorController cursor)
-    {
-        cursor.transform.position = transform.position;
-        cursor.SetText("");
-        cursor.Selected = true;
+        public LevelSO Level;
 
-        gameDataSO.SetSelectedLevel(Level);
-        gameDataSO.LoadScene(gameplayScene);
-    }
+        public void Init(LevelSO level)
+        {
+            GetComponentInChildren<TextMeshProUGUI>().text = level.LevelDisplayName;
+            GetComponent<Image>().sprite = level.LevelPortrait;
 
-    public override void OnHoverEnter(PlayerCursorController cursor)
-    {
-        return;
-    }
+            button = GetComponent<Button>();
+            Level = level;
+        }
 
-    public override void OnHoverExit(PlayerCursorController cursor)
-    {
-        return;
+        public override void OnClick(PlayerCursorController cursor)
+        {
+            cursor.transform.position = transform.position;
+            cursor.SetText("");
+            cursor.Selected = true;
+
+            gameDataSO.SetSelectedLevel(Level);
+            gameDataSO.LoadScene(gameplayScene);
+        }
+
+        public override void OnHoverEnter(PlayerCursorController cursor)
+        {
+            gameDataSO.SetProspectLevel(Level);
+        }
+
+        public override void OnHoverExit(PlayerCursorController cursor)
+        {
+            gameDataSO.SetProspectLevel(null);
+        }
     }
 }

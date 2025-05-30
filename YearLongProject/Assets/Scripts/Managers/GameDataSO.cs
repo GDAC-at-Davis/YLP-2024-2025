@@ -33,6 +33,7 @@ namespace Managers
             PlayerData postChangeData);
 
         public delegate void AllPlayersReadyEvent();
+        public delegate void LevelChangedEvent(LevelSO level);
 
         /// <summary>
         ///     Represents a single player
@@ -75,6 +76,9 @@ namespace Managers
 
         public LevelSO SelectedLevel => selectedLevel;
 
+        private LevelSO prospectLevel;
+        public LevelSO Prospectlevel => prospectLevel;
+
         public IEnumerable<PlayerData> AllPlayerData => players;
 
         /// <summary>
@@ -88,9 +92,17 @@ namespace Managers
         public event AllPlayersReadyEvent OnAllPlayersReady;
 
         /// <summary>
+        ///  Event that is called when at least one plaeyr isn't ready
+        /// </summary>
+        public event AllPlayersReadyEvent OnAllPlayersUnready;
+
+        /// <summary>
         ///     List of players and their data
         /// </summary>
         private readonly List<PlayerData> players = new();
+
+        public event LevelChangedEvent OnSelectedLevelChanged;
+        public event LevelChangedEvent OnProspectLevelChanged;
 
         [Header("Data (Debug)")]
 
@@ -180,6 +192,7 @@ namespace Managers
 
             if (players.Where(item => item.SelectedCharacter == null).Count() > 0)
             {
+                OnAllPlayersUnready?.Invoke();
                 return;
             }
 
@@ -189,7 +202,6 @@ namespace Managers
             }
 
             OnAllPlayersReady?.Invoke();
-            LoadScene(levelSelectScene);
         }
 
         public void SetPlayerProspectCharacter(int id, CharacterSO character)
@@ -216,6 +228,12 @@ namespace Managers
         public void SetSelectedLevel(LevelSO level)
         {
             selectedLevel = level;
+            OnSelectedLevelChanged?.Invoke(level);
+        }
+        public void SetProspectLevel(LevelSO level)
+        {
+            prospectLevel = level;
+            OnProspectLevelChanged?.Invoke(level);
         }
 
         public void LoadScene(string scene)
