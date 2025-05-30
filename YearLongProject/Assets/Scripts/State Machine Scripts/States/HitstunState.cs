@@ -1,3 +1,4 @@
+using CharacterScripts;
 using EditorUtils.BoldHeader;
 using GameEntities;
 using Movement;
@@ -22,21 +23,32 @@ namespace State_Machine_Scripts.States
         [SerializeField]
         private ManualTimelinePlayer hitstunPlayableAsset;
 
-        private void Update()
+        [SerializeField]
+        private CharacterFacingDirection characterFacingDirection;
+
+        [Header("Config")]
+
+        [SerializeField]
+        private bool invertFacingDirection;
+
+        /// <summary>
+        ///     Saves knockback to apply when hitStun state is entered
+        /// </summary>
+        private Vector2 knockback;
+
+        private void FixedUpdate()
         {
+            hitstunPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
+
             if (Time.time < characterEntity.StunTime)
             {
                 return;
             }
 
             ActionManager.SetAllActionTypeAllowed(true);
-            ActionManager.StateMachine.TrySetDefaultState();
+            // Make sure to end the timeline before switching states
             HandleOnEnd();
-        }
-
-        private void FixedUpdate()
-        {
-            hitstunPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
+            ActionManager.StateMachine.TrySetDefaultState();
         }
 
         protected override void OnEnable()
@@ -47,6 +59,18 @@ namespace State_Machine_Scripts.States
 
             ActionManager.SetAllActionTypeAllowed(false);
             movementController.enabled = false;
+
+            movementController.SetVelocity(knockback);
+
+            // Flip X
+            if (knockback.x < 0)
+            {
+                characterFacingDirection.ForceSetFlipX(invertFacingDirection);
+            }
+            else if (knockback.x > 0)
+            {
+                characterFacingDirection.ForceSetFlipX(!invertFacingDirection);
+            }
         }
 
         protected override void OnDisable()
@@ -59,6 +83,11 @@ namespace State_Machine_Scripts.States
         private void HandleOnEnd()
         {
             hitstunPlayableAsset.Stop();
+        }
+
+        public void SetKnockback(Vector2 knockbackToCache)
+        {
+            knockback = knockbackToCache;
         }
     }
 }

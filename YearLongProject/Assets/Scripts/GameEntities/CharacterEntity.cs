@@ -7,6 +7,7 @@ using Managers;
 using Movement;
 using NaughtyAttributes;
 using State_Machine_Scripts;
+using State_Machine_Scripts.States;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,6 +30,9 @@ namespace GameEntities
 
         [SerializeField]
         private SimpleMovementController movementController;
+
+        [SerializeField]
+        private HitstunState hitstunState;
 
         // TODO: Temp reset
         [SerializeField]
@@ -116,7 +120,7 @@ namespace GameEntities
             Vector2 knockback = hitboxInstance.CalculatedKnockback();
             stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
-            movementController.SetVelocity(knockback);
+            hitstunState.SetKnockback(knockback);
 
             TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
 

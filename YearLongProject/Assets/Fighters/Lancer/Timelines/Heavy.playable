@@ -227,7 +227,7 @@ MonoBehaviour:
       <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
-      <GiveAttackerHitStop>k__BackingField: 1
+      <GiveAttackerHitStop>k__BackingField: 0
       <ScreenShakeEffect>k__BackingField:
         <ImpulseDefinition>k__BackingField:
           ImpulseChannel: 1
@@ -913,7 +913,7 @@ MonoBehaviour:
       <Hitstun>k__BackingField: 0.2
       <HitStopDuration>k__BackingField: 0.1
       <GiveTargetHitStop>k__BackingField: 1
-      <GiveAttackerHitStop>k__BackingField: 1
+      <GiveAttackerHitStop>k__BackingField: 0
       <ScreenShakeEffect>k__BackingField:
         <ImpulseDefinition>k__BackingField:
           ImpulseChannel: 1
