@@ -898,7 +898,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1284879704}
   - component: {fileID: 1284879703}
-  - component: {fileID: 1284879705}
   m_Layer: 0
   m_Name: Player Input Manager
   m_TagString: Untagged
@@ -965,19 +964,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284879705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284879702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df04a9aca3055f4585665e697252fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
 --- !u!1 &1341897488
 GameObject:
   m_ObjectHideFlags: 0

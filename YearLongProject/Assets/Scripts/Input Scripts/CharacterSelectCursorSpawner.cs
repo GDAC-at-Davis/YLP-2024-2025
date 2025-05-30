@@ -1,6 +1,7 @@
 using EditorUtils.BoldHeader;
 using Managers;
 using NaughtyAttributes;
+using System;
 using UnityEngine;
 
 namespace Input_Scripts
@@ -37,13 +38,27 @@ namespace Input_Scripts
         private void OnEnable()
         {
             gameDataSO.OnPlayerDataChanged += OnPlayerDataChanged;
+            gameDataSO.OnAllPlayersReady += OnReady;
+            gameDataSO.OnAllPlayersUnready += OnUnready;
             InCharacterSelect = true;
         }
 
         private void OnDisable()
         {
             gameDataSO.OnPlayerDataChanged -= OnPlayerDataChanged;
+            gameDataSO.OnAllPlayersReady -= OnReady;
+            gameDataSO.OnAllPlayersUnready -= OnUnready;
             InCharacterSelect = false;
+        }
+
+        private void OnReady()
+        {
+            InCharacterSelect = false;
+        }
+
+        private void OnUnready()
+        {
+            InCharacterSelect = true;
         }
 
         private void OnPlayerDataChanged(int priorId, PlayerDataChange changeType, GameDataSO.PlayerData postChangeData)
