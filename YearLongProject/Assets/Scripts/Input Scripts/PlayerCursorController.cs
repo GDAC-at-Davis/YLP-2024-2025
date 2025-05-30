@@ -9,12 +9,6 @@ using UnityEngine.UI;
 
 namespace Input_Scripts
 {
-    internal enum CursorType
-    {
-        CharacterSelect,
-        StageSelect
-    }
-
     /// <summary>
     ///     Temporary Character Select cursor thing its 2:30 am and I can't figure out how to combine
     ///     the virtual mouse and multiplayer event system so we're gonna do whatever the fuck this is for now
@@ -41,21 +35,15 @@ namespace Input_Scripts
         private float lastOnHover = 0;
         private ButtonBehavior currentHoveredButton = null;
 
-        [SerializeField]
-        private CursorType cursorType;
-
         private PlayerInputSo.PlayerInputEvents events;
 
         private int playerID;
         public int PlayerID => playerID;
 
         private Vector3 input;
-        private bool selected;
-        public bool Selected
-        {
-            get => selected;
-            set => selected = value;
-        }
+
+        private Image cursor;
+        public Image Cursor { get => cursor; set => cursor = value; }
 
         public UnityAction<PlayerCursorController> BackAction = null;
 
@@ -72,6 +60,7 @@ namespace Input_Scripts
         private void Start()
         {
             rectTransform = GetComponent<RectTransform>();
+            cursor = GetComponentInChildren<Image>();
 
             // Center
 
@@ -145,7 +134,7 @@ namespace Input_Scripts
             image = GetComponentInChildren<Image>();
             text.text = (playerId + 1).ToString();
             text.color = gameDataSO.PlayerColors[playerID];
-            image.color = gameDataSO.PlayerColors[playerID] * 0.8f;
+            image.color = gameDataSO.PlayerColors[playerID];
 
             events = playerInputSO.TryGetPlayerInputEvents(playerID);
             SubscribeToInputEvents();

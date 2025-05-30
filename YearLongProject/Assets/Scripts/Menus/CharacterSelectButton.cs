@@ -22,6 +22,11 @@ namespace Input_Scripts
         [SerializeField]
         Image[] markers;
 
+        [SerializeField]
+        Sprite selectedCursor;
+        [SerializeField]
+        Sprite cursor;
+
         public void Init(CharacterSO character)
         {
             GetComponentInChildren<TextMeshProUGUI>().text = character.CharacterDisplayName;
@@ -70,8 +75,8 @@ namespace Input_Scripts
                 return;
             }
 
-            cursor.Selected = true;
             cursor.BackAction = Unselect;
+            cursor.Cursor.sprite = selectedCursor;
 
             markers[cursor.PlayerID].gameObject.SetActive(true);
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, Character);
@@ -83,8 +88,8 @@ namespace Input_Scripts
         }
         void Unselect(PlayerCursorController cursor)
         {
-            cursor.Selected = false;
             cursor.BackAction = RemovePlayer;
+            cursor.Cursor.sprite = this.cursor;
 
             markers[cursor.PlayerID].gameObject.SetActive(false);
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, null);

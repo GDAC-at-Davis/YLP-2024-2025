@@ -164,6 +164,7 @@ namespace Managers
             Debug.Log($"Removing player {id}");
 
             players.Remove(playerToRemove);
+            
             OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, playerToRemove);
         }
 

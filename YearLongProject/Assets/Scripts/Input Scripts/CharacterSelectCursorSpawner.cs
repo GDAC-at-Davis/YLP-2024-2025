@@ -26,12 +26,7 @@ namespace Input_Scripts
         private PlayerCursorController cursorPrefab;
 
         [SerializeField]
-        private CharacterSelectDisplay displayPrefab;
-
-        [SerializeField]
         private RectTransform cursorContainer;
-        [SerializeField]
-        private RectTransform displayContainer;
 
         [SerializeField]
         private RectTransform cursorBottomLeft;

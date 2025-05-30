@@ -34,8 +34,6 @@ namespace Input_Scripts
         public override void OnClick(PlayerCursorController cursor)
         {
             cursor.transform.position = transform.position;
-            cursor.SetText("");
-            cursor.Selected = true;
 
             gameDataSO.SetSelectedLevel(Level);
             gameDataSO.LoadScene(gameplayScene);

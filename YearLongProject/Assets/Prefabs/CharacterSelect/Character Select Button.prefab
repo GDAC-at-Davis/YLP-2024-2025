@@ -206,6 +206,8 @@ MonoBehaviour:
   - {fileID: 7711622555040122340}
   - {fileID: 2192413049111445949}
   - {fileID: 2447995413159141973}
+  selectedCursor: {fileID: 21300000, guid: 140dcbf0d39fc3c41a3aaeadb3bd2f6f, type: 3}
+  cursor: {fileID: 21300000, guid: 3a4dd72882b2cc9488c3603649bbae00, type: 3}
 --- !u!61 &3046084132103691513
 BoxCollider2D:
   m_ObjectHideFlags: 0
