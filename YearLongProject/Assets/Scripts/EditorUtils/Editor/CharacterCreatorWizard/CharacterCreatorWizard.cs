@@ -282,7 +282,7 @@ public class CharacterCreatorWizard : EditorWindow
         PrefabUtility.UnloadPrefabContents(newFighter);
 
         // create blank CharacterSO and place in directory
-        ScriptableObject newSO = CreateInstance<CharacterSO>();
+        var newSO = CreateInstance<CharacterSO>();
         AssetDatabase.CreateAsset(newSO, $"{rootpathRelative}{characterName}SO.asset");
 
         // Refresh Assets so Unity creates .meta files
@@ -301,16 +301,24 @@ public class CharacterCreatorWizard : EditorWindow
         EditorSceneManager.SaveScene(newScene);
 
         // edit scriptable object to include name and prefab
-        ((CharacterSO)newSO).CharacterDisplayName = characterName;
+        // Need to load the scriptable object again to get the correct instance
+        newSO = AssetDatabase.LoadAssetAtPath<CharacterSO>($"{rootpathRelative}{characterName}SO.asset");
+        newSO.CharacterDisplayName = characterName;
         var characterPrefab =
             (GameObject)AssetDatabase.LoadAssetAtPath($"{rootpathRelative}{characterName}.prefab", typeof(GameObject));
-        ((CharacterSO)newSO).CharacterPrefab = characterPrefab;
+        newSO.CharacterPrefab = characterPrefab;
+        newSO.CharacterLoreDescription = "Add character displayed character lore here \n This is a multiline field!";
+        newSO.CharacterPortrait =
+            AssetDatabase.LoadAssetAtPath<Sprite>($"{rpTemplateRelative}Sprites/{templateCharPrefix}Portrait.png");
+        EditorUtility.SetDirty(newSO);
 
-        // Link to main roster
+        // Add to main roster
         var mainRoster =
-            (CharacterSelectRoster)AssetDatabase.LoadAssetAtPath("Assets/GameData/MainRoster.asset",
-                typeof(CharacterSelectRoster));
-        mainRoster.AddCharacter((CharacterSO)newSO);
+            AssetDatabase.LoadAssetAtPath<CharacterSelectRoster>("Assets/GameData/MainRoster.asset");
+        mainRoster.AddCharacter(newSO);
+        EditorUtility.SetDirty(mainRoster);
+
+        AssetDatabase.SaveAssets();
     }
 
     private string ReplaceTemplateNameWithCharacterName(string templateName, string charName)
