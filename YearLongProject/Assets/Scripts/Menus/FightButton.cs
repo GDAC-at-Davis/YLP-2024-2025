@@ -1,25 +1,26 @@
 using Input_Scripts;
 using Managers;
+using Menus;
 using NaughtyAttributes;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FightButton : ButtonBehavior
 {
     [SerializeField]
-    GameDataSO gameDataSO;
+    private GameDataSO gameDataSO;
 
     [SerializeField]
     [Scene]
-    string levelSelect;
+    private string levelSelect;
 
     [SerializeField]
-    Sprite fight;
-    [SerializeField]
-    Sprite hoverFight;
+    private Sprite fight;
 
-    Image currentFight;
+    [SerializeField]
+    private Sprite hoverFight;
+
+    private Image currentFight;
 
     protected override void Start()
     {

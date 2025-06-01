@@ -1,7 +1,6 @@
 using EditorUtils.BoldHeader;
-using LevelScripts;
 using Managers;
-using NaughtyAttributes;
+using Menus;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,20 +31,28 @@ namespace Input_Scripts
         [SerializeField]
         [Tooltip("How often should cursor check for OnHover")]
         private float onHoverRate = 0.5f;
-        private float lastOnHover = 0;
-        private ButtonBehavior currentHoveredButton = null;
+
+        public int PlayerID => playerID;
+
+        public Image Cursor
+        {
+            get => cursor;
+            set => cursor = value;
+        }
+
+        public Transform Container => container;
+
+        public UnityAction<PlayerCursorController> BackAction = null;
+        private float lastOnHover;
+        private ButtonBehavior currentHoveredButton;
 
         private PlayerInputSo.PlayerInputEvents events;
 
         private int playerID;
-        public int PlayerID => playerID;
 
         private Vector3 input;
 
         private Image cursor;
-        public Image Cursor { get => cursor; set => cursor = value; }
-
-        public UnityAction<PlayerCursorController> BackAction = null;
 
         private TextMeshProUGUI text;
         private Image image;
@@ -55,7 +62,6 @@ namespace Input_Scripts
 
         private RectTransform rectTransform;
         private Transform container;
-        public Transform Container => container;
 
         private void Start()
         {
@@ -89,6 +95,7 @@ namespace Input_Scripts
                     button.OnHoverEnter(this);
                     currentHoveredButton = button;
                 }
+
                 lastOnHover = Time.time;
             }
 

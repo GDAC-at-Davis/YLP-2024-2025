@@ -6,26 +6,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Managers.GameDataSO;
 
-/// <summary>
-/// Button that holds characterSO for character selection
-/// </summary>
-namespace Input_Scripts
+namespace Menus
 {
+    /// <summary>
+    ///     Button that holds characterSO for character selection
+    /// </summary>
     public class CharacterSelectButton : ButtonBehavior
     {
         [SerializeField]
-        GameDataSO gameDataSO;
+        private GameDataSO gameDataSO;
 
         public CharacterSO Character;
         public GridLayoutGroup LayoutGroup;
 
         [SerializeField]
-        Image[] markers;
+        private Image[] markers;
 
         [SerializeField]
-        Sprite selectedCursor;
+        private Sprite selectedCursor;
+
         [SerializeField]
-        Sprite cursor;
+        private Sprite cursor;
+
+        private void OnDisable()
+        {
+            gameDataSO.OnAllPlayersReady -= ReadyUp;
+            gameDataSO.OnAllPlayersUnready -= UnreadyUp;
+        }
 
         public void Init(CharacterSO character)
         {
@@ -37,23 +44,18 @@ namespace Input_Scripts
 
             gameDataSO.OnAllPlayersReady += ReadyUp;
             gameDataSO.OnAllPlayersUnready += UnreadyUp;
-            
-            for (int i = 0; i < markers.Length; i++)
+
+            for (var i = 0; i < markers.Length; i++)
             {
                 markers[i].color = gameDataSO.PlayerColors[i];
             }
-        }
-
-        private void OnDisable()
-        {
-            gameDataSO.OnAllPlayersReady -= ReadyUp;
-            gameDataSO.OnAllPlayersUnready -= UnreadyUp;
         }
 
         public void ReadyUp()
         {
             col.enabled = false;
         }
+
         public void UnreadyUp()
         {
             col.enabled = true;
@@ -82,11 +84,12 @@ namespace Input_Scripts
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, Character);
         }
 
-        void RemovePlayer(PlayerCursorController cursor)
+        private void RemovePlayer(PlayerCursorController cursor)
         {
             gameDataSO.RemovePlayer(cursor.PlayerID);
         }
-        void Unselect(PlayerCursorController cursor)
+
+        private void Unselect(PlayerCursorController cursor)
         {
             cursor.BackAction = RemovePlayer;
             cursor.Cursor.sprite = this.cursor;
@@ -113,6 +116,7 @@ namespace Input_Scripts
             {
                 return;
             }
+
             gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null);
         }
     }

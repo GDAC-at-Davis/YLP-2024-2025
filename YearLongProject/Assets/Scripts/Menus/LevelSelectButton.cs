@@ -6,15 +6,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Button that holds levelSO for level selection
-/// </summary>
-namespace Input_Scripts
+namespace Menus
 {
+    /// <summary>
+    ///     Button that holds levelSO for level selection
+    /// </summary>
     public class LevelSelectButton : ButtonBehavior
     {
         [SerializeField]
-        GameDataSO gameDataSO;
+        private GameDataSO gameDataSO;
 
         [SerializeField]
         [Scene]

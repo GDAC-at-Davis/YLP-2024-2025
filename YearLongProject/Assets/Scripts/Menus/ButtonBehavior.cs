@@ -1,11 +1,8 @@
-﻿using CharacterScripts;
-using Input_Scripts;
-using Managers;
-using TMPro;
+﻿using Input_Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Input_Scripts
+namespace Menus
 {
     [RequireComponent(typeof(Collider2D))]
     public abstract class ButtonBehavior : MonoBehaviour
