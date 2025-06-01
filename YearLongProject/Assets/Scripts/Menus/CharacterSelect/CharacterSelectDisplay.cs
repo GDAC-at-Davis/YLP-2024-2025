@@ -1,6 +1,5 @@
 using CharacterScripts;
 using Managers;
-using Menus.Generic;
 using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
@@ -16,9 +15,6 @@ namespace Menus.CharacterSelect
         private TMP_Text characterNameText;
 
         [SerializeField]
-        private TextScrollRegion characterLoreTextRegion;
-
-        [SerializeField]
         private Image characterImage;
 
         [SerializeField]
@@ -28,8 +24,6 @@ namespace Menus.CharacterSelect
         {
             gameDataSO.OnPlayerDataChanged += HandlePlayerDataChanged;
             gameObject.SetActive(false);
-
-            characterLoreTextRegion.SetVisible(false);
         }
 
         private void OnDestroy()
@@ -48,13 +42,13 @@ namespace Menus.CharacterSelect
             if (changeType == PlayerDataChange.PlayerAdded)
             {
                 gameObject.SetActive(true);
+                characterNameText.color = gameDataSO.PlayerColors[playerID];
                 return;
             }
 
             if (changeType == PlayerDataChange.PlayerRemoved)
             {
                 gameObject.SetActive(false);
-                characterLoreTextRegion.SetVisible(false);
 
                 return;
             }
@@ -68,16 +62,12 @@ namespace Menus.CharacterSelect
 
                 if (character == null)
                 {
-                    characterLoreTextRegion.SetVisible(false);
                     return;
                 }
 
                 characterImage.sprite = character.CharacterPortrait;
                 characterImage.color = new Color(1, 1, 1, 0.5f);
                 characterNameText.text = character.CharacterDisplayName;
-
-                characterLoreTextRegion.SetText(character.CharacterLoreDescription);
-                characterLoreTextRegion.SetVisible(true);
             }
             else if (changeType == PlayerDataChange.SelectedCharacterChanged)
             {
