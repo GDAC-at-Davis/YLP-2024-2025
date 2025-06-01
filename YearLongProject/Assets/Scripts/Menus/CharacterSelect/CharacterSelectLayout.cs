@@ -1,4 +1,3 @@
-using Input_Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +24,9 @@ namespace Menus
                     continue;
                 }
 
-                Instantiate(buttonTemplate, gridLayout.transform).Init(character.Character);
+                CharacterSelectButton createdButton = Instantiate(buttonTemplate, gridLayout.transform);
+                createdButton.Init(character.Character);
+                createdButton.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Random.Range(-2f, 2f));
             }
         }
     }
