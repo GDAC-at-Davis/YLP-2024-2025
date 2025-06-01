@@ -359,7 +359,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8945456, y: 2.0225072}
+  m_Size: {x: 2.4824243, y: 2.4824243}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -761,6 +761,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[13].value
       value: 
       objectReference: {fileID: 1510922958757828136}
+    - target: {fileID: 8029410276375437545, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8862638755809675368, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: stateNameSO
       value: 
