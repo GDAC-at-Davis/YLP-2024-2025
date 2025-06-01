@@ -1,11 +1,11 @@
-using Base;
+using Menus.Lore;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace LevelScripts
 {
     /// <summary>
-    /// Scriptable Object that holds relevant level information for reference
+    ///     Scriptable Object that holds relevant level information for reference
     /// </summary>
     [CreateAssetMenu(fileName = "LevelSO", menuName = "Scriptable Objects/LevelSO")]
     public class LevelSO : ScriptableObject
@@ -23,5 +23,7 @@ namespace LevelScripts
         [ShowAssetPreview(128, 128)]
         [Tooltip("Scale model of the stage for use in UI Elements")]
         public Sprite LevelPreview;
+
+        public LoreSO LevelLore;
     }
 }

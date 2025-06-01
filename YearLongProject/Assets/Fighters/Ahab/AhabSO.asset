@@ -15,17 +15,4 @@ MonoBehaviour:
   CharacterDisplayName: Ahab
   CharacterPrefab: {fileID: 6242291163348849283, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
   CharacterPortrait: {fileID: 21300000, guid: e03285c02f8dce341b7ec3379bc80ffb, type: 3}
-  CharacterLoreDescription: "I. \u201CTo fear what you want is a terrible thing\u2026\u201D\r\n\r\nSome
-    people were built for a life on the sea. At a young age, Ahab knew that his father
-    was one of them and that it was his own fate to be connected to the ocean. Little
-    Ahab, strolling along a beach where the water and sand met, never got close enough
-    to get his feet wet, but looked out into the vast ocean in front of him, knowing
-    that it stretched farther than he could ever imagine. He thought of the adventure
-    that his father had experienced on the oceans\u2014the ones that he had told
-    him before drifting off to sleep. As he looked out into the dark sea, the moon
-    reflected upon it, he thought of pirates and sea monsters, but most of all, his
-    father\u2019s encounter with a giant sperm whale. The scale of it was something
-    that he couldn\u2019t comprehend.\r\n\r\nIts smooth but wrinkled skin, its giant
-    eye, and the echo of its call were all things that he imagined so vividly as
-    if he had seen the creature himself. When he closed his eyes at night, the creature
-    took up his entire field of vision, just barely out of his grasp."
+  CharacterLore: {fileID: 11400000, guid: 08948472dc2b6074397903f5d1a1d147, type: 2}

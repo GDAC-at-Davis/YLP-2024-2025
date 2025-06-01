@@ -16,3 +16,4 @@ MonoBehaviour:
   LevelPrefab: {fileID: 5830028711373780819, guid: a70d7560ca1faca448153a389076260c, type: 3}
   LevelPortrait: {fileID: 21300000, guid: 3870680609b3c7b43940db0c4add7d62, type: 3}
   LevelPreview: {fileID: 21300000, guid: 3870680609b3c7b43940db0c4add7d62, type: 3}
+  LevelLore: {fileID: 11400000, guid: a7fccd2bb5af8634b9ce1ad5f23d058b, type: 2}

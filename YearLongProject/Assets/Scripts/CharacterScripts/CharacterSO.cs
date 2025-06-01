@@ -1,3 +1,4 @@
+using Menus.Lore;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -19,7 +20,6 @@ namespace CharacterScripts
         [Tooltip("Character portrait for use in UI Elements")]
         public Sprite CharacterPortrait;
 
-        [ResizableTextArea]
-        public string CharacterLoreDescription;
+        public LoreSO CharacterLore;
     }
 }

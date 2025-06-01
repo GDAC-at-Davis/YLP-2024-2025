@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f78a0a3e840c3b488304b0ff928238c, type: 3}
+  m_Name: AhabLoreSO
+  m_EditorClassIdentifier: 
+  LoreTitle: Ahab - The Fishmonger
+  LoreText:
+  - "I. \u201CTo fear what you want is a terrible thing\u2026\u201D\r\n\r\nSome people
+    were built for a life on the sea. At a young age, Ahab knew that his father was
+    one of them and that it was his own fate to be connected to the ocean. Little
+    Ahab, strolling along a beach where the water and sand met, never got close enough
+    to get his feet wet, but looked out into the vast ocean in front of him, knowing
+    that it stretched farther than he could ever imagine. He thought of the adventure
+    that his father had experienced on the oceans\u2014the ones that he had told
+    him before drifting off to sleep. As he looked out into the dark sea, the moon
+    reflected upon it, he thought of pirates and sea monsters, but most of all, his
+    father\u2019s encounter with a giant sperm whale. The scale of it was something
+    that he couldn\u2019t comprehend.\r\n\r\nIts smooth but wrinkled skin, its giant
+    eye, and the echo of its call were all things that he imagined so vividly as
+    if he had seen the creature himself. When he closed his eyes at night, the creature
+    took up his entire field of vision, just barely out of his grasp. "

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelect.unity
     guid: 2b2e6d67fa3b8df418d4c17f5fc6ae19
   - enabled: 1
+    path: Assets/Scenes/LoreScene.unity
+    guid: 173f1b9d2bec37941af72d983bac7e25
+  - enabled: 1
     path: Assets/Scenes/FightingScene.unity
     guid: 24a5d88a98e07be4faf27d4bc2ee2ef2
   m_configObjects:

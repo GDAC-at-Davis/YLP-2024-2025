@@ -16,7 +16,10 @@ public class MainMenuScript : MonoBehaviour
     public Animator transition_animator; // for fading in and fading out
 
     [Scene]
-    public string sceneToLoad; // the scene to load when the player selects the "live" button
+    public string liveScene; // the scene to load when the player selects the "live" button
+
+    [Scene]
+    public string loreScene;
 
     private GameObject lastSelected; // last selected menu item
 
@@ -61,6 +64,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void lore()
     {
+        transition_animator.SetTrigger("exit");
+        StartCoroutine(WaitForAnimation("Fade_out", "lore"));
         // transition to lore scene
     }
 
@@ -90,10 +95,11 @@ public class MainMenuScript : MonoBehaviour
                 break;
 
             case "live":
-                SceneManager.LoadScene(sceneToLoad);
+                SceneManager.LoadScene(liveScene);
                 break;
 
             case "lore":
+                SceneManager.LoadScene(loreScene);
                 // implement scene switching
                 break;
         }

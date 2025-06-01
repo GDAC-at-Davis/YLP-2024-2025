@@ -811,7 +811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1192545556}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1392998697}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: lore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1192545556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +894,8 @@ MonoBehaviour:
   scelect: {fileID: 316521596}
   animator: {fileID: 316521595}
   transition_animator: {fileID: 1639289404}
-  sceneToLoad: FighterSelect
+  liveScene: FighterSelect
+  loreScene: LoreScene
 --- !u!4 &1392998698
 Transform:
   m_ObjectHideFlags: 0
