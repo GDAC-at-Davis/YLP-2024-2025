@@ -1,23 +1,52 @@
+using Input_Scripts;
 using LevelScripts;
+using Managers;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Button that holds levelSO for level selection
-/// </summary>
-public class LevelSelectButton : MonoBehaviour
+namespace Menus
 {
-    Button button;
-
-    public LevelSO Level;
-
-    public void Init(LevelSO level)
+    /// <summary>
+    ///     Button that holds levelSO for level selection
+    /// </summary>
+    public class LevelSelectButton : ButtonBehavior
     {
-        GetComponentInChildren<TextMeshProUGUI>().text = level.LevelDisplayName;
-        GetComponent<Image>().sprite = level.LevelPortrait;
+        [SerializeField]
+        private GameDataSO gameDataSO;
 
-        button = GetComponent<Button>();
-        Level = level;
+        [SerializeField]
+        [Scene]
+        private string gameplayScene;
+
+        public LevelSO Level;
+
+        public void Init(LevelSO level)
+        {
+            GetComponentInChildren<TextMeshProUGUI>().text = level.LevelDisplayName;
+            GetComponent<Image>().sprite = level.LevelPortrait;
+
+            button = GetComponent<Button>();
+            Level = level;
+        }
+
+        public override void OnClick(PlayerCursorController cursor)
+        {
+            cursor.transform.position = transform.position;
+
+            gameDataSO.SetSelectedLevel(Level);
+            gameDataSO.LoadScene(gameplayScene);
+        }
+
+        public override void OnHoverEnter(PlayerCursorController cursor)
+        {
+            gameDataSO.SetProspectLevel(Level);
+        }
+
+        public override void OnHoverExit(PlayerCursorController cursor)
+        {
+            gameDataSO.SetProspectLevel(null);
+        }
     }
 }

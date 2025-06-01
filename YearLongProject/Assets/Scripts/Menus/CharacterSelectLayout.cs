@@ -1,3 +1,4 @@
+using Input_Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ namespace Menus
         private CharacterSelectRoster characterList;
 
         [SerializeField]
-        private GameObject buttonTemplate;
+        private CharacterSelectButton buttonTemplate;
 
         private void Start()
         {
@@ -24,8 +25,7 @@ namespace Menus
                     continue;
                 }
 
-                Instantiate(buttonTemplate, gridLayout.transform).GetComponent<CharacterSelectButton>()
-                    .Init(character.Character);
+                Instantiate(buttonTemplate, gridLayout.transform).Init(character.Character);
             }
         }
     }

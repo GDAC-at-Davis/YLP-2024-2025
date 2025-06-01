@@ -18,6 +18,8 @@ namespace Managers
     {
         PlayerAdded,
         PlayerRemoved,
+        SelectedCharacterChanged,
+        ProspectCharacterChanged,
         CharacterEntityChanged
     }
 
@@ -32,6 +34,8 @@ namespace Managers
 
         public delegate void AllPlayersReadyEvent();
 
+        public delegate void LevelChangedEvent(LevelSO level);
+
         /// <summary>
         ///     Represents a single player
         /// </summary>
@@ -40,6 +44,7 @@ namespace Managers
         {
             public int PlayerId;
             public CharacterSO SelectedCharacter;
+            public CharacterSO ProspectCharacter;
 
             /// <summary>
             ///     If in gameplay, this is the actual character entity controlled by the player
@@ -71,6 +76,7 @@ namespace Managers
         public int MaxPlayers => maxPlayers;
 
         public LevelSO SelectedLevel => selectedLevel;
+        public LevelSO Prospectlevel => prospectLevel;
 
         public IEnumerable<PlayerData> AllPlayerData => players;
 
@@ -85,9 +91,19 @@ namespace Managers
         public event AllPlayersReadyEvent OnAllPlayersReady;
 
         /// <summary>
+        ///     Event that is called when at least one plaeyr isn't ready
+        /// </summary>
+        public event AllPlayersReadyEvent OnAllPlayersUnready;
+
+        public event LevelChangedEvent OnSelectedLevelChanged;
+        public event LevelChangedEvent OnProspectLevelChanged;
+
+        /// <summary>
         ///     List of players and their data
         /// </summary>
         private readonly List<PlayerData> players = new();
+
+        private LevelSO prospectLevel;
 
         [Header("Data (Debug)")]
 
@@ -149,6 +165,7 @@ namespace Managers
             Debug.Log($"Removing player {id}");
 
             players.Remove(playerToRemove);
+
             OnPlayerDataChanged?.Invoke(id, PlayerDataChange.PlayerRemoved, playerToRemove);
         }
 
@@ -170,10 +187,14 @@ namespace Managers
         /// <param name="character"></param>
         public void SetPlayerSelectedCharacter(int id, CharacterSO character)
         {
-            players.FirstOrDefault(item => item.PlayerId == id).SelectedCharacter = character;
+            PlayerData player = players.FirstOrDefault(item => item.PlayerId == id);
+            player.SelectedCharacter = character;
+
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.SelectedCharacterChanged, player);
 
             if (players.Where(item => item.SelectedCharacter == null).Count() > 0)
             {
+                OnAllPlayersUnready?.Invoke();
                 return;
             }
 
@@ -183,7 +204,19 @@ namespace Managers
             }
 
             OnAllPlayersReady?.Invoke();
-            LoadScene(levelSelectScene);
+        }
+
+        /// <summary>
+        ///     Set the propsective (i.e hovered) character for a given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="character"></param>
+        public void SetPlayerProspectCharacter(int id, CharacterSO character)
+        {
+            PlayerData player = players.FirstOrDefault(item => item.PlayerId == id);
+            player.ProspectCharacter = character;
+
+            OnPlayerDataChanged?.Invoke(id, PlayerDataChange.ProspectCharacterChanged, player);
         }
 
         /// <summary>
@@ -202,6 +235,13 @@ namespace Managers
         public void SetSelectedLevel(LevelSO level)
         {
             selectedLevel = level;
+            OnSelectedLevelChanged?.Invoke(level);
+        }
+
+        public void SetProspectLevel(LevelSO level)
+        {
+            prospectLevel = level;
+            OnProspectLevelChanged?.Invoke(level);
         }
 
         public void LoadScene(string scene)

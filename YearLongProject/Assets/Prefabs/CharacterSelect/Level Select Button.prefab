@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daddf58960bc4ce48bd9c1d0a4b0b8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
+  gameplayScene: FightingScene
   Level: {fileID: 0}
 --- !u!1 &5283395843572625968
 GameObject:

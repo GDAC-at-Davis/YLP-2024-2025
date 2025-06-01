@@ -15,3 +15,4 @@ MonoBehaviour:
   LevelDisplayName: Practice
   LevelPrefab: {fileID: 1615303468472177271, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
   LevelPortrait: {fileID: 21300000, guid: ffc58b5d1d8a6ed489be30f7a1291b1e, type: 3}
+  LevelPreview: {fileID: 21300000, guid: ffc58b5d1d8a6ed489be30f7a1291b1e, type: 3}

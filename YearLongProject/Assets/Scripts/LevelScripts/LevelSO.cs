@@ -19,5 +19,9 @@ namespace LevelScripts
         [ShowAssetPreview(128, 128)]
         [Tooltip("Level portrait for use in UI Elements")]
         public Sprite LevelPortrait;
+
+        [ShowAssetPreview(128, 128)]
+        [Tooltip("Scale model of the stage for use in UI Elements")]
+        public Sprite LevelPreview;
     }
 }

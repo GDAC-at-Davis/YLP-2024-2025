@@ -1,3 +1,4 @@
+using Input_Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ namespace Menus
         private LevelSelectRoster levelList;
 
         [SerializeField]
-        private GameObject buttonTemplate;
+        private LevelSelectButton buttonTemplate;
 
         private void Start()
         {
@@ -24,8 +25,7 @@ namespace Menus
                     continue;
                 }
 
-                Instantiate(buttonTemplate, gridLayout.transform).GetComponent<LevelSelectButton>()
-                    .Init(level.Level);
+                Instantiate(buttonTemplate, gridLayout.transform).Init(level.Level);
             }
         }
     }
