@@ -817,6 +817,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1001875133}
     m_Modifications:
+    - target: {fileID: 1591928643899389691, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591928643899389691, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591928643899389691, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591928643899389691, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652636106395921636, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652636106395921636, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2978694299454861615, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -909,6 +933,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7627454673769914204, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a2526c85ce3e1d4693c2ee8bb919bf4, type: 2}
+    - target: {fileID: 7627454673769914204, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7289745258983107401, guid: 1a2526c85ce3e1d4693c2ee8bb919bf4, type: 2}
+    - target: {fileID: 7627454673769914204, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7891716138260255649, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
       propertyPath: m_Name
       value: Character Select Display
@@ -923,6 +959,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8112757955451692209, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154472179282535624, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154472179282535624, guid: 6ee36b769ec6fec47849864bbbc91a96, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
