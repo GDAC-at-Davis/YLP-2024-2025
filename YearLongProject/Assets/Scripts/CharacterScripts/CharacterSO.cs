@@ -1,11 +1,10 @@
-using Base;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace CharacterScripts
 {
     /// <summary>
-    /// Scriptable Object that holds relevant character information for reference
+    ///     Scriptable Object that holds relevant character information for reference
     /// </summary>
     [CreateAssetMenu(fileName = "CharacterSO", menuName = "Scriptable Objects/CharacterSO")]
     public class CharacterSO : ScriptableObject
@@ -16,8 +15,11 @@ namespace CharacterScripts
         [Tooltip("Reference for character's gameobject")]
         public GameObject CharacterPrefab;
 
-        [ShowAssetPreview(128,128)]
+        [ShowAssetPreview(128, 128)]
         [Tooltip("Character portrait for use in UI Elements")]
         public Sprite CharacterPortrait;
+
+        [ResizableTextArea]
+        public string CharacterLoreDescription;
     }
 }
