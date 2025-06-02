@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using CharacterScripts;
 using LevelScripts;
+using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Menus.Lore
 {
@@ -34,6 +36,10 @@ namespace Menus.Lore
         [SerializeField]
         private LevelSelectRoster stageSelectRoster;
 
+        [SerializeField]
+        [Scene]
+        private string mainMenuScene;
+
         private readonly List<LoreSelectButton> loreButtons = new();
 
         private void Awake()
@@ -50,6 +56,11 @@ namespace Menus.Lore
                     button.OnLoreSelected.RemoveListener(DisplayLore);
                 }
             }
+        }
+
+        public void ReturnToMainmenu()
+        {
+            SceneManager.LoadScene(mainMenuScene);
         }
 
         private void InitializeLoreButtons()
