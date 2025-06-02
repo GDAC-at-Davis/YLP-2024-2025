@@ -1503,6 +1503,10 @@ PrefabInstance:
       propertyPath: 'states.Array.data[6]'
       value: 
       objectReference: {fileID: 4934061554269146212}
+    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 6810935469208528042}
     - target: {fileID: 7274787797801271283, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnFlipXChange.m_PersistentCalls.m_Calls.Array.size
       value: 4

@@ -13,6 +13,8 @@ namespace Movement
 
         [SerializeField]
         private CharacterRigidbody2D characterRigidbody;
+        [SerializeField]
+        private BoxCollider2D collider;
 
         [Header("Ground")]
 
@@ -21,6 +23,9 @@ namespace Movement
 
         [SerializeField]
         private float groundAcceleration;
+
+        [SerializeField]
+        private float groundCheckSensitivity = 3;
 
         [Header("Air")]
 
@@ -57,7 +62,15 @@ namespace Movement
         private void FixedUpdate()
         {
             // Grounded logic
-            isGrounded = Physics2D.Raycast(Position, -Vector2.up, groundCheckDistance, groundLayer);
+            isGrounded = false;
+            for (int i = 0; i  <= groundCheckSensitivity - 1; i++)
+            {
+                if (Physics2D.Raycast(collider.bounds.min + (Vector3.right * (i / groundCheckSensitivity * collider.bounds.size.x)), -Vector2.up, groundCheckDistance, groundLayer))
+                {
+                    isGrounded = true;
+                    break;
+                }
+            }
 
             if (isGrounded && !wasGrounded)
             {
@@ -89,7 +102,11 @@ namespace Movement
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(Position, Position - Vector2.up * groundCheckDistance);
+            for (int i = 0; i <= groundCheckSensitivity - 1; i++)
+            {
+                Vector3 pos = collider.bounds.min + (Vector3.right * (i / groundCheckSensitivity * collider.bounds.size.x));
+                Gizmos.DrawLine(pos, pos + Vector3.down * groundCheckDistance);
+            }
         }
 
         public void SetHorizontalInput(float desiredMove)
