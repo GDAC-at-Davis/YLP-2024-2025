@@ -750,7 +750,7 @@ MonoBehaviour:
   characterRigidbody: {fileID: 4198994870414546198}
   movingPlayableAsset:
     playableDirector: {fileID: 7131225453378288842}
-    loop: 1
+    loop: 0
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -859,7 +859,7 @@ Transform:
   m_GameObject: {fileID: 7410896267050152058}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -875,7 +875,7 @@ Animator:
   m_GameObject: {fileID: 7410896267050152058}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f37541ac828ca004b9273b3a78f574fc, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1406,6 +1406,10 @@ PrefabInstance:
     - target: {fileID: 3779965043621737290, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnSpecialAttackPassed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783867218396614651, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: JumpState
