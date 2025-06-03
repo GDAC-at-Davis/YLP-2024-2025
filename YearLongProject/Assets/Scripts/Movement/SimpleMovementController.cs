@@ -25,6 +25,7 @@ namespace Movement
         private float groundAcceleration;
 
         [SerializeField]
+        [Range(0, 10)]
         private float groundCheckSensitivity = 3;
 
         [Header("Air")]
@@ -65,7 +66,7 @@ namespace Movement
             isGrounded = false;
             for (int i = 0; i  <= groundCheckSensitivity - 1; i++)
             {
-                if (Physics2D.Raycast(collider.bounds.min + (Vector3.right * (i / groundCheckSensitivity * collider.bounds.size.x)), -Vector2.up, groundCheckDistance, groundLayer))
+                if (Physics2D.Raycast(collider.bounds.min + (Vector3.right * (i / (groundCheckSensitivity - 1) * collider.bounds.size.x)), -Vector2.up, groundCheckDistance, groundLayer))
                 {
                     isGrounded = true;
                     break;
@@ -104,7 +105,7 @@ namespace Movement
             Gizmos.color = Color.red;
             for (int i = 0; i <= groundCheckSensitivity - 1; i++)
             {
-                Vector3 pos = collider.bounds.min + (Vector3.right * (i / groundCheckSensitivity * collider.bounds.size.x));
+                Vector3 pos = collider.bounds.min + (Vector3.right * (i / (groundCheckSensitivity - 1) * collider.bounds.size.x));
                 Gizmos.DrawLine(pos, pos + Vector3.down * groundCheckDistance);
             }
         }
