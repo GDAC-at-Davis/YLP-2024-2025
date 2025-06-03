@@ -19,6 +19,9 @@ namespace Menus.Lore
 
         public UnityEvent<LoreSO> OnLoreSelected;
 
+        public UnityEvent OnHovered;
+        public UnityEvent OnUnhovered;
+
         private LoreSO lore;
 
         public void Initialize(LoreSO lore, string header, Sprite sprite)
@@ -41,10 +44,12 @@ namespace Menus.Lore
 
         public override void OnHoverEnter(PlayerCursorController cursor)
         {
+            OnHovered?.Invoke();
         }
 
         public override void OnHoverExit(PlayerCursorController cursor)
         {
+            OnUnhovered?.Invoke();
         }
     }
 }

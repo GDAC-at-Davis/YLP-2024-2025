@@ -12,6 +12,9 @@ namespace Menus.Lore
         [SerializeField]
         private TMP_Text loreHeaderText;
 
+        [SerializeField]
+        private TMP_Text pageNumberText;
+
         private LoreSO currentLore;
         private int currentPage;
 
@@ -47,6 +50,8 @@ namespace Menus.Lore
 
             currentPage = page;
             loreContentText.text = lorePages[page];
+
+            pageNumberText.text = $"{currentPage + 1}/{lorePages.Count}";
         }
 
         public void IncrementLorePage()
