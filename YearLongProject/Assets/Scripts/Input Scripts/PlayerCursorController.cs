@@ -92,6 +92,11 @@ namespace Input_Scripts
                 }
                 else
                 {
+                    if (currentHoveredButton != null && currentHoveredButton != button)
+                    {
+                        currentHoveredButton.OnHoverExit(this);
+                    }
+
                     button.OnHoverEnter(this);
                     currentHoveredButton = button;
                 }
