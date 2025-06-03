@@ -211,6 +211,8 @@ PlayableDirector:
     value: {fileID: 1510922958757828136}
   - key: {fileID: -7500514140640883419, guid: 870a53f5de7591740b748fa6724d97c4, type: 2}
     value: {fileID: 3105801480486927495}
+  - key: {fileID: 805959939788455700, guid: 870a53f5de7591740b748fa6724d97c4, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2427054820357063529
@@ -359,6 +361,8 @@ PlayableDirector:
     value: {fileID: 1510922958757828136}
   - key: {fileID: -5763307137688502784, guid: 22b8ded7d0985f448827f58900e278c7, type: 2}
     value: {fileID: 3105801480486927495}
+  - key: {fileID: 805959939788455700, guid: 22b8ded7d0985f448827f58900e278c7, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2657891517437868586
@@ -630,6 +634,8 @@ PlayableDirector:
     value: {fileID: 3105801480486927495}
   - key: {fileID: -6059255463828131372, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
     value: {fileID: 4198994870414546198}
+  - key: {fileID: 805959939788455700, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -675,7 +681,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: e073acfde92ab644b84d2671517886e6, type: 2}
   m_InitialState: 0
-  m_WrapMode: 1
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -852,8 +858,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7410896267050152058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -869,7 +875,7 @@ Animator:
   m_GameObject: {fileID: 7410896267050152058}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f37541ac828ca004b9273b3a78f574fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -925,7 +931,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6459363530246390038, guid: 9252271108f774746a6ba0f75b4a0569, type: 3}
+  m_Sprite: {fileID: 907531710, guid: 0f3ed68690c3ca340937c75f90138a1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1067,6 +1073,8 @@ PlayableDirector:
     value: {fileID: 3105801480486927495}
   - key: {fileID: -4555853105482004646, guid: cc5507bb7145b2a499ee15820035c0f0, type: 2}
     value: {fileID: 4198994870414546198}
+  - key: {fileID: 2670663638000722055, guid: cc5507bb7145b2a499ee15820035c0f0, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &4409661948264773680

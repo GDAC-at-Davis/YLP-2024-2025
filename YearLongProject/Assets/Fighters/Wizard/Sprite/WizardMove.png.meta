@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b9a3a3b59455e054899102374e75cfea
+guid: 0f3ed68690c3ca340937c75f90138a1d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -110,23 +110,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_4854_0
+      name: WizardMove_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1028
         width: 1024
         height: 1024
-      alignment: 9
-      pivot: {x: 0.42737833, y: 0.13689163}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff39fa944b4681a4ca8be7c3396d6925
-      internalID: -1895026216
+      spriteID: 9ab6911590839dd47a8bf34bf4e6a284
+      internalID: -1749247872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardMove_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1028
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f1b0bcb631bd64785e9c890cedba2c
+      internalID: 907531710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardMove_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8615d582489a240ace7d47d64dc130
+      internalID: 1399059311
       vertices: []
       indices: 
       edges: []
@@ -135,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5112d2d06a8c5a342b753a96beaea69a
+    spriteID: fd0bce572453d604aaf78d6da2b5b969
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +189,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_4854_0: -1895026216
+      WizardMove_0: -1749247872
+      WizardMove_1: 907531710
+      WizardMove_2: 1399059311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
