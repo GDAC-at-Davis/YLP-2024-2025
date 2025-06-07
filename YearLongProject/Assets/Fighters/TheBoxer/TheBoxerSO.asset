@@ -15,3 +15,4 @@ MonoBehaviour:
   CharacterDisplayName: Boxer
   CharacterPrefab: {fileID: 6242291163348849283, guid: d22551694c8bc1d45aa3c3c9803318b8, type: 3}
   CharacterPortrait: {fileID: 21300000, guid: 0405b995829094f458bb396612a4c7ca, type: 3}
+  CharacterLore: {fileID: 11400000, guid: bfedac17a3409c543b7e1cc571265e20, type: 2}

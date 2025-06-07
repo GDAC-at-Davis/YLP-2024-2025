@@ -7,7 +7,6 @@ using GameEntities;
 using LevelScripts;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -247,7 +246,7 @@ namespace Managers
         public void LoadScene(string scene)
         {
             Debug.Log($"Loading scene {scene}");
-            SceneManager.LoadScene(scene);
+            SceneSwitchManager.Instance.SwitchScene(scene);
         }
 
         public void SetCharacterEntity(int id, CharacterEntity character)

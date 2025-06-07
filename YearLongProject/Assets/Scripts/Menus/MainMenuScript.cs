@@ -1,8 +1,7 @@
-using System.Collections;
+using Managers;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
@@ -13,10 +12,11 @@ public class MainMenuScript : MonoBehaviour
     public Image scelect; // scythe select object. I'll define all of scelects behavior when moving in here
     public Animator animator; // scythe animator controller
 
-    public Animator transition_animator; // for fading in and fading out
+    [Scene]
+    public string liveScene; // the scene to load when the player selects the "live" button
 
     [Scene]
-    public string sceneToLoad; // the scene to load when the player selects the "live" button
+    public string loreScene;
 
     private GameObject lastSelected; // last selected menu item
 
@@ -55,47 +55,21 @@ public class MainMenuScript : MonoBehaviour
 
     public void live()
     {
-        transition_animator.SetTrigger("exit");
-        StartCoroutine(WaitForAnimation("Fade_out", "live"));
+        SceneSwitchManager.Instance.SwitchScene(liveScene);
     }
 
     public void lore()
     {
-        // transition to lore scene
+        SceneSwitchManager.Instance.SwitchScene(loreScene);
     }
 
     public void leave()
     {
-        transition_animator.SetTrigger("exit");
-        StartCoroutine(WaitForAnimation("Fade_out", "exit"));
+        Application.Quit();
     }
 
     // scelect behavior functions
     private void scelect_move()
     {
-    }
-
-    private IEnumerator WaitForAnimation(string stateName, string outcome)
-    {
-        // Wait until the animation starts
-        yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).IsName(stateName));
-
-        // Wait until the animation finishes
-        yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-
-        switch (outcome)
-        {
-            case "exit":
-                Application.Quit();
-                break;
-
-            case "live":
-                SceneManager.LoadScene(sceneToLoad);
-                break;
-
-            case "lore":
-                // implement scene switching
-                break;
-        }
     }
 }

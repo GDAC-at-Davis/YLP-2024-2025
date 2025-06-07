@@ -307,7 +307,6 @@ public class CharacterCreatorWizard : EditorWindow
         var characterPrefab =
             (GameObject)AssetDatabase.LoadAssetAtPath($"{rootpathRelative}{characterName}.prefab", typeof(GameObject));
         newSO.CharacterPrefab = characterPrefab;
-        newSO.CharacterLoreDescription = "Add character displayed character lore here \n This is a multiline field!";
         newSO.CharacterPortrait =
             AssetDatabase.LoadAssetAtPath<Sprite>($"{rpTemplateRelative}Sprites/{templateCharPrefix}Portrait.png");
         EditorUtility.SetDirty(newSO);
