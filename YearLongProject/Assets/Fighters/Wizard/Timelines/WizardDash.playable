@@ -146,8 +146,7 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
-    - {fileID: 11400000, guid: 71345fa6e1261844486ff05f65469197, type: 2}
+    AllowedStates: []
     ActionManager: {fileID: 0}
 --- !u!114 &-4555853105482004646
 MonoBehaviour:

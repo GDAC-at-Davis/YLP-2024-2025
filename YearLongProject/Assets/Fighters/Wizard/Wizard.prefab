@@ -515,7 +515,7 @@ PlayableDirector:
   m_GameObject: {fileID: 2657891517437868586}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 31716d99b3766ad4a943264996b49a72, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 3e03efbd24ddb7f4dbfb94632ba944d7, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -536,6 +536,10 @@ PlayableDirector:
   - key: {fileID: -1755073353440819576, guid: 31716d99b3766ad4a943264996b49a72, type: 2}
     value: {fileID: 6572194888787973522}
   - key: {fileID: -5438996935550660551, guid: 31716d99b3766ad4a943264996b49a72, type: 2}
+    value: {fileID: 7062655416985638217}
+  - key: {fileID: -1755073353440819576, guid: 3e03efbd24ddb7f4dbfb94632ba944d7, type: 2}
+    value: {fileID: 6572194888787973522}
+  - key: {fileID: -5438996935550660551, guid: 3e03efbd24ddb7f4dbfb94632ba944d7, type: 2}
     value: {fileID: 7062655416985638217}
   m_ExposedReferences:
     m_References: []
@@ -683,9 +687,9 @@ PlayableDirector:
     value: {fileID: 6572194888787973522}
   - key: {fileID: 1138394045340534529, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
     value: {fileID: 6972243527925525426}
-  - key: {fileID: 8331418713520652714, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4198994870414546198}
-  - key: {fileID: 8829339449843730414, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4198994870414546198}
   - key: {fileID: 727510962836346268, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
     value: {fileID: 1510922958757828136}
@@ -695,6 +699,8 @@ PlayableDirector:
     value: {fileID: 4198994870414546198}
   - key: {fileID: 805959939788455700, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 8698320930786970779, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -763,7 +769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4101122284215365208}
-  - component: {fileID: 6997445811819203289}
+  - component: {fileID: 6242102883873054108}
   m_Layer: 3
   m_Name: MoveState
   m_TagString: Untagged
@@ -790,7 +796,7 @@ Transform:
   - {fileID: 8122670588376751460}
   m_Father: {fileID: 639948414992868120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6997445811819203289
+--- !u!114 &6242102883873054108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -799,7 +805,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5440691533417352194}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb38fe16465f3347a316059e808e8f8, type: 3}
+  m_Script: {fileID: 11500000, guid: fc4a272acfc765c4f97bc3ee7c484563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateNameSO: {fileID: 11400000, guid: 06159a6e6238df2458b81309f2e1148f, type: 2}
@@ -813,7 +819,20 @@ MonoBehaviour:
     loop: 0
     OnFinishedUnityEvent:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 6242102883873054108}
+          m_TargetAssemblyTypeName: State_Machine_Scripts.States.ComplexMoveState,
+            Assembly-CSharp
+          m_MethodName: OnEnterMoveEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   movingPlayableAsset:
     playableDirector: {fileID: 7131225453378288842}
     loop: 1
@@ -822,13 +841,13 @@ MonoBehaviour:
         m_Calls: []
   idlePlayableAsset:
     playableDirector: {fileID: 1421162813297472899}
-    loop: 1
+    loop: 0
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
   airPlayableAsset:
     playableDirector: {fileID: 5500759636539805938}
-    loop: 1
+    loop: 0
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1002,10 +1021,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8945456, y: 2.0225072}
+  m_Size: {x: 2.46747, y: 2.468273}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8646585484509999927
@@ -1475,16 +1494,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4783867218396614651, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: JumpState
       value: 
       objectReference: {fileID: 4410214796524957275}
-    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: MoveState
-      value: 
-      objectReference: {fileID: 6997445811819203289}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: character
       value: 
@@ -1504,7 +1519,7 @@ PrefabInstance:
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: 'states.Array.data[0]'
       value: 
-      objectReference: {fileID: 6997445811819203289}
+      objectReference: {fileID: 6242102883873054108}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: 'states.Array.data[1]'
       value: 
