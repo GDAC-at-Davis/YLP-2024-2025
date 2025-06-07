@@ -57,6 +57,65 @@ PlayableDirector:
     value: {fileID: 6572194888787973522}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &1982502986741735785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8847980531413736934}
+  - component: {fileID: 3162010364806132880}
+  m_Layer: 3
+  m_Name: EnterMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8847980531413736934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982502986741735785}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4101122284215365208}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &3162010364806132880
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982502986741735785}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 77ebb4ec1c530a04ca6fc90133794713, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -1755073353440819576, guid: ac0ce67a5aa8d7644b424aad797bbab3, type: 2}
+    value: {fileID: 6572194888787973522}
+  - key: {fileID: -1755073353440819576, guid: b228b5ca4b91ad84a9fd3d3009fef730, type: 2}
+    value: {fileID: 6572194888787973522}
+  - key: {fileID: -1755073353440819576, guid: 40cbaaf0fa83c954180fc3a637e04872, type: 2}
+    value: {fileID: 6572194888787973522}
+  - key: {fileID: -1755073353440819576, guid: e073acfde92ab644b84d2671517886e6, type: 2}
+    value: {fileID: 6572194888787973522}
+  - key: {fileID: -1755073353440819576, guid: 77ebb4ec1c530a04ca6fc90133794713, type: 2}
+    value: {fileID: 6572194888787973522}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &2315708825070408401
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +784,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8847980531413736934}
   - {fileID: 5611637536127478132}
   - {fileID: 3858466202155502726}
   - {fileID: 8122670588376751460}
@@ -748,9 +808,15 @@ MonoBehaviour:
       m_Calls: []
   movementController: {fileID: 1278654112016437739}
   characterRigidbody: {fileID: 4198994870414546198}
+  enterMovingPlayableAsset:
+    playableDirector: {fileID: 3162010364806132880}
+    loop: 0
+    OnFinishedUnityEvent:
+      m_PersistentCalls:
+        m_Calls: []
   movingPlayableAsset:
     playableDirector: {fileID: 7131225453378288842}
-    loop: 0
+    loop: 1
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []

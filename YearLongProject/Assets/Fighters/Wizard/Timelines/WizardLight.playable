@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 5
-      <Knockback>k__BackingField: {x: 6, y: 3}
-      <Hitstun>k__BackingField: 0.3
-      <HitStopDuration>k__BackingField: 0.2
+      <Damage>k__BackingField: 1
+      <Knockback>k__BackingField: {x: 0, y: 0}
+      <Hitstun>k__BackingField: 0.1
+      <HitStopDuration>k__BackingField: 0.1
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
       <ScreenShakeEffect>k__BackingField:
@@ -75,9 +75,9 @@ MonoBehaviour:
     HitboxGroupId: LightPrimary
     RaycastArea: []
     BoxArea:
-    - center: {x: 0.45, y: 0.16}
+    - center: {x: 0.74, y: 0.16}
       rotation: 0
-      size: {x: 1.25, y: 1.21}
+      size: {x: 1, y: 1}
 --- !u!114 &-7977279408024507225
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +192,45 @@ MonoBehaviour:
     m_DisplayName: AllowNothing
   m_Markers:
     m_Objects: []
+--- !u!114 &-5511730773809880703
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f7a1a91b234f958dfb8b33ffca2e3a, type: 3}
+  m_Name: VelocityTweenPlayableAsset
+  m_EditorClassIdentifier: 
+  template:
+    StartVelocity: {x: 2, y: 0}
+    EndVelocity: {x: 0, y: 0}
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!114 &-5506714847918563735
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +357,84 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &-3102375447693183872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1ee60c33f763e4ca6de942661b03f2, type: 3}
+  m_Name: HitboxPlayableAsset(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    HitEffect:
+      <Damage>k__BackingField: 1
+      <Knockback>k__BackingField: {x: 0, y: 0}
+      <Hitstun>k__BackingField: 0.1
+      <HitStopDuration>k__BackingField: 0.1
+      <GiveTargetHitStop>k__BackingField: 1
+      <GiveAttackerHitStop>k__BackingField: 1
+      <ScreenShakeEffect>k__BackingField:
+        <ImpulseDefinition>k__BackingField:
+          ImpulseChannel: 1
+          ImpulseShape: 2
+          CustomImpulseShape:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          ImpulseDuration: 0.2
+          ImpulseType: 0
+          DissipationRate: 0
+          RawSignal: {fileID: 0}
+          AmplitudeGain: 1
+          FrequencyGain: 1
+          RepeatMode: 0
+          Randomize: 1
+          TimeEnvelope:
+            AttackShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            DecayShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            AttackTime: 0
+            SustainTime: 0.2
+            DecayTime: 0.7
+            ScaleWithImpact: 1
+            HoldForever: 0
+          ImpactRadius: 100
+          DirectionMode: 0
+          DissipationMode: 2
+          DissipationDistance: 100
+          PropagationSpeed: 343
+        <Velocity>k__BackingField: {x: 0, y: 0.4}
+        <FlipXVelocity>k__BackingField: 1
+      <HitSound>k__BackingField:
+        Guid:
+          Data1: 281330696
+          Data2: 1228196312
+          Data3: 1711216276
+          Data4: -439583530
+        Path: event:/Characters/Ahab/LightAttackHit
+    ScreenShakeSO: {fileID: 11400000, guid: 7e68a09a9d10bbf4c83b375b704a39f4, type: 2}
+    EndHitboxGroup: 1
+    HitboxGroupId: LightPrimary2
+    RaycastArea: []
+    BoxArea:
+    - center: {x: 0.6, y: 0.16}
+      rotation: 0
+      size: {x: 1, y: 1}
 --- !u!114 &-2936464226458931067
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +447,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88146430b8076074e8eea8ab310933c5, type: 3}
   m_Name: LockFlipXPlayableAsset
   m_EditorClassIdentifier: 
+--- !u!114 &-621153046997029404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1ee60c33f763e4ca6de942661b03f2, type: 3}
+  m_Name: HitboxPlayableAsset(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    HitEffect:
+      <Damage>k__BackingField: 3
+      <Knockback>k__BackingField: {x: 5, y: 7}
+      <Hitstun>k__BackingField: 0.3
+      <HitStopDuration>k__BackingField: 0.2
+      <GiveTargetHitStop>k__BackingField: 1
+      <GiveAttackerHitStop>k__BackingField: 1
+      <ScreenShakeEffect>k__BackingField:
+        <ImpulseDefinition>k__BackingField:
+          ImpulseChannel: 1
+          ImpulseShape: 2
+          CustomImpulseShape:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          ImpulseDuration: 0.2
+          ImpulseType: 0
+          DissipationRate: 0
+          RawSignal: {fileID: 0}
+          AmplitudeGain: 1
+          FrequencyGain: 1
+          RepeatMode: 0
+          Randomize: 1
+          TimeEnvelope:
+            AttackShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            DecayShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            AttackTime: 0
+            SustainTime: 0.2
+            DecayTime: 0.7
+            ScaleWithImpact: 1
+            HoldForever: 0
+          ImpactRadius: 100
+          DirectionMode: 0
+          DissipationMode: 2
+          DissipationDistance: 100
+          PropagationSpeed: 343
+        <Velocity>k__BackingField: {x: 0, y: 0.4}
+        <FlipXVelocity>k__BackingField: 1
+      <HitSound>k__BackingField:
+        Guid:
+          Data1: 281330696
+          Data2: 1228196312
+          Data3: 1711216276
+          Data4: -439583530
+        Path: event:/Characters/Ahab/LightAttackHit
+    ScreenShakeSO: {fileID: 11400000, guid: 7e68a09a9d10bbf4c83b375b704a39f4, type: 2}
+    EndHitboxGroup: 1
+    HitboxGroupId: LightPrimary3
+    RaycastArea: []
+    BoxArea:
+    - center: {x: 0.6, y: 0.16}
+      rotation: 0
+      size: {x: 1.3, y: 1}
 --- !u!114 &-290852710103159946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -560,7 +755,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Whoosh
+    m_DisplayName: LightAttackUse
   m_Markers:
     m_Objects: []
   template:
@@ -587,10 +782,148 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.16666666666666666
+    m_Start: 0.3
     m_ClipIn: 0
     m_Asset: {fileID: -8683478057089185305}
-    m_Duration: 0.08333333333333334
+    m_Duration: 0.016666666666666666
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 1138394045340534529}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Light Primary
+  - m_Version: 1
+    m_Start: 0.31666666666666665
+    m_ClipIn: 0
+    m_Asset: {fileID: -3102375447693183872}
+    m_Duration: 0.016666666666666666
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 1138394045340534529}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Light Primary
+  - m_Version: 1
+    m_Start: 0.35
+    m_ClipIn: 0
+    m_Asset: {fileID: -621153046997029404}
+    m_Duration: 0.016666666666666666
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1138394045340534529}
     m_EaseInDuration: 0
@@ -708,46 +1041,6 @@ MonoBehaviour:
     Path: event:/Characters/Ahab/LightAttackUse
   StopType: 0
   Parameters: []
---- !u!114 &7954876661551819440
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e3cb5f0b8c4139bf46238cc0af7d79, type: 3}
-  m_Name: GravityTweenPlayableAsset
-  m_EditorClassIdentifier: 
-  template:
-    StartGravity: {x: 0, y: 0}
-    EndGravity: {x: 0, y: -15}
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ReturnToStartGravity: 1
 --- !u!114 &8829339449843730414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -772,8 +1065,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 7954876661551819440}
-    m_Duration: 0.41666666666666663
+    m_Asset: {fileID: -5511730773809880703}
+    m_Duration: 0.7666666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8829339449843730414}
     m_EaseInDuration: 0
@@ -837,6 +1130,6 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: GravityTweenPlayableAsset
+    m_DisplayName: VelocityTweenPlayableAsset
   m_Markers:
     m_Objects: []
