@@ -944,8 +944,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRigidbody: {fileID: 5352263243400969421}
+  collider: {fileID: 3352808017341713777}
   groundMaxSpeed: 7
   groundAcceleration: 11
+  groundCheckSensitivity: 3
   airMaxSpeed: 7
   airAcceleration: 7
   groundLayer:
