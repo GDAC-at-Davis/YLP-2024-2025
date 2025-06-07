@@ -1593,10 +1593,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 791708176923828659}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 6810935469208528042}
-    - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airMaxSpeed
       value: 15
       objectReference: {fileID: 0}
@@ -1807,11 +1803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd63c16bb2f84047b6bbf9d06185b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &6810935469208528042 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3352808017341713777, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-  m_PrefabInstance: {fileID: 8071256034438834651}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6972243527925525426 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1207173700868113001, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
