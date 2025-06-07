@@ -22,6 +22,10 @@ namespace Timeline.CubeSpecial
             {
                 cubeSpecial.TriggerTrap((float)(playable.GetDuration()));
             }
+            else
+            {
+                cubeSpecial.SetTrap();
+            }
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -29,17 +33,6 @@ namespace Timeline.CubeSpecial
             if (!Application.isPlaying)
             {
                 return;
-            }
-
-            if (cubeSpecial.canSetTrap == true)
-            {
-                cubeSpecial.gameObject.SetActive(true);
-                cubeSpecial.SetTrap();
-            }
-            else if (cubeSpecial.IsTrapActive)
-            {
-                cubeSpecial.EndTrap();
-                cubeSpecial.gameObject.SetActive(false);
             }
         }
     }

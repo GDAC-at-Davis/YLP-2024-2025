@@ -75,9 +75,9 @@ MonoBehaviour:
     HitboxGroupId: LightPrimary
     RaycastArea: []
     BoxArea:
-    - center: {x: 0, y: -0.45}
+    - center: {x: 0, y: -0.2}
       rotation: 0
-      size: {x: 1.21, y: 0.66}
+      size: {x: 1.59, y: 0.89}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
   m_ObjectHideFlags: 1
