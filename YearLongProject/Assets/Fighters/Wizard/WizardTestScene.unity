@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!95 &29736319 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6572194888787973522, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-  m_PrefabInstance: {fileID: 1204670232}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &185713470
 Mesh:
   m_ObjectHideFlags: 0
@@ -320,17 +315,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &441058819 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7062655416985638217, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-  m_PrefabInstance: {fileID: 1204670232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 181bc6e60c86dc34f8ac5d425032234e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &668811894
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,30 +576,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3726650428927876446, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 43
-      objectReference: {fileID: 0}
-    - target: {fileID: 3726650428927876446, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[42].key
-      value: 
-      objectReference: {fileID: 8698320930786970779, guid: e97c228943dc4cf4fa962f93e5df17f8, type: 2}
-    - target: {fileID: 3726650428927876446, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[42].value
-      value: 
-      objectReference: {fileID: 1360890028}
-    - target: {fileID: 3853249764787856074, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 43
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853249764787856074, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[42].key
-      value: 
-      objectReference: {fileID: -3342927351243216472, guid: 870a53f5de7591740b748fa6724d97c4, type: 2}
-    - target: {fileID: 3853249764787856074, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[42].value
-      value: 
-      objectReference: {fileID: 1360890028}
     - target: {fileID: 4678280858386419961, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -660,38 +620,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
-    - target: {fileID: 8583743358405194245, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_Size.x
-      value: 2.46747
-      objectReference: {fileID: 0}
-    - target: {fileID: 8583743358405194245, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_Size.y
-      value: 2.468273
-      objectReference: {fileID: 0}
-    - target: {fileID: 9144825239364771358, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_PlayableAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 3e03efbd24ddb7f4dbfb94632ba944d7, type: 2}
-    - target: {fileID: 9144825239364771358, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9144825239364771358, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[8].key
-      value: 
-      objectReference: {fileID: -1755073353440819576, guid: 3e03efbd24ddb7f4dbfb94632ba944d7, type: 2}
-    - target: {fileID: 9144825239364771358, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[9].key
-      value: 
-      objectReference: {fileID: -5438996935550660551, guid: 3e03efbd24ddb7f4dbfb94632ba944d7, type: 2}
-    - target: {fileID: 9144825239364771358, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[8].value
-      value: 
-      objectReference: {fileID: 29736319}
-    - target: {fileID: 9144825239364771358, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-      propertyPath: m_SceneBindings.Array.data[9].value
-      value: 
-      objectReference: {fileID: 441058819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -972,17 +900,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1360890028 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3105801480486927495, guid: 63eb66009e4a3ec449b12374659bf874, type: 3}
-  m_PrefabInstance: {fileID: 1204670232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1689198221
 Mesh:
   m_ObjectHideFlags: 0
@@ -1806,10 +1723,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PracticeStage
       objectReference: {fileID: 0}
+    - target: {fileID: 7248492828484501724, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8163428749301946303, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 729842760}
+    - target: {fileID: 8593286547414123666, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
