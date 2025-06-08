@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f78a0a3e840c3b488304b0ff928238c, type: 3}
+  m_Name: WizardLoreSO
+  m_EditorClassIdentifier: 
+  LoreTitle: Wizard
+  LoreText:
+  - I. Despite magic likely being the farthest thing from an exact science, humanity
+    has tried to study it as such since its discovery. It is no surprise, then, that
+    the number of wizards and sorcerers who meet their untimely demise greatly outnumber
+    the ones who don't. Succumbing to gruesome deaths in their attempts to tame what
+    cannot be tamed, these wizards' names have long since been lost to time, leaving
+    behind only their horrific cautionary tales and their discoveries paid for in
+    blood.
