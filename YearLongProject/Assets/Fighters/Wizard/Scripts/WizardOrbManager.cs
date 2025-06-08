@@ -6,6 +6,7 @@ using GameEntities;
 
 namespace Fighters.Wizard.Scripts
 {
+    // Workaround for Activation track
     public class WizardOrbManager : MonoBehaviour
     {
         [SerializeField]
@@ -47,6 +48,7 @@ namespace Fighters.Wizard.Scripts
             transform.localScale = theScale;
         }
 
+        // Animation track only supports enabling and not instantiating so whenever this is activated it'll spawn an orb
         private void OnEnable()
         {
             bool spawned = false;
@@ -54,8 +56,7 @@ namespace Fighters.Wizard.Scripts
             {
                 if (orb.gameObject.activeSelf) continue;
 
-                orb.transform.position = transform.position;
-                orb.gameObject.SetActive(true);
+                SpawnOrb(orb);
                 spawned = true;
                 break;
             }
@@ -65,12 +66,24 @@ namespace Fighters.Wizard.Scripts
                 WizardOrbBehavior oldestOrb = currentOrbs[0];
                 currentOrbs.Remove(oldestOrb);
 
-                oldestOrb.transform.position = transform.position;
-                oldestOrb.gameObject.SetActive(true);
+                SpawnOrb(oldestOrb);
                 currentOrbs.Add(oldestOrb);
             }
 
             gameObject.SetActive(false);
+        }
+
+        public void ResetOrb(WizardOrbBehavior orb)
+        {
+            currentOrbs.Remove(orb);
+            currentOrbs.Add(orb);
+        }
+
+        private void SpawnOrb(WizardOrbBehavior orb)
+        {
+            orb.transform.position = transform.position;
+            orb.Reset();
+            orb.gameObject.SetActive(true);
         }
     }
 }
