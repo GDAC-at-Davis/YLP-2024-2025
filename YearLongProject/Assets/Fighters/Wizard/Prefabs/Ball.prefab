@@ -123,7 +123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8699008234920065302
 Transform:
   m_ObjectHideFlags: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
     center: {x: 0, y: 0}
     rotation: 0
     size: {x: 1, y: 1}
+  knockbackHitboxSize: {x: 0, y: 0}
   hitboxEffect:
     <Damage>k__BackingField: 10
     <Knockback>k__BackingField: {x: 2, y: 2}
@@ -187,8 +188,8 @@ MonoBehaviour:
         ImpulseType: 3
         DissipationRate: 0
         RawSignal: {fileID: 0}
-        AmplitudeGain: 1
-        FrequencyGain: 1
+        AmplitudeGain: 2
+        FrequencyGain: 2
         RepeatMode: 0
         Randomize: 1
         TimeEnvelope:

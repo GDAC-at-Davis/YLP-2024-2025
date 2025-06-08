@@ -5,6 +5,9 @@ using UnityEngine;
 using Hitbox.Emitters;
 using Hitbox.HitboxAreas;
 using Hitbox.System;
+using Hitbox;
+using State_Machine_Scripts;
+using State_Machine_Scripts.States;
 
 namespace Fighters.Wizard.Scripts
 {
@@ -28,7 +31,7 @@ namespace Fighters.Wizard.Scripts
         private LayerMask physicsCollisionLayers;
         Collisions collisions;
         private CharacterRigidbody2D rb;
-        private Collider2D col;
+        private BoxCollider2D col;
 
         [Header("Hitbox")]
         [SerializeField]
@@ -37,6 +40,9 @@ namespace Fighters.Wizard.Scripts
         private string hitboxGroupID;
         [SerializeField]
         BoxArea hitboxArea;
+        BoxArea knockbackHitboxArea;
+        [SerializeField]
+        Vector2 knockbackHitboxSize;
         [SerializeField]
         HitboxEffect hitboxEffect;
 
@@ -47,8 +53,9 @@ namespace Fighters.Wizard.Scripts
             gameObject.SetActive(false);
 
             rb = GetComponent<CharacterRigidbody2D>();
-            col = GetComponent<Collider2D>();
+            col = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
+            knockbackHitboxArea = new BoxArea(Vector2.zero, 0, knockbackHitboxSize);
         }
 
         private void FixedUpdate()
@@ -60,7 +67,7 @@ namespace Fighters.Wizard.Scripts
 
             if (rb.LinearVelocity == Vector2.zero)
             {
-                hitboxEmitter.EndHitboxGroup(hitboxGroupID);
+                CheckForPlayerCollisions(Physics2D.BoxCastAll(transform.position, knockbackHitboxSize, 0, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Player")));
                 return;
             }
             else
@@ -130,6 +137,13 @@ namespace Fighters.Wizard.Scripts
             rb.LinearVelocity = Vector2.zero;
             anim.Play("OrbImpact");
         }
+        public void Detonate()
+        {
+            HitboxContext context = hitboxEmitter.GetContext(hitboxGroupID);
+            context.FlipX = rb.LinearVelocity.x < 0;
+            hitboxEmitter.EmitHitbox(knockbackHitboxArea, hitboxEffect, context, hitboxGroupID);
+            Impact();
+        }
         public void DestroyBall()
         {
             manager.ResetOrb(this);
@@ -140,6 +154,7 @@ namespace Fighters.Wizard.Scripts
         public void Reset()
         {
             anim.Play("OrbAnim");
+            hitboxEmitter.EndHitboxGroup(hitboxGroupID);
             rb.LinearVelocity = Vector2.zero;
         }
 
@@ -149,6 +164,20 @@ namespace Fighters.Wizard.Scripts
             public bool below;
             public bool left;
             public bool right;
+        }
+
+        private void CheckForPlayerCollisions(RaycastHit2D[] hits)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                CharacterEntity manager = (CharacterEntity)(hit.collider.GetComponent<EntityHurtbox>().AttachedEntity);
+                if (manager == this.manager.Wizard) return;
+
+                //if (manager.CurrentState.stateNameSO.StateType == State_Machine_Scripts.StateNameSO.StateTypes.HITSTUN)
+                if (manager.ActionManager.CurrentState.GetType() != typeof(HitstunState)) return;
+                Debug.Log(manager.ActionManager.CurrentState.StateName);
+                Detonate();
+            }
         }
     }
 }

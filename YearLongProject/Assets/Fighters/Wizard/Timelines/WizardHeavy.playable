@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 10
+      <Damage>k__BackingField: 6
       <Knockback>k__BackingField: {x: 12, y: 12}
       <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.2
