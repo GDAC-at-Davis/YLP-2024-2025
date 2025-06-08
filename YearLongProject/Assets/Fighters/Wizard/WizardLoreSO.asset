@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoreTitle: Wizard
   LoreText:
-  - I. Despite magic likely being the farthest thing from an exact science, humanity
-    has tried to study it as such since its discovery. It is no surprise, then, that
-    the number of wizards and sorcerers who meet their untimely demise greatly outnumber
-    the ones who don't. Succumbing to gruesome deaths in their attempts to tame what
-    cannot be tamed, these wizards' names have long since been lost to time, leaving
-    behind only their horrific cautionary tales and their discoveries paid for in
-    blood.
+  - "I. Despite magic likely being the farthest thing from an exact science, humanity
+    has tried to study it as such since its discovery. \n\nIt is no surprise, then,
+    that the number of wizards and sorcerers who meet their untimely demise greatly
+    outnumber the ones who don't. Succumbing to gruesome deaths in their attempts
+    to tame what cannot be tamed, these wizards' names have long since been lost
+    to time, leaving behind only their horrific cautionary tales and their discoveries
+    paid for in blood."
