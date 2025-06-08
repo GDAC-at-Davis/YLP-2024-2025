@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593c44a66696d0446bf61ba434744c9e, type: 3}
+  m_Name: Lady LucklessSO
+  m_EditorClassIdentifier: 
+  CharacterDisplayName: Lady Luckless
+  CharacterPrefab: {fileID: 6242291163348849283, guid: 171d9e6710a203a4ab37b1fcbecc941c, type: 3}
+  CharacterPortrait: {fileID: 21300000, guid: 843f70c5ff4b2284a9d456de59327701, type: 3}
+  CharacterLore: {fileID: 11400000, guid: b5dc3082320b4be48a91ca21ea924732, type: 2}
