@@ -380,6 +380,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4861582853096640356, guid: 7cbb430bf7bed204386290beda323016, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
     - target: {fileID: 5671547444131873640, guid: 7cbb430bf7bed204386290beda323016, type: 3}
       propertyPath: m_Name
       value: CoreGameplaySystems
