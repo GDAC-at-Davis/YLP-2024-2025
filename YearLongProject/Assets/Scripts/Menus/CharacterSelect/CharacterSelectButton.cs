@@ -28,6 +28,9 @@ namespace Menus
         [SerializeField]
         private Sprite cursor;
 
+        [SerializeField]
+        private Image portraitImage;
+
         private void OnDisable()
         {
             gameDataSO.OnAllPlayersReady -= ReadyUp;
@@ -37,7 +40,7 @@ namespace Menus
         public void Init(CharacterSO character)
         {
             GetComponentInChildren<TextMeshProUGUI>().text = character.CharacterDisplayName;
-            GetComponent<Image>().sprite = character.CharacterPortrait;
+            portraitImage.sprite = character.CharacterPortrait;
 
             LayoutGroup = GetComponentInChildren<GridLayoutGroup>();
             Character = character;
