@@ -53,6 +53,8 @@ PlayableDirector:
     value: {fileID: 6572194888787973522}
   - key: {fileID: -1755073353440819576, guid: b74cb36707db15c43bf892e762a142c9, type: 2}
     value: {fileID: 6572194888787973522}
+  - key: {fileID: 0}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2427054820357063529
@@ -880,7 +882,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1360962942, guid: 15f72751876382e4988957d93452d0de, type: 3}
+  m_Sprite: {fileID: -1320903465, guid: 15f72751876382e4988957d93452d0de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
