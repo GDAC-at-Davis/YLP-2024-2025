@@ -447,6 +447,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -9161815175273688157, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -3960725186695254173, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -633,7 +635,7 @@ MonoBehaviour:
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
-  useDefaultMovement: 1
+  useDefaultMovement: 0
 --- !u!320 &5143816317544813401
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -711,6 +713,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -6553164456977255264, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
     value: {fileID: 4198994870414546198}
+  - key: {fileID: -3301409326029880673, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 7beab605e1f3110438a9ea6b0afe326d: {fileID: 8631050776698224226}
@@ -1003,7 +1007,7 @@ PlayableDirector:
   - key: {fileID: -8132628475675928494, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
     value: {fileID: 4198994870414546198}
   - key: {fileID: 2670663638000722055, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 3850342251300834818}
   - key: {fileID: 4740485956691927553, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
