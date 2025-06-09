@@ -93,33 +93,38 @@ namespace Fighters.Wizard.Scripts
 
             int dir = hitboxInstance.Context.FlipX ? -1 : 1;
 
-            Debug.Log(hitboxInstance.HitboxEffect.Damage);
-
             if (hitboxInstance.HitboxEffect.Damage == 3) // hit by light
             {
-                Debug.Log("light");
-                anim.Play("OrbInteract");
                 Vector2 kb = lightTravelSpeed;
                 kb.x *= dir;
-                rb.LinearVelocity = kb;
+                LaunchBall(kb);
             }
             else if (hitboxInstance.HitboxEffect.Damage > 5) // hit by heavy
             {
-                Debug.Log("heavy");
-                anim.Play("OrbInteract");
                 Vector2 kb = heavyTravelSpeed;
                 kb.x *= dir;
-                rb.LinearVelocity = kb;
+                LaunchBall(kb);
+
             }
             else if (hitboxInstance.HitboxEffect.Damage == 5) // hit by special chain
             {
-                Debug.Log("special");
-                anim.Play("OrbInteract");
                 Vector2 kb = lightTravelSpeed;
                 kb.x *= dir;
                 kb.y *= -1;
-                rb.LinearVelocity = kb;
+                LaunchBall(kb);
+
             }
+        }
+
+        private void LaunchBall(Vector2 velocity)
+        {
+            // Don't launch ball if already detonating
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("OrbImpact"))
+            {
+                return;
+            }
+            anim.Play("OrbInteract");
+            rb.LinearVelocity = velocity;
         }
 
         private void DoCollisions() // I couldn't figure out the weird collision interacions so I'm just doing this sorry
@@ -197,7 +202,6 @@ namespace Fighters.Wizard.Scripts
 
                 //if (manager.CurrentState.stateNameSO.StateType == State_Machine_Scripts.StateNameSO.StateTypes.HITSTUN)
                 if (manager.ActionManager.CurrentState.GetType() != typeof(HitstunState)) return;
-                Debug.Log(manager.ActionManager.CurrentState.StateName);
                 Detonate();
             }
         }
