@@ -39,16 +39,18 @@ namespace Managers
         {
             transition_animator.Play("Fade_out", 0, 0f);
 
-            yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).IsName("Fade_out"));
+            yield return new WaitForEndOfFrame();
 
             // Wait until the animation finishes
             yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-            SceneManager.LoadScene(targetScene);
+            AsyncOperation op = SceneManager.LoadSceneAsync(targetScene);
+            yield return new WaitUntil(() => op.isDone);
 
             // Fade in
             transition_animator.Play("Fade_in", 0, 0f);
-            yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).IsName("Fade_in"));
+
+            yield return new WaitForEndOfFrame();
 
             yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
