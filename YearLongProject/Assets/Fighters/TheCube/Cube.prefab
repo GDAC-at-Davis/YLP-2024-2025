@@ -754,7 +754,7 @@ MonoBehaviour:
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
-  useDefaultMovement: 1
+  useDefaultMovement: 0
 --- !u!320 &6142686231447053304
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1782,7 +1782,7 @@ PrefabInstance:
       objectReference: {fileID: 791708176923828659}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airMaxSpeed
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundMaxSpeed
