@@ -445,6 +445,8 @@ PlayableDirector:
     value: {fileID: 6972243527925525426}
   - key: {fileID: 805959939788455700, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -9161815175273688157, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -797,7 +799,7 @@ Transform:
   m_GameObject: {fileID: 7410896267050152058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.151, y: 0, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -998,6 +1000,8 @@ PlayableDirector:
   - key: {fileID: -8132628475675928494, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
     value: {fileID: 4198994870414546198}
   - key: {fileID: 2670663638000722055, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4740485956691927553, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -1541,7 +1545,7 @@ PrefabInstance:
       objectReference: {fileID: 791708176923828659}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airMaxSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundMaxSpeed
@@ -1549,11 +1553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airAcceleration
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundAcceleration
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
