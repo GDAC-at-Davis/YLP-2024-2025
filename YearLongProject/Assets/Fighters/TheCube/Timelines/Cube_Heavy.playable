@@ -71,7 +71,7 @@ MonoBehaviour:
           Data4: -439583530
         Path: event:/Characters/Ahab/LightAttackHit
     ScreenShakeSO: {fileID: 11400000, guid: 6e9554aa511402d4d874eb766e30db82, type: 2}
-    EndHitboxGroup: 1
+    EndHitboxGroup: 0
     HitboxGroupId: HeavyPrimary
     RaycastArea: []
     BoxArea:
