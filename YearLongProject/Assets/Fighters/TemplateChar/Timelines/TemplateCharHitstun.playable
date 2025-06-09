@@ -364,5 +364,6 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    AllowedStates: []
+    AllowedStates:
+    - {fileID: 11400000, guid: c933fe58018536c42b1e73ebe91c1e32, type: 2}
     ActionManager: {fileID: 0}
