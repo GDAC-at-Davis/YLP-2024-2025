@@ -16,7 +16,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 6
       <Knockback>k__BackingField: {x: 10, y: 8}
-      <Hitstun>k__BackingField: 0.3
+      <Hitstun>k__BackingField: 0.2
       <HitStopDuration>k__BackingField: 0.1
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
@@ -77,7 +77,7 @@ MonoBehaviour:
     BoxArea:
     - center: {x: 1.4, y: 0.35}
       rotation: 30
-      size: {x: 4, y: 0.75}
+      size: {x: 3.5, y: 0.75}
 --- !u!114 &-7393832092995902472
 MonoBehaviour:
   m_ObjectHideFlags: 1
