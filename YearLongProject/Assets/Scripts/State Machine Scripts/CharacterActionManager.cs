@@ -119,7 +119,7 @@ namespace State_Machine_Scripts
                 return;
             }
 
-            if (!StateMachine.TrySetState(state))
+            if (!StateMachine.TryResetState(state))
             {
                 stateInputBuffer.Buffer(state, inputBufferDuration * Time.fixedDeltaTime);
             }

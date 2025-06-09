@@ -75,7 +75,7 @@ namespace Menus.CharacterSelect
             }
             else if (changeType == PlayerDataChange.SelectedCharacterChanged)
             {
-                CharacterSO character = gameDataSO.GetPlayerData(playerID).ProspectCharacter;
+                CharacterSO character = gameDataSO.GetPlayerData(playerID).SelectedCharacter;
                 characterImage.sprite = null;
                 characterImage.color = new Color(1, 1, 1, 0.5f);
                 characterNameText.text = "";

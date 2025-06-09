@@ -51,9 +51,9 @@ namespace State_Machine_Scripts.States
             ActionManager.StateMachine.TrySetDefaultState();
         }
 
-        protected override void OnEnable()
+        public override void OnEnterState()
         {
-            base.OnEnable();
+            base.OnEnterState();
 
             hitstunPlayableAsset.Play();
 
@@ -73,9 +73,9 @@ namespace State_Machine_Scripts.States
             }
         }
 
-        protected override void OnDisable()
+        public override void OnExitState()
         {
-            base.OnDisable();
+            base.OnExitState();
 
             movementController.enabled = true;
         }
