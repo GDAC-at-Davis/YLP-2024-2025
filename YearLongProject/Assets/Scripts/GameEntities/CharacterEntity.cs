@@ -30,6 +30,7 @@ namespace GameEntities
 
         [SerializeField]
         private SimpleMovementController movementController;
+        public SimpleMovementController MovementController => movementController;
 
         [SerializeField]
         private HitstunState hitstunState;

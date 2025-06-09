@@ -77,7 +77,6 @@ namespace Timeline
         {
             if (playableDirector.state != PlayState.Playing)
             {
-                Debug.LogWarning("PlayableDirector is not playing, cannot evaluate.");
                 return;
             }
 
