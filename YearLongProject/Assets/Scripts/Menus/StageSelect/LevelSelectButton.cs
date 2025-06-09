@@ -20,12 +20,15 @@ namespace Menus
         [Scene]
         private string gameplayScene;
 
+        [SerializeField]
+        private Image levelPortrait;
+
         public LevelSO Level;
 
         public void Init(LevelSO level)
         {
             GetComponentInChildren<TextMeshProUGUI>().text = level.LevelDisplayName;
-            GetComponent<Image>().sprite = level.LevelPortrait;
+            levelPortrait.sprite = level.LevelPortrait;
 
             button = GetComponent<Button>();
             Level = level;

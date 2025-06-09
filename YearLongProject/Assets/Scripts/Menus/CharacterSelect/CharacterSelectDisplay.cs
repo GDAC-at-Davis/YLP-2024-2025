@@ -20,6 +20,9 @@ namespace Menus.CharacterSelect
         [SerializeField]
         private int playerID;
 
+        [SerializeField]
+        private Animator animator;
+
         private void Start()
         {
             gameDataSO.OnPlayerDataChanged += HandlePlayerDataChanged;
@@ -43,6 +46,7 @@ namespace Menus.CharacterSelect
             {
                 gameObject.SetActive(true);
                 characterNameText.color = gameDataSO.PlayerColors[playerID];
+                animator.Play("tombstone", 0, 0f);
                 return;
             }
 

@@ -25,7 +25,7 @@ namespace GameplayUI
         private Image portrait;
 
         [SerializeField]
-        private List<Outline> outlines;
+        private List<Image> tintedImages;
 
         [SerializeField]
         private Slider healthBar;
@@ -52,9 +52,9 @@ namespace GameplayUI
 
             portrait.sprite = characterPortrait;
 
-            foreach (Outline outline in outlines)
+            foreach (Image image in tintedImages)
             {
-                outline.effectColor = color;
+                image.color = color;
             }
 
             CharacterEntity newCharEntity = gameDataSO.GetPlayerData(playerId).CharacterEntity;
