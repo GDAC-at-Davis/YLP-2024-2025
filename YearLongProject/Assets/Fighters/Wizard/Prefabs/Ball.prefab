@@ -172,8 +172,8 @@ MonoBehaviour:
   hitboxEffect:
     <Damage>k__BackingField: 6
     <Knockback>k__BackingField: {x: 10, y: 10}
-    <Hitstun>k__BackingField: 0.5
-    <HitStopDuration>k__BackingField: 0.1
+    <Hitstun>k__BackingField: 1
+    <HitStopDuration>k__BackingField: 0.5
     <GiveTargetHitStop>k__BackingField: 1
     <GiveAttackerHitStop>k__BackingField: 0
     <ScreenShakeEffect>k__BackingField:

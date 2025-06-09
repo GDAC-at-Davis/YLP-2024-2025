@@ -93,8 +93,11 @@ namespace Fighters.Wizard.Scripts
 
             int dir = hitboxInstance.Context.FlipX ? -1 : 1;
 
-            if (hitboxInstance.HitboxEffect.Damage < 5 && hitboxInstance.HitboxEffect.Damage > 2) // hit by light
+            Debug.Log(hitboxInstance.HitboxEffect.Damage);
+
+            if (hitboxInstance.HitboxEffect.Damage == 3) // hit by light
             {
+                Debug.Log("light");
                 anim.Play("OrbInteract");
                 Vector2 kb = lightTravelSpeed;
                 kb.x *= dir;
@@ -102,9 +105,19 @@ namespace Fighters.Wizard.Scripts
             }
             else if (hitboxInstance.HitboxEffect.Damage > 5) // hit by heavy
             {
+                Debug.Log("heavy");
                 anim.Play("OrbInteract");
                 Vector2 kb = heavyTravelSpeed;
                 kb.x *= dir;
+                rb.LinearVelocity = kb;
+            }
+            else if (hitboxInstance.HitboxEffect.Damage == 5) // hit by special chain
+            {
+                Debug.Log("special");
+                anim.Play("OrbInteract");
+                Vector2 kb = lightTravelSpeed;
+                kb.x *= dir;
+                kb.y *= -1;
                 rb.LinearVelocity = kb;
             }
         }
