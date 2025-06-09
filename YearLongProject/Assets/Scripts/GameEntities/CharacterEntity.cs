@@ -10,6 +10,7 @@ using State_Machine_Scripts;
 using State_Machine_Scripts.States;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEvent = UnityEngine.Events.UnityEvent;
 
 namespace GameEntities
 {
@@ -44,6 +45,8 @@ namespace GameEntities
         [InfoBox(
             "Add listeners to these UnityEvents to define custom behavior when the character is hit by an attack.")]
         public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;
+
+        public UnityEvent OnDefeated;
 
         [SerializeField]
         private int health = 50;
@@ -136,6 +139,11 @@ namespace GameEntities
 
             health -= damage;
             UpdateHealth?.Invoke(playerId, health);
+
+            if (health <= 0)
+            {
+                Die();
+            }
         }
 
         // Callback for landing an attack on a Character
@@ -151,8 +159,7 @@ namespace GameEntities
 
         public virtual void Die()
         {
-            //Temporary implementation
-            Destroy(gameObject);
+            OnDefeated?.Invoke();
         }
     }
 }

@@ -468,6 +468,7 @@ Transform:
   - {fileID: 6928417954177982093}
   - {fileID: 4404914555981974339}
   - {fileID: 1048476011625731367}
+  - {fileID: 6876999963487966401}
   - {fileID: 7486640104564647953}
   - {fileID: 8710895339890870979}
   - {fileID: 2324917260605002194}
@@ -519,7 +520,69 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDefeated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4544257500755778725}
+        m_TargetAssemblyTypeName: CharacterScripts.GravestoneSpawner, Assembly-CSharp
+        m_MethodName: SpawnGravestone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   health: 100
+--- !u!1 &2990988816462940132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6876999963487966401}
+  - component: {fileID: 4544257500755778725}
+  m_Layer: 0
+  m_Name: GraveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6876999963487966401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990988816462940132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3525838291768555810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4544257500755778725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990988816462940132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5b35adf4078424dacadf021a436167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravestonePrefab: {fileID: 3643875727318677408, guid: dc3488951f8e8ce4f8c228eb9e9fa357, type: 3}
+  spawnPoint: {fileID: 2324917260605002194}
+  characterEntity: {fileID: 5002924662183864281}
 --- !u!1 &3193871950307689153
 GameObject:
   m_ObjectHideFlags: 0
