@@ -195,6 +195,8 @@ PlayableDirector:
     value: {fileID: 6972243527925525426}
   - key: {fileID: 805959939788455700, guid: 91d9926897f10cb478de09b76d697153, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 592918170406848801, guid: 91d9926897f10cb478de09b76d697153, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2657891517437868586
@@ -448,7 +450,7 @@ PlayableDirector:
   - key: {fileID: -9161815175273688157, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
     value: {fileID: 0}
   - key: {fileID: -3960725186695254173, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -714,7 +716,7 @@ PlayableDirector:
   - key: {fileID: -6553164456977255264, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
     value: {fileID: 4198994870414546198}
   - key: {fileID: -3301409326029880673, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References:
     - 7beab605e1f3110438a9ea6b0afe326d: {fileID: 8631050776698224226}
@@ -878,7 +880,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 571899202, guid: 15f72751876382e4988957d93452d0de, type: 3}
+  m_Sprite: {fileID: 1360962942, guid: 15f72751876382e4988957d93452d0de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
