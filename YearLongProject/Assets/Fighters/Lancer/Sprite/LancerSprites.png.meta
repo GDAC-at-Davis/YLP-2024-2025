@@ -1033,6 +1033,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: LancerSprites_42
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 545
+        width: 133
+        height: 85
+      alignment: 9
+      pivot: {x: 0.2, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea8a2ba7ccd6a5942a05a58e7e85ba9f
+      internalID: -1320903465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1084,6 +1106,7 @@ TextureImporter:
       LancerSprites_4: -1617338280
       LancerSprites_40: 1608723047
       LancerSprites_41: -562877917
+      LancerSprites_42: -1320903465
       LancerSprites_5: 330879156
       LancerSprites_6: 2133382783
       LancerSprites_7: 456379840

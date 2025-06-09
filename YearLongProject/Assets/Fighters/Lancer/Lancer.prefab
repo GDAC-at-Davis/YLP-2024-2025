@@ -53,6 +53,8 @@ PlayableDirector:
     value: {fileID: 6572194888787973522}
   - key: {fileID: -1755073353440819576, guid: b74cb36707db15c43bf892e762a142c9, type: 2}
     value: {fileID: 6572194888787973522}
+  - key: {fileID: 0}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2427054820357063529
@@ -195,6 +197,8 @@ PlayableDirector:
     value: {fileID: 6972243527925525426}
   - key: {fileID: 805959939788455700, guid: 91d9926897f10cb478de09b76d697153, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 592918170406848801, guid: 91d9926897f10cb478de09b76d697153, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2657891517437868586
@@ -445,6 +449,10 @@ PlayableDirector:
     value: {fileID: 6972243527925525426}
   - key: {fileID: 805959939788455700, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -9161815175273688157, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3960725186695254173, guid: d22aa8a2ac8bd7448beb357d7f59020d, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -631,7 +639,7 @@ MonoBehaviour:
     OnFinishedUnityEvent:
       m_PersistentCalls:
         m_Calls: []
-  useDefaultMovement: 1
+  useDefaultMovement: 0
 --- !u!320 &5143816317544813401
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -707,8 +715,13 @@ PlayableDirector:
     value: {fileID: 3105801480486927495}
   - key: {fileID: 805959939788455700, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6553164456977255264, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
+    value: {fileID: 4198994870414546198}
+  - key: {fileID: -3301409326029880673, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 7beab605e1f3110438a9ea6b0afe326d: {fileID: 8631050776698224226}
 --- !u!1 &6627629930600814027
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +810,7 @@ Transform:
   m_GameObject: {fileID: 7410896267050152058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.151, y: 0, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -869,7 +882,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 571899202, guid: 15f72751876382e4988957d93452d0de, type: 3}
+  m_Sprite: {fileID: -1320903465, guid: 15f72751876382e4988957d93452d0de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -998,6 +1011,8 @@ PlayableDirector:
   - key: {fileID: -8132628475675928494, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
     value: {fileID: 4198994870414546198}
   - key: {fileID: 2670663638000722055, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
+    value: {fileID: 3850342251300834818}
+  - key: {fileID: 4740485956691927553, guid: 405c2925285320a4d8caa96bf1d8e1b4, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -1541,7 +1556,7 @@ PrefabInstance:
       objectReference: {fileID: 791708176923828659}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airMaxSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundMaxSpeed
@@ -1549,11 +1564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airAcceleration
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundAcceleration
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
