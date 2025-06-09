@@ -61,17 +61,11 @@ public class MatchManager : MonoBehaviour
             return;
         }
 
-        foreach (CharacterEntity entity in players)
-        {
-            gameDataSO.RemovePlayer(entity.PlayerId);
-        }
-
         Invoke("NewGame", 3);
     }
 
     private void NewGame()
     {
-        playerInputSO.ClearAllInputReaders();
         gameDataSO.LoadScene("FighterSelect");
     }
 }
