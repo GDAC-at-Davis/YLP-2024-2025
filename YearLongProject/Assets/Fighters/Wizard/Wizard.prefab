@@ -11423,7 +11423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7712244286719599150, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
       propertyPath: lightTravelSpeed.y
-      value: -5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8699008234920065302, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
       propertyPath: m_LocalPosition.x
