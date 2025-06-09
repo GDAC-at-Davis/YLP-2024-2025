@@ -31,6 +31,8 @@ namespace State_Machine_Scripts
 
         public float InternalFixedTimeScale { get; set; } = 1f;
 
+        public CharacterState CurrentState => StateMachine.CurrentState;
+
         public readonly StateMachine<CharacterState>.WithDefault StateMachine = new();
 
         /// <summary>
@@ -41,6 +43,7 @@ namespace State_Machine_Scripts
         /// <summary>
         ///     Dict controlling if a state is allowed to be entered
         /// </summary>
+        [ShowNonSerializedField]
         private readonly Dictionary<string, bool> allowedStatesToEnter = new();
 
         /// <summary>
@@ -52,7 +55,7 @@ namespace State_Machine_Scripts
 
         private CharacterActionInput characterActionInput;
 
-        private void Update()
+        private void FixedUpdate()
         {
             stateInputBuffer?.Update();
         }
@@ -116,7 +119,7 @@ namespace State_Machine_Scripts
                 return;
             }
 
-            if (!StateMachine.TrySetState(state))
+            if (!StateMachine.TryResetState(state))
             {
                 stateInputBuffer.Buffer(state, inputBufferDuration * Time.fixedDeltaTime);
             }

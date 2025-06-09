@@ -27,6 +27,8 @@ namespace Timeline
         [SerializeField]
         private UnityEvent OnFinishedUnityEvent;
 
+        public bool IsPlaying => playableDirector.state == PlayState.Playing;
+
         public event Action OnFinished;
 
         public void Play()
@@ -66,11 +68,15 @@ namespace Timeline
             playableDirector.time = 0;
         }
 
+        /// <summary>
+        ///     Evaluates the PlayableDirector's time and updates its state. WARNING: This is no synchronous, and callbacks like
+        ///     OnBehaviorPause will be deferred until later in the update cycle
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public void Evaluate(float deltaTime)
         {
             if (playableDirector.state != PlayState.Playing)
             {
-                Debug.LogWarning("PlayableDirector is not playing, cannot evaluate.");
                 return;
             }
 

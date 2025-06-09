@@ -45,7 +45,10 @@ namespace State_Machine_Scripts.States
             Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
             movementController.SetHorizontalInput(moveInput.x);
             SelectMoveState(moveInput);
-            ActionManager.SetActionTypeAllowed(jumpState.StateName, movementController.GetIsGrounded());
+            if (jumpState)
+            {
+                ActionManager.SetActionTypeAllowed(jumpState.StateName, movementController.GetIsGrounded());
+            }
         }
 
         private void FixedUpdate()

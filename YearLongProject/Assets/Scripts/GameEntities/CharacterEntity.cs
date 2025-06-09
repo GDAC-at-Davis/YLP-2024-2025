@@ -3,12 +3,14 @@ using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using Input_Scripts;
+using Managers;
 using Movement;
 using NaughtyAttributes;
 using State_Machine_Scripts;
+using State_Machine_Scripts.States;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+using UnityEvent = UnityEngine.Events.UnityEvent;
 
 namespace GameEntities
 {
@@ -19,6 +21,9 @@ namespace GameEntities
         [Header("Dependencies")]
 
         [SerializeField]
+        private GameDataSO gameDataSO;
+
+        [SerializeField]
         public CharacterActionManager ActionManager;
 
         [SerializeField]
@@ -26,6 +31,10 @@ namespace GameEntities
 
         [SerializeField]
         private SimpleMovementController movementController;
+        public SimpleMovementController MovementController => movementController;
+
+        [SerializeField]
+        private HitstunState hitstunState;
 
         // TODO: Temp reset
         [SerializeField]
@@ -37,6 +46,8 @@ namespace GameEntities
         [InfoBox(
             "Add listeners to these UnityEvents to define custom behavior when the character is hit by an attack.")]
         public UnityEvent<HitboxInstance, HitImpact> OnHitByAttackEvent;
+
+        public UnityEvent OnDefeated;
 
         [SerializeField]
         private int health = 50;
@@ -51,6 +62,22 @@ namespace GameEntities
         public int Health => health;
 
         public float StunTime => stunTime;
+        public int MaxHealth { get; private set; }
+
+        public Color PlayerColor
+        {
+            get
+            {
+                if (playerId == -1)
+                {
+                    Debug.Log("PlayerId is not set. Returning default color.");
+                    return Color.white;
+                }
+
+                return gameDataSO.PlayerColors[playerId];
+            }
+        }
+
         public UnityAction<int, int> UpdateHealth;
 
         private int playerId = -1;
@@ -67,6 +94,7 @@ namespace GameEntities
         public void OnDestroy()
         {
             actionInput.Cleanup();
+            gameDataSO.SetCharacterEntity(playerId, null);
         }
 
 #if UNITY_EDITOR
@@ -82,6 +110,9 @@ namespace GameEntities
             transform.parent = null;
 
             actionInput.Initialize(id);
+            MaxHealth = health;
+
+            gameDataSO.SetCharacterEntity(playerId, this);
         }
 
         // Callback for this Character being hit by an attack
@@ -90,11 +121,10 @@ namespace GameEntities
         public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
             // TODO: move this logic into a function in movement controller?
-            Vector2 knockback = hitboxInstance.HitboxEffect.Knockback;
-            knockback = new Vector2(knockback.x * (hitboxInstance.Context.FlipX ? -1 : 1), knockback.y);
+            Vector2 knockback = hitboxInstance.CalculatedKnockback();
             stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
 
-            movementController.SetVelocity(knockback);
+            hitstunState.SetKnockback(knockback);
 
             TakeDamage((int)hitboxInstance.HitboxEffect.Damage);
 
@@ -107,8 +137,14 @@ namespace GameEntities
             {
                 return;
             }
+
             health -= damage;
-            UpdateHealth.Invoke(playerId, health);
+            UpdateHealth?.Invoke(playerId, health);
+
+            if (health <= 0)
+            {
+                Die();
+            }
         }
 
         // Callback for landing an attack on a Character
@@ -124,8 +160,7 @@ namespace GameEntities
 
         public virtual void Die()
         {
-            //Temporary implementation
-            Destroy(gameObject);
+            OnDefeated?.Invoke();
         }
     }
 }

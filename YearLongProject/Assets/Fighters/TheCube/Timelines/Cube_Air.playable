@@ -23,7 +23,7 @@ MonoBehaviour:
   m_Clips:
   - m_Version: 1
     m_Start: 0
-    m_ClipIn: 0
+    m_ClipIn: 0.13333333333333333
     m_Asset: {fileID: 1360951027696512231}
     m_Duration: 1
     m_TimeScale: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: -5364485413840808205, guid: a0b53348c9c73bf47b920b8f4e9346b2, type: 3}
+  m_Clip: {fileID: -7987234449580224303, guid: a0b53348c9c73bf47b920b8f4e9346b2, type: 3}
   m_Position: {x: 0, y: 0, z: 0}
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_UseTrackMatchFields: 1

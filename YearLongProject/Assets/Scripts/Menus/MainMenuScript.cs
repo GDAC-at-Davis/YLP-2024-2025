@@ -1,8 +1,7 @@
-using System.Collections;
+using Managers;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
@@ -10,22 +9,25 @@ public class MainMenuScript : MonoBehaviour
     // this script right now really should only control the scelect indication behavior and moving between scenes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public Image scelect; // scythe select object. I'll define all of scelects behavior when moving in here
+    public RectTransform selectObject; // scythe select object. I'll define all of scelects behavior when moving in here
     public Animator animator; // scythe animator controller
-
-    public Animator transition_animator; // for fading in and fading out
+    public RectTransform layoutGroup;
 
     [Scene]
-    public string sceneToLoad; // the scene to load when the player selects the "live" button
+    public string liveScene; // the scene to load when the player selects the "live" button
+
+    [Scene]
+    public string loreScene;
 
     private GameObject lastSelected; // last selected menu item
 
     private void Start()
     {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup);
     }
 
     // Update is called once per frame
-    private void Update()
+    private void LateUpdate()
     {
         GameObject selected = EventSystem.current.currentSelectedGameObject;
 
@@ -33,13 +35,13 @@ public class MainMenuScript : MonoBehaviour
         if (selected != lastSelected)
         {
             lastSelected = selected; // Update the last selected object
-            animator.SetTrigger("move");
+            animator.Play("Move", 0, 0f);
 
             // Only move if a valid object is selected
             if (selected != null && selected.TryGetComponent(out RectTransform buttonRect))
             {
                 Vector3 buttonPosition = buttonRect.position;
-                scelect.transform.position = buttonPosition + new Vector3(-100, 0, 0);
+                selectObject.position = buttonPosition;
             }
         }
 
@@ -48,54 +50,28 @@ public class MainMenuScript : MonoBehaviour
         {
             if (selected.TryGetComponent(out Button button))
             {
-                animator.SetTrigger("select");
+                animator.Play("Select", 0, 0f);
             }
         }
     }
 
     public void live()
     {
-        transition_animator.SetTrigger("exit");
-        StartCoroutine(WaitForAnimation("Fade_out", "live"));
+        SceneSwitchManager.Instance.SwitchScene(liveScene);
     }
 
     public void lore()
     {
-        // transition to lore scene
+        SceneSwitchManager.Instance.SwitchScene(loreScene);
     }
 
     public void leave()
     {
-        transition_animator.SetTrigger("exit");
-        StartCoroutine(WaitForAnimation("Fade_out", "exit"));
+        Application.Quit();
     }
 
     // scelect behavior functions
     private void scelect_move()
     {
-    }
-
-    private IEnumerator WaitForAnimation(string stateName, string outcome)
-    {
-        // Wait until the animation starts
-        yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).IsName(stateName));
-
-        // Wait until the animation finishes
-        yield return new WaitUntil(() => transition_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-
-        switch (outcome)
-        {
-            case "exit":
-                Application.Quit();
-                break;
-
-            case "live":
-                SceneManager.LoadScene(sceneToLoad);
-                break;
-
-            case "lore":
-                // implement scene switching
-                break;
-        }
     }
 }

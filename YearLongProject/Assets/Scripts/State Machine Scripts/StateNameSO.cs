@@ -13,6 +13,21 @@ namespace State_Machine_Scripts
         [ResizableTextArea]
         public string StateDescription;
 
+        /*
+        public enum StateTypes
+        {
+            DEFAULT,
+            MOVEMENT,
+            HITSTUN,
+            ATTACK,
+            DASH
+        };
+
+        [SerializeField]
+        StateTypes stateType = StateTypes.DEFAULT;
+        public StateTypes StateType => stateType;
+        */
+
         public string Value => name;
 
         public static implicit operator string(StateNameSO so)

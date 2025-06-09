@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{3f7d44a4-eceb-4102-b963-cf3a7fa88b8f}">
 		<property name="name">
-			<value>Whoosh</value>
+			<value>LightAttackUse</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c1823b07-5505-491b-b3a4-6d510fffb456}</destination>
+			<destination>{01c0ebff-9fc2-470d-9388-e84ac10c224b}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{f4771172-04db-4a1d-9bb2-a1a32c7bd621}</destination>
@@ -33,6 +33,7 @@
 		</relationship>
 		<relationship name="banks">
 			<destination>{9e1aa5dd-986f-46be-825c-cf83a51f8bf1}</destination>
+			<destination>{0aa954d2-27ac-49ae-9e5c-3ab72031783e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{f4771172-04db-4a1d-9bb2-a1a32c7bd621}">
@@ -72,6 +73,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{175f44c5-ce3d-4fc5-a542-5e679eff3194}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{fe1a7d88-e2ba-4344-949f-6af17760857d}</destination>
 		</relationship>

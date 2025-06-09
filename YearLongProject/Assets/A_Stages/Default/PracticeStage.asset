@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: PracticeStage
   m_EditorClassIdentifier: 
   LevelDisplayName: Practice
-  LevelPrefab: {fileID: 5683301234302444992, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
-  LevelPortrait: {fileID: 21300000, guid: ffc58b5d1d8a6ed489be30f7a1291b1e, type: 3}
+  LevelPrefab: {fileID: 1615303468472177271, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
+  LevelPortrait: {fileID: 21300000, guid: 25fe2ab965613dd409e18da85ae9ae74, type: 3}
+  LevelPreview: {fileID: 21300000, guid: 25fe2ab965613dd409e18da85ae9ae74, type: 3}
+  LevelLore: {fileID: 11400000, guid: 6f067eac421e11a4aa5eb9d7feaaf023, type: 2}

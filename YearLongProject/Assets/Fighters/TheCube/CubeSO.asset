@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterDisplayName: The Cube
   CharacterPrefab: {fileID: 6242291163348849283, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
-  CharacterPortrait: {fileID: 21300000, guid: 257187f557f884847a3f92cffe35d73e, type: 3}
+  CharacterPortrait: {fileID: 21300000, guid: 714e664263e4d6f47b9a47d600802668, type: 3}
+  CharacterLore: {fileID: 11400000, guid: d92a92a36c13e5643a2140ae7bbe92ea, type: 2}

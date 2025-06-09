@@ -1,19 +1,13 @@
-using CharacterScripts;
 using EditorUtils.BoldHeader;
-using LevelScripts;
 using Managers;
-using NaughtyAttributes;
+using Menus;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Input_Scripts
 {
-    internal enum CursorType
-    {
-        CharacterSelect,
-        StageSelect
-    }
-
     /// <summary>
     ///     Temporary Character Select cursor thing its 2:30 am and I can't figure out how to combine
     ///     the virtual mouse and multiplayer event system so we're gonna do whatever the fuck this is for now
@@ -35,37 +29,82 @@ namespace Input_Scripts
         private float speed = 500;
 
         [SerializeField]
-        private CursorType cursorType;
+        [Tooltip("How often should cursor check for OnHover")]
+        private float onHoverRate = 0.5f;
 
-        [SerializeField]
-        [Scene]
-        private string gameplayScene;
+        public int PlayerID => playerID;
 
-        [SerializeField]
-        [Scene]
-        private string charSelectScene;
+        public Image Cursor
+        {
+            get => cursor;
+            set => cursor = value;
+        }
+
+        public Transform Container => container;
+
+        public UnityAction<PlayerCursorController> BackAction = null;
+        private float lastOnHover;
+        private ButtonBehavior currentHoveredButton;
 
         private PlayerInputSo.PlayerInputEvents events;
 
         private int playerID;
+
         private Vector3 input;
-        private bool selected;
+
+        private Image cursor;
 
         private TextMeshProUGUI text;
+        private Image image;
 
         private RectTransform cursorBottomLeft;
         private RectTransform cursorTopRight;
 
         private RectTransform rectTransform;
+        private Transform container;
 
         private void Start()
         {
             rectTransform = GetComponent<RectTransform>();
+            cursor = GetComponentInChildren<Image>();
+
+            // Center
+
+            Vector2 bottomLeftPos = cursorBottomLeft.position;
+            Vector2 topRightPos = cursorTopRight.position;
+
+            rectTransform.position = (bottomLeftPos + topRightPos) / 2;
         }
 
         private void Update()
         {
-            if (selected || input == Vector3.zero)
+            if (lastOnHover + onHoverRate < Time.time)
+            {
+                ButtonBehavior button = null;
+                button = Physics2D.OverlapPoint(transform.position)?.GetComponent<ButtonBehavior>();
+                if (button == null)
+                {
+                    if (currentHoveredButton != null)
+                    {
+                        currentHoveredButton.OnHoverExit(this);
+                        currentHoveredButton = null;
+                    }
+                }
+                else
+                {
+                    if (currentHoveredButton != null && currentHoveredButton != button)
+                    {
+                        currentHoveredButton.OnHoverExit(this);
+                    }
+
+                    button.OnHoverEnter(this);
+                    currentHoveredButton = button;
+                }
+
+                lastOnHover = Time.time;
+            }
+
+            if (input == Vector3.zero)
             {
                 return;
             }
@@ -95,15 +134,19 @@ namespace Input_Scripts
             rectTransform.position = pos;
         }
 
-        public void Initialize(int playerId, RectTransform bottomLeft, RectTransform topRight)
+        public void Initialize(int playerId, RectTransform bottomLeft, RectTransform topRight, Transform container)
         {
             Debug.Log($"Player {playerId} cursor initialized");
             cursorBottomLeft = bottomLeft;
             cursorTopRight = topRight;
+            this.container = container;
 
             playerID = playerId;
             text = GetComponentInChildren<TextMeshProUGUI>();
+            image = GetComponentInChildren<Image>();
             text.text = (playerId + 1).ToString();
+            text.color = gameDataSO.PlayerColors[playerID];
+            image.color = gameDataSO.PlayerColors[playerID];
 
             events = playerInputSO.TryGetPlayerInputEvents(playerID);
             SubscribeToInputEvents();
@@ -128,20 +171,16 @@ namespace Input_Scripts
 
         private void SubscribeToInputEvents()
         {
-            events.JumpEvent += TrySelectCharacter;
-            events.HeavyAttackEvent += RemovePlayer;
+            events.JumpEvent += TryOnClick;
+            events.HeavyAttackEvent += TryBackAction;
             events.MoveEvent += MoveCursor;
-            events.JumpEvent += TrySelectLevel;
-            events.HeavyAttackEvent += UnselectLevel;
         }
 
         private void UnsubscribeToInputEvents()
         {
-            events.JumpEvent -= TrySelectCharacter;
-            events.HeavyAttackEvent -= RemovePlayer;
+            events.JumpEvent -= TryOnClick;
+            events.HeavyAttackEvent -= TryBackAction;
             events.MoveEvent -= MoveCursor;
-            events.JumpEvent -= TrySelectLevel;
-            events.HeavyAttackEvent -= UnselectLevel;
         }
 
         private void MoveCursor(Vector2 input)
@@ -149,103 +188,36 @@ namespace Input_Scripts
             this.input = input;
         }
 
-        private void TrySelectCharacter(bool pressed)
+        public void SetText(string text)
         {
-            if (!pressed || cursorType != CursorType.CharacterSelect)
+            this.text.text = text;
+        }
+
+        private void TryOnClick(bool pressed)
+        {
+            if (!pressed)
             {
                 return;
             }
 
-            // Unselect if pressed again
-            if (gameDataSO.GetPlayerData(playerID).SelectedCharacter != null)
-            {
-                Debug.Log($"player {playerID} unselected character");
-
-                text.text = (playerID + 1).ToString();
-                QueueCharacter(null);
-                return;
-            }
-
-            Collider2D button = Physics2D.OverlapPoint(transform.position);
+            ButtonBehavior button = null;
+            button = Physics2D.OverlapPoint(transform.position)?.GetComponent<ButtonBehavior>();
             if (button == null)
             {
                 return;
             }
 
-            CharacterSO character = button.GetComponent<CharacterSelectButton>()?.Character;
-            if (character == null)
-            {
-                return;
-            }
-
-            transform.position = button.transform.position;
-            text.text = "";
-
-            Debug.Log($"player {playerID} selected character {character.name}");
-            QueueCharacter(character);
+            button.OnClick(this);
         }
 
-        private void RemovePlayer(bool pressed)
+        private void TryBackAction(bool pressed)
         {
-            if (!pressed || cursorType != CursorType.CharacterSelect)
+            if (!pressed)
             {
                 return;
             }
 
-            gameDataSO.RemovePlayer(playerID);
-        }
-
-        private void TrySelectLevel(bool pressed)
-        {
-            if (!pressed || playerID != 0 || cursorType != CursorType.StageSelect)
-            {
-                return;
-            }
-
-            Collider2D button = Physics2D.OverlapPoint(transform.position);
-            if (button == null)
-            {
-                return;
-            }
-
-            LevelSO level = button.GetComponent<LevelSelectButton>()?.Level;
-            if (level == null)
-            {
-                return;
-            }
-
-            transform.position = button.transform.position;
-            text.text = "";
-            QueueLevel(level);
-        }
-
-        private void UnselectLevel(bool pressed)
-        {
-            if (!pressed || playerID != 0 || cursorType != CursorType.StageSelect)
-            {
-                return;
-            }
-
-            QueueLevel(null);
-        }
-
-        private void QueueCharacter(CharacterSO character)
-        {
-            selected = character != null;
-            gameDataSO.SetPlayerSelectedCharacter(playerID, character);
-        }
-
-        private void QueueLevel(LevelSO level)
-        {
-            selected = level != null;
-            if (!level)
-            {
-                gameDataSO.LoadScene(charSelectScene);
-                return;
-            }
-
-            gameDataSO.SetSelectedLevel(level);
-            gameDataSO.LoadScene(gameplayScene);
+            BackAction(this);
         }
 
         private void LockIn()

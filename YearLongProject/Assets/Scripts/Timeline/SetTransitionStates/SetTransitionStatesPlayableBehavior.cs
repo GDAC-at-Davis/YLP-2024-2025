@@ -11,6 +11,8 @@ namespace Timeline.SetTransitionStates
         public StateNameSO[] AllowedStates = { };
         public CharacterActionManager ActionManager;
 
+        private bool isReset;
+
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
             if (!Application.isPlaying)
@@ -28,6 +30,8 @@ namespace Timeline.SetTransitionStates
 
             ActionManager.SetAllActionTypeAllowed(false);
             ActionManager.SetActionTypesAllowed(true, AllowedStates);
+
+            isReset = false;
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -36,6 +40,13 @@ namespace Timeline.SetTransitionStates
             {
                 return;
             }
+
+            if (isReset)
+            {
+                return;
+            }
+
+            isReset = true;
 
             ActionManager.SetAllActionTypeAllowed(true);
         }

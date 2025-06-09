@@ -29,11 +29,7 @@ namespace CharacterScripts
         public bool CanFlipX
         {
             get => canFlipX;
-            set
-            {
-                canFlipX = value;
-                SyncFlipX();
-            }
+            set => canFlipX = value;
         }
 
         private bool targetFlipX;
@@ -43,6 +39,16 @@ namespace CharacterScripts
         private void Start()
         {
             characterActionInput.MoveInputChanged += HandleMoveInput;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!canFlipX)
+            {
+                return;
+            }
+
+            SyncFlipX();
         }
 
         private void OnDestroy()
@@ -66,15 +72,11 @@ namespace CharacterScripts
                     targetFlipX = true;
                 }
             }
-
-            if (!canFlipX)
-            {
-                return;
-            }
-
-            SyncFlipX();
         }
 
+        /// <summary>
+        ///     Apply the target/desired flipX to the character
+        /// </summary>
         private void SyncFlipX()
         {
             if (currentFlipX == targetFlipX)
@@ -84,6 +86,12 @@ namespace CharacterScripts
 
             currentFlipX = targetFlipX;
             OnFlipXChange?.Invoke(currentFlipX);
+        }
+
+        public void ForceSetFlipX(bool flipX)
+        {
+            targetFlipX = flipX;
+            SyncFlipX();
         }
     }
 }

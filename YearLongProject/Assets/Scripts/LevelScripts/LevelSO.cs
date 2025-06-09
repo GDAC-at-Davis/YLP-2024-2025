@@ -1,11 +1,11 @@
-using Base;
+using Menus.Lore;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace LevelScripts
 {
     /// <summary>
-    /// Scriptable Object that holds relevant level information for reference
+    ///     Scriptable Object that holds relevant level information for reference
     /// </summary>
     [CreateAssetMenu(fileName = "LevelSO", menuName = "Scriptable Objects/LevelSO")]
     public class LevelSO : ScriptableObject
@@ -14,10 +14,16 @@ namespace LevelScripts
         public string LevelDisplayName;
 
         [Tooltip("Reference for level's gameobject")]
-        public GameObject LevelPrefab;
+        public MapMonoBehavior LevelPrefab;
 
         [ShowAssetPreview(128, 128)]
         [Tooltip("Level portrait for use in UI Elements")]
         public Sprite LevelPortrait;
+
+        [ShowAssetPreview(128, 128)]
+        [Tooltip("Scale model of the stage for use in UI Elements")]
+        public Sprite LevelPreview;
+
+        public LoreSO LevelLore;
     }
 }

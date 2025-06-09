@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 5
+      <Damage>k__BackingField: 12
       <Knockback>k__BackingField: {x: 8, y: 8}
       <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.2
@@ -69,7 +69,7 @@ MonoBehaviour:
           Data2: 1228196312
           Data3: 1711216276
           Data4: -439583530
-        Path: event:/Splat
+        Path: event:/Characters/Ahab/LightAttackHit
     ScreenShakeSO: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
     EndHitboxGroup: 0
     HitboxGroupId: HeavyPrimary
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 5
+      <Damage>k__BackingField: 12
       <Knockback>k__BackingField: {x: 8, y: 8}
       <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.2
@@ -147,7 +147,7 @@ MonoBehaviour:
           Data2: 1228196312
           Data3: 1711216276
           Data4: -439583530
-        Path: event:/Splat
+        Path: event:/Characters/Ahab/LightAttackHit
     ScreenShakeSO: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: HeavyPrimary
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 5
+      <Damage>k__BackingField: 12
       <Knockback>k__BackingField: {x: 8, y: 8}
       <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.2
@@ -225,7 +225,7 @@ MonoBehaviour:
           Data2: 1228196312
           Data3: 1711216276
           Data4: -439583530
-        Path: event:/Splat
+        Path: event:/Characters/Ahab/LightAttackHit
     ScreenShakeSO: {fileID: 11400000, guid: a2f4a62e1c8f10b4888828d5ea0942cf, type: 2}
     EndHitboxGroup: 0
     HitboxGroupId: HeavyPrimary
@@ -1063,7 +1063,7 @@ MonoBehaviour:
       Data2: 1090710763
       Data3: 986670009
       Data4: -1886672769
-    Path: event:/Whoosh
+    Path: event:/Characters/Ahab/LightAttackUse
   StopType: 0
   Parameters: []
 --- !u!114 &5684589929949749293

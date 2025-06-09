@@ -1,4 +1,5 @@
 using Hitbox.HitboxAreas;
+using UnityEngine;
 
 namespace Hitbox.DataStructures
 {
@@ -23,5 +24,12 @@ namespace Hitbox.DataStructures
         ///     Effect that occurs when the hitbox hits a target
         /// </summary>
         public HitboxEffect HitboxEffect;
+
+        public Vector2 CalculatedKnockback()
+        {
+            Vector2 knockback = HitboxEffect.Knockback;
+            knockback = new Vector2(knockback.x * (Context.FlipX ? -1 : 1), knockback.y);
+            return knockback;
+        }
     }
 }

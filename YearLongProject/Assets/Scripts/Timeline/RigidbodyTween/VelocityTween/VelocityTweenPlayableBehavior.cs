@@ -58,11 +58,8 @@ namespace Timeline.RigidbodyTween.VelocityTween
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
-            // Make sure the velocity leaving the timeline is consistent
-            if (Application.isPlaying && rigidbody != null)
-            {
-                rigidbody.SetVelocityWithFlipX(EndVelocity);
-            }
+            // Do nothing here. This callback doesn't trigger instantly when the Timeline is stopped
+            // which can cause issues where knockback is ignored when hit out of a timeline
         }
     }
 }

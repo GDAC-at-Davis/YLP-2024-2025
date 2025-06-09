@@ -14,7 +14,7 @@ namespace State_Machine_Scripts
         [Header("State Info")]
 
         [SerializeField]
-        private StateNameSO stateNameSO;
+        public StateNameSO stateNameSO;
 
         [Header("Events")]
 

@@ -634,6 +634,9 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Ahab
+  - Lancer
+  - MalachiteMidlands
   - Test
   BanksToLoad: []
   LiveUpdatePort: 9264
@@ -646,9 +649,9 @@ MonoBehaviour:
   EnableErrorCallback: 0
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
-  CurrentVersion: 131622
+  CurrentVersion: 131847
   HideSetupWizard: 1
-  LastEventReferenceScanVersion: 131622
+  LastEventReferenceScanVersion: 131847
   Platforms:
   - {fileID: -8562585744801644663}
   - {fileID: -6718990074061832469}
@@ -759,7 +762,7 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 1
+      Value: 0
       HasValue: 1
     OverlayPosition:
       Value: 0

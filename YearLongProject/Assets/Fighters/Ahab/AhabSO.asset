@@ -15,3 +15,4 @@ MonoBehaviour:
   CharacterDisplayName: Ahab
   CharacterPrefab: {fileID: 6242291163348849283, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
   CharacterPortrait: {fileID: 21300000, guid: e03285c02f8dce341b7ec3379bc80ffb, type: 3}
+  CharacterLore: {fileID: 11400000, guid: 08948472dc2b6074397903f5d1a1d147, type: 2}

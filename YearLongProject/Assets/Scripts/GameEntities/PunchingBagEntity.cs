@@ -23,7 +23,7 @@ namespace GameEntities
         {
             int dir = hitboxInstance.Context.FlipX ? -1 : 1;
 
-            spriteRenderer.flipX = dir < 0;
+            spriteRenderer.transform.localScale = new Vector3(dir, 1, 1);
 
             Vector2 kb = hitboxInstance.HitboxEffect.Knockback;
             kb.x *= dir;
