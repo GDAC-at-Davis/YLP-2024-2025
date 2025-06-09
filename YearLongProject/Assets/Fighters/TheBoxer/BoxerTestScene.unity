@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5782937995392677897, guid: d22551694c8bc1d45aa3c3c9803318b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.14
+      objectReference: {fileID: 0}
     - target: {fileID: 6242291163348849283, guid: d22551694c8bc1d45aa3c3c9803318b8, type: 3}
       propertyPath: m_Name
       value: TheBoxer
