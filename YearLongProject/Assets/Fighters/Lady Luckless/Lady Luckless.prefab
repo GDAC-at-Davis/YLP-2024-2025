@@ -55,6 +55,8 @@ PlayableDirector:
     value: {fileID: 4733134028335027762}
   - key: {fileID: -8827626630978628990, guid: 3f01994238ac2634ea399749fee3d6c9, type: 2}
     value: {fileID: 7351957983623342536}
+  - key: {fileID: -5703095977237826472, guid: 3f01994238ac2634ea399749fee3d6c9, type: 2}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2427054820357063529
@@ -197,6 +199,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -8906211142974407210, guid: 64f6447d1afb9014ba38c4138b3fb76e, type: 2}
     value: {fileID: 7351957983623342536}
+  - key: {fileID: -7389932631486931139, guid: 64f6447d1afb9014ba38c4138b3fb76e, type: 2}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2657891517437868586
@@ -310,6 +314,8 @@ PlayableDirector:
     value: {fileID: 7062655416985638217}
   - key: {fileID: -2344467160891336462, guid: 10d3b939bef13d84a9569004ae33236a, type: 2}
     value: {fileID: 7351957983623342536}
+  - key: {fileID: -9110858795274459190, guid: 10d3b939bef13d84a9569004ae33236a, type: 2}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &3258685151373203990
@@ -448,6 +454,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 1699085027834180803, guid: ec08411259563d244a1f1cb941505348, type: 2}
     value: {fileID: 8199714429928225718}
+  - key: {fileID: 6786181519212774123, guid: ec08411259563d244a1f1cb941505348, type: 2}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -505,6 +513,8 @@ PlayableDirector:
     value: {fileID: 4733134028335027762}
   - key: {fileID: -3212682809033001298, guid: d290910dfe038214884d60304c2f771c, type: 2}
     value: {fileID: 7351957983623342536}
+  - key: {fileID: -2896420879135880392, guid: d290910dfe038214884d60304c2f771c, type: 2}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &5361969530346262547
@@ -5672,6 +5682,8 @@ PlayableDirector:
     value: {fileID: 7351957983623342536}
   - key: {fileID: -2344467160891336462, guid: 10d3b939bef13d84a9569004ae33236a, type: 2}
     value: {fileID: 7351957983623342536}
+  - key: {fileID: 0}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &8646585484509999927
@@ -5795,8 +5807,118 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 6418572015447734358, guid: 8cbbfa06da54d4f49b77cda0070fe2da, type: 2}
     value: {fileID: 7351957983623342536}
+  - key: {fileID: -2665359727299159357, guid: 8cbbfa06da54d4f49b77cda0070fe2da, type: 2}
+    value: {fileID: 7098383324016771678}
   m_ExposedReferences:
     m_References: []
+--- !u!1001 &540419083330028039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3630298747526637088}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      propertyPath: m_Name
+      value: Pirate ETentacle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7098383324016771678}
+  m_SourcePrefab: {fileID: 100100000, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+--- !u!4 &69046265715353068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+  m_PrefabInstance: {fileID: 540419083330028039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &846287068630335318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b7e82a192d401b7448d78ba6091b7d43, type: 3}
+  m_PrefabInstance: {fileID: 540419083330028039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7098383324016771678
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846287068630335318}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2530952190065889997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5981,6 +6103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pirate Tentacle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4263f21cd91ec7e4ca8fd497f8c36476, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6097,7 +6223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2784295652820237144, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Name
-      value: Pirate Lady
+      value: Lady Luckless
       objectReference: {fileID: 0}
     - target: {fileID: 3352808017341713777, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_Size.x
@@ -6532,6 +6658,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8710895339890870979, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8602359182931059401}
+    - targetCorrespondingSourceObject: {fileID: 4783867218396614651, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 69046265715353068}
     - targetCorrespondingSourceObject: {fileID: 4783867218396614651, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2337842943655395025}
