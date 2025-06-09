@@ -56,6 +56,6 @@ MonoBehaviour:
         _FrameRate: 8
         _HierarchyPath: 
         _TargetType:
-          _QualifiedName: UnityEngine.UI.Image, UnityEngine.UI, Version=1.0.0.0,
+          _QualifiedName: UnityEngine.SpriteRenderer, UnityEngine.CoreModule, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         _PropertyName: m_Sprite
