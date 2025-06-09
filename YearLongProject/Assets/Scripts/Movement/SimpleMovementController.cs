@@ -15,6 +15,7 @@ namespace Movement
         private CharacterRigidbody2D characterRigidbody;
         [SerializeField]
         private BoxCollider2D collider;
+        public BoxCollider2D Collider => collider;
 
         [Header("Ground")]
 

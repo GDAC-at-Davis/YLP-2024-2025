@@ -32,6 +32,7 @@ namespace Fighters.Wizard.Scripts
         Collisions collisions;
         private CharacterRigidbody2D rb;
         private BoxCollider2D col;
+        public BoxCollider2D Collider => col;
 
         [Header("Hitbox")]
         [SerializeField]
@@ -45,6 +46,10 @@ namespace Fighters.Wizard.Scripts
         Vector2 knockbackHitboxSize;
         [SerializeField]
         HitboxEffect hitboxEffect;
+
+        [Header("Effects")]
+        [SerializeField]
+        private ParticleSystem particleSystem;
 
 
         public void Initialize(WizardOrbManager manager)
@@ -78,6 +83,7 @@ namespace Fighters.Wizard.Scripts
             }
         }
 
+        // move orb when hit by wizard
         public override void OnHitByAttack(HitboxInstance hitboxInstance, HitImpact hitImpact)
         {
             if (hitboxInstance.Context.Source != manager.Wizard)
@@ -89,19 +95,21 @@ namespace Fighters.Wizard.Scripts
 
             if (hitboxInstance.HitboxEffect.Damage < 5 && hitboxInstance.HitboxEffect.Damage > 2) // hit by light
             {
+                anim.Play("OrbInteract");
                 Vector2 kb = lightTravelSpeed;
                 kb.x *= dir;
                 rb.LinearVelocity = kb;
             }
             else if (hitboxInstance.HitboxEffect.Damage > 5) // hit by heavy
             {
+                anim.Play("OrbInteract");
                 Vector2 kb = heavyTravelSpeed;
                 kb.x *= dir;
                 rb.LinearVelocity = kb;
             }
         }
 
-        private void DoCollisions() // I couldn't figure out how to get terrain collisions to work without letting players pass thru sorry
+        private void DoCollisions() // I couldn't figure out the weird collision interacions so I'm just doing this sorry
         {
             collisions.right = collisions.left = collisions.above = collisions.below = false;
 
@@ -132,10 +140,13 @@ namespace Fighters.Wizard.Scripts
             }
         }
 
+        // Helper functions called by animator/timeline events
         public void Impact()
         {
             rb.LinearVelocity = Vector2.zero;
             anim.Play("OrbImpact");
+            particleSystem.Play();
+            particleSystem.transform.parent = null;
         }
         public void Detonate()
         {
@@ -153,17 +164,15 @@ namespace Fighters.Wizard.Scripts
 
         public void Reset()
         {
-            anim.Play("OrbAnim");
+            anim.Play("OrbInteract");
+            particleSystem.Stop();
+            if (!gameObject.activeSelf)
+            {
+                particleSystem.transform.parent = transform;
+                particleSystem.transform.localPosition = Vector3.zero;
+            }
             hitboxEmitter.EndHitboxGroup(hitboxGroupID);
             rb.LinearVelocity = Vector2.zero;
-        }
-
-        struct Collisions
-        {
-            public bool above;
-            public bool below;
-            public bool left;
-            public bool right;
         }
 
         private void CheckForPlayerCollisions(RaycastHit2D[] hits)
@@ -178,6 +187,14 @@ namespace Fighters.Wizard.Scripts
                 Debug.Log(manager.ActionManager.CurrentState.StateName);
                 Detonate();
             }
+        }
+
+        struct Collisions
+        {
+            public bool above;
+            public bool below;
+            public bool left;
+            public bool right;
         }
     }
 }

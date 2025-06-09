@@ -61,7 +61,7 @@ MonoBehaviour:
           DissipationMode: 2
           DissipationDistance: 100
           PropagationSpeed: 343
-        <Velocity>k__BackingField: {x: 0, y: 0.4}
+        <Velocity>k__BackingField: {x: 0, y: 0}
         <FlipXVelocity>k__BackingField: 1
       <HitSound>k__BackingField:
         Guid:
@@ -70,7 +70,7 @@ MonoBehaviour:
           Data3: 1711216276
           Data4: -439583530
         Path: event:/Characters/Ahab/LightAttackHit
-    ScreenShakeSO: {fileID: 11400000, guid: 7e68a09a9d10bbf4c83b375b704a39f4, type: 2}
+    ScreenShakeSO: {fileID: 11400000, guid: dd751f266d94e634fba59d20444dbb46, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary
     RaycastArea: []
@@ -261,6 +261,98 @@ MonoBehaviour:
     m_DisplayName: SetTransitionStatesPlayableAsset
   m_Markers:
     m_Objects: []
+--- !u!114 &-5636537993404422246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acf4fde8c5edfcdb9b4b8c08f0935d0, type: 3}
+  m_Name: Particle System Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.2833333333333333
+    m_ClipIn: 0
+    m_Asset: {fileID: -2214863113328184336}
+    m_Duration: 0.08333333333333331
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -5636537993404422246}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: ParticleSystemAsset
+  m_Markers:
+    m_Objects: []
 --- !u!114 &-5506714847918563735
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,7 +540,7 @@ MonoBehaviour:
           DissipationMode: 2
           DissipationDistance: 100
           PropagationSpeed: 343
-        <Velocity>k__BackingField: {x: 0, y: 0.4}
+        <Velocity>k__BackingField: {x: 0, y: 0}
         <FlipXVelocity>k__BackingField: 1
       <HitSound>k__BackingField:
         Guid:
@@ -457,7 +549,7 @@ MonoBehaviour:
           Data3: 1711216276
           Data4: -439583530
         Path: event:/Characters/Ahab/LightAttackHit
-    ScreenShakeSO: {fileID: 11400000, guid: 7e68a09a9d10bbf4c83b375b704a39f4, type: 2}
+    ScreenShakeSO: {fileID: 11400000, guid: dd751f266d94e634fba59d20444dbb46, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: LightPrimary2
     RaycastArea: []
@@ -476,6 +568,100 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88146430b8076074e8eea8ab310933c5, type: 3}
   m_Name: LockFlipXPlayableAsset
+  m_EditorClassIdentifier: 
+--- !u!114 &-2214863113328184336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caef143bde90b0009bf1e763db3f57ed, type: 3}
+  m_Name: ParticleSystemAsset
+  m_EditorClassIdentifier: 
+  owningClip:
+    m_Version: 1
+    m_Start: 0.2833333333333333
+    m_ClipIn: 0
+    m_Asset: {fileID: -2214863113328184336}
+    m_Duration: 0.08333333333333331
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -5636537993404422246}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: ParticleSystemAsset
+--- !u!114 &-1465104713445568652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset
   m_EditorClassIdentifier: 
 --- !u!114 &-621153046997029404
 MonoBehaviour:
@@ -574,6 +760,8 @@ MonoBehaviour:
   - {fileID: 805959939788455700}
   - {fileID: 727510962836346268}
   - {fileID: -7500514140640883419}
+  - {fileID: -5636537993404422246}
+  - {fileID: 2572114451218539941}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -788,7 +976,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.3
+    m_Start: 0.2833333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -8683478057089185305}
     m_Duration: 0.016666666666666666
@@ -857,7 +1045,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Light Primary
   - m_Version: 1
-    m_Start: 0.31666666666666665
+    m_Start: 0.3
     m_ClipIn: 0
     m_Asset: {fileID: -3102375447693183872}
     m_Duration: 0.016666666666666666
@@ -926,7 +1114,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Light Primary
   - m_Version: 1
-    m_Start: 0.35
+    m_Start: 0.3333333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -621153046997029404}
     m_Duration: 0.016666666666666666
@@ -1016,6 +1204,99 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7c5d99a3d33d3b744ba92ddc84de845c, type: 2}
     - {fileID: 11400000, guid: f76e8e00fcd04dc4eb0cd58ec4ec3521, type: 2}
     ActionManager: {fileID: 0}
+--- !u!114 &2572114451218539941
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bf7f712d84d26478ebe6a299f21738, type: 3}
+  m_Name: Activation Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 1
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: -1465104713445568652}
+    m_Duration: 0.7666666666666667
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 2572114451218539941}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  m_Markers:
+    m_Objects: []
+  m_PostPlaybackState: 3
 --- !u!114 &3690644467178157319
 MonoBehaviour:
   m_ObjectHideFlags: 1
