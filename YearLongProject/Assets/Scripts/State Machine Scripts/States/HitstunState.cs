@@ -45,7 +45,6 @@ namespace State_Machine_Scripts.States
                 return;
             }
 
-            ActionManager.SetAllActionTypeAllowed(true);
             // Make sure to end the timeline before switching states
             HandleOnEnd();
             ActionManager.StateMachine.TrySetDefaultState();
@@ -55,9 +54,10 @@ namespace State_Machine_Scripts.States
         {
             base.OnEnterState();
 
+            Debug.Log($"ENTERED HITSTUN on {Time.frameCount}");
+
             hitstunPlayableAsset.Play();
 
-            ActionManager.SetAllActionTypeAllowed(false);
             movementController.enabled = false;
 
             movementController.SetVelocity(knockback);
@@ -76,7 +76,6 @@ namespace State_Machine_Scripts.States
         public override void OnExitState()
         {
             base.OnExitState();
-
             movementController.enabled = true;
         }
 

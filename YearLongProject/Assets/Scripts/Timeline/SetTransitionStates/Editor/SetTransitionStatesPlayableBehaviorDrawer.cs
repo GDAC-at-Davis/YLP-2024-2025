@@ -17,9 +17,9 @@ namespace Timeline.SetTransitionStates.Editor
             SetTransitionStatesPlayableBehavior behavior =
                 ((SetTransitionStatesPlayableAsset)property.serializedObject.targetObject).template;
 
-            YLPEditorGUI.ComponentDescription(position, "Set Allowed States",
-                "Set which states the character can transition to during this clip." +
-                " All other states cannot be transitioned to.");
+            YLPEditorGUI.ComponentDescription(position, "Set Blocked States",
+                "Set which states the character cannot transition to during this clip." +
+                " All other states can be transitioned to.");
 
             if (behavior.ActionManager == null)
             {
@@ -30,9 +30,9 @@ namespace Timeline.SetTransitionStates.Editor
 
             // If we're inspecting without a director, we can't get the action manager, so just assume the existing listed states
             StateNameSO[] currentStates = behavior.ActionManager == null
-                ? behavior.AllowedStates
+                ? behavior.BlockedStates
                 : behavior.ActionManager.GetStates();
-            StateNameSO[] behaviorStates = behavior.AllowedStates;
+            StateNameSO[] behaviorStates = behavior.BlockedStates;
 
             // Mask field can't draw empty lists, so just exit early
             if (currentStates.Length == 0)
@@ -55,7 +55,7 @@ namespace Timeline.SetTransitionStates.Editor
                 }
             }
 
-            flags = EditorGUILayout.MaskField("Allowed State Transitions",
+            flags = EditorGUILayout.MaskField("Blocked State Transitions",
                 flags,
                 currentStates.Select(a => (string)a).ToArray());
 
@@ -75,11 +75,11 @@ namespace Timeline.SetTransitionStates.Editor
 
             // Compare old and new to set dirty and record undo if needed
             var shouldSetDirty = false;
-            if (behavior.AllowedStates.Length == allowedStates.Count)
+            if (behavior.BlockedStates.Length == allowedStates.Count)
             {
-                for (var i = 0; i < behavior.AllowedStates.Length; i++)
+                for (var i = 0; i < behavior.BlockedStates.Length; i++)
                 {
-                    if (behaviorStates[i] != behavior.AllowedStates[i])
+                    if (behaviorStates[i] != behavior.BlockedStates[i])
                     {
                         shouldSetDirty = true;
                     }
@@ -96,7 +96,7 @@ namespace Timeline.SetTransitionStates.Editor
                 EditorUtility.SetDirty(TimelineEditor.inspectedAsset);
             }
 
-            behavior.AllowedStates = allowedStates.ToArray();
+            behavior.BlockedStates = allowedStates.ToArray();
         }
     }
 
