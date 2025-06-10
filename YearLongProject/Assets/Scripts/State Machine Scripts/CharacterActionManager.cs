@@ -25,6 +25,8 @@ namespace State_Machine_Scripts
         [SerializeField]
         private List<CharacterState> states;
 
+        public bool log;
+
         public CharacterActionInput CharacterActionInput => characterActionInput;
 
         public float FixedDeltaTime => Time.fixedDeltaTime * InternalFixedTimeScale;
@@ -44,7 +46,7 @@ namespace State_Machine_Scripts
         ///     Dict controlling if a state is allowed to be entered
         /// </summary>
         [ShowNonSerializedField]
-        private readonly Dictionary<string, bool> allowedStatesToEnter = new();
+        private readonly Dictionary<string, int> blockedStatesToEnter = new();
 
         /// <summary>
         ///     Dict matching state names to the actual state object
@@ -87,7 +89,7 @@ namespace State_Machine_Scripts
 
             foreach (CharacterState state in states)
             {
-                allowedStatesToEnter.Add(state.StateName, true);
+                blockedStatesToEnter.Add(state.StateName, 0);
                 stateDict.Add(state.StateName, state);
 
                 state.Initialize(this);
@@ -137,44 +139,86 @@ namespace State_Machine_Scripts
             SetState(state.StateName);
         }
 
-        public virtual void SetActionTypeAllowed(string action, bool isAllowed)
+        public void IncrementLockToAction(string action)
         {
-            allowedStatesToEnter[action] = isAllowed;
-        }
-
-        // more user friendly than setting action types one at a time
-        /// <summary>
-        ///     Set whether listed actions are available for transition or not
-        /// </summary>
-        /// <param name="isAllowed">can the listed actions be transitioned to?</param>
-        /// <param name="actions">list of actions to change</param>
-        public virtual void SetActionTypesAllowed(bool isAllowed, params string[] actions)
-        {
-            foreach (string action in actions)
+            if (blockedStatesToEnter.ContainsKey(action))
             {
-                allowedStatesToEnter[action] = isAllowed;
+                blockedStatesToEnter[action]++;
+                if (log)
+                {
+                    Debug.Log($"{Time.frameCount} - incr action '{action}' to {blockedStatesToEnter[action]}", this);
+                }
             }
         }
 
-        /// <inheritdoc cref="SetActionTypesAllowed(bool, string[])" />
-        public virtual void SetActionTypesAllowed(bool isAllowed, params StateNameSO[] actions)
+        public void DecrementLockToActionType(string action)
+        {
+            if (blockedStatesToEnter.ContainsKey(action))
+            {
+                blockedStatesToEnter[action]--;
+                if (log)
+                {
+                    Debug.Log($"{Time.frameCount} - decr action '{action}' to {blockedStatesToEnter[action]}", this);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Adds an allow counter to the action types
+        /// </summary>
+        /// <param name="actions"></param>
+        public virtual void IncrementLockToActionTypes(params string[] actions)
+        {
+            foreach (string action in actions)
+            {
+                IncrementLockToAction(action);
+            }
+        }
+
+        /// <inheritdoc cref="IncrementLockToActionTypes" />
+        public virtual void IncrementLockToActionTypes(params StateNameSO[] actions)
         {
             foreach (StateNameSO action in actions)
             {
-                allowedStatesToEnter[action.Value] = isAllowed;
+                IncrementLockToAction(action.Value);
+            }
+        }
+
+        public virtual void DecrementLockToActionTypes(params string[] actions)
+        {
+            foreach (string action in actions)
+            {
+                DecrementLockToActionType(action);
+            }
+        }
+
+        /// <inheritdoc cref="DecrementAllowToActionTypes" />
+        public virtual void DecrementLockToActionTypes(params StateNameSO[] actions)
+        {
+            foreach (StateNameSO action in actions)
+            {
+                DecrementLockToActionType(action.Value);
             }
         }
 
         public virtual bool GetActionTypeAllowed(string action)
         {
-            return allowedStatesToEnter[action];
+            return blockedStatesToEnter[action] <= 0;
         }
 
-        public virtual void SetAllActionTypeAllowed(bool b)
+        public virtual void IncrementAllActionTypeAllowed()
         {
-            foreach (string key in new List<string>(allowedStatesToEnter.Keys))
+            foreach (string key in new List<string>(blockedStatesToEnter.Keys))
             {
-                allowedStatesToEnter[key] = b;
+                blockedStatesToEnter[key]++;
+            }
+        }
+
+        public virtual void DecrementAllActionTypeAllowed()
+        {
+            foreach (string key in new List<string>(blockedStatesToEnter.Keys))
+            {
+                blockedStatesToEnter[key]--;
             }
         }
 

@@ -984,8 +984,13 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
-    - {fileID: 11400000, guid: 3a224fc76f476d545b3f1c7b9e3176aa, type: 2}
+    BlockedStates:
+    - {fileID: 11400000, guid: d4efb3da0c903a445a9045c05f7a048d, type: 2}
+    - {fileID: 11400000, guid: c1abe3b0784290c4bab18bd5f5438794, type: 2}
+    - {fileID: 11400000, guid: 65f38a27db4fd4c46b5260492ddac914, type: 2}
+    - {fileID: 11400000, guid: 5f80bcc3b2703894792c1424366c16b7, type: 2}
+    - {fileID: 11400000, guid: a2a2e9105eca7974d8c208bbaeebea32, type: 2}
+    - {fileID: 11400000, guid: 319f22603cc6cb14da9c3969a64482e2, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &7954876661551819440
 MonoBehaviour:

@@ -281,6 +281,7 @@ MonoBehaviour:
   _body: {fileID: 2324917260605002194}
   states:
   - {fileID: 8862638755809675368}
+  log: 0
 --- !u!1 &2653597404781178319
 GameObject:
   m_ObjectHideFlags: 0
