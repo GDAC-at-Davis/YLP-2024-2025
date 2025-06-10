@@ -14,22 +14,37 @@ namespace GameEntities
             set => entityID = value;
         }
 
-        public virtual bool IsInvincible
-        {
-            get => isInvincible;
-            set
-            {
-                isInvincible = value;
-                InvincibleChanged.Invoke(value);
-            }
-        }
+        public virtual bool IsInvincible => invincibleLockCounter > 0;
 
         public UnityAction<bool> InvincibleChanged;
 
         [ShowNonSerializedField]
         private int entityID;
 
-        private bool isInvincible;
+        private int invincibleLockCounter;
+
+        public void AddInvincibility()
+        {
+            invincibleLockCounter++;
+            if (invincibleLockCounter == 1)
+            {
+                InvincibleChanged?.Invoke(true);
+            }
+        }
+
+        public void RemoveInvincibility()
+        {
+            invincibleLockCounter--;
+            if (invincibleLockCounter == 0)
+            {
+                InvincibleChanged?.Invoke(false);
+            }
+
+            if (invincibleLockCounter < 0)
+            {
+                invincibleLockCounter = 0;
+            }
+        }
 
         public virtual void Init(int id)
         {
