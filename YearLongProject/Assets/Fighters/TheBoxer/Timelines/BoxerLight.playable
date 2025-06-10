@@ -16,7 +16,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 5
       <Knockback>k__BackingField: {x: 6, y: 3}
-      <Hitstun>k__BackingField: 0.3
+      <Hitstun>k__BackingField: 0.35
       <HitStopDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1
@@ -75,9 +75,9 @@ MonoBehaviour:
     HitboxGroupId: LightPrimary
     RaycastArea: []
     BoxArea:
-    - center: {x: 0.45, y: 0.16}
+    - center: {x: 0.55, y: 0.16}
       rotation: 0
-      size: {x: 1.3, y: 1.21}
+      size: {x: 1.63, y: 1.21}
 --- !u!114 &-7500514140640883419
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,6 +449,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0659c63036e09a245985729edde39c6e, type: 2}
     - {fileID: 11400000, guid: 8cbf44304f658444ea2b70a7b686edf7, type: 2}
     - {fileID: 11400000, guid: 39deb9ef5985bbe449dba68fcb6956b8, type: 2}
+    - {fileID: 11400000, guid: e3184349d40bb2748b10a764b777b408, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:
