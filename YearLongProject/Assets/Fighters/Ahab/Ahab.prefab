@@ -171,6 +171,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &7913370506681429333
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -386,6 +387,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &3726650428927876446
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -685,6 +687,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &5143816317544813401
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -957,6 +960,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &39645586189757451
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -996,6 +1000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4678280858386419961}
     m_Modifications:
+    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: dashVelocity
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: actionManager
       value: 
