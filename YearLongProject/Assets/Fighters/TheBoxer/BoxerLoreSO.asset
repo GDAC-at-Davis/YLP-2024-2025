@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f78a0a3e840c3b488304b0ff928238c, type: 3}
   m_Name: BoxerLoreSO
   m_EditorClassIdentifier: 
-  LoreTitle: 'Boxer - '
+  LoreTitle: The Boxer
   LoreText:
-  - This is one page of lore
+  - 'Robotic punching machine. '
