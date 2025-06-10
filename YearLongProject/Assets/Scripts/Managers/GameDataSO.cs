@@ -261,5 +261,21 @@ namespace Managers
             player.CharacterEntity = character;
             OnPlayerDataChanged?.Invoke(id, PlayerDataChange.CharacterEntityChanged, player);
         }
+
+        public int GetLowestPlayerId()
+        {
+            if (players.Count == 0)
+            {
+                return -1; // No players
+            }
+
+            // Find the lowest player ID
+            return players.Min(player => player.PlayerId);
+        }
+
+        public List<int> GetPlayerIds()
+        {
+            return players.Select(player => player.PlayerId).ToList();
+        }
     }
 }

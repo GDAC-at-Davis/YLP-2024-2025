@@ -27,14 +27,16 @@ public class MatchManager : MonoBehaviour
             Debug.LogError($"There should be at least {gameDataSO.PlayerCount} spawnpoints!");
         }
 
-        for (var i = 0; i < gameDataSO.PlayerCount; i++)
+        foreach (int id in gameDataSO.GetPlayerIds())
         {
-            var character =
-                Instantiate(gameDataSO.GetPlayerData(i).SelectedCharacter.CharacterPrefab, spawns[i],
-                    Quaternion.identity).GetComponent<CharacterEntity>();
-            character.Initialize(i);
+            var character = Instantiate(
+                gameDataSO.GetPlayerData(id).SelectedCharacter.CharacterPrefab,
+                spawns[players.Count],
+                Quaternion.identity).GetComponent<CharacterEntity>();
+
+            character.Initialize(id);
             players.Add(character);
-            players[i].UpdateHealth += CheckHealth;
+            players[^1].UpdateHealth += CheckHealth;
         }
     }
 
@@ -53,8 +55,10 @@ public class MatchManager : MonoBehaviour
             return;
         }
 
-        players[id].UpdateHealth -= CheckHealth;
-        players[id].gameObject.SetActive(false);
+        int playerEntityIndex = players.FindIndex(item => item.PlayerId == id);
+
+        players[playerEntityIndex].UpdateHealth -= CheckHealth;
+        players[playerEntityIndex].gameObject.SetActive(false);
 
         if (players.Where(item => item.gameObject.activeInHierarchy).Count() > 1)
         {
