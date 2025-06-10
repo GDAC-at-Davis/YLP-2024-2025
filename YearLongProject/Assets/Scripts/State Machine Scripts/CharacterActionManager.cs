@@ -139,7 +139,7 @@ namespace State_Machine_Scripts
             SetState(state.StateName);
         }
 
-        public void IncrementLockToAction(string action)
+        public void IncrementLockToActionType(string action)
         {
             if (blockedStatesToEnter.ContainsKey(action))
             {
@@ -171,7 +171,7 @@ namespace State_Machine_Scripts
         {
             foreach (string action in actions)
             {
-                IncrementLockToAction(action);
+                IncrementLockToActionType(action);
             }
         }
 
@@ -180,7 +180,7 @@ namespace State_Machine_Scripts
         {
             foreach (StateNameSO action in actions)
             {
-                IncrementLockToAction(action.Value);
+                IncrementLockToActionType(action.Value);
             }
         }
 
@@ -206,7 +206,7 @@ namespace State_Machine_Scripts
             return blockedStatesToEnter[action] <= 0;
         }
 
-        public virtual void IncrementAllActionTypeAllowed()
+        public virtual void IncrementLockAllActionType()
         {
             foreach (string key in new List<string>(blockedStatesToEnter.Keys))
             {
@@ -214,7 +214,7 @@ namespace State_Machine_Scripts
             }
         }
 
-        public virtual void DecrementAllActionTypeAllowed()
+        public virtual void DecrementLockAllActionType()
         {
             foreach (string key in new List<string>(blockedStatesToEnter.Keys))
             {

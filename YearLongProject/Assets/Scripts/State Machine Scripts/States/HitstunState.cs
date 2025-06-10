@@ -76,7 +76,6 @@ namespace State_Machine_Scripts.States
         public override void OnExitState()
         {
             base.OnExitState();
-
             movementController.enabled = true;
         }
 
