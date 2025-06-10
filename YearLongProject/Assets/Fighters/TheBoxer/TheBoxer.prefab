@@ -210,7 +210,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
-  log: 0
+  log: 1
 --- !u!320 &3853249764787856074
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1053,8 +1053,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 0.5402536, g: 0.3280082, b: 0.8584906, a: 1}
       maxColor: {r: 0.749555, g: 0.51886785, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -6453,10 +6453,6 @@ PrefabInstance:
     - target: {fileID: 3779965043621737290, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: OnSpecialAttackPassed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: log
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: JumpState

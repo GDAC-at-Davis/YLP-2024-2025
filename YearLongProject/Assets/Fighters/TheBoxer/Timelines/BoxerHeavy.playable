@@ -64,7 +64,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 8
       <Knockback>k__BackingField: {x: 8, y: 8}
-      <Hitstun>k__BackingField: 0.5
+      <Hitstun>k__BackingField: 0.4
       <HitStopDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 1

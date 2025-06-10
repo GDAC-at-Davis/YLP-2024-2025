@@ -36,11 +36,14 @@ namespace State_Machine_Scripts.States
         /// </summary>
         private Vector2 knockback;
 
+        private float timer;
+
         private void FixedUpdate()
         {
             hitstunPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
 
-            if (Time.time < characterEntity.StunTime)
+            timer += ActionManager.FixedDeltaTime;
+            if (timer < characterEntity.StunDuration)
             {
                 return;
             }
@@ -54,6 +57,7 @@ namespace State_Machine_Scripts.States
         {
             base.OnEnterState();
 
+            timer = 0f;
             Debug.Log($"ENTERED HITSTUN on {Time.frameCount}");
 
             hitstunPlayableAsset.Play();

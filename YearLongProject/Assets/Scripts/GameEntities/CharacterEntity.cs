@@ -31,7 +31,6 @@ namespace GameEntities
 
         [SerializeField]
         private SimpleMovementController movementController;
-        public SimpleMovementController MovementController => movementController;
 
         [SerializeField]
         private HitstunState hitstunState;
@@ -52,6 +51,8 @@ namespace GameEntities
         [SerializeField]
         private int health = 50;
 
+        public SimpleMovementController MovementController => movementController;
+
         public bool Initialized => playerId != -1;
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace GameEntities
 
         public int Health => health;
 
-        public float StunTime => stunTime;
+        public float StunDuration => stunDuration;
         public int MaxHealth { get; private set; }
 
         public Color PlayerColor
@@ -82,7 +83,7 @@ namespace GameEntities
 
         private int playerId = -1;
 
-        private float stunTime;
+        private float stunDuration;
 
         private void Awake()
         {
@@ -122,7 +123,7 @@ namespace GameEntities
         {
             // TODO: move this logic into a function in movement controller?
             Vector2 knockback = hitboxInstance.CalculatedKnockback();
-            stunTime = Time.time + hitboxInstance.HitboxEffect.Hitstun;
+            stunDuration = hitboxInstance.HitboxEffect.Hitstun;
 
             hitstunState.SetKnockback(knockback);
 
@@ -152,8 +153,6 @@ namespace GameEntities
         public virtual void OnAttackHit(HitboxInstantiateResult result)
         {
         }
-
-      
 
         public virtual void Die()
         {
