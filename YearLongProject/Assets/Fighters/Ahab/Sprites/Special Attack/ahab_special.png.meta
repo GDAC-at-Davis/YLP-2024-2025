@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b16455d02b80a3e488248cfe21eb064f
+guid: 0a19157cd114f214098375a315f4961a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 425
+  spritePixelsToUnits: 328
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -110,111 +110,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpecialAttack1
+      name: ahab_special_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2048
-        height: 2048
+        width: 1612
+        height: 1024
       alignment: 9
-      pivot: {x: 0.45, y: 0.24}
+      pivot: {x: 0.4, y: 0.127}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1470f9892b8eca4aacdb74dee27ef46
-      internalID: -2374222918679686493
+      spriteID: 826b478ceaa03cf4bb5bcaf68019de22
+      internalID: 1069273215628184267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpecialAttack2
+      name: ahab_special_2
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 0
+        width: 1612
+        height: 1024
+      alignment: 9
+      pivot: {x: 0.4, y: 0.127}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f538d33ae1df62438ab86a454307728
+      internalID: -4218916212100602486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ahab_special_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 1612
+        height: 1024
+      alignment: 9
+      pivot: {x: 0.4, y: 0.127}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4a91712417e7a449758200cb8aaa5c
+      internalID: -686734930505659825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ahab_special_4
       rect:
         serializedVersion: 2
         x: 0
         y: 2048
-        width: 2048
-        height: 2048
+        width: 1612
+        height: 1024
       alignment: 9
-      pivot: {x: 0.45, y: 0.24}
+      pivot: {x: 0.4, y: 0.127}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77a9c5f26d890c84cba2df74250fafcd
-      internalID: -761933863725385812
+      spriteID: d2de2c3101e9f1348958a19edddba95c
+      internalID: 9026105649934529925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpecialAttack3
+      name: ahab_special_5
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 2048
-        height: 2048
+        x: 0
+        y: 3072
+        width: 1612
+        height: 1024
       alignment: 9
-      pivot: {x: 0.45, y: 0.24}
+      pivot: {x: 0.4, y: 0.127}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63364aaae0978dd4790d651bb8d70954
-      internalID: -5906598218874874896
+      spriteID: 196a889c9b3f72844a781e5a51a9b841
+      internalID: 4383059468070307417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpecialAttack4
+      name: ahab_special_6
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 2048
-        width: 2048
-        height: 2048
+        x: 1612
+        y: 1024
+        width: 1612
+        height: 1024
       alignment: 9
-      pivot: {x: 0.45, y: 0.24}
+      pivot: {x: 0.4, y: 0.127}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13d5a70903642ed4fbeeadb8ed065a7d
-      internalID: -1816755548282093316
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpecialAttack5
-      rect:
-        serializedVersion: 2
-        x: 4096
-        y: 0
-        width: 2048
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.45, y: 0.24}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 194e40875c819e849ad4c1fc7a7102c7
-      internalID: 2008176328888099268
+      spriteID: 3e76f461ac60bcc42b57f8ddb1a0d9f0
+      internalID: -9112021856061272532
       vertices: []
       indices: 
       edges: []
@@ -223,7 +245,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 47ce23efbdf417d43827751b68c249db
+    spriteID: e751686959effc44ca35ce3713ee5c21
     internalID: 0
     vertices: []
     indices: 
@@ -233,11 +255,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: -2374222918679686493
-      2: -761933863725385812
-      3: -5906598218874874896
-      4: -1816755548282093316
-      5: 2008176328888099268
+      IMG_4890: 1069273215628184267
+      IMG_4891: -4218916212100602486
+      IMG_4892: -686734930505659825
+      IMG_4893: 9026105649934529925
+      IMG_4894: 4383059468070307417
+      IMG_4904: -9112021856061272532
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
