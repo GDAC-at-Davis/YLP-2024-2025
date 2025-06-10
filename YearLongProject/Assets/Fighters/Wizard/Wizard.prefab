@@ -5080,7 +5080,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
-  log: 1
+  log: 0
 --- !u!320 &3853249764787856074
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -5243,7 +5243,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
-  log: 1
+  log: 0
 --- !u!320 &7913370506681429333
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -10460,7 +10460,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
-  log: 1
+  log: 0
 --- !u!320 &3726650428927876446
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -10672,7 +10672,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
-  log: 1
+  log: 0
 --- !u!320 &2538015672442102725
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -16137,7 +16137,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
-  log: 1
+  log: 0
 --- !u!320 &39645586189757451
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -16655,10 +16655,6 @@ PrefabInstance:
     - target: {fileID: 4783867218396614651, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
-      propertyPath: log
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: JumpState

@@ -58,7 +58,6 @@ namespace State_Machine_Scripts.States
             base.OnEnterState();
 
             timer = 0f;
-            Debug.Log($"ENTERED HITSTUN on {Time.frameCount}");
 
             hitstunPlayableAsset.Play();
 
