@@ -24,7 +24,7 @@ namespace Timeline.LockFlipX
                 return;
             }
 
-            flipX.CanFlipX = false;
+            flipX.AddLockOnFlipX();
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -39,7 +39,7 @@ namespace Timeline.LockFlipX
                 return;
             }
 
-            flipX.CanFlipX = true;
+            flipX.RemoveLockOnFlipX();
         }
     }
 }

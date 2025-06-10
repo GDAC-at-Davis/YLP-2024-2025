@@ -153,10 +153,7 @@ namespace GameEntities
         {
         }
 
-        public virtual void SetIsInvincible(bool isInvincible)
-        {
-            IsInvincible = isInvincible;
-        }
+      
 
         public virtual void Die()
         {

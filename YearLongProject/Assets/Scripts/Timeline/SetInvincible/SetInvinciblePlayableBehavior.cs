@@ -1,10 +1,11 @@
+using System;
 using GameEntities;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace Timeline.SetInvincible
 {
-    [System.Serializable]
+    [Serializable]
     public class SetInvinciblePlayableBehavior : PlayableBehaviour
     {
         private Entity entity;
@@ -23,7 +24,7 @@ namespace Timeline.SetInvincible
                 return;
             }
 
-            entity.IsInvincible = true;
+            entity.AddInvincibility();
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -38,7 +39,7 @@ namespace Timeline.SetInvincible
                 return;
             }
 
-            entity.IsInvincible = false;
+            entity.RemoveInvincibility();
         }
     }
 }

@@ -25,16 +25,12 @@ namespace CharacterScripts
         public UnityEvent<bool> OnFlipXChange;
 
         public bool CurrentFlipX => currentFlipX;
+        private bool CanFlipX => flipXCounter <= 0;
 
-        public bool CanFlipX
-        {
-            get => canFlipX;
-            set => canFlipX = value;
-        }
+        private int flipXCounter;
 
         private bool targetFlipX;
         private bool currentFlipX;
-        private bool canFlipX = true;
 
         private void Start()
         {
@@ -43,7 +39,7 @@ namespace CharacterScripts
 
         private void FixedUpdate()
         {
-            if (!canFlipX)
+            if (!CanFlipX)
             {
                 return;
             }
@@ -54,6 +50,21 @@ namespace CharacterScripts
         private void OnDestroy()
         {
             characterActionInput.MoveInputChanged -= HandleMoveInput;
+        }
+
+        public void AddLockOnFlipX()
+        {
+            flipXCounter++;
+        }
+
+        public void RemoveLockOnFlipX()
+        {
+            flipXCounter--;
+
+            if (flipXCounter < 0)
+            {
+                flipXCounter = 0;
+            }
         }
 
         private void HandleMoveInput(Vector2 moveDir)
