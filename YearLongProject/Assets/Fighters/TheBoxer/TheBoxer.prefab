@@ -210,6 +210,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &3853249764787856074
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -351,6 +352,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &7913370506681429333
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -525,6 +527,8 @@ PlayableDirector:
     value: {fileID: 6572194888787973522}
   - key: {fileID: -5438996935550660551, guid: 858fbe50134dfc443a28e8a89a40d827, type: 2}
     value: {fileID: 7062655416985638217}
+  - key: {fileID: 0}
+    value: {fileID: 3105801480486927495}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &3258685151373203990
@@ -585,6 +589,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &3726650428927876446
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1048,8 +1053,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 0.5402536, g: 0.3280082, b: 0.8584906, a: 1}
       maxColor: {r: 0.749555, g: 0.51886785, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -5776,6 +5781,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &5143816317544813401
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -5999,7 +6005,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6459363530246390038, guid: 9252271108f774746a6ba0f75b4a0569, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3e8b1c4e357e7347b5d6fe1c963ddf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6068,6 +6074,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &39645586189757451
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -6517,7 +6524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundMaxSpeed
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airAcceleration

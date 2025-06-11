@@ -27,6 +27,9 @@ namespace State_Machine_Scripts.States
         [SerializeField]
         public bool useDefaultMovement;
 
+        [SerializeField]
+        private bool log;
+
         private void Update()
         {
             if (useDefaultMovement)
@@ -47,6 +50,11 @@ namespace State_Machine_Scripts.States
 
         public override void OnEnterState()
         {
+            if (log)
+            {
+                Debug.Log($"Entering {gameObject.name} on frame {Time.frameCount}");
+            }
+
             base.OnEnterState();
             timelinePlayer.OnFinished += HandleOnEnd;
             timelinePlayer.Play();
@@ -63,8 +71,6 @@ namespace State_Machine_Scripts.States
 
             timelinePlayer.OnFinished -= HandleOnEnd;
             timelinePlayer.Stop();
-
-            ActionManager.SetAllActionTypeAllowed(true);
         }
     }
 }

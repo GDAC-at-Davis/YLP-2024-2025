@@ -1267,14 +1267,8 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
-    - {fileID: 11400000, guid: 06159a6e6238df2458b81309f2e1148f, type: 2}
-    - {fileID: 11400000, guid: 55170ff7ea57ec84fb46c7831a48911e, type: 2}
-    - {fileID: 11400000, guid: fb4dd46e5988b4c40b83f2bee73c5bd1, type: 2}
-    - {fileID: 11400000, guid: 7b10dc6279041be4cb8d718a27fa8cbf, type: 2}
-    - {fileID: 11400000, guid: 7c5d99a3d33d3b744ba92ddc84de845c, type: 2}
-    - {fileID: 11400000, guid: f76e8e00fcd04dc4eb0cd58ec4ec3521, type: 2}
-    - {fileID: 11400000, guid: 3634ac8449af1ab4fb558f1f6ad7b982, type: 2}
+    BlockedStates:
+    - {fileID: 11400000, guid: f1552fd63bd511f45a79a3b706e7ace8, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &5134534654648619874
 MonoBehaviour:
@@ -1429,11 +1423,11 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
-    - {fileID: 11400000, guid: 06159a6e6238df2458b81309f2e1148f, type: 2}
-    - {fileID: 11400000, guid: 55170ff7ea57ec84fb46c7831a48911e, type: 2}
-    - {fileID: 11400000, guid: fb4dd46e5988b4c40b83f2bee73c5bd1, type: 2}
-    - {fileID: 11400000, guid: 7c5d99a3d33d3b744ba92ddc84de845c, type: 2}
+    BlockedStates:
+    - {fileID: 11400000, guid: 7b10dc6279041be4cb8d718a27fa8cbf, type: 2}
+    - {fileID: 11400000, guid: f76e8e00fcd04dc4eb0cd58ec4ec3521, type: 2}
+    - {fileID: 11400000, guid: 3634ac8449af1ab4fb558f1f6ad7b982, type: 2}
+    - {fileID: 11400000, guid: f1552fd63bd511f45a79a3b706e7ace8, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &7593478755212059732
 MonoBehaviour:
@@ -1448,6 +1442,12 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
-    - {fileID: 11400000, guid: 55170ff7ea57ec84fb46c7831a48911e, type: 2}
+    BlockedStates:
+    - {fileID: 11400000, guid: 06159a6e6238df2458b81309f2e1148f, type: 2}
+    - {fileID: 11400000, guid: fb4dd46e5988b4c40b83f2bee73c5bd1, type: 2}
+    - {fileID: 11400000, guid: 7b10dc6279041be4cb8d718a27fa8cbf, type: 2}
+    - {fileID: 11400000, guid: 7c5d99a3d33d3b744ba92ddc84de845c, type: 2}
+    - {fileID: 11400000, guid: f76e8e00fcd04dc4eb0cd58ec4ec3521, type: 2}
+    - {fileID: 11400000, guid: 3634ac8449af1ab4fb558f1f6ad7b982, type: 2}
+    - {fileID: 11400000, guid: f1552fd63bd511f45a79a3b706e7ace8, type: 2}
     ActionManager: {fileID: 0}

@@ -35,6 +35,7 @@ namespace Timeline
         {
             playableDirector.timeUpdateMode = DirectorUpdateMode.Manual;
             playableDirector.Play();
+            playableDirector.Evaluate();
         }
 
         public void Stop()

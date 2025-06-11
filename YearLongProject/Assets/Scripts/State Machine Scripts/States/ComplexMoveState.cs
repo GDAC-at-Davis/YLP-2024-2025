@@ -44,14 +44,35 @@ namespace State_Machine_Scripts.States
         private MoveSubStates currentSubState;
         private ManualTimelinePlayer currentPlayableAsset;
 
+        private bool canJump;
+
+        private void Start()
+        {
+            if (jumpState)
+            {
+                jumpState.AddLockout();
+            }
+        }
+
         private void Update()
         {
             Vector2 moveInput = ActionManager.CharacterActionInput.MoveInput;
             movementController.SetHorizontalInput(moveInput.x);
             SelectMoveState(moveInput);
+
+            bool canJumpPrev = canJump;
+            canJump = movementController.GetIsGrounded();
+
             if (jumpState)
             {
-                ActionManager.SetActionTypeAllowed(jumpState.StateName, movementController.GetIsGrounded());
+                if (!canJumpPrev && canJump)
+                {
+                    jumpState.RemoveLockout();
+                }
+                else if (canJumpPrev && !canJump)
+                {
+                    jumpState.AddLockout();
+                }
             }
         }
 
@@ -102,6 +123,7 @@ namespace State_Machine_Scripts.States
                 SetSubState(MoveSubStates.Airborne);
             }
         }
+
         public void OnEnterMoveEnd()
         {
             SetSubState(MoveSubStates.Moving);

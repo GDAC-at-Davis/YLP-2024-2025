@@ -923,7 +923,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -5080,6 +5080,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &3853249764787856074
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -5242,6 +5243,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &7913370506681429333
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -10458,6 +10460,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &3726650428927876446
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -10669,6 +10672,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &2538015672442102725
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -11767,7 +11771,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -16133,6 +16137,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &39645586189757451
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -16290,14 +16295,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 2233513378948324683, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937598246594779455, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
-      propertyPath: lengthInSec
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3053244473438260892, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
       propertyPath: characterEntity
       value: 
@@ -16326,14 +16323,6 @@ PrefabInstance:
       propertyPath: OnLandHit.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 5105533555293983522}
-    - target: {fileID: 7712244286719599150, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
-      propertyPath: heavyTravelSpeed.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7712244286719599150, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
-      propertyPath: lightTravelSpeed.y
-      value: -10
-      objectReference: {fileID: 0}
     - target: {fileID: 8699008234920065302, guid: 4011eb2c7e0fdac4f9134449b5a35548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

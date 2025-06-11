@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 7
-      <Knockback>k__BackingField: {x: 8, y: 2}
+      <Damage>k__BackingField: 8
+      <Knockback>k__BackingField: {x: 12, y: 2}
       <Hitstun>k__BackingField: 0.4
       <HitStopDuration>k__BackingField: 0.2
       <GiveTargetHitStop>k__BackingField: 1
@@ -383,8 +383,14 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
-    - {fileID: 11400000, guid: 71345fa6e1261844486ff05f65469197, type: 2}
+    BlockedStates:
+    - {fileID: 11400000, guid: 0659c63036e09a245985729edde39c6e, type: 2}
+    - {fileID: 11400000, guid: 8cbf44304f658444ea2b70a7b686edf7, type: 2}
+    - {fileID: 11400000, guid: 39deb9ef5985bbe449dba68fcb6956b8, type: 2}
+    - {fileID: 11400000, guid: e3184349d40bb2748b10a764b777b408, type: 2}
+    - {fileID: 11400000, guid: c2fcceb1725a87c4cbcc7daffac2355f, type: 2}
+    - {fileID: 11400000, guid: ee145105d972a3b4a9988a0e74fc65a4, type: 2}
+    - {fileID: 11400000, guid: e1ab0877bf160ef44b034c7b055360a6, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-3761199163518523773
 MonoBehaviour:
@@ -399,13 +405,9 @@ MonoBehaviour:
   m_Name: SetTransitionStatesPlayableAsset(Clone)
   m_EditorClassIdentifier: 
   template:
-    AllowedStates:
+    BlockedStates:
     - {fileID: 11400000, guid: 0659c63036e09a245985729edde39c6e, type: 2}
-    - {fileID: 11400000, guid: c2fcceb1725a87c4cbcc7daffac2355f, type: 2}
-    - {fileID: 11400000, guid: 39deb9ef5985bbe449dba68fcb6956b8, type: 2}
-    - {fileID: 11400000, guid: e1ab0877bf160ef44b034c7b055360a6, type: 2}
-    - {fileID: 11400000, guid: ee145105d972a3b4a9988a0e74fc65a4, type: 2}
-    - {fileID: 11400000, guid: e3184349d40bb2748b10a764b777b408, type: 2}
+    - {fileID: 11400000, guid: 8cbf44304f658444ea2b70a7b686edf7, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-3630007790177556980
 MonoBehaviour:

@@ -110,6 +110,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 1
+  log: 0
 --- !u!320 &440420555375411993
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -590,6 +591,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 1
+  log: 0
 --- !u!320 &5143816317544813401
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -755,6 +757,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &6142686231447053304
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -878,6 +881,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &39645586189757451
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1782,11 +1786,11 @@ PrefabInstance:
       objectReference: {fileID: 791708176923828659}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airMaxSpeed
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundMaxSpeed
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airAcceleration
@@ -1794,7 +1798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundAcceleration
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent

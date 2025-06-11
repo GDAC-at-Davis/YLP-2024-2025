@@ -36,16 +36,18 @@ namespace State_Machine_Scripts.States
         /// </summary>
         private Vector2 knockback;
 
+        private float timer;
+
         private void FixedUpdate()
         {
             hitstunPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
 
-            if (Time.time < characterEntity.StunTime)
+            timer += ActionManager.FixedDeltaTime;
+            if (timer < characterEntity.StunDuration)
             {
                 return;
             }
 
-            ActionManager.SetAllActionTypeAllowed(true);
             // Make sure to end the timeline before switching states
             HandleOnEnd();
             ActionManager.StateMachine.TrySetDefaultState();
@@ -55,9 +57,10 @@ namespace State_Machine_Scripts.States
         {
             base.OnEnterState();
 
+            timer = 0f;
+
             hitstunPlayableAsset.Play();
 
-            ActionManager.SetAllActionTypeAllowed(false);
             movementController.enabled = false;
 
             movementController.SetVelocity(knockback);
@@ -76,7 +79,6 @@ namespace State_Machine_Scripts.States
         public override void OnExitState()
         {
             base.OnExitState();
-
             movementController.enabled = true;
         }
 

@@ -2,13 +2,16 @@ using System;
 using State_Machine_Scripts;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 
 namespace Timeline.SetTransitionStates
 {
     [Serializable]
     public class SetTransitionStatesPlayableBehavior : PlayableBehaviour
     {
-        public StateNameSO[] AllowedStates = { };
+        [FormerlySerializedAs("AllowedStates")]
+        public StateNameSO[] BlockedStates = { };
+
         public CharacterActionManager ActionManager;
 
         private bool isReset;
@@ -28,8 +31,7 @@ namespace Timeline.SetTransitionStates
                 return;
             }
 
-            ActionManager.SetAllActionTypeAllowed(false);
-            ActionManager.SetActionTypesAllowed(true, AllowedStates);
+            ActionManager.IncrementLockToActionTypes(BlockedStates);
 
             isReset = false;
         }
@@ -47,8 +49,7 @@ namespace Timeline.SetTransitionStates
             }
 
             isReset = true;
-
-            ActionManager.SetAllActionTypeAllowed(true);
+            ActionManager.DecrementLockToActionTypes(BlockedStates);
         }
     }
 }
