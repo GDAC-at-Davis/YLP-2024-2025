@@ -1,3 +1,4 @@
+using CharacterScripts;
 using EditorUtils.BoldHeader;
 using Movement;
 using NaughtyAttributes;
@@ -18,6 +19,9 @@ namespace State_Machine_Scripts.States
 
         [SerializeField]
         private SimpleMovementController movementController;
+
+        [SerializeField]
+        private CharacterFacingDirection characterFacingDirection;
 
         [Header("Config")]
 
@@ -56,6 +60,12 @@ namespace State_Machine_Scripts.States
             }
 
             base.OnEnterState();
+
+            if (characterFacingDirection)
+            {
+                characterFacingDirection.SyncFlipX();
+            }
+
             timelinePlayer.OnFinished += HandleOnEnd;
             timelinePlayer.Play();
         }
