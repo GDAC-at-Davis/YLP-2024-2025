@@ -173,7 +173,7 @@ MonoBehaviour:
   hitboxEmitter: {fileID: 3208988197911577147}
   physicsCollider: {fileID: 1008355638700277412}
   ahabPhysicsCollider: {fileID: 0}
-  dashVelocity: 30
+  dashVelocity: 50
   thrown: 0
   onGround: 0
   throwing: 0
@@ -547,7 +547,7 @@ SpriteRenderer:
   m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5251339292392020784
