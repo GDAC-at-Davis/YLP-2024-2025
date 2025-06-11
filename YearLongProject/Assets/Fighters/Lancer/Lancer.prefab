@@ -107,6 +107,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementController: {fileID: 1278654112016437739}
+  characterFacingDirection: {fileID: 1510922958757828136}
   timelinePlayer:
     playableDirector: {fileID: 7913370506681429333}
     loop: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &7913370506681429333
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -363,6 +365,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementController: {fileID: 1278654112016437739}
+  characterFacingDirection: {fileID: 1510922958757828136}
   timelinePlayer:
     playableDirector: {fileID: 3726650428927876446}
     loop: 0
@@ -370,6 +373,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &3726650428927876446
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -633,6 +637,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementController: {fileID: 1278654112016437739}
+  characterFacingDirection: {fileID: 1510922958757828136}
   timelinePlayer:
     playableDirector: {fileID: 5143816317544813401}
     loop: 0
@@ -640,6 +645,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &5143816317544813401
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -719,6 +725,8 @@ PlayableDirector:
     value: {fileID: 4198994870414546198}
   - key: {fileID: -3301409326029880673, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
     value: {fileID: 4198994870414546198}
+  - key: {fileID: 8536104087270066448, guid: 0ac732cbafbde0d4c8b6003b4197affc, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 7beab605e1f3110438a9ea6b0afe326d: {fileID: 8631050776698224226}
@@ -944,6 +952,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementController: {fileID: 1278654112016437739}
+  characterFacingDirection: {fileID: 1510922958757828136}
   timelinePlayer:
     playableDirector: {fileID: 39645586189757451}
     loop: 0
@@ -951,6 +960,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   useDefaultMovement: 0
+  log: 0
 --- !u!320 &39645586189757451
 PlayableDirector:
   m_ObjectHideFlags: 0
