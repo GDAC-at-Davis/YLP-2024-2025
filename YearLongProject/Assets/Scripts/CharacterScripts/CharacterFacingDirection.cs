@@ -88,7 +88,7 @@ namespace CharacterScripts
         /// <summary>
         ///     Apply the target/desired flipX to the character
         /// </summary>
-        private void SyncFlipX()
+        public void SyncFlipX()
         {
             if (currentFlipX == targetFlipX)
             {
