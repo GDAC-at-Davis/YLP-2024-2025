@@ -1,4 +1,3 @@
-using CharacterScripts;
 using EditorUtils.BoldHeader;
 using Movement;
 using NaughtyAttributes;
@@ -38,9 +37,6 @@ namespace State_Machine_Scripts.States
         [SerializeField]
         private CharacterState jumpState;
 
-        [SerializeField]
-        private CharacterFacingDirection characterFacingDirection;
-
         private MoveSubStates currentSubState;
         private ManualTimelinePlayer currentPlayableAsset;
         private bool canJump;
@@ -79,7 +75,6 @@ namespace State_Machine_Scripts.States
             if (currentPlayableAsset != null)
             {
                 currentPlayableAsset.Evaluate(ActionManager.FixedDeltaTime);
-                characterFacingDirection.SyncFlipX();
             }
         }
 

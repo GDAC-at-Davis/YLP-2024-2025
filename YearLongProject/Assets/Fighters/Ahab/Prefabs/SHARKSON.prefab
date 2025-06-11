@@ -180,7 +180,7 @@ MonoBehaviour:
   dashDamping: 8
   dashDuration: 1
   timeSinceStartDash: 0
-  dashCooldown: 1
+  dashCooldown: 1.35
   hitboxArea:
     center: {x: 0, y: 0}
     rotation: 0
