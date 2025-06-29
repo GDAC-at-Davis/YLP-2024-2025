@@ -6003,6 +6003,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8220311578060693313, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 74ff1e69e44e30248b311d950166a104, type: 2}
     - target: {fileID: -8060467683251574620, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -6015,10 +6019,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ab12e41b598974c4a9b5eea5c3384f15, type: 2}
+    - target: {fileID: -730564449870951509, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f94975dfb53487f4c9206e09b0beade1, type: 2}
     - target: {fileID: 919132149155446097, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: m_Name
       value: Pirate Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 4635981490350997320, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 128db16ff2731bc42b753a0f480aa7b7, type: 2}
     - target: {fileID: 6999022873839477163, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
