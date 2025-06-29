@@ -2161,8 +2161,8 @@ MonoBehaviour:
   spawnpoints:
   - {x: -16, y: 10, z: 0}
   - {x: 16, y: 10, z: 0}
-  - {x: -10, y: 3.5, z: 0}
-  - {x: 10, y: 3.5, z: 0}
+  - {x: -16, y: 0, z: 0}
+  - {x: 16, y: 0, z: 0}
   markerSize: 0.5
   gameDataSO: {fileID: 11400000, guid: 45e8d70fed057474890f57d59ce3d70d, type: 2}
 --- !u!1 &7987982862016877722
