@@ -185,9 +185,9 @@ MonoBehaviour:
     HitboxGroupId: Special Spin 1
     RaycastArea: []
     BoxArea:
-    - center: {x: 1.51, y: -0.4}
+    - center: {x: 1.65, y: -0.4}
       rotation: 0
-      size: {x: 3.18, y: 0.68}
+      size: {x: 2.75, y: 0.68}
 --- !u!114 &-7393832092995902472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1288,9 +1288,9 @@ MonoBehaviour:
     HitboxGroupId: Special Spin 1
     RaycastArea: []
     BoxArea:
-    - center: {x: 0.58, y: 0.99}
+    - center: {x: 1, y: 0.99}
       rotation: 0
-      size: {x: 2.1, y: 2.37}
+      size: {x: 1.5, y: 2.37}
 --- !u!114 &6110976822858738778
 MonoBehaviour:
   m_ObjectHideFlags: 1
