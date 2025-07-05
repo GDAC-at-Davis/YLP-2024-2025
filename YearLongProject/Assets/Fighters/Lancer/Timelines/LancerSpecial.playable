@@ -1309,9 +1309,9 @@ MonoBehaviour:
     HitboxGroupId: LancerSpecial
     RaycastArea: []
     BoxArea:
-    - center: {x: 3.3, y: 1.5}
+    - center: {x: 3.15, y: 1.55}
       rotation: 30
-      size: {x: 0.7, y: 0.4}
+      size: {x: 0.4, y: 0.4}
 --- !u!114 &7954876661551819440
 MonoBehaviour:
   m_ObjectHideFlags: 1
