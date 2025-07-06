@@ -5935,6 +5935,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3630298747526637088}
     m_Modifications:
+    - target: {fileID: -8804282271266868398, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b7f3ac90007b5841a6c6d43628beca2, type: 2}
+    - target: {fileID: -8804282271266868398, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b89a2e945e2b414db1ecccefa0d9a15, type: 2}
+    - target: {fileID: -8804282271266868398, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bc9f7f2679e05a646b813d88f2ac8412, type: 2}
     - target: {fileID: -8679921383154817045, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -5991,14 +6003,34 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8220311578060693313, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 74ff1e69e44e30248b311d950166a104, type: 2}
+    - target: {fileID: -8060467683251574620, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 976d05e144df59b468b8b05a9037fede, type: 2}
     - target: {fileID: -7861000036132171335, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5052646681784336818, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ab12e41b598974c4a9b5eea5c3384f15, type: 2}
+    - target: {fileID: -730564449870951509, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f94975dfb53487f4c9206e09b0beade1, type: 2}
     - target: {fileID: 919132149155446097, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: m_Name
       value: Pirate Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 4635981490350997320, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 128db16ff2731bc42b753a0f480aa7b7, type: 2}
     - target: {fileID: 6999022873839477163, guid: 5d391da4b855994428a5f977c8d08219, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
