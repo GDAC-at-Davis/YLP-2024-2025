@@ -54,6 +54,7 @@ namespace Movement
         private UnityEvent onLeaveGround;
 
         private Vector2 Position => characterRigidbody ? characterRigidbody.Position : Vector2.zero;
+        public CharacterRigidbody2D CharacterRigidbody => characterRigidbody;
 
         private bool inJump;
         private bool isGrounded;
