@@ -53,7 +53,7 @@ MonoBehaviour:
     - rid: 7335080286802935813
       type: {class: GenerateSpriteAnimationsSettings, ns: Animancer.Editor.Tools, asm: Kybernetik.Animancer.Editor}
       data:
-        _FrameRate: 8
+        _FrameRate: 12
         _HierarchyPath: 
         _TargetType:
           _QualifiedName: UnityEngine.SpriteRenderer, UnityEngine.CoreModule, Version=0.0.0.0,

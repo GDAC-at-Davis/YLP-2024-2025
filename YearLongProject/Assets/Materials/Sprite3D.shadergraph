@@ -627,7 +627,7 @@
         "m_Id": "57934f289ad643d1955828a7f80a7164"
     },
     "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 1,
     "m_AlphaMode": 0,
@@ -1712,7 +1712,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.10000000149011612,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
