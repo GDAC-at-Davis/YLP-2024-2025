@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDisplayName: Wacky Woods
   LevelPrefab: {fileID: 1615303468472177271, guid: 035c31e011802aa419faeb185a3c7ff8, type: 3}
-  LevelPortrait: {fileID: 21300000, guid: 0f4d846759eb6344bac213a9855dc61a, type: 3}
-  LevelPreview: {fileID: 21300000, guid: 0f4d846759eb6344bac213a9855dc61a, type: 3}
+  LevelPortrait: {fileID: 21300000, guid: b978d27c15d37314285dc86ebe024d84, type: 3}
+  LevelPreview: {fileID: 21300000, guid: b978d27c15d37314285dc86ebe024d84, type: 3}
   LevelLore: {fileID: 11400000, guid: 2335f1015c08c2c4584324deca5e2034, type: 2}
