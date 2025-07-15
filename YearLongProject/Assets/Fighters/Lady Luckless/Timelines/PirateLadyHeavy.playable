@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.38333333333333336
+    m_Start: 0.18333333333333332
     m_ClipIn: 0
     m_Asset: {fileID: -118937999720315891}
     m_Duration: 0.35
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 0.38333333333333336
+    m_PreExtrapolationTime: 0.18333333333333332
     m_DisplayName: Tentacle Erupt|ETentacle Attack
   m_Markers:
     m_Objects: []
@@ -234,7 +234,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -7393832092995902472}
-    m_Duration: 1.1
+    m_Duration: 0.8
     m_TimeScale: 1
     m_ParentTrack: {fileID: -5763307137688502784}
     m_EaseInDuration: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -4100790546577323709}
-    m_Duration: 1.1
+    m_Duration: 0.8
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3630007790177556980}
     m_EaseInDuration: 0
@@ -582,7 +582,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -2936464226458931067}
-    m_Duration: 1.1
+    m_Duration: 0.8
     m_TimeScale: 1
     m_ParentTrack: {fileID: 727510962836346268}
     m_EaseInDuration: 0
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.5333333333333333
+    m_Start: 0.4
     m_ClipIn: 0
     m_Asset: {fileID: 3690644467178157319}
     m_Duration: 0.19999999999999998
@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.7
+    m_Start: 0.5000000000000002
     m_ClipIn: 0
     m_Asset: {fileID: -8683478057089185305}
     m_Duration: 0.050000000000000044
@@ -834,7 +834,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SpecialHitbox
   - m_Version: 1
-    m_Start: 0.65
+    m_Start: 0.45000000000000023
     m_ClipIn: 0
     m_Asset: {fileID: 2699238247066047043}
     m_Duration: 0.04999999999999993
@@ -903,7 +903,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SpecialHitbox
   - m_Version: 1
-    m_Start: 0.6166666666666666
+    m_Start: 0.4166666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 4644904987360751554}
     m_Duration: 0.03333333333333344
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 7954876661551819440}
-    m_Duration: 1.1
+    m_Duration: 0.8
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8829339449843730414}
     m_EaseInDuration: 0
