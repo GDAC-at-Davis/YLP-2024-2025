@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace A_Stages.Wacky_Woods.Scripts
 {
-    public class SpinningCharacter : MonoBehaviour
+    public class WackyTimelineCharacter : MonoBehaviour
     {
         [SerializeField]
         private List<GameObject> models;
@@ -20,42 +20,63 @@ namespace A_Stages.Wacky_Woods.Scripts
         private Transform modelTransform;
 
         [SerializeField]
-        private ManualTimelinePlayer timelinePlayer;
+        private List<ManualTimelinePlayer> timelinePlayer;
+
+        public int FacingDirection { get; private set; }
 
         public event Action<HitboxInstantiateResult> OnLandHit;
+        public event Action OnFinishAttack;
+
+        private ManualTimelinePlayer selectedTimeline;
 
         /// <summary>
-        ///     Initializes the character for spinning with a random model
+        ///     Initializes the character for attack with a random model
         /// </summary>
         /// <param name="facingDirection"></param>
-        public void InitializeSpinning(int facingDirection)
+        public void InitializeAttack(int facingDirection)
         {
             SetFacingDirection(facingDirection);
 
+            selectedTimeline = timelinePlayer[Random.Range(0, timelinePlayer.Count)];
+            selectedTimeline.Play();
+            selectedTimeline.OnFinished += HandleOnFinishAttack;
+        }
+
+        public void SelectRandomModel()
+        {
             int modelIndex = Random.Range(0, models.Count);
 
             for (var i = 0; i < models.Count; i++)
             {
                 models[i].SetActive(i == modelIndex);
             }
-
-            timelinePlayer.Play();
         }
 
         public void SetFacingDirection(int facingDirection)
         {
             modelTransform.localScale = new Vector3(facingDirection, 1, 1);
             hitboxEmitter.SetFlipX(facingDirection <= 0);
+            FacingDirection = facingDirection;
         }
 
-        public void StopSpinning()
+        public void StopAttacking()
         {
-            timelinePlayer.Stop();
-
-            foreach (GameObject model in models)
+            if (selectedTimeline != null)
             {
-                model.SetActive(false);
+                selectedTimeline.OnFinished -= HandleOnFinishAttack;
+                selectedTimeline.Stop();
             }
+        }
+
+        public void SetVisible(bool visible)
+        {
+            gameObject.SetActive(visible);
+        }
+
+        private void HandleOnFinishAttack()
+        {
+            selectedTimeline.OnFinished -= HandleOnFinishAttack;
+            OnFinishAttack?.Invoke();
         }
 
         public void HandleLandHit(HitboxInstantiateResult hitboxInstantiateResult)
@@ -65,7 +86,10 @@ namespace A_Stages.Wacky_Woods.Scripts
 
         public void Evaluate(float deltaTime)
         {
-            timelinePlayer.Evaluate(deltaTime);
+            if (selectedTimeline != null)
+            {
+                selectedTimeline.Evaluate(deltaTime);
+            }
         }
     }
 }

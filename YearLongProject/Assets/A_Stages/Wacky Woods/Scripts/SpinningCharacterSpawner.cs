@@ -18,7 +18,7 @@ namespace A_Stages.Wacky_Woods.Scripts
         [Header("Depends")]
 
         [SerializeField]
-        private SpinningCharacter spinningCharacterPrefab;
+        private WackyTimelineCharacter wackyTimelineCharacterPrefab;
 
         [Header("Config")]
 
@@ -42,7 +42,7 @@ namespace A_Stages.Wacky_Woods.Scripts
         [ShowNonSerializedField]
         private int currentWayPointIndex;
 
-        private SpinningCharacter currentCharacter;
+        private WackyTimelineCharacter currentCharacter;
 
         private float hitStopTimer;
 
@@ -56,8 +56,8 @@ namespace A_Stages.Wacky_Woods.Scripts
             }
 
             waitTimer = initialStartDelay;
-            currentCharacter = Instantiate(spinningCharacterPrefab, gameObject.transform);
-            currentCharacter.StopSpinning();
+            currentCharacter = Instantiate(wackyTimelineCharacterPrefab, gameObject.transform);
+            currentCharacter.SetVisible(false);
             currentCharacter.OnLandHit += HandleCharacterLandHit;
         }
 
@@ -75,7 +75,9 @@ namespace A_Stages.Wacky_Woods.Scripts
                     if (waitTimer <= 0f)
                     {
                         spawnState = SpawnState.CharacterSpinning;
-                        currentCharacter.InitializeSpinning(1);
+                        currentCharacter.SetVisible(true);
+                        currentCharacter.SelectRandomModel();
+                        currentCharacter.InitializeAttack(1);
                         currentWayPointIndex = 0;
                         currentCharacter.transform.position = wayPoints[0].position;
                     }
@@ -93,7 +95,8 @@ namespace A_Stages.Wacky_Woods.Scripts
                     if (currentWayPointIndex >= wayPoints.Count - 1)
                     {
                         spawnState = SpawnState.Waiting;
-                        currentCharacter.StopSpinning();
+                        currentCharacter.StopAttacking();
+                        currentCharacter.SetVisible(false);
                         waitTimer = cooldownTime;
                         return;
                     }

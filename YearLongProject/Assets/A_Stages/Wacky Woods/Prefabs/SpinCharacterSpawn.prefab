@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6c0182ff74f374bb342b2b50ec20c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinningCharacterPrefab: {fileID: 2692243501777106772, guid: 17a9ccda4d271b445ad57a5a61834327, type: 3}
+  wackyTimelineCharacterPrefab: {fileID: 2692243501777106772, guid: 17a9ccda4d271b445ad57a5a61834327, type: 3}
   wayPoints:
   - {fileID: 1725772112738358217}
   - {fileID: 1328629765614498279}

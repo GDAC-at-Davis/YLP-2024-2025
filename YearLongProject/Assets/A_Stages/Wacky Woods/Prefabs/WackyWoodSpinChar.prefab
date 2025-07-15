@@ -148,7 +148,7 @@ MonoBehaviour:
   hitboxEmitter: {fileID: 3804898517460556258}
   modelTransform: {fileID: 4055711462001138911}
   timelinePlayer:
-    playableDirector: {fileID: 4722433532142278050}
+  - playableDirector: {fileID: 4722433532142278050}
     loop: 1
     OnFinishedUnityEvent:
       m_PersistentCalls:
