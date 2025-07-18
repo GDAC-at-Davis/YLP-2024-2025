@@ -388,7 +388,7 @@ Transform:
   m_GameObject: {fileID: 8076769827147013271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.29, y: -1.95, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -541,9 +541,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: WackyCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 4044579872412341538, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385197096506885399, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6150899823655763102, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
       propertyPath: m_Controller
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668194270164744479, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
