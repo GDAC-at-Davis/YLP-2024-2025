@@ -128,11 +128,11 @@ PlayableDirector:
   - key: {fileID: -8783443934603590865, guid: 4051f8dfed41cec428c86f70fa3916f9, type: 2}
     value: {fileID: 7085425906534902494}
   - key: {fileID: -3346829622798609211, guid: 4051f8dfed41cec428c86f70fa3916f9, type: 2}
-    value: {fileID: 7341052103399994261}
+    value: {fileID: 0}
   - key: {fileID: -8783443934603590865, guid: c1232e8678c40b2449ea4b3216749253, type: 2}
     value: {fileID: 7085425906534902494}
   - key: {fileID: -3346829622798609211, guid: c1232e8678c40b2449ea4b3216749253, type: 2}
-    value: {fileID: 7341052103399994261}
+    value: {fileID: 6095580216811479590}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &3513772904131453121
@@ -320,11 +320,13 @@ PlayableDirector:
   - key: {fileID: -8783443934603590865, guid: 4051f8dfed41cec428c86f70fa3916f9, type: 2}
     value: {fileID: 7085425906534902494}
   - key: {fileID: -3346829622798609211, guid: 4051f8dfed41cec428c86f70fa3916f9, type: 2}
-    value: {fileID: 7341052103399994261}
+    value: {fileID: 0}
   - key: {fileID: -8783443934603590865, guid: ec4a4175bca23644eb60a2e1fa79c61a, type: 2}
     value: {fileID: 7085425906534902494}
   - key: {fileID: -3346829622798609211, guid: ec4a4175bca23644eb60a2e1fa79c61a, type: 2}
-    value: {fileID: 7341052103399994261}
+    value: {fileID: 6095580216811479590}
+  - key: {fileID: -5578861581285464762, guid: ec4a4175bca23644eb60a2e1fa79c61a, type: 2}
+    value: {fileID: 6095580216811479590}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &6916669663379058342
@@ -573,9 +575,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8733774939007046083, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
   m_PrefabInstance: {fileID: 3511898630846533387}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7341052103399994261 stripped
+--- !u!95 &6095580216811479590 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 6150899823655763102, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7217894558879427885, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
   m_PrefabInstance: {fileID: 3511898630846533387}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8791260705179027996 stripped
