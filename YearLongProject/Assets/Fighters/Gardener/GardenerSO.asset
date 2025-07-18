@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterDisplayName: Gardener
   CharacterPrefab: {fileID: 6242291163348849283, guid: 8729124ce0a256f41ad373243dd80110, type: 3}
-  CharacterPortrait: {fileID: 21300000, guid: 5df7348cc3dc7bd4b9066b702943c92d, type: 3}
+  CharacterPortrait: {fileID: 5350817698135230329, guid: 29a1cf5c17e5b4d4da5d83ae45b4ed7f, type: 3}
   CharacterLore: {fileID: 0}
