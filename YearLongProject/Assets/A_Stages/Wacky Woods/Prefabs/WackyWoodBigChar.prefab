@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 6822970765770238961}
   - {fileID: 2511911703440366429}
+  - {fileID: 2654794254944218027}
   m_Father: {fileID: 728749148200522783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770550502404352705
@@ -78,6 +79,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterFacingDirection: {fileID: 0}
+--- !u!1 &1637702184187623135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2654794254944218027}
+  - component: {fileID: 4147123221763314474}
+  m_Layer: 0
+  m_Name: Swipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2654794254944218027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637702184187623135}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6903645948332585775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &4147123221763314474
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637702184187623135}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 1706466fc377f6841a9e84db471b2fbf, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -8783443934603590865, guid: 1706466fc377f6841a9e84db471b2fbf, type: 2}
+    value: {fileID: 7085425906534902494}
+  - key: {fileID: -3346829622798609211, guid: 1706466fc377f6841a9e84db471b2fbf, type: 2}
+    value: {fileID: 6095580216811479590}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &2786970398624393800
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +486,11 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - playableDirector: {fileID: 8800702666497969684}
+    loop: 0
+    OnFinishedUnityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - playableDirector: {fileID: 4147123221763314474}
     loop: 0
     OnFinishedUnityEvent:
       m_PersistentCalls:
