@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{96858478-03ca-455a-bbeb-5ab0f450c339}">
+	<object class="AudioFile" id="{22283b3c-3b9e-4f4c-b840-f7bad3aa99ee}">
 		<property name="assetPath">
-			<value>Stages/MalachiteMidland/Malachite_Midland_3.mp3</value>
+			<value>Stages/Raveyard/Raveyard_4.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
@@ -14,7 +14,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>96.983999999999995</value>
+			<value>108.14400000000001</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{91809af5-d656-4fcd-81fa-52f4061d6beb}</destination>
