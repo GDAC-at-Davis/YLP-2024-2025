@@ -94,6 +94,11 @@ namespace Managers
         /// </summary>
         public event AllPlayersReadyEvent OnAllPlayersUnready;
 
+        /// <summary>
+        /// Event called when all players are ready and the scene transitions
+        /// </summary>
+        public event AllPlayersReadyEvent SceneChange;
+
         public event LevelChangedEvent OnSelectedLevelChanged;
         public event LevelChangedEvent OnProspectLevelChanged;
 
@@ -246,6 +251,7 @@ namespace Managers
         public void LoadScene(string scene)
         {
             Debug.Log($"Loading scene {scene}");
+            SceneChange?.Invoke();
             SceneSwitchManager.Instance.SwitchScene(scene);
         }
 
