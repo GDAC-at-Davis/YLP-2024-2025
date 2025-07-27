@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe56c426c4a521f409d197c5bb1aee5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: {x: 20, y: 0}
-  gravity: 0
+  projectileSpeed: {x: 15, y: 5}
+  gravity: 0.5
   rayDistance: 0.05
   physicsCollisionLayers:
     serializedVersion: 2
