@@ -2,26 +2,16 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Workspace" id="{4ca70c8b-4d35-46b7-bc7a-669175eaf69d}">
 		<relationship name="projectSettings">
-			<destination>{599c1ea0-ed0c-4190-a3b8-af16eaeb77fa}</destination>
+			<destination>{ea1b545a-1034-4958-86a9-d10a0e877c41}</destination>
 		</relationship>
 		<relationship name="changelist">
-			<destination>{9f7cf255-4c2a-4d0b-9db1-583345a1faf3}</destination>
+			<destination>{48a04767-85d5-428e-b96b-267fa7a14756}</destination>
 		</relationship>
 	</object>
-	<object class="ProjectSettings" id="{599c1ea0-ed0c-4190-a3b8-af16eaeb77fa}">
-		<property name="openWindows">
-			<value>Event Editor 1</value>
-		</property>
-		<property name="windowLayout">
-<<<<<<< Updated upstream
-			<value>AAAAAgAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAxAAAAQgHZ0MsAAwAAAAAAAP////gAAAn/AAAFbwAAA8AAAAHIAAAH3wAAA2sAAAAAAgAAAAoAAAAAAAAAABcAAAn/AAAFbwAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAyAAAAQgHZ0MsAAwAAAAAAAP////gAAAn/AAAFbwAAA8AAAAHIAAAH3wAAA2sAAAAAAgAAAAoAAAAAAAAAABcAAAn/AAAFbw==</value>
-=======
-			<value>AAAAAQAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAxAAAAQgHZ0MsAAwAAAAAAAP////gAAAn/AAAFbwAAA8AAAAHIAAAH3wAAA2sAAAAAAgAAAAoAAAAAAAAAABcAAAn/AAAFbw==</value>
->>>>>>> Stashed changes
-		</property>
+	<object class="ProjectSettings" id="{ea1b545a-1034-4958-86a9-d10a0e877c41}">
 		<relationship name="activePlatform">
 			<destination>{7256b6be-2f98-4bed-a444-d023d8f121e3}</destination>
 		</relationship>
 	</object>
-	<object class="WorkspaceChangelist" id="{9f7cf255-4c2a-4d0b-9db1-583345a1faf3}" />
+	<object class="WorkspaceChangelist" id="{48a04767-85d5-428e-b96b-267fa7a14756}" />
 </objects>
