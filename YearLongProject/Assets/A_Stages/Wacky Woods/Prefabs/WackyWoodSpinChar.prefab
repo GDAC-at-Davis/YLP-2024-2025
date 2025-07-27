@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 3876957916791553373}
   - {fileID: 5138769223969451368}
   - {fileID: 6296192080928020850}
+  - {fileID: 5208722088711492260}
   hitboxEmitter: {fileID: 3804898517460556258}
   modelTransform: {fileID: 4055711462001138911}
   timelinePlayer:
@@ -428,6 +429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WackyCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 3979125646811769582, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6150899823655763102, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
       propertyPath: m_Controller
       value: 
@@ -475,6 +480,11 @@ GameObject:
 --- !u!1 &5138769223969451368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4044579872412341538, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
+  m_PrefabInstance: {fileID: 9183306473117956170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5208722088711492260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3979125646811769582, guid: 28372aeb92b216346b09d1be9ed18f9c, type: 3}
   m_PrefabInstance: {fileID: 9183306473117956170}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6296192080928020850 stripped

@@ -414,4 +414,4 @@ MonoBehaviour:
     BoxArea:
     - center: {x: 0, y: 5.81}
       rotation: 0
-      size: {x: 5, y: 2}
+      size: {x: 5, y: 3}

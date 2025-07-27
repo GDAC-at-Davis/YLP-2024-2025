@@ -565,7 +565,7 @@ MonoBehaviour:
     HitboxGroupId: SpinHitbox
     RaycastArea: []
     BoxArea:
-    - center: {x: 0, y: 4.99}
+    - center: {x: 0, y: 9.08}
       rotation: 0
       size: {x: 7, y: 10}
 --- !u!114 &8152244080876211667
