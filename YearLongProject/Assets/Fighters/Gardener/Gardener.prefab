@@ -264,6 +264,8 @@ PlayableDirector:
     value: {fileID: 3105801480486927495}
   - key: {fileID: 805959939788455700, guid: e79a8bebead8cd648bc187d5bea7c6b9, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6016105567116469961, guid: e79a8bebead8cd648bc187d5bea7c6b9, type: 2}
+    value: {fileID: 6972243527925525426}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2427054820357063529
@@ -679,8 +681,6 @@ PlayableDirector:
     value: {fileID: 6972243527925525426}
   - key: {fileID: 8331418713520652714, guid: 12cf48d9f1ebcd347b060e6c23cec102, type: 2}
     value: {fileID: 4198994870414546198}
-  - key: {fileID: 8829339449843730414, guid: 12cf48d9f1ebcd347b060e6c23cec102, type: 2}
-    value: {fileID: 4198994870414546198}
   - key: {fileID: 727510962836346268, guid: 12cf48d9f1ebcd347b060e6c23cec102, type: 2}
     value: {fileID: 1510922958757828136}
   - key: {fileID: -904859117501056423, guid: 12cf48d9f1ebcd347b060e6c23cec102, type: 2}
@@ -689,6 +689,8 @@ PlayableDirector:
     value: {fileID: 4198994870414546198}
   - key: {fileID: 805959939788455700, guid: 12cf48d9f1ebcd347b060e6c23cec102, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -1436269864569763679, guid: 12cf48d9f1ebcd347b060e6c23cec102, type: 2}
+    value: {fileID: 4198994870414546198}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4135665145333436745
@@ -1289,7 +1291,7 @@ PlayableDirector:
   - key: {fileID: -4555853105482004646, guid: 7c36939e92686924d8c84531e54bb114, type: 2}
     value: {fileID: 4198994870414546198}
   - key: {fileID: 2670663638000722055, guid: 7c36939e92686924d8c84531e54bb114, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 3850342251300834818}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &4409661948264773680
@@ -1622,6 +1624,14 @@ PrefabInstance:
       propertyPath: OnSpecialAttackPassed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5352263243400969421, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: terminalVelocity
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352263243400969421, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
+      propertyPath: gravityAcceleration.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 6564235481833952604, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: JumpState
       value: 
@@ -1688,19 +1698,19 @@ PrefabInstance:
       objectReference: {fileID: 6810935469208528042}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airMaxSpeed
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundMaxSpeed
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: airAcceleration
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundAcceleration
-      value: 12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
@@ -1974,6 +1984,38 @@ PrefabInstance:
       propertyPath: characterEntity
       value: 
       objectReference: {fileID: 3850342251300834818}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: gravity
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: projectileSpeed.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: projectileSpeed.y
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: physicsCollisionLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: hitboxEffect.<Hitstun>k__BackingField
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: hitboxEffect.<HitStopDuration>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: hitboxEffect.<GiveTargetHitStop>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: hitboxEffect.<GiveAttackerHitStop>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7198854067185591880, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2018,6 +2060,14 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 3850342251300834818}
+    - target: {fileID: 8017544194271666007, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017544194271666007, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8696026441862904251, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
       propertyPath: characterEntity
       value: 
