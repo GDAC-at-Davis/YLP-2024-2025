@@ -20,6 +20,8 @@ namespace Fighters.Gardener.Scripts
         [SerializeField]
         private Vector2 projectileSpeed;
         [SerializeField]
+        private float gravity;
+        [SerializeField]
         private float rayDistance = 0.05f;
         private bool attached;
         private int direction = 1;
@@ -48,6 +50,7 @@ namespace Fighters.Gardener.Scripts
         [SerializeField]
         private ParticleSystem particleSystem;
 
+        Vector2 velocity;
 
         public void Initialize(GardenerThornManager manager)
         {
@@ -63,10 +66,17 @@ namespace Fighters.Gardener.Scripts
         {
             if (attached) return;
             DoCollisions();
-            CheckForEnvironmentCollisions();
+            if (CheckForEnvironmentCollisions()) return;
 
-            rb.LinearVelocity = projectileSpeed * direction;
+            velocity = rb.LinearVelocity;
+            velocity.y -= gravity;
+            rb.LinearVelocity = velocity;
             CheckForPlayerCollisions(Physics2D.BoxCastAll(transform.position, col.size * 1.5f, 0, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Player")));
+        }
+
+        private void OnEnable()
+        {
+            rb.LinearVelocity = new Vector2(projectileSpeed.x * direction, projectileSpeed.y);
         }
 
         private void DoCollisions() // I couldn't figure out the weird collision interacions so I'm just doing this sorry
@@ -83,9 +93,11 @@ namespace Fighters.Gardener.Scripts
             Debug.DrawRay(transform.position + (Vector3.down * col.bounds.size.y / 2), Vector3.down * rayDistance);
         }
 
-        private void CheckForEnvironmentCollisions()
+        private bool CheckForEnvironmentCollisions()
         {
-            if (collisions.right || collisions.above || collisions.left || collisions.below) gameObject.SetActive(false);
+            if (!collisions.right && !collisions.above && !collisions.left && !collisions.below) return false;
+            gameObject.SetActive(false);
+            return true;
         }
 
         private void CheckForPlayerCollisions(RaycastHit2D[] hits)
