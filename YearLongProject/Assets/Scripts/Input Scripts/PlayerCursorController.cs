@@ -109,7 +109,7 @@ namespace Input_Scripts
                 return;
             }
 
-            transform.position += input.normalized * (Time.deltaTime * speed);
+            rectTransform.position += input.normalized * (Time.deltaTime * speed);
 
             ClampPositionToCanvas();
         }
@@ -118,7 +118,7 @@ namespace Input_Scripts
         {
             UnsubscribeToInputEvents();
             gameDataSO.OnPlayerDataChanged -= HandlePlayerDataChanged;
-            gameDataSO.OnAllPlayersReady -= LockIn;
+            gameDataSO.SceneChange -= LockIn;
         }
 
         private void ClampPositionToCanvas()
@@ -152,6 +152,7 @@ namespace Input_Scripts
             SubscribeToInputEvents();
 
             gameDataSO.OnPlayerDataChanged += HandlePlayerDataChanged;
+            gameDataSO.SceneChange += LockIn;
         }
 
         private void HandlePlayerDataChanged(int priorid, PlayerDataChange changeType,
@@ -222,7 +223,7 @@ namespace Input_Scripts
 
         private void LockIn()
         {
-            gameObject.SetActive(false);
+            UnsubscribeToInputEvents();
         }
     }
 }

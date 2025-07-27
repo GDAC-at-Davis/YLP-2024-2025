@@ -22,6 +22,8 @@ public class FightButton : ButtonBehavior
 
     private Image currentFight;
 
+    int hovering = 0;
+
     protected override void Start()
     {
         base.Start();
@@ -57,10 +59,14 @@ public class FightButton : ButtonBehavior
     public override void OnHoverEnter(PlayerCursorController cursor)
     {
         currentFight.sprite = hoverFight;
+        hovering++;
     }
 
     public override void OnHoverExit(PlayerCursorController cursor)
     {
+        hovering--;
+
+        if (hovering > 0) return;
         currentFight.sprite = fight;
     }
 }
