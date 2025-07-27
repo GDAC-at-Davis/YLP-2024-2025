@@ -92,28 +92,28 @@ namespace Fighters.Wizard.Scripts
             }
 
             int dir = hitboxInstance.Context.FlipX ? -1 : 1;
+            Vector2 kb = Vector2.zero;
 
-            if (hitboxInstance.HitboxEffect.Damage == 3) // hit by light
+            switch (hitboxInstance.Context.HitboxID)
             {
-                Vector2 kb = lightTravelSpeed;
-                kb.x *= dir;
-                LaunchBall(kb);
+                case "LightPrimary3":
+                    kb = lightTravelSpeed;
+                    kb.x *= dir;
+                    break;
+                case "HeavyPrimary":
+                    kb = heavyTravelSpeed;
+                    kb.x *= dir;
+                    break;
+                case "WizardSpecial2":
+                    kb = lightTravelSpeed;
+                    kb.x *= dir;
+                    kb.y *= -1;
+                    break;
+                default:
+                    break;
             }
-            else if (hitboxInstance.HitboxEffect.Damage > 5) // hit by heavy
-            {
-                Vector2 kb = heavyTravelSpeed;
-                kb.x *= dir;
-                LaunchBall(kb);
 
-            }
-            else if (hitboxInstance.HitboxEffect.Damage == 5) // hit by special chain
-            {
-                Vector2 kb = lightTravelSpeed;
-                kb.x *= dir;
-                kb.y *= -1;
-                LaunchBall(kb);
-
-            }
+            LaunchBall(kb);
         }
 
         private void LaunchBall(Vector2 velocity)
