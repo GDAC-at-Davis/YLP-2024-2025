@@ -6,6 +6,7 @@ using GameEntities;
 using Hitbox.DataStructures;
 using Hitbox.System;
 using System;
+using State_Machine_Scripts.States;
 
 namespace Fighters.Gardener.Scripts
 {
@@ -22,6 +23,11 @@ namespace Fighters.Gardener.Scripts
 
         [SerializeField]
         private CharacterFacingDirection flipX;
+
+        [SerializeField]
+        SimpleTimelineState projectile;
+        [SerializeField]
+        SimpleTimelineState teleport;
 
         private void Awake()
         {
@@ -45,6 +51,18 @@ namespace Fighters.Gardener.Scripts
             transform.localScale = theScale;
         }
 
+        public void SpecialState()
+        {
+            if (!currentThorn.gameObject.activeSelf)
+            {
+                Gardener.ActionManager.SetState(projectile);
+            }
+            if (currentThorn.Attached)
+            {
+                Gardener.ActionManager.SetState(teleport);
+            }
+        }
+
         // Timeline track only supports enabling and not instantiating so whenever this is enabled it'll spawn an orb
         private void OnEnable()
         {
@@ -56,7 +74,7 @@ namespace Fighters.Gardener.Scripts
             // if thorn attached to something deactivate and teleport to it
             if (currentThorn.Attached)
             {
-                Gardener.MovementController.CharacterRigidbody.transform.position = currentThorn.transform.position;
+                Gardener.MovementController.CharacterRigidbody.transform.position = (Vector2)currentThorn.transform.position;
                 currentThorn.Warp();
             }
 
