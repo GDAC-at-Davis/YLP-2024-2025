@@ -84,11 +84,7 @@ namespace Fighters.Gardener.Scripts
         // spawn thorn in front of gardener, on top if there is no available space to place thorn
         private void SpawnThorn(GardenerThornBehavior thorn)
         {
-            thorn.transform.position = Gardener.MovementController.CharacterRigidbody.transform.position;
-            if (Physics2D.BoxCast(transform.position, thorn.Collider.size, 0, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Terrain")))
-            {
-                thorn.transform.position = Gardener.MovementController.Collider.bounds.center + (Vector3.back * 0.1f);
-            }
+            thorn.transform.position = Gardener.MovementController.Collider.bounds.center;
             thorn.Direction = (int)Mathf.Sign(transform.localScale.x);
             thorn.gameObject.SetActive(true);
         }
