@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{d5d0cc5e-f25d-407a-9d13-c80ae9e451da}">
 		<property name="assetPath">
-			<value>UI/BB MainMenu_Button.wav</value>
+			<value>UI/BB MainMenu_Hovering.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
