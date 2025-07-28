@@ -23,6 +23,9 @@ namespace Fighters.Gardener.Scripts
         private float gravity;
         [SerializeField]
         private float rayDistance = 0.05f;
+        [SerializeField]
+        private float projectileLifetime = 3;
+        private float destroyProjectile;
         private bool attached;
         private int direction = 1;
         public bool Attached => attached;
@@ -65,18 +68,24 @@ namespace Fighters.Gardener.Scripts
         private void FixedUpdate()
         {
             if (attached) return;
-            DoCollisions();
-            if (CheckForEnvironmentCollisions()) return;
-
+            if (Time.time >= destroyProjectile)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             velocity = rb.LinearVelocity;
             velocity.y -= gravity;
             rb.LinearVelocity = velocity;
+
+            DoCollisions();
+            CheckForEnvironmentCollisions();
             CheckForPlayerCollisions(Physics2D.BoxCastAll(transform.position, col.size * 1.5f, 0, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Player")));
         }
 
         private void OnEnable()
         {
             rb.LinearVelocity = new Vector2(projectileSpeed.x * direction, projectileSpeed.y);
+            destroyProjectile = Time.time + projectileLifetime;
         }
 
         private void DoCollisions() // I couldn't figure out the weird collision interacions so I'm just doing this sorry
@@ -93,11 +102,21 @@ namespace Fighters.Gardener.Scripts
             Debug.DrawRay(transform.position + (Vector3.down * col.bounds.size.y / 2), Vector3.down * rayDistance);
         }
 
-        private bool CheckForEnvironmentCollisions()
+        private void CheckForEnvironmentCollisions()
         {
-            if (!collisions.right && !collisions.above && !collisions.left && !collisions.below) return false;
-            gameObject.SetActive(false);
-            return true;
+            if ((collisions.above && rb.LinearVelocity.y > 0) || (collisions.below && rb.LinearVelocity.y < 0))
+            {
+                Vector2 kb = rb.LinearVelocity;
+                kb.y = kb.y * -1 / 1.2f;
+                rb.LinearVelocity = kb;
+            }
+
+            if (((collisions.left && rb.LinearVelocity.x < 0) || (collisions.right && rb.LinearVelocity.x > 0)) && !collisions.below)
+            {
+                Vector2 kb = rb.LinearVelocity;
+                kb.x *= -1;
+                rb.LinearVelocity = kb;
+            }
         }
 
         private void CheckForPlayerCollisions(RaycastHit2D[] hits)
