@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{5a977a4a-2cbd-4d08-a5f3-dc79eee2b61e}">
 		<property name="assetPath">
-			<value>Malachite_Midland_3.mp3</value>
+			<value>Stages/MalachiteMidland/Malachite_Midland_3.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

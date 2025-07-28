@@ -638,6 +638,7 @@ MonoBehaviour:
   - Lady
   - Lancer
   - MalachiteMidlands
+  - Raveyard
   - Test
   BanksToLoad: []
   LiveUpdatePort: 9264

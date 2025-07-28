@@ -23,8 +23,6 @@
 			<destination>{73882f54-79c5-4ab3-bd1e-11e0a538daef}</destination>
 		</relationship>
 		<relationship name="markerTracks">
-			<destination>{871ee788-f691-4ad8-9924-8360173f84aa}</destination>
-			<destination>{4989a1bf-dbd6-4cfb-a79f-9e957fcf5c8e}</destination>
 			<destination>{a4f34b10-bbef-4ef2-9e0f-a340723ce093}</destination>
 		</relationship>
 		<relationship name="groupTracks">
@@ -59,16 +57,10 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{73882f54-79c5-4ab3-bd1e-11e0a538daef}" />
-	<object class="MarkerTrack" id="{871ee788-f691-4ad8-9924-8360173f84aa}" />
-	<object class="MarkerTrack" id="{4989a1bf-dbd6-4cfb-a79f-9e957fcf5c8e}" />
 	<object class="MarkerTrack" id="{a4f34b10-bbef-4ef2-9e0f-a340723ce093}" />
 	<object class="GroupTrack" id="{79d5b9bc-712e-4826-af39-3325a4b3ce26}">
 		<relationship name="modules">
-<<<<<<< Updated upstream
-			<destination>{f0029042-8b76-4d28-b7cc-5860a9922746}</destination>
-=======
-			<destination>{aca48e2e-5a2f-4bc9-bea5-1a274d86ad67}</destination>
->>>>>>> Stashed changes
+			<destination>{cdd2a1cd-5e28-4670-a81d-adcf38ca3908}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{7dd5208c-baea-400f-b522-bcc7d948838f}</destination>
@@ -76,11 +68,7 @@
 	</object>
 	<object class="Timeline" id="{a2a9300c-1104-4eeb-8c0d-af8e38efd282}">
 		<relationship name="modules">
-<<<<<<< Updated upstream
-			<destination>{f0029042-8b76-4d28-b7cc-5860a9922746}</destination>
-=======
-			<destination>{aca48e2e-5a2f-4bc9-bea5-1a274d86ad67}</destination>
->>>>>>> Stashed changes
+			<destination>{cdd2a1cd-5e28-4670-a81d-adcf38ca3908}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{a7551175-42cc-42d9-8220-92a2602d1538}</destination>
@@ -104,29 +92,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b17bff31-ad54-42e7-b314-f36eea68122c}" />
-<<<<<<< Updated upstream
-	<object class="SingleSound" id="{f0029042-8b76-4d28-b7cc-5860a9922746}">
-=======
-	<object class="SingleSound" id="{aca48e2e-5a2f-4bc9-bea5-1a274d86ad67}">
->>>>>>> Stashed changes
+	<object class="SingleSound" id="{cdd2a1cd-5e28-4670-a81d-adcf38ca3908}">
 		<property name="length">
 			<value>96.983999999999995</value>
 		</property>
 		<relationship name="audioFile">
-<<<<<<< Updated upstream
-			<destination>{96858478-03ca-455a-bbeb-5ab0f450c339}</destination>
-=======
-			<destination>{5a977a4a-2cbd-4d08-a5f3-dc79eee2b61e}</destination>
->>>>>>> Stashed changes
+			<destination>{5cd5a8f9-0cbb-4bc6-aaa1-4f05502805e8}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{7dd5208c-baea-400f-b522-bcc7d948838f}">
 		<property name="volume">
-<<<<<<< Updated upstream
-			<value>-9</value>
-=======
 			<value>-6</value>
->>>>>>> Stashed changes
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -163,17 +139,13 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-<<<<<<< Updated upstream
-			<value>88.615395833333324</value>
-=======
 			<value>90.461541666666662</value>
->>>>>>> Stashed changes
 		</property>
 		<relationship name="timeline">
 			<destination>{a2a9300c-1104-4eeb-8c0d-af8e38efd282}</destination>
 		</relationship>
 		<relationship name="markerTrack">
-			<destination>{871ee788-f691-4ad8-9924-8360173f84aa}</destination>
+			<destination>{a4f34b10-bbef-4ef2-9e0f-a340723ce093}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{86e58852-0f5a-4f0f-b290-6d9d685fa799}">
