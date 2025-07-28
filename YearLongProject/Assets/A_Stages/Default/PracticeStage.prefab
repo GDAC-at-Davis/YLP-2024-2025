@@ -438,11 +438,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1542954751
-      Data2: 1296791260
-      Data3: 467905464
-      Data4: 700558563
-    Path: event:/Stages/Malachite/MalchiteMidlandSoundtrack
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
