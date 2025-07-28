@@ -35,6 +35,7 @@ namespace State_Machine_Scripts.Modifiers
 
         [ShowNonSerializedField]
         private int currentComboIndex;
+        public int CurrentComboIndex => currentComboIndex;
 
         [ShowNonSerializedField]
         private float comboChainTimer;

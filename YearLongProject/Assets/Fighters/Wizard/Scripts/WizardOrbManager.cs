@@ -65,12 +65,24 @@ namespace Fighters.Wizard.Scripts
         // Timeline track only supports enabling and not instantiating so whenever this is enabled it'll spawn an orb
         private void OnEnable()
         {
+            if (Wizard.ActionManager.CurrentState.StateName == "WizardSpecial3")
+            {
+                Vector3 wizardPos = Wizard.MovementController.CharacterRigidbody.transform.position;
+                float diffx = transform.position.x - wizardPos.x;
+                TrySpawnOrb(transform.position - (Vector3.right * diffx * 2));
+                TrySpawnOrb(wizardPos + (Vector3.up * Mathf.Abs(diffx) * 2));
+            }
+            TrySpawnOrb(transform.position);
+        }
+
+        void TrySpawnOrb(Vector3 position)
+        {
             bool spawned = false;
             foreach (WizardOrbBehavior orb in currentOrbs)
             {
                 if (orb.gameObject.activeSelf) continue;
 
-                SpawnOrb(orb);
+                SpawnOrb(orb, position);
                 spawned = true;
                 break;
             }
@@ -81,7 +93,7 @@ namespace Fighters.Wizard.Scripts
                 WizardOrbBehavior oldestOrb = currentOrbs[0];
                 currentOrbs.Remove(oldestOrb);
 
-                SpawnOrb(oldestOrb);
+                SpawnOrb(oldestOrb, position);
                 currentOrbs.Add(oldestOrb);
             }
 
@@ -96,10 +108,10 @@ namespace Fighters.Wizard.Scripts
         }
 
         // spawn orb in front of wizard, on top if there is no available space to place orb
-        private void SpawnOrb(WizardOrbBehavior orb)
+        private void SpawnOrb(WizardOrbBehavior orb, Vector3 position)
         {
-            orb.transform.position = transform.position;
-            if (Physics2D.BoxCast(transform.position, orb.Collider.size, 0, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Terrain")))
+            orb.transform.position = position;
+            if (Physics2D.BoxCast(position, orb.Collider.size, 0, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Terrain")))
             {
                 orb.transform.position = Wizard.MovementController.Collider.bounds.center + (Vector3.back * 0.1f);
             }
