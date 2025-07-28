@@ -1,3 +1,4 @@
+using Animancer;
 using CharacterScripts;
 using Input_Scripts;
 using Managers;
@@ -30,6 +31,20 @@ namespace Menus
 
         [SerializeField]
         private Image portraitImage;
+
+        [Header("Unity Events")]
+
+        [SerializeField]
+        private UnityEvent onCharacterSelected;
+
+        [SerializeField]
+        private UnityEvent onCharacterUnselected;
+
+        [SerializeField]
+        private UnityEvent onHovered;
+
+        [SerializeField]
+        private UnityEvent onUnhovered;
 
         private void OnDisable()
         {
@@ -85,6 +100,8 @@ namespace Menus
 
             markers[cursor.PlayerID].gameObject.SetActive(true);
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, Character);
+
+            onCharacterSelected?.Invoke();
         }
 
         private void RemovePlayer(PlayerCursorController cursor)
@@ -100,6 +117,8 @@ namespace Menus
             markers[cursor.PlayerID].gameObject.SetActive(false);
             gameDataSO.SetPlayerSelectedCharacter(cursor.PlayerID, null);
             gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null); // this is stupid I'm sorry
+
+            onCharacterUnselected?.Invoke();
         }
 
         public override void OnHoverEnter(PlayerCursorController cursor)
@@ -111,6 +130,7 @@ namespace Menus
             }
 
             gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, Character);
+            onHovered?.Invoke();
         }
 
         public override void OnHoverExit(PlayerCursorController cursor)
@@ -121,6 +141,7 @@ namespace Menus
             }
 
             gameDataSO.SetPlayerProspectCharacter(cursor.PlayerID, null);
+            onUnhovered?.Invoke();
         }
     }
 }
