@@ -60,6 +60,8 @@ namespace Movement
         private bool isGrounded;
         private bool wasGrounded;
         private float horizontalInput;
+        private float verticalInput;
+        public float VerticalInput => verticalInput;
         private float jumpVelocity;
 
         private void FixedUpdate()
@@ -122,6 +124,10 @@ namespace Movement
             {
                 horizontalInput = desiredMove > 0 ? 1 : -1;
             }
+        }
+        public void SetVerticalInput(Vector2 input)
+        {
+            verticalInput = input.y;
         }
 
         public void SetJumpVelocity(float desiredJumpVelocity)
