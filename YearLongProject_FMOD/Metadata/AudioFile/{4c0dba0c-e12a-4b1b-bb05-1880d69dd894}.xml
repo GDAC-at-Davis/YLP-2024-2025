@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{0a0fe35d-604c-4c03-9797-a24fdf3b28d1}">
+	<object class="AudioFile" id="{4c0dba0c-e12a-4b1b-bb05-1880d69dd894}">
 		<property name="assetPath">
-			<value>Stages/MalachiteMidland/malachite-midlands-track.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>Characters/BB Skill_1.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>48</value>
+			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>185.59200000000001</value>
+			<value>1.7142857142857142</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{91809af5-d656-4fcd-81fa-52f4061d6beb}</destination>

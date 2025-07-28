@@ -1,3 +1,4 @@
+using Animancer;
 using Input_Scripts;
 using LevelScripts;
 using Managers;
@@ -25,6 +26,17 @@ namespace Menus
 
         public LevelSO Level;
 
+        [Header("Unity Events")]
+
+        [SerializeField]
+        private UnityEvent onLevelSelected;
+
+        [SerializeField]
+        private UnityEvent onHovered;
+
+        [SerializeField]
+        private UnityEvent onUnhovered;
+
         public void Init(LevelSO level)
         {
             GetComponentInChildren<TextMeshProUGUI>().text = level.LevelDisplayName;
@@ -40,16 +52,20 @@ namespace Menus
 
             gameDataSO.SetSelectedLevel(Level);
             gameDataSO.LoadScene(gameplayScene);
+
+            onLevelSelected?.Invoke();
         }
 
         public override void OnHoverEnter(PlayerCursorController cursor)
         {
             gameDataSO.SetProspectLevel(Level);
+            onHovered?.Invoke();
         }
 
         public override void OnHoverExit(PlayerCursorController cursor)
         {
             gameDataSO.SetProspectLevel(null);
+            onUnhovered?.Invoke();
         }
     }
 }

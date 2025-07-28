@@ -1,3 +1,4 @@
+using Animancer;
 using Input_Scripts;
 using Managers;
 using Menus;
@@ -20,9 +21,23 @@ public class FightButton : ButtonBehavior
     [SerializeField]
     private Sprite hoverFight;
 
+    [Header("Events")]
+
+    [SerializeField]
+    private UnityEvent onFightSelected;
+
+    [SerializeField]
+    private UnityEvent onReady;
+
+    [SerializeField]
+    private UnityEvent onHovered;
+
+    [SerializeField]
+    private UnityEvent onUnhovered;
+
     private Image currentFight;
 
-    int hovering = 0;
+    private int hovering;
 
     protected override void Start()
     {
@@ -49,24 +64,38 @@ public class FightButton : ButtonBehavior
     {
         gameObject.SetActive(true);
         currentFight.sprite = fight;
+        onReady?.Invoke();
     }
 
     public override void OnClick(PlayerCursorController cursor)
     {
         gameDataSO.LoadScene(levelSelect);
+        onFightSelected?.Invoke();
     }
 
     public override void OnHoverEnter(PlayerCursorController cursor)
     {
         currentFight.sprite = hoverFight;
         hovering++;
+
+        if (hovering > 1)
+        {
+            return;
+        }
+
+        onHovered?.Invoke();
     }
 
     public override void OnHoverExit(PlayerCursorController cursor)
     {
         hovering--;
 
-        if (hovering > 0) return;
+        if (hovering > 0)
+        {
+            return;
+        }
+
         currentFight.sprite = fight;
+        onUnhovered?.Invoke();
     }
 }

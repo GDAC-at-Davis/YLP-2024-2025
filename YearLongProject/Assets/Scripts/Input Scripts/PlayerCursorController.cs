@@ -97,8 +97,11 @@ namespace Input_Scripts
                         currentHoveredButton.OnHoverExit(this);
                     }
 
-                    button.OnHoverEnter(this);
-                    currentHoveredButton = button;
+                    if (currentHoveredButton != button)
+                    {
+                        button.OnHoverEnter(this);
+                        currentHoveredButton = button;
+                    }
                 }
 
                 lastOnHover = Time.time;
