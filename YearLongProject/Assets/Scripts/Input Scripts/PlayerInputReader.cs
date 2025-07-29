@@ -15,7 +15,11 @@ namespace Input_Scripts
     {
         private class InputPlayerPairing
         {
+            /// <summary>
+            ///     Handles specific case of multiple players on the same input device (i.e shared keyboard)
+            /// </summary>
             public int PairingId;
+
             public int PlayerId;
         }
 
@@ -147,7 +151,7 @@ namespace Input_Scripts
                 if (changetype == PlayerDataChange.PlayerRemoved)
                 {
                     // The player was removed, so remove the pairing here
-                    Debug.Log("Removing player " + playerId);
+                    Debug.Log($"Removing player {playerId} pairing from input reader");
                     playerInputPairings.Remove(pairing);
                     i--;
                 }

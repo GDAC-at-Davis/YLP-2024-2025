@@ -95,7 +95,7 @@ namespace Managers
         public event AllPlayersReadyEvent OnAllPlayersUnready;
 
         /// <summary>
-        /// Event called when all players are ready and the scene transitions
+        ///     Event called when all players are ready and the scene transitions
         /// </summary>
         public event AllPlayersReadyEvent SceneChange;
 
@@ -166,7 +166,7 @@ namespace Managers
                 return;
             }
 
-            Debug.Log($"Removing player {id}");
+            Debug.Log($"Removing player {id} from game data");
 
             players.Remove(playerToRemove);
 
