@@ -139,10 +139,11 @@ namespace Managers
                 if (players[i].PlayerId != i)
                 {
                     openPlayerId = i;
+                    break;
                 }
             }
 
-            Debug.Log($"Adding player {openPlayerId} to the game");
+            Debug.Log($"Adding player {openPlayerId} to gamedata");
 
             players.Insert(openPlayerId, new PlayerData { PlayerId = openPlayerId });
 
