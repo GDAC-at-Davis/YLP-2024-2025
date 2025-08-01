@@ -154,6 +154,7 @@ MonoBehaviour:
   projectileSpeed: {x: 15, y: 5}
   gravity: 0.5
   rayDistance: 0.05
+  projectileLifetime: 3
   physicsCollisionLayers:
     serializedVersion: 2
     m_Bits: 576
@@ -307,7 +308,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &7365527599865531626
 MonoBehaviour:

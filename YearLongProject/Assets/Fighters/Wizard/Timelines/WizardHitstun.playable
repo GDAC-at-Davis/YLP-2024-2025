@@ -372,4 +372,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f76e8e00fcd04dc4eb0cd58ec4ec3521, type: 2}
     - {fileID: 11400000, guid: 3634ac8449af1ab4fb558f1f6ad7b982, type: 2}
     - {fileID: 11400000, guid: f1552fd63bd511f45a79a3b706e7ace8, type: 2}
+    - {fileID: 11400000, guid: 77b2e2752946c5e4ca88a246e63c0ec1, type: 2}
     ActionManager: {fileID: 0}

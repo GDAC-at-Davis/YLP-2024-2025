@@ -112,7 +112,7 @@ namespace Input_Scripts
                 return;
             }
 
-            rectTransform.position += input.normalized * (Time.deltaTime * speed);
+            rectTransform.anchoredPosition += (Vector2)(input.normalized * (Time.deltaTime * speed));
 
             ClampPositionToCanvas();
         }
