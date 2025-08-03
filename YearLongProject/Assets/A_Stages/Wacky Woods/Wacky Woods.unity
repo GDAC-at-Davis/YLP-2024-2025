@@ -1554,6 +1554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MKCube
       objectReference: {fileID: 0}
+    - target: {fileID: 6242291163348849283, guid: d6e98000637c46c4cae9b6006502d995, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
