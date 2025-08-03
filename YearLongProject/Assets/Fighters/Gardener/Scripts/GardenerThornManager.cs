@@ -74,7 +74,7 @@ namespace Fighters.Gardener.Scripts
             // if thorn attached to something deactivate and teleport to it
             if (currentThorn.Attached)
             {
-                Gardener.MovementController.CharacterRigidbody.transform.position = (Vector2)currentThorn.transform.position;
+                Gardener.MovementController.CharacterRigidbody.transform.position = (Vector2)currentThorn.transform.parent.position;
                 currentThorn.Warp();
             }
 
