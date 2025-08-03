@@ -1710,7 +1710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042624565056469040, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: groundAcceleration
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7354136571707763760, guid: e6b78395208c5e643962bb751b78b7a0, type: 3}
       propertyPath: animancerComponent
@@ -1997,12 +1997,16 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
+      propertyPath: projectileLifetime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
       propertyPath: physicsCollisionLayers.m_Bits
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
       propertyPath: hitboxEffect.<Hitstun>k__BackingField
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5588546289944774062, guid: d8ca563eb37724447aadff04d03d167d, type: 3}
       propertyPath: hitboxEffect.<HitStopDuration>k__BackingField
