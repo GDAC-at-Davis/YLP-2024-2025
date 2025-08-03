@@ -1201,11 +1201,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1542954751
-      Data2: 1296791260
-      Data3: 467905464
-      Data4: 700558563
-    Path: event:/Stages/Malachite/MalchiteMidlandSoundtrack
+      Data1: -845562958
+      Data2: 1259468469
+      Data3: 1968748681
+      Data4: 1151612086
+    Path: event:/Stages/Wacky Woods/WackyWoods
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2

@@ -364,6 +364,18 @@ MonoBehaviour:
   levelSelect: LevelSelect
   fight: {fileID: 21300000, guid: 9b637e563dc4f9b488ae2e8348ed270a, type: 3}
   hoverFight: {fileID: 21300000, guid: d5934a3205a630e4ca8b2b9249965529, type: 3}
+  onFightSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onHovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnhovered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &400730333
 BoxCollider2D:
   m_ObjectHideFlags: 0
