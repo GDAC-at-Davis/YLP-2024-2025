@@ -637,10 +637,12 @@ MonoBehaviour:
   - Ahab
   - Lady
   - Lancer
+  - MainMenu
   - MalachiteMidlands
   - Raveyard
   - Test
   - UI
+  - WackyWoods
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
