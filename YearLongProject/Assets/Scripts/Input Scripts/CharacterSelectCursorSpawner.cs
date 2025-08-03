@@ -1,7 +1,6 @@
 using EditorUtils.BoldHeader;
 using Managers;
 using NaughtyAttributes;
-using System;
 using UnityEngine;
 
 namespace Input_Scripts
@@ -71,12 +70,13 @@ namespace Input_Scripts
 
         private void OnPlayerAdded(int playerId)
         {
+            Debug.Log($"Player {playerId} added, spawning cursor");
             PlayerCursorController cursor = Instantiate(cursorPrefab, cursorContainer);
             cursor.Initialize(playerId, cursorBottomLeft, cursorTopRight, cursorContainer);
             cursor.BackAction = RemovePlayer;
         }
 
-        void RemovePlayer(PlayerCursorController cursor)
+        private void RemovePlayer(PlayerCursorController cursor)
         {
             gameDataSO.RemovePlayer(cursor.PlayerID);
         }
