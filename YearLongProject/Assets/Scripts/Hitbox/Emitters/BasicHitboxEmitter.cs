@@ -134,6 +134,7 @@ namespace Hitbox.Emitters
                 SourceAngle = hitboxSourceTransform.eulerAngles.z,
                 LayerMask = hitboxLayerMask,
                 FlipX = flipX,
+                HitboxID = hitboxGroupId,
                 IgnoreEntities = hitboxGroupContext ? context.HitEntities : new List<Entity>()
             };
         }

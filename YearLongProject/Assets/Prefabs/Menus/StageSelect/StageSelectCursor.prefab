@@ -93,6 +93,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9138683288709446454, guid: ceaa291d97846774eb1c328afb7dc4b4, type: 3}
+      propertyPath: speed
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138683288709446454, guid: ceaa291d97846774eb1c328afb7dc4b4, type: 3}
       propertyPath: cursorType
       value: 1
       objectReference: {fileID: 0}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterDisplayName: Lady Luckless
   CharacterPrefab: {fileID: 6242291163348849283, guid: 171d9e6710a203a4ab37b1fcbecc941c, type: 3}
-  CharacterPortrait: {fileID: 21300000, guid: 843f70c5ff4b2284a9d456de59327701, type: 3}
+  CharacterPortrait: {fileID: 21300000, guid: b83f6a38126d4fd47ad2c3f010698d8b, type: 3}
   CharacterLore: {fileID: 11400000, guid: b5dc3082320b4be48a91ca21ea924732, type: 2}

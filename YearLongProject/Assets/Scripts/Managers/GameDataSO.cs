@@ -94,6 +94,11 @@ namespace Managers
         /// </summary>
         public event AllPlayersReadyEvent OnAllPlayersUnready;
 
+        /// <summary>
+        ///     Event called when all players are ready and the scene transitions
+        /// </summary>
+        public event AllPlayersReadyEvent SceneChange;
+
         public event LevelChangedEvent OnSelectedLevelChanged;
         public event LevelChangedEvent OnProspectLevelChanged;
 
@@ -134,10 +139,11 @@ namespace Managers
                 if (players[i].PlayerId != i)
                 {
                     openPlayerId = i;
+                    break;
                 }
             }
 
-            Debug.Log($"Adding player {openPlayerId} to the game");
+            Debug.Log($"Adding player {openPlayerId} to gamedata");
 
             players.Insert(openPlayerId, new PlayerData { PlayerId = openPlayerId });
 
@@ -161,7 +167,7 @@ namespace Managers
                 return;
             }
 
-            Debug.Log($"Removing player {id}");
+            Debug.Log($"Removing player {id} from game data");
 
             players.Remove(playerToRemove);
 
@@ -246,6 +252,7 @@ namespace Managers
         public void LoadScene(string scene)
         {
             Debug.Log($"Loading scene {scene}");
+            SceneChange?.Invoke();
             SceneSwitchManager.Instance.SwitchScene(scene);
         }
 

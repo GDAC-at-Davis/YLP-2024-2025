@@ -35,6 +35,8 @@ namespace Hitbox.DataStructures
         /// </summary>
         public Entity Source;
 
+        public string HitboxID;
+
         /// <summary>
         ///     Entity that the hitbox should ignore
         /// </summary>
