@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5466a25cee5800d4883378a6952f252e
+guid: fe1e1773ddddd434383dc694dca430bd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 328
+  spritePixelsToUnits: 656
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,89 +110,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sharkson_swim_1
+      name: Sharkson_Bite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.54, y: 0.34}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8c428f00095f44f80482be225f8697
+      internalID: 1229761886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sharkson_Bite_1
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.54, y: 0.34}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e885b6402781f09459c09a914047ff6a
+      internalID: -1090132503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sharkson_Bite_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1024
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.5244024, y: 0.38670352}
+      pivot: {x: 0.54, y: 0.34}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5769e0021b468a418b171af012e5f5f
-      internalID: -5431449128060044438
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sharkson_swim_2
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 9
-      pivot: {x: 0.5400896, y: 0.37798843}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9880b04f2ba02274ea6fb54ffe4f9f5b
-      internalID: -3032785924299140486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sharkson_swim_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 1024
-        height: 1024
-      alignment: 9
-      pivot: {x: 0.54041505, y: 0.39030194}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4be013ae40a4a9b468d5d17323d8e88f
-      internalID: 7947263012714270713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sharkson_swim_4
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 1024
-        height: 1024
-      alignment: 9
-      pivot: {x: 0.5317546, y: 0.38741505}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd3a6e0d5e8e6934f812a590d361a41f
-      internalID: -2029168048541095531
+      spriteID: e8ec4acbe6eac0741ac0a8c88feefe38
+      internalID: 433399421
       vertices: []
       indices: 
       edges: []
@@ -201,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f6dbda34ca0ceb94592fdb44c7a7a419
+    spriteID: 1a6adb5b70fbe724faeef0644a52c43d
     internalID: 0
     vertices: []
     indices: 
@@ -211,10 +189,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_0766: -5431449128060044438
-      IMG_0767: -3032785924299140486
-      IMG_0768: 7947263012714270713
-      IMG_0769: -2029168048541095531
+      Sharkson_Bite_0: 1229761886
+      Sharkson_Bite_1: -1090132503
+      Sharkson_Bite_2: 433399421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

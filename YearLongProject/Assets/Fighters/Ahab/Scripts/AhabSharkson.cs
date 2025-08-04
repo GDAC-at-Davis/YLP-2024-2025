@@ -38,6 +38,11 @@ namespace Fighters.Ahab.Scripts
 
         [SerializeField]
         private GameObject AhabSharkSprite;
+        [SerializeField]
+        private GameObject AhabNoSharkSprite;
+
+        [SerializeField]
+        private Animator sharkAnim;
 
         [Header("Colliders")]
 
@@ -55,8 +60,12 @@ namespace Fighters.Ahab.Scripts
 
         public bool thrown;
 
-        //[SerializeField]
-        //private bool onGround;
+        [SerializeField]
+        private bool onGround;
+
+        [SerializeField]
+        private LayerMask groundLayer;
+
         [SerializeField]
         float lastStopped = Mathf.Infinity;
         [SerializeField]
@@ -136,16 +145,8 @@ namespace Fighters.Ahab.Scripts
                 sprite.gameObject.SetActive(true);
                 sprite.enabled = true;
 
-                if (rb.linearVelocityX >= 0)
-                {
-                    transform.right = rb.linearVelocity;
-                    AlignSharkToVel();
-                }
-                else
-                {
-                    transform.right = -rb.linearVelocity;
-                    AlignSharkToVel();
-                }
+                AlignSharkToVel();
+
             }
 
             timeSinceStartDash += Time.deltaTime;
@@ -153,7 +154,12 @@ namespace Fighters.Ahab.Scripts
 
         private void FixedUpdate()
         {
-            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, Vector2.zero, dashDamping * Time.deltaTime);
+            if (onGround)
+            {
+                float velocityX = rb.linearVelocityX;
+                velocityX = Mathf.MoveTowards(velocityX, 0, dashDamping * Time.deltaTime);
+                rb.linearVelocity = new Vector2(velocityX, rb.linearVelocityY);
+            }
 
             if (thrown && lastStopped == Mathf.Infinity && rb.linearVelocity == Vector2.zero)
             {
@@ -168,7 +174,11 @@ namespace Fighters.Ahab.Scripts
                 return;
             }
 
-            if (rb.linearVelocityX == 0 && playerPickupLayer.IsInLayerMask(other))
+            if (groundLayer.IsInLayerMask(other) && characterRb.LinearVelocity.y <= 0)
+            {
+                onGround = true;
+            }
+            else if (rb.linearVelocityX == 0 && playerPickupLayer.IsInLayerMask(other))
             {
                 var special = other.gameObject.GetComponentInParent<AhabSpecialMove>();
 
@@ -212,9 +222,12 @@ namespace Fighters.Ahab.Scripts
 
             characterRb.SetVelocityWithFlipX(transform.right * throwForce);
             //throwing = false;
+            onGround = false;
             thrown = true;
+            AhabNoSharkSprite.SetActive(true);
             AhabSharkSprite.SetActive(false);
             rb.simulated = true;
+            lastBite = Time.time + biteCooldown;
         }
 
         public void SharkDash()
@@ -230,20 +243,24 @@ namespace Fighters.Ahab.Scripts
 
             //rb.linearDamping = dashDamping;
             //rb.gravityScale = 0;
+            onGround = false;
             characterRb.SetVelocityWithFlipX(ahabActionManager.CharacterActionInput.MoveInput * dashVelocity);
-            Invoke("SharkDashEnd", dashDuration);
+            //Invoke("SharkDashEnd", dashDuration);
         }
 
         public void SharkDashEnd()
         {
             //rb.gravityScale = 0.5f;
             //rb.linearDamping = initialLinearDamping;
-            hitboxEmitter.EndHitboxGroup(dashHitboxGroupId);
+            //hitboxEmitter.EndHitboxGroup(dashHitboxGroupId);
         }
 
         private void AlignSharkToVel()
         {
-            sprite.transform.localScale = new Vector3(Mathf.Sign(rb.linearVelocityX), 1, 1);
+            if (rb.linearVelocity != Vector2.zero)
+            {
+                sprite.transform.localScale = new Vector3(Mathf.Sign(rb.linearVelocityX), 1, 1);
+            }
             sprite.transform.right = rb.linearVelocity * Mathf.Sign(rb.linearVelocityX);
         }
 
@@ -254,6 +271,7 @@ namespace Fighters.Ahab.Scripts
             context.FlipX = characterRb.LinearVelocity.x < 0;
             hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, context, dashHitboxGroupId);
             lastBite = Time.time + biteCooldown;
+            sharkAnim.Play("Sharkson_Bite");
             rb.linearVelocity = Vector2.zero;
         }
 
@@ -268,6 +286,7 @@ namespace Fighters.Ahab.Scripts
 
             //throwing = false;
             AhabSharkSprite.SetActive(true);
+            AhabNoSharkSprite.SetActive(false);
             thrown = false;
             sprite.enabled = false;
             rb.simulated = false;
