@@ -10791,7 +10791,7 @@ Transform:
   m_GameObject: {fileID: 3348994926655190193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.4, z: -0.1}
+  m_LocalPosition: {x: 1, y: -0.4, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11065,6 +11065,7 @@ MonoBehaviour:
   comboStateSwitcher: {fileID: 7747926494494825674}
   actionManager: {fileID: 3105801480486927495}
   state: {fileID: 4961841788159889840}
+  sensitivity: 0.8
   controller: {fileID: 1278654112016437739}
 --- !u!1 &4135665145333436745
 GameObject:
