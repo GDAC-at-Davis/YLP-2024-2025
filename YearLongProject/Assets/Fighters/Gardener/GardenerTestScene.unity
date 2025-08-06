@@ -323,10 +323,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4359598992654712137, guid: 8729124ce0a256f41ad373243dd80110, type: 3}
-      propertyPath: hitboxEffect.<Hitstun>k__BackingField
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4678280858386419961, guid: 8729124ce0a256f41ad373243dd80110, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
