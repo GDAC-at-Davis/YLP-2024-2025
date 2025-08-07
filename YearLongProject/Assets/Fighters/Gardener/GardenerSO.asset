@@ -15,4 +15,4 @@ MonoBehaviour:
   CharacterDisplayName: Gardener
   CharacterPrefab: {fileID: 6242291163348849283, guid: 8729124ce0a256f41ad373243dd80110, type: 3}
   CharacterPortrait: {fileID: 5350817698135230329, guid: 29a1cf5c17e5b4d4da5d83ae45b4ed7f, type: 3}
-  CharacterLore: {fileID: 0}
+  CharacterLore: {fileID: 11400000, guid: a24e70b4f6e4b0c499982a51fe9da0f9, type: 2}

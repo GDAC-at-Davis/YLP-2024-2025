@@ -34,6 +34,12 @@ namespace Menus.Lore
 
         private void DisplayLorePage(int page)
         {
+            if (currentLore == null)
+            {
+                Debug.LogWarning("Current lore is not set. Cannot display lore page.");
+                return;
+            }
+
             List<string> lorePages = currentLore.LoreText;
 
             if (lorePages == null || lorePages.Count == 0)
