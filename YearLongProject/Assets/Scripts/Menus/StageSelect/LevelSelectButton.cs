@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus
+namespace Menus.StageSelect
 {
     /// <summary>
     ///     Button that holds levelSO for level selection

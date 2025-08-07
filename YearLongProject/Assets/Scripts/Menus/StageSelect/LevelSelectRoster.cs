@@ -4,12 +4,10 @@ using System.Linq;
 using LevelScripts;
 using NaughtyAttributes;
 using Timeline.Samples;
-using UnityEngine;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
+using UnityEngine;
 
-namespace Menus
+namespace Menus.StageSelect
 {
     [CreateAssetMenu(fileName = "LevelSelectRoster", menuName = "Level Select Roster")]
     public class LevelSelectRoster : ScriptableObject
