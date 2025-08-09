@@ -30,6 +30,9 @@ public class FightButton : ButtonBehavior
     private UnityEvent onReady;
 
     [SerializeField]
+    private UnityEvent onUnready;
+
+    [SerializeField]
     private UnityEvent onHovered;
 
     [SerializeField]
@@ -58,6 +61,7 @@ public class FightButton : ButtonBehavior
     private void UnreadyUp()
     {
         gameObject.SetActive(false);
+        onUnready?.Invoke();
     }
 
     private void ReadyUp()

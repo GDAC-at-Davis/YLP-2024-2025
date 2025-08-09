@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus
+namespace Menus.StageSelect
 {
     /// <summary>
     ///     Displays a preview of the hovered level in the stage selection menu.
@@ -12,14 +12,15 @@ namespace Menus
     public class StagePreview : MonoBehaviour
     {
         [SerializeField]
+        private Image displayImage;
+
+        [SerializeField]
         private GameDataSO gameDataSO;
 
-        private Image displayImage;
         private TextMeshProUGUI text;
 
         private void Start()
         {
-            displayImage = GetComponentInChildren<Image>();
             text = GetComponentInChildren<TextMeshProUGUI>();
 
             gameDataSO.OnProspectLevelChanged += HandleProspectLevelChanged;
@@ -60,7 +61,7 @@ namespace Menus
             }
 
             displayImage.sprite = level.LevelPreview;
-            displayImage.color = new Color(1, 1, 1, 0.5f);
+            displayImage.color = new Color(1, 1, 1, 0.7f);
             text.text = level.LevelDisplayName;
         }
     }

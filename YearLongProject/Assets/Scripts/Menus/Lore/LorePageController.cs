@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CharacterScripts;
 using LevelScripts;
+using Menus.StageSelect;
 using UnityEngine;
 
 namespace Menus.Lore

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Managers
@@ -7,6 +8,8 @@ namespace Managers
     public class SceneSwitchManager : MonoBehaviour
     {
         public Animator transition_animator; // for fading in and fading out
+
+        public UnityEvent<string> OnSceneSwitched;
         public static SceneSwitchManager Instance { get; private set; }
 
         private bool isTransitioning;
@@ -46,6 +49,8 @@ namespace Managers
 
             AsyncOperation op = SceneManager.LoadSceneAsync(targetScene);
             yield return new WaitUntil(() => op.isDone);
+
+            OnSceneSwitched?.Invoke(targetScene);
 
             // Fade in
             transition_animator.Play("Fade_in", 0, 0f);
