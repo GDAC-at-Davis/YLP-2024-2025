@@ -1114,7 +1114,11 @@ PrefabInstance:
       objectReference: {fileID: 227120830}
     - target: {fileID: 992021101022327721, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_VersionIndex
-      value: 2343
+      value: 2349
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241863897930270825, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2995114911870739807, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_Mesh
@@ -1126,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 1457435793}
     - target: {fileID: 3755896219541975282, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_VersionIndex
-      value: 1919
+      value: 1925
       objectReference: {fileID: 0}
     - target: {fileID: 4272274497598724786, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1174,7 +1178,7 @@ PrefabInstance:
       objectReference: {fileID: 1834150877}
     - target: {fileID: 4797446323936482511, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_VersionIndex
-      value: 1959
+      value: 1965
       objectReference: {fileID: 0}
     - target: {fileID: 5713868572131934074, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_Mesh
@@ -1188,6 +1192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raveyard
       objectReference: {fileID: 0}
+    - target: {fileID: 7009877979208508471, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8051418013080266466, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1198,7 +1206,7 @@ PrefabInstance:
       objectReference: {fileID: 12743842}
     - target: {fileID: 8383836516142286987, guid: 3b6f7dc2286f8cc4b92274fd201e756d, type: 3}
       propertyPath: m_VersionIndex
-      value: 2319
+      value: 2325
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
