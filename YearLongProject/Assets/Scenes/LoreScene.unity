@@ -1628,6 +1628,22 @@ PrefabInstance:
       propertyPath: m_text
       value: In Memoriam...
       objectReference: {fileID: 0}
+    - target: {fileID: 7953041163909880330, guid: f0d0ae3e1368e3e41b1ff31c98524a90, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 127.6429
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953041163909880330, guid: f0d0ae3e1368e3e41b1ff31c98524a90, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 153.9693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953041163909880330, guid: f0d0ae3e1368e3e41b1ff31c98524a90, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953041163909880330, guid: f0d0ae3e1368e3e41b1ff31c98524a90, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -25.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8997463829862951294, guid: f0d0ae3e1368e3e41b1ff31c98524a90, type: 3}
       propertyPath: OnClickEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
