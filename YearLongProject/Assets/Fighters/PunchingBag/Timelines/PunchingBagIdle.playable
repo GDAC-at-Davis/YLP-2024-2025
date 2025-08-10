@@ -20,6 +20,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a0fd587af7669994e9c094b55ac55450, type: 2}
     - {fileID: 11400000, guid: 742f0839ceafea34a96ee2be76b0ad76, type: 2}
     - {fileID: 11400000, guid: cee771dafc8387446b2620e8395fe9f8, type: 2}
+    - {fileID: 11400000, guid: 4496eeb6dcdd53448b03b0bcec437815, type: 2}
     ActionManager: {fileID: 0}
 --- !u!114 &-3050618067722411540
 MonoBehaviour:
@@ -36,7 +37,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -240,6 +241,7 @@ MonoBehaviour:
   - {fileID: -1755073353440819576}
   - {fileID: 1769748954882782041}
   - {fileID: -3050618067722411540}
+  - {fileID: 6755667725695470914}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -360,6 +362,30 @@ MonoBehaviour:
   m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &6755667725695470914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bf7f712d84d26478ebe6a299f21738, type: 3}
+  m_Name: Activation Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
+  m_PostPlaybackState: 3
 --- !u!114 &7719668772619216536
 MonoBehaviour:
   m_ObjectHideFlags: 1

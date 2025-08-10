@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593c44a66696d0446bf61ba434744c9e, type: 3}
   m_Name: PunchingBag
   m_EditorClassIdentifier: 
-  CharacterDisplayName: 
+  CharacterDisplayName: Bag of Punching
   CharacterPrefab: {fileID: 83385859317990436, guid: ea534b59beb165d418366e563bcb178c, type: 3}
   CharacterPortrait: {fileID: 21300000, guid: a0644271d9eacb04d9b8a1531923d0df, type: 3}
   CharacterLore: {fileID: 0}
