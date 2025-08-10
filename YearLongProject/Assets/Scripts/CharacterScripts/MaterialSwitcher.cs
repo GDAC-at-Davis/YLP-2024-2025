@@ -16,6 +16,10 @@ namespace CharacterScripts
         [SerializeField]
         private Renderer renderer;
 
+        [Tooltip("Optional - Particle System to assign material to")]
+        [SerializeField]
+        private ParticleSystemRenderer particleSystemRenderer;
+
         [SerializeField]
         private CharacterEntity characterEntity;
 
@@ -30,6 +34,10 @@ namespace CharacterScripts
             }
 
             renderer.material = materials[playerId];
+            if (particleSystemRenderer != null)
+            {
+                particleSystemRenderer.material = materials[playerId];
+            }
         }
     }
 }

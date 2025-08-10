@@ -409,6 +409,7 @@ MonoBehaviour:
   - {fileID: 2301273247186442015, guid: a0b53348c9c73bf47b920b8f4e9346b2, type: 3}
   - {fileID: 2100000, guid: ec821700226012547ab60ef0c216dbe1, type: 2}
   renderer: {fileID: 165188637647747919}
+  particleSystemRenderer: {fileID: 0}
   characterEntity: {fileID: 3850342251300834818}
 --- !u!1 &4135665145333436745
 GameObject:
@@ -651,7 +652,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.85
+      scalar: 1.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -704,7 +705,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1
+      scalar: -1.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1286,7 +1287,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.5
       mode: 0
       spread: 0
       speed:
@@ -6226,6 +6227,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f2d52b0270686aa43bc74a54f8337295, type: 2}
   - {fileID: 2100000, guid: 1b91b00fc089c16488ae874698f06e7b, type: 2}
   renderer: {fileID: 8851891106849112611}
+  particleSystemRenderer: {fileID: 5166501099850387561}
   characterEntity: {fileID: 3850342251300834818}
 --- !u!137 &8851891106849112611 stripped
 SkinnedMeshRenderer:
