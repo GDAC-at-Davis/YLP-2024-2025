@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: LancerLore
   m_EditorClassIdentifier: 
   LoreTitle: Lancer
+  Lore: It's lancin' time
   LoreText:
-  - It's lancin' time
+  - 

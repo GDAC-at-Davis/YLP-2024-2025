@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MalachiteMidlandsLore
   m_EditorClassIdentifier: 
   LoreTitle: Malachite Midlands
+  Lore: The Cube's home
   LoreText:
-  - The Cube's home
+  - 

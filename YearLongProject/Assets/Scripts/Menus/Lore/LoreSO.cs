@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Menus.Lore
@@ -11,7 +11,19 @@ namespace Menus.Lore
     {
         public string LoreTitle;
 
-        [TextArea(3, 10)]
-        public List<string> LoreText;
+        [TextArea(3, 10000)]
+        public string Lore;
+
+        public string[] GenerateLorePages()
+        {
+            string[] pages = Lore.Split("#", StringSplitOptions.RemoveEmptyEntries);
+
+            for (var i = 0; i < pages.Length; i++)
+            {
+                pages[i] = pages[i].Trim();
+            }
+
+            return pages;
+        }
     }
 }
