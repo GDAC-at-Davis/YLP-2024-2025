@@ -166,10 +166,10 @@ namespace Fighters.Wizard.Scripts
             particleSystem.Play();
             particleSystem.transform.parent = null;
         }
-        public void Detonate()
+        public void Detonate(Vector3 target)
         {
             HitboxContext context = hitboxEmitter.GetContext(hitboxGroupID);
-            context.FlipX = rb.LinearVelocity.x < 0;
+            context.FlipX = target.x < 0;
             hitboxEmitter.EmitHitbox(knockbackHitboxArea, hitboxEffect, context, hitboxGroupID);
             Impact();
         }
@@ -202,7 +202,7 @@ namespace Fighters.Wizard.Scripts
 
                 //if (manager.CurrentState.stateNameSO.StateType == State_Machine_Scripts.StateNameSO.StateTypes.HITSTUN)
                 if (manager.ActionManager.CurrentState.GetType() != typeof(HitstunState)) return;
-                Detonate();
+                Detonate(manager.MovementController.CharacterRigidbody.LinearVelocity);
             }
         }
 

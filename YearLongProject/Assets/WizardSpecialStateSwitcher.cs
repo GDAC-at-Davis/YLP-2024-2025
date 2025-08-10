@@ -15,11 +15,14 @@ namespace State_Machine_Scripts.Modifiers
         CharacterState state;
 
         [SerializeField]
+        float sensitivity = 0.8f;
+
+        [SerializeField]
         SimpleMovementController controller;
 
         public void OnSpecialInput()
         {
-            if (controller.VerticalInput > 0 && comboStateSwitcher.CurrentComboIndex == 0)
+            if (controller.VerticalInput > sensitivity && comboStateSwitcher.CurrentComboIndex == 0)
             {
                 actionManager.SetState(state);   
                 return;
