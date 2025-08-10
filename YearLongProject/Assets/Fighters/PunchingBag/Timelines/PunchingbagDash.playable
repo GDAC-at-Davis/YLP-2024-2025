@@ -906,7 +906,10 @@ MonoBehaviour:
     ScreenShakeSO: {fileID: 11400000, guid: dd751f266d94e634fba59d20444dbb46, type: 2}
     EndHitboxGroup: 1
     HitboxGroupId: DashHitbox
-    RaycastArea: []
+    RaycastArea:
+    - rotation: 0
+      startOffset: {x: 0, y: 0}
+      length: 100
     BoxArea:
     - center: {x: 0, y: 0}
       rotation: 0
