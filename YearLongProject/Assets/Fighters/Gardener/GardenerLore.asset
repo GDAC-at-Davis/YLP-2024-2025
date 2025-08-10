@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: GardenerLore
   m_EditorClassIdentifier: 
   LoreTitle: Gardener
+  Lore: Plants are very cool
   LoreText:
-  - Plants are very cool
+  - 

@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f78a0a3e840c3b488304b0ff928238c, type: 3}
   m_Name: BoxerLoreSO
   m_EditorClassIdentifier: 
-  LoreTitle: The Boxer
-  LoreText:
-  - 'Robotic punching machine. '
+  LoreTitle: Boxer
+  Lore: "I. \u201CWorth is determined by victory\u2026\u201D\n\r\n\tOne, two, punch.
+    One, two, punch. Knockout! Boxer\u2019s life was defined by hard work and victory.
+    Born to a city of metal, she dedicated her life to fighting. School was always
+    a struggle and her creative endeavors never got far. However, she took pride
+    in being able to rip through anyone that stood in her way.\r\n\r\nWhen she first
+    joined the arena, she was greatly underestimated. A girl of her stature and weight
+    surely stood no chance against some of their greater champions. Yet, her punch
+    was stronger than her appearance revealed. She became famous for her winning
+    move\u2014a grand slam that sent anyone in her way flying across the ring.\r\n\r\nFrom
+    the first time she showed her face at the arena, a string of victories followed
+    along. \r\n\r\nBoxer's winning streak\r\n\r#\nII. \u201CThe bitter taste of defeat
+    is a flavor I\u2019d rather forget\u2026\u201D\r\n\n\nDevastating loss\n\r\n\r#\nIII.
+    \u201CAppetite is the desire to be stronger\u2026\u201D\r\n\t\n\nModifications\r\n\r#\n\n\nIV.
+    \u201C?\u201D\r\n\t\n\nWinning streak; devastating loss\n\n\r\n\r#\nV.  \u201CCan
+    a life be won?\u201D\r\n\r\n\r\nSickening, sickening, sickening.\r\nambition
+    was not a word that could be used to describe the boxer. thirsty, hungry, insatiable.
+    \r\n"

@@ -12,20 +12,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f78a0a3e840c3b488304b0ff928238c, type: 3}
   m_Name: AhabLoreSO
   m_EditorClassIdentifier: 
-  LoreTitle: Ahab - The Fishmonger
-  LoreText:
-  - "I. \u201CTo fear what you want is a terrible thing\u2026\u201D\r\n\r\nSome people
-    were built for a life on the sea. At a young age, Ahab knew that his father was
-    one of them and that it was his own fate to be connected to the ocean. Little
-    Ahab, strolling along a beach where the water and sand met, never got close enough
-    to get his feet wet, but looked out into the vast ocean in front of him, knowing
-    that it stretched farther than he could ever imagine. He thought of the adventure
-    that his father had experienced on the oceans\u2014the ones that he had told
-    him before drifting off to sleep. As he looked out into the dark sea, the moon
-    reflected upon it, he thought of pirates and sea monsters, but most of all, his
-    father\u2019s encounter with a giant sperm whale. The scale of it was something
-    that he couldn\u2019t comprehend.\r\n\r\nIts smooth but wrinkled skin, its giant
-    eye, and the echo of its call were all things that he imagined so vividly as
-    if he had seen the creature himself. When he closed his eyes at night, the creature
-    took up his entire field of vision, just barely out of his grasp. "
-  - II. Baller ass fish
+  LoreTitle: Ahab
+  Lore: "I. \u201CTo fear what you want is a terrible thing\u2026\u201D\r\n\r\nSome
+    people were built for a life on the sea. At a young age, Ahab knew that his father
+    was one of them and that it was his own fate to be connected to the ocean. Little
+    Ahab, strolling along the beach where the water and sand met, never got close
+    enough to even get his feet wet, but often looked out into the vast ocean in
+    front of him, knowing that it stretched farther than he could ever imagine. He
+    thought of the adventures that his father experienced on the oceans\u2014the
+    ones that he had told him about before drifting off to sleep. As he looked out
+    into the dark sea, the moon reflected upon its surface, he thought of pirates
+    and sea monsters, but most of all, his father\u2019s encounter with a giant whale\u2014a
+    creature that was the scale of something that he couldn\u2019t comprehend.\r\n\r\nIts
+    smooth but wrinkled skin, its giant eye, and the echo of its call were things
+    that he imagined so vividly, as if he had seen the creature himself. When he
+    closed his eyes at night, the creature took up his entire field of vision, calling
+    for him to come find it.\r\n\r#\n\u201COne day, I\u2019ll become a sailor and
+    reach out to you.\u201D\r\n\r\nOn the day of his 13th birthday, Ahab had begged
+    his father to take him out to sea.\r\n\r\n\u201CThe waters are dangerous, Ahab,\u201D
+    his father warned, \u201Cespecially during this season.\u201D\r\n\r\nNaive and
+    inexperienced, Ahab continued his pleading. The cold air and violent waves were
+    not enough to cease his curiosity and his father was unwilling to disappoint
+    his son on such an important day. Though Ahab may have gotten what he had wished
+    for, the consequences were despairingly dreadful. From the day that he was 13
+    years and 1 day old, when he closed his eyes at night, the creature took up Ahab\u2019s
+    entire field of vision, taunting him\u2014just barely out of his reach.\r\n#\r\nII.
+    \u201CYour face lingers but your warmth is gone\u2026\u201D\r\n\t\r\nThough Ahab
+    feared the sea after his extreme encounter, he could not resist the allure of
+    the waters. Wanting to be close to the ocean, but being too afraid to jump in,
+    Ahab took apprenticeship under a group of fishmongers. Hours were long and his
+    work was exhausting, but being next to the sea invigorated him and seeing the
+    fresh catches of the day made it all worth his while. Still, the sight of sailors
+    maneuvering back to land and docking their ships never failed to fill Ahab with
+    a sense of regret, longing, and bitter jealousy.\r\n\r\nAhab, all grown up, was
+    a fine fishmonger. His products were known to be of the highest quality and they
+    were always prepared with the finest touch. A group of experienced sailors wished
+    to do business with him, to which Ahab agreed. This deal was a deal of a lifetime,
+    but Ahab had other motives for accepting such a deal\u2014the daughter of one
+    of the sailors, training to become a sailor herself. \n# \nEach day that their
+    ship pulled into shore, Ahab was eager to hear her stories\u2014the ones about
+    pirates, and sea monsters, and most of all, her encounter with creatures whose
+    size he could not comprehend. The two sat on the pier, the moonlight reflected
+    upon her excitement-filled eyes as she told him of her adventures. Each time,
+    they sat a little closer and grew a little fonder of one another.\r\n\r\nAfter
+    years of heart-pounding conversations, the sailor\u2019s daughter, Cordelia,
+    became smitten with Ahab\u2019s curiosity and gentleness\u2014a direct contrast
+    to his rugged and intimidating appearance\u2014while Ahab fell madly in love
+    with Cordelia\u2019s audacious spirit and rough hands that served as evidence
+    of her years at sea\u2014a direct contrast to her soft face. The two fell in
+    love and had a son, Ishmael, who was the perfect mix of the two\u2014a delicate
+    appearance with an inextinguishable curiosity.\r\n\r\nOnly when things are going
+    well do the biggest disasters come as a surprise. \r\n\r#\nOn the day of his
+    13th birthday, Ishmael had begged his mother to take him out to sea. He had dreamed
+    of following in his mother\u2019s footsteps, daring to conquer the great ocean
+    and see with his own eyes the beast that shook his father to his core. He would
+    have never expected that his mother, scouting the route for their voyage, would
+    succumb to the strength of the waters.\r\n\r\nIshmael\u2019s delicate features
+    reminded Ahab, everyday, of Cordelia\u2019s presence.\r\n\r\n\u201CYou are the
+    most important thing to me, Ishmael,\u201D Ahab repeated everyday, \u201Cso do
+    not go after that horrid beast.\u201D\r\n\r#\nIII. \u201CDesperation and longing
+    drives us to extremes\u2026\u201D\r\n\r\nA decade after the loss of his wife,
+    though Ahab had learned to live without her, he may never have truly recovered
+    from his grief. His love and curiosity for the ocean was replaced by a thick
+    disgust that penetrated every aspect of his life. How could something so calming
+    be so destructive? How could something so precious to someone be taken away with
+    such absence of thought?\r\n\r\nThough Ahab continued running his business as
+    usual, the feeling of loss was palpable to everyone he interacted with. Most
+    simply felt pity for him, but for his son, Ahab\u2019s stark change in behavior
+    created a heavy guilt in Ishmael. \r\n\r\nToo foolish to heed his father's warning,
+    Ishmael continued to chase after the sight of a whale. Surely, if he could conquer
+    the beast and show his father his colossal catch, he would spring back to his
+    old self. The sight would be too great to ignore. So, like his mother, Ishmael
+    trained to be a strong sailor\u2014one that could weather any storm.\r\n\r#\nHowever,
+    after years and years of sailing, Ishmael failed to capture the creature despite
+    having the opportunity to do so many times. He could not predict the patterns
+    that whales followed and always lost sight of them as soon as he caught a glimpse.
+    Rumors of a potion seller that sold particularly potent concoctions caught his
+    ear.\r\n\r\nTempted by the promise of success, Ishmael took an offer. He traded
+    lungs for gills and legs for fins\u2014to know the patterns of a beast, one must
+    put themselves into the shoes of one.\r\n\r#\nIV. \u201CFear can be overcome
+    but the consequences are dire\u2026\u201D\r\n\r\nThe loss of his father and wife
+    destroyed Ahab, but the disappearance of his son racked his mind. For years,
+    Ahab continued to wonder what had become of his son. On the day that he disappeared,
+    Ishmael's ship docked safely and his shipmates were well and good. It seemed
+    as though the expedition was a normal one aside from the unexplained disappearance
+    of Ishmael.\r\n\r\nYears later, Ahab caught wind of the potion seller that had
+    transformed Ishamel into a creature that he detested. \r\n\r\n\"There is no cure.
+    No reversal,\" the seller insisted. Still, Ahab would try.\r\n\r#\nRegardless
+    of the effort that Ahab might have spent, exhausting himself to get back the
+    biggest reminder of Cordelia that he had left, it would be no use. \r\n\r\n\"Ahab!\"
+    a fellow fishmonger ran up in a panic, \"Your son! The fishermen say they got
+    your son!\"\r\n\r\nIn a frenzy, Ahab ran to the pier where he found a hunter,
+    flopped over catch in hand as though it had never been anything but a husk to
+    begin with. Though there was never a way for Ahab to truly confirm that that
+    was in fact his son, the shark's dead eyes looked awfully familiar. The sea had
+    taken everything away from him, so it would be foolish to believe that it would
+    stop here.\r\n\r\nOvercome with rage, Ahab ignored the boundary between sea and
+    land, lunging at the hunter with abandon. He fought with everything he had, but
+    he was unaccustomed to the water as a result of avoiding it his whole life. But
+    what else could he do but try?\r\n\r#\nV.  \u201CCan a life be given for a life?\u201D\r\n\r\nEmerging
+    from the water, Ahab sputtered. The waters were unlike the ocean that he had
+    stepped into. It was clean, almost rocking him to sleep before he violently fought
+    his way up. Seeing a dark figure, without knowing why or how, Ahab knew that
+    he would be given a second chance at life.\r\n\r\n\"Please, let my son live instead.
+    I have lived a life of misery and don't wish to return. But my son\u2026he is
+    young and has a sense of adventure that would be put to good use. Please.\"\r\n\r\n\"...Fine.
+    But, he must fight alongside you.\"\r\n"

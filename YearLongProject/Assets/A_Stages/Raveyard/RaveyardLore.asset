@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RaveyardLore
   m_EditorClassIdentifier: 
   LoreTitle: Raveyard
+  Lore: The dead shall dance
   LoreText:
-  - The dead shall dance
+  - 
