@@ -61,7 +61,7 @@ MonoBehaviour:
       <Damage>k__BackingField: 1
       <Knockback>k__BackingField: {x: 1, y: -5}
       <Hitstun>k__BackingField: 5
-      <HitStopDuration>k__BackingField: 1
+      <HitStopDuration>k__BackingField: 0.1
       <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 0
       <ScreenShakeEffect>k__BackingField:
@@ -1720,7 +1720,6 @@ MonoBehaviour:
   template:
     BlockedStates:
     - {fileID: 11400000, guid: a1c2649e7825bd24c88bdeee1a69f5c4, type: 2}
-    - {fileID: 11400000, guid: 3cef9ef9f0ccfa143aef3712c8cb57e0, type: 2}
     - {fileID: 11400000, guid: b39ac1424cba83f4687158b7e61696bc, type: 2}
     - {fileID: 11400000, guid: a0fd587af7669994e9c094b55ac55450, type: 2}
     - {fileID: 11400000, guid: 742f0839ceafea34a96ee2be76b0ad76, type: 2}
