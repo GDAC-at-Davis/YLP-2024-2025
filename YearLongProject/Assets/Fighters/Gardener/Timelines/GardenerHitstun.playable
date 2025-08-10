@@ -24,7 +24,7 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -3368188401835574230}
+    m_Asset: {fileID: 3667413869621773977}
     m_Duration: 0.3333333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7379511012254884165}
@@ -89,7 +89,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 0
-    m_DisplayName: TemplateCharHitstun
+    m_DisplayName: hitstun
   m_Markers:
     m_Objects: []
   m_InfiniteClipPreExtrapolation: 0
@@ -202,28 +202,6 @@ MonoBehaviour:
     m_DisplayName: SetTransitionStatesPlayableAsset
   m_Markers:
     m_Objects: []
---- !u!114 &-3368188401835574230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
-  m_Name: AnimationPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: c9762aa08ec77984da49918b6a39b710, type: 2}
-  m_Position: {x: 0, y: 0, z: 0}
-  m_EulerAngles: {x: 0, y: 0, z: 0}
-  m_UseTrackMatchFields: 1
-  m_MatchTargetFields: 63
-  m_RemoveStartOffset: 1
-  m_ApplyFootIK: 1
-  m_Loop: 0
-  m_Version: 1
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-144731960878743666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,3 +351,25 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f0ba46faf4e5ca04d8fd999320aba22f, type: 2}
     - {fileID: 11400000, guid: cc9d379528d98f743a8266d359a9e28b, type: 2}
     ActionManager: {fileID: 0}
+--- !u!114 &3667413869621773977
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: AnimationPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 7400000, guid: bf2395cd2829d114ea65da2bcdb5c156, type: 2}
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 1
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
