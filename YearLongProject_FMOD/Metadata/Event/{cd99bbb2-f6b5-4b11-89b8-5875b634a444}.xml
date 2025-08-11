@@ -23,6 +23,7 @@
 			<destination>{a5096e3c-76bb-40c0-946d-c657dc51eb5e}</destination>
 		</relationship>
 		<relationship name="markerTracks">
+			<destination>{dfb72f66-4131-4974-ab25-2d45a61066e5}</destination>
 			<destination>{327875ae-bf34-4e9f-b01f-3b151f99aa71}</destination>
 		</relationship>
 		<relationship name="groupTracks">
@@ -57,6 +58,7 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{a5096e3c-76bb-40c0-946d-c657dc51eb5e}" />
+	<object class="MarkerTrack" id="{dfb72f66-4131-4974-ab25-2d45a61066e5}" />
 	<object class="MarkerTrack" id="{327875ae-bf34-4e9f-b01f-3b151f99aa71}" />
 	<object class="GroupTrack" id="{c78da44d-774b-427f-b6a7-bcb482188b6f}">
 		<relationship name="modules">
@@ -102,7 +104,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{c162e72d-d99e-4a18-863c-700a5dc322ec}">
 		<property name="volume">
-			<value>-8.5</value>
+			<value>-7.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -125,7 +127,7 @@
 			<destination>{6dd4a7a3-36c3-48f8-aa98-0c24c40fff1f}</destination>
 		</relationship>
 		<relationship name="markerTrack">
-			<destination>{327875ae-bf34-4e9f-b01f-3b151f99aa71}</destination>
+			<destination>{dfb72f66-4131-4974-ab25-2d45a61066e5}</destination>
 		</relationship>
 	</object>
 	<object class="LoopRegion" id="{6c4eb828-a5a8-4f50-9f97-d112a428cbb9}">
