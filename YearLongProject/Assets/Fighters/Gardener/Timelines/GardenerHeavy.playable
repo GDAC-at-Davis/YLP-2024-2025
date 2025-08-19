@@ -838,7 +838,6 @@ MonoBehaviour:
   template:
     BlockedStates:
     - {fileID: 11400000, guid: ed308d4b220758f469a692447b3bcb98, type: 2}
-    - {fileID: 11400000, guid: 4cdbf912d2d1cdd4bb8718f4add4a38c, type: 2}
     - {fileID: 11400000, guid: 6259555d10bcede47ae136be4682e78b, type: 2}
     - {fileID: 11400000, guid: dfb98add20e1533468213d16cab30809, type: 2}
     - {fileID: 11400000, guid: 51b856f4eb041e349b5da1c1163f7e22, type: 2}
