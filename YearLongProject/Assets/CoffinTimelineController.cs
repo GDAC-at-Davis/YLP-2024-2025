@@ -46,6 +46,7 @@ public class CoffinTimelineController : MonoBehaviour
             if(idleTimer > timeToIdle)
             {
                 isIdle = false;
+                coffinOpenClose.Stop();
                 coffinOpenClose.Play();
                 Debug.Log("Playing coffin open, idleTimer: " + idleTimer + " timeToIdle: " + timeToIdle);
             }
