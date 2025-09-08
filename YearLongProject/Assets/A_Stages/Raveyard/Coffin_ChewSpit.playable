@@ -16,7 +16,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 2
       <Knockback>k__BackingField: {x: 0, y: 0}
-      <Hitstun>k__BackingField: 0
+      <Hitstun>k__BackingField: 2
       <HitStopDuration>k__BackingField: 0
       <GiveTargetHitStop>k__BackingField: 0
       <GiveAttackerHitStop>k__BackingField: 0
@@ -116,9 +116,9 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 2
       <Knockback>k__BackingField: {x: 0, y: 0}
-      <Hitstun>k__BackingField: 0
+      <Hitstun>k__BackingField: 2
       <HitStopDuration>k__BackingField: 0
-      <GiveTargetHitStop>k__BackingField: 0
+      <GiveTargetHitStop>k__BackingField: 1
       <GiveAttackerHitStop>k__BackingField: 0
       <ScreenShakeEffect>k__BackingField:
         <ImpulseDefinition>k__BackingField:
@@ -515,7 +515,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 2
       <Knockback>k__BackingField: {x: 0, y: 0}
-      <Hitstun>k__BackingField: 0
+      <Hitstun>k__BackingField: 1.5
       <HitStopDuration>k__BackingField: 0
       <GiveTargetHitStop>k__BackingField: 0
       <GiveAttackerHitStop>k__BackingField: 0
@@ -892,7 +892,7 @@ MonoBehaviour:
     HitEffect:
       <Damage>k__BackingField: 2
       <Knockback>k__BackingField: {x: 0, y: 30}
-      <Hitstun>k__BackingField: 0
+      <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0
       <GiveTargetHitStop>k__BackingField: 0
       <GiveAttackerHitStop>k__BackingField: 0
