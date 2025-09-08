@@ -1252,6 +1252,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3105801480486927495}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: pickupCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: AhabSharkSprite
       value: 
       objectReference: {fileID: 7410896267050152058}
