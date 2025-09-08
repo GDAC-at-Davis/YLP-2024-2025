@@ -1,3 +1,4 @@
+using Animancer;
 using EditorUtils.BoldHeader;
 using Hitbox.DataStructures;
 using Hitbox.Emitters;
@@ -38,6 +39,7 @@ namespace Fighters.Ahab.Scripts
 
         [SerializeField]
         private GameObject AhabSharkSprite;
+
         [SerializeField]
         private GameObject AhabNoSharkSprite;
 
@@ -67,9 +69,10 @@ namespace Fighters.Ahab.Scripts
         private LayerMask groundLayer;
 
         [SerializeField]
-        float lastStopped = Mathf.Infinity;
+        private float lastStopped = Mathf.Infinity;
+
         [SerializeField]
-        float pickupCooldown = 1;
+        private float pickupCooldown = 1;
 
         //public bool throwing;
 
@@ -84,9 +87,9 @@ namespace Fighters.Ahab.Scripts
 
         [SerializeField]
         private float dashCooldown = 2;
+
         [SerializeField]
-        float biteCooldown = 2;
-        float lastBite = 0;
+        private float biteCooldown = 2;
 
         [SerializeField]
         private BoxArea hitboxArea;
@@ -103,6 +106,11 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private LayerMask playerPickupLayer;
 
+        [SerializeField]
+        private UnityEvent onNeutralAttack;
+
+        private float lastBite;
+
         //private bool dashOnCooldown = false;
 
         //private bool dashing;
@@ -118,7 +126,7 @@ namespace Fighters.Ahab.Scripts
         // Update is called once per frame
         private void Update()
         {
-            if (!thrown)//(!throwing && !thrown)
+            if (!thrown) //(!throwing && !thrown)
             {
                 sprite.enabled = false;
             }
@@ -146,7 +154,6 @@ namespace Fighters.Ahab.Scripts
                 sprite.enabled = true;
 
                 AlignSharkToVel();
-
             }
 
             timeSinceStartDash += Time.deltaTime;
@@ -186,8 +193,16 @@ namespace Fighters.Ahab.Scripts
                 {
                     return;
                 }
-                if (special.sharkson != this) return;
-                if (lastStopped > Time.time) return;
+
+                if (special.sharkson != this)
+                {
+                    return;
+                }
+
+                if (lastStopped > Time.time)
+                {
+                    return;
+                }
 
                 PickUp();
             }
@@ -261,6 +276,7 @@ namespace Fighters.Ahab.Scripts
             {
                 sprite.transform.localScale = new Vector3(Mathf.Sign(rb.linearVelocityX), 1, 1);
             }
+
             sprite.transform.right = rb.linearVelocity * Mathf.Sign(rb.linearVelocityX);
         }
 
@@ -269,10 +285,13 @@ namespace Fighters.Ahab.Scripts
             hitboxEmitter.EndHitboxGroup(dashHitboxGroupId);
             HitboxContext context = hitboxEmitter.GetContext(dashHitboxGroupId);
             context.FlipX = characterRb.LinearVelocity.x < 0;
+            rb.linearVelocity = Vector2.zero;
+
             hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, context, dashHitboxGroupId);
             lastBite = Time.time + biteCooldown;
             sharkAnim.Play("Sharkson_Bite");
-            rb.linearVelocity = Vector2.zero;
+
+            onNeutralAttack?.Invoke();
         }
 
         public void PickUp()
