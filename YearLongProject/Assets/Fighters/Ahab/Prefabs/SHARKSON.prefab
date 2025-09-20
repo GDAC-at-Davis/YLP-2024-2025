@@ -203,10 +203,17 @@ MonoBehaviour:
   characterRb: {fileID: 8647342905742800878}
   actionManager: {fileID: 0}
   hitboxEmitter: {fileID: 3208988197911577147}
+  AhabSharkSprite: {fileID: 0}
+  AhabNoSharkSprite: {fileID: 0}
+  sharkAnim: {fileID: 0}
   physicsCollider: {fileID: 1008355638700277412}
   ahabPhysicsCollider: {fileID: 0}
-  dashVelocity: 50
+  dashVelocity: 12
   thrown: 0
+  onGround: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   lastStopped: Infinity
   pickupCooldown: 1
   dashDamping: 8
@@ -214,6 +221,8 @@ MonoBehaviour:
   timeSinceStartDash: 0
   dashCooldown: 1.35
   biteCooldown: 2
+  throwOutBiteBuffer: 0.4
+  biteVelocityMultiplier: 0.4
   hitboxArea:
     center: {x: 0, y: 0}
     rotation: 0
@@ -228,7 +237,7 @@ MonoBehaviour:
     <ScreenShakeEffect>k__BackingField:
       <ImpulseDefinition>k__BackingField:
         ImpulseChannel: 1
-        ImpulseShape: 0
+        ImpulseShape: 4
         CustomImpulseShape:
           serializedVersion: 2
           m_Curve: []
@@ -236,7 +245,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         ImpulseDuration: 0.2
-        ImpulseType: 3
+        ImpulseType: 0
         DissipationRate: 0
         RawSignal: {fileID: 0}
         AmplitudeGain: 1
@@ -266,7 +275,7 @@ MonoBehaviour:
         DissipationMode: 2
         DissipationDistance: 100
         PropagationSpeed: 343
-      <Velocity>k__BackingField: {x: 0, y: 0}
+      <Velocity>k__BackingField: {x: 0, y: 1}
       <FlipXVelocity>k__BackingField: 0
     <HitSound>k__BackingField:
       Guid:
@@ -285,7 +294,7 @@ MonoBehaviour:
     <ScreenShakeEffect>k__BackingField:
       <ImpulseDefinition>k__BackingField:
         ImpulseChannel: 1
-        ImpulseShape: 0
+        ImpulseShape: 4
         CustomImpulseShape:
           serializedVersion: 2
           m_Curve: []
@@ -293,7 +302,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         ImpulseDuration: 0.2
-        ImpulseType: 3
+        ImpulseType: 0
         DissipationRate: 0
         RawSignal: {fileID: 0}
         AmplitudeGain: 1
@@ -323,7 +332,7 @@ MonoBehaviour:
         DissipationMode: 2
         DissipationDistance: 100
         PropagationSpeed: 343
-      <Velocity>k__BackingField: {x: 0, y: 0}
+      <Velocity>k__BackingField: {x: 0, y: 0.2}
       <FlipXVelocity>k__BackingField: 0
     <HitSound>k__BackingField:
       Guid:
@@ -335,6 +344,9 @@ MonoBehaviour:
   playerPickupLayer:
     serializedVersion: 2
     m_Bits: 8
+  onNeutralAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &6861737522150752444
 BoxCollider2D:
   m_ObjectHideFlags: 0

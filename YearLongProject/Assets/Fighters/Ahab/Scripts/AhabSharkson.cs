@@ -91,11 +91,17 @@ namespace Fighters.Ahab.Scripts
         [SerializeField]
         private float biteCooldown = 2;
 
+        /// <summary>
+        ///     Time after throwing before being able to bite
+        /// </summary>
         [SerializeField]
-        private BoxArea hitboxArea;
+        private float throwOutBiteBuffer;
 
         [SerializeField]
-        private HitboxEffect neutralAttackEffect;
+        private float biteVelocityMultiplier;
+
+        [SerializeField]
+        private BoxArea hitboxArea;
 
         [SerializeField]
         private HitboxEffect dashAttackEffect;
@@ -242,7 +248,7 @@ namespace Fighters.Ahab.Scripts
             AhabNoSharkSprite.SetActive(true);
             AhabSharkSprite.SetActive(false);
             rb.simulated = true;
-            lastBite = Time.time + biteCooldown;
+            lastBite = Time.time + throwOutBiteBuffer;
         }
 
         public void SharkDash()
@@ -285,7 +291,7 @@ namespace Fighters.Ahab.Scripts
             hitboxEmitter.EndHitboxGroup(dashHitboxGroupId);
             HitboxContext context = hitboxEmitter.GetContext(dashHitboxGroupId);
             context.FlipX = characterRb.LinearVelocity.x < 0;
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = rb.linearVelocity * biteVelocityMultiplier;
 
             hitboxEmitter.EmitHitbox(hitboxArea, dashAttackEffect, context, dashHitboxGroupId);
             lastBite = Time.time + biteCooldown;
