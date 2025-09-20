@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WackyWoodsLore
   m_EditorClassIdentifier: 
   LoreTitle: Wacky Woods
-  LoreText:
-  - Wacky woods, the forest of freaks, the bombastic backwoods. Long since forgotten
+  Lore: Wacky woods, the forest of freaks, the bombastic backwoods. Long since forgotten
     names of a forest where bozos live.
+  LoreText:
+  - 

@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5262194483864546394, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
+      propertyPath: action
+      value: 
+      objectReference: {fileID: 1246698329}
     - target: {fileID: 6242291163348849283, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
       propertyPath: m_Name
       value: Ahab (1)
@@ -682,6 +686,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
+--- !u!114 &1246698329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3105801480486927495, guid: 9c85442cd6255dc448f331c283d3c128, type: 3}
+  m_PrefabInstance: {fileID: 1071388220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b9f7907b980b044b86b55b234aeeaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1316357249
 Mesh:
   m_ObjectHideFlags: 0
@@ -1550,6 +1565,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1726405252}
+    - target: {fileID: 1962417431634933626, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 1791
+      objectReference: {fileID: 0}
     - target: {fileID: 1979446608660013614, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1658,9 +1677,17 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 1747
       objectReference: {fileID: 0}
+    - target: {fileID: 6474130449655222095, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 1791
+      objectReference: {fileID: 0}
     - target: {fileID: 6906461375134028428, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
       propertyPath: m_Name
       value: PracticeStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425684793732291228, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 1791
       objectReference: {fileID: 0}
     - target: {fileID: 8163428749301946303, guid: 73946b35a46c2154db202d98e50c3ef6, type: 3}
       propertyPath: m_Mesh

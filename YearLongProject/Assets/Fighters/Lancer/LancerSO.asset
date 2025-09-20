@@ -15,3 +15,4 @@ MonoBehaviour:
   CharacterDisplayName: Lancer
   CharacterPrefab: {fileID: 6242291163348849283, guid: 86323130687063445a000e949fa6f85d, type: 3}
   CharacterPortrait: {fileID: -1439970193, guid: 7a5dd681568dac446ae8acf0e8b370cb, type: 3}
+  CharacterLore: {fileID: 11400000, guid: 9201b73afb12af1408a5b4e8b7e93ee9, type: 2}

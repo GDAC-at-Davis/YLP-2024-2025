@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Lady Luckless LoreSO
   m_EditorClassIdentifier: 
   LoreTitle: Lady Luckless
-  LoreText:
-  - 'Lady Luckless wields a cutlass and a blunderbuss.
+  Lore: 'Lady Luckless wields a cutlass and a blunderbuss.
 
-    She has powers of the
-    sea.'
+    She has powers of
+    the sea.'
+  LoreText:
+  - 

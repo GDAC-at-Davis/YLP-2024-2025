@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PracticeStageLore
   m_EditorClassIdentifier: 
   LoreTitle: Practice Stage
+  Lore: The devs were here....
   LoreText:
-  - The devs were here....
+  - 

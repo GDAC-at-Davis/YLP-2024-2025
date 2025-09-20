@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     HitEffect:
-      <Damage>k__BackingField: 20
-      <Knockback>k__BackingField: {x: 8, y: 8}
+      <Damage>k__BackingField: 25
+      <Knockback>k__BackingField: {x: 10, y: 12}
       <Hitstun>k__BackingField: 0.5
       <HitStopDuration>k__BackingField: 0.4
       <GiveTargetHitStop>k__BackingField: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -2830075504520486776}
+    m_Asset: {fileID: 2729943510096898583}
     m_Duration: 0.5833333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3630007790177556980}
@@ -167,7 +167,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 0
-    m_DisplayName: gardener_heavy
+    m_DisplayName: heavy
   m_Markers:
     m_Objects: []
   m_InfiniteClipPreExtrapolation: 0
@@ -239,28 +239,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
---- !u!114 &-2830075504520486776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
-  m_Name: AnimationPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: eeb41c8bd4c2c6140be0ceeb24e5348a, type: 2}
-  m_Position: {x: 0, y: 0, z: 0}
-  m_EulerAngles: {x: 0, y: 0, z: 0}
-  m_UseTrackMatchFields: 1
-  m_MatchTargetFields: 63
-  m_RemoveStartOffset: 1
-  m_ApplyFootIK: 1
-  m_Loop: 0
-  m_Version: 1
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-1436269864569763679
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -772,6 +750,28 @@ MonoBehaviour:
     m_DisplayName: Heavy Primary
   m_Markers:
     m_Objects: []
+--- !u!114 &2729943510096898583
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: AnimationPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 7400000, guid: b86d4e1e162dd9943bfe002ba6170103, type: 2}
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 1
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &3690644467178157319
 MonoBehaviour:
   m_ObjectHideFlags: 1

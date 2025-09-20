@@ -1,8 +1,7 @@
-using Input_Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus
+namespace Menus.StageSelect
 {
     /// <summary>
     ///     populates level select menu with levels based on levelSO's in levellist

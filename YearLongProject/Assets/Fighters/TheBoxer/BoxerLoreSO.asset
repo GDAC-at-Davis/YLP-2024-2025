@@ -12,6 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f78a0a3e840c3b488304b0ff928238c, type: 3}
   m_Name: BoxerLoreSO
   m_EditorClassIdentifier: 
-  LoreTitle: The Boxer
-  LoreText:
-  - 'Robotic punching machine. '
+  LoreTitle: Boxer
+  Lore: "I. \u201CWorth is determined by victory\u2026\u201D\n\r\n\tOne, two, punch.
+    One, two, punch. Knockout! Boxer\u2019s life was defined by hard work and victory.
+    Born to a city of metal, she dedicated her life to fighting. School was always
+    a struggle and her creative endeavors never got far. Yet, she could take pride
+    in being able to rip through anyone that stood in her way.\r\n\r\nWhen she first
+    joined the arena, she was greatly underestimated. A girl of her stature and weight
+    surely stood no chance against some of their greater champions. Yet, her punch
+    was stronger than her appearance revealed. She became famous for her winning
+    move\u2014a grand slam that sent anyone in her way flying across the ring.\r\n\r\nStarting
+    from the first time she showed her face at the arena, a string of victories followed
+    along. \r\n\r\n\r#\nII. \u201CThe bitter taste of defeat is a flavor I\u2019d
+    rather forget\u2026\u201D\n\r\nEven the strong are susceptible to collapse in
+    the face of something new. The world of metal that Boxer was born into was one
+    of chaos and uncertainty. People made modifications to their bodies to make themselves
+    stronger, smarter, more capable. A virus swept across the nation\u2014one that
+    corrupted both the body and mind. Fearing that they might meet an untimely end
+    regardless of how well they live their lives, body modifications became more
+    common among the people of this world.\r\n\r\nA new challenger entered the arena
+    and was one unlike anything the Boxer had ever seen in her life. His body was
+    a grotesque arrangement of metal parts with bits of flesh patched in between
+    them. Most people of the city were humans made of some metal. This challenger
+    was metal made of some human.\r\n\r#\n\u201CHey, what\u2019s with this guy!\u201D
+    Boxer protested, \u201CThought the rules were no body modifications.\u201D\r\n\r\n\u201CRules
+    change.\u201D\r\n\r#\nIII. \u201CAppetite is the desire to be stronger\u2026\u201D\n\r\n\tFrom
+    the moment that opponent stepped into the ring, a string of losses followed Boxer.
+    The allowance of challengers with body modifications delivered a devastating
+    blow to the competitors that adhered to the previous rules. What was once a valued
+    skill to Boxer became a hindrance.\r\n\r\nUnable to keep up with these changes,
+    Boxer contemplated the use of her own body. What\u2019s the point of fighting
+    if I can\u2019t win? Even if my body is barely my own anymore, if I win, the
+    win is still mine, right?\r\n\r\nThese thoughts consumed her until they became
+    action.\r\n\r\nSickening, sickening, sickening. Ambition was not a word that
+    could be used to describe the Boxer\u2014thirsty, hungry, insatiable. \r\n\r#\nIV.
+    \u201CRust and decay are inevitabilities...\u201D\r\n\r\nHer body, now more metal
+    than it was flesh, became a different monster. A string of victories followed
+    her along with a trail of bodies. Giving up what she thought she valued made
+    her realize what she really cared about\u2014a perfect win. \r\n\r\nWith her
+    newly oiled joints and perfectly shined fists, she delivered blow after blow
+    without feeling a single thing. \r\n\r\nOf course, such a thing cannot last forever.
+    Over time, the Boxer began to feel the weight of her steel limbs and rust in
+    place of natural decay.\r\n\r\nAnd one day, a new opponent\u2014younger, swifter,
+    and smarter\u2014would put an end to her tyranny. One knockout and it\u2019s
+    over.\r\n\r\n\r#\nV.  \u201CCan a life be won?\u201D\r\n\r\nWhen the Boxer arose
+    from her comatose state, she was in a place that she recognized with fond familiarity.
+    The arena was something she called home more than any other place or person\u2014it
+    was her livelihood, her reason for living. \r\n\r\nWhen she realized where she
+    had awoken, a wave of calm washed over her. The parts of her body where her flesh
+    had been melted to fuse with metal no longer felt cold and foreign, the throbbing
+    in her head had dissipated and the ringing she heard from time to time had gone
+    silent. \r\n\r\nIf she was in the ring, nothing else mattered.\r\n\r\n\u201CBut
+    you didn\u2019t win!\u201D a voice rang out. \r\n\r#\nIn the other corner of
+    the ring was an opponent that she didn\u2019t recognize. Unlike the figures of
+    metal that she had grown accustomed to, this opponent was weightless. A miasma
+    of black smog taunted her, knowing that all she cared about was victory.\r\n\r\n\u201CGive
+    me another chance. This time, I\u2019ll surely win.\u201D\r\n"

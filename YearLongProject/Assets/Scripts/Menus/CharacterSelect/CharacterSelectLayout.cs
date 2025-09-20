@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Menus
 {
@@ -16,7 +15,6 @@ namespace Menus
 
         private void Start()
         {
-            var gridLayout = GetComponent<GridLayoutGroup>();
             foreach (CharacterSelectRoster.CharacterSelectData character in characterList.Characters)
             {
                 if (character.IsHidden)
@@ -24,7 +22,7 @@ namespace Menus
                     continue;
                 }
 
-                CharacterSelectButton createdButton = Instantiate(buttonTemplate, gridLayout.transform);
+                CharacterSelectButton createdButton = Instantiate(buttonTemplate, transform);
                 createdButton.Init(character.Character);
                 createdButton.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Random.Range(-2f, 2f));
             }
