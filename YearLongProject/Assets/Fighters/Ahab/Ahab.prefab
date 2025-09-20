@@ -1307,10 +1307,6 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
-      propertyPath: dashVelocity
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: actionManager
       value: 
       objectReference: {fileID: 3105801480486927495}
@@ -1332,11 +1328,11 @@ PrefabInstance:
       objectReference: {fileID: 3105801480486927495}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: hitboxArea.size.x
-      value: 2.2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: hitboxArea.size.y
-      value: 2.2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: groundLayer.m_Bits
@@ -1351,12 +1347,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: dashAttackEffect.<Hitstun>k__BackingField
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: dashAttackEffect.<Knockback>k__BackingField.x
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: dashAttackEffect.<Knockback>k__BackingField.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
+      propertyPath: dashAttackEffect.<HitStopDuration>k__BackingField
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1633692904324390632, guid: 35c1f5298dc35be4c81b99a712b090fb, type: 3}
       propertyPath: onNeutralAttack.m_PersistentCalls.m_Calls.Array.size
