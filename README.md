@@ -2,3 +2,5 @@
 GDAC Year-long-project: "Bozo Brawl"
 
 Unity Version: 6000.0.34f1
+
+Play at: https://gdacdavis.itch.io/ylp
